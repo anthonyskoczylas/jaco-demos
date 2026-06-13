@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Beach Walk — Pacífico Central, Costa Rica</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --teal:#36271d;
+    --teal-deep:#261b14;
+    --sand:#e7ddcd;
+    --paper:#f7f3ed;
+    --ink:#261c14;
+    --ink-soft:#7e766f;
+    --accent:#b9683b;
+    --accent-soft:#c4805a;
+    --line:rgba(54,39,29,.16);
+    --maxw:1080px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:"Inter",system-ui,sans-serif;
+    color:var(--ink);background:var(--paper);line-height:1.7;
+    -webkit-font-smoothing:antialiased;overflow-x:hidden;
+  }
+  h1,h2,h3,h4{font-family:"Playfair Display",Georgia,serif;font-weight:500;line-height:1.12;letter-spacing:-.015em;color:var(--teal-deep)}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 26px}
+  section{padding:108px 0}
+  .label{font-size:.74rem;text-transform:uppercase;letter-spacing:.28em;font-weight:600;color:var(--accent);font-family:"Inter",sans-serif}
+  .hr{height:1px;background:var(--line);border:none}
+  p.lede{font-size:1.18rem;color:var(--ink-soft);max-width:620px}
+
+  .btn{display:inline-flex;align-items:center;gap:11px;font-family:"Inter",sans-serif;font-size:.96rem;font-weight:600;letter-spacing:.01em;
+    text-decoration:none;cursor:pointer;border:none;padding:15px 30px;border-radius:1px;
+    transition:transform .35s cubic-bezier(.2,.8,.2,1),background .3s,color .3s,box-shadow .3s}
+  .btn svg{width:18px;height:18px;stroke-width:1.6}
+  .btn-solid{background:var(--accent);color:var(--ink)}
+  .btn-solid:hover{background:var(--accent-soft);transform:translateY(-2px);box-shadow:0 14px 30px -14px rgba(185,104,59,.7)}
+  .btn-line{background:transparent;color:var(--teal-deep);border:1px solid var(--teal-deep)}
+  .btn-line:hover{background:var(--teal-deep);color:var(--paper);transform:translateY(-2px)}
+  .btn-ghost{background:rgba(247,243,237,.12);color:var(--paper);border:1px solid rgba(247,243,237,.4)}
+  .btn-ghost:hover{background:rgba(247,243,237,.22);transform:translateY(-2px)}
+
+  /* NAV */
+  header.nav{position:fixed;top:0;left:0;right:0;z-index:60;transition:background .4s,box-shadow .4s,padding .4s;padding:20px 0}
+  header.nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:20px}
+  .wordmark{font-family:"Playfair Display",serif;font-size:1.32rem;font-weight:500;letter-spacing:-.01em;color:var(--paper);transition:color .4s;text-decoration:none;white-space:nowrap}
+  .wordmark .dot{color:var(--accent-soft)}
+  .nav-right{display:flex;align-items:center;gap:30px}
+  nav.links{display:flex;gap:30px;align-items:center}
+  nav.links a{font-size:.92rem;font-weight:500;color:rgba(247,243,237,.82);text-decoration:none;transition:color .25s;position:relative}
+  nav.links a::after{content:"";position:absolute;left:0;bottom:-5px;width:0;height:1px;background:var(--accent-soft);transition:width .3s}
+  nav.links a:hover::after{width:100%}
+  nav.links a:hover{color:var(--paper)}
+  .lang{display:flex;align-items:center;gap:2px;background:rgba(28,20,15,.46);border:1px solid rgba(247,243,237,.5);border-radius:6px;padding:3px 5px 3px 9px;backdrop-filter:blur(6px);transition:background .4s,border-color .4s}
+  .lang-globe{color:rgba(247,243,237,.92);flex:0 0 auto;margin-right:4px}
+  .lang button{background:transparent;border:none;cursor:pointer;font-family:"Inter",sans-serif;font-size:.82rem;font-weight:700;letter-spacing:.06em;
+    padding:6px 11px;border-radius:4px;color:rgba(247,243,237,.85);transition:background .25s,color .25s}
+  .lang button:hover{color:var(--paper)}
+  .lang button.active{background:var(--accent);color:var(--ink)}
+  header.nav.scrolled{background:rgba(247,243,237,.94);backdrop-filter:blur(12px);box-shadow:0 1px 0 var(--line);padding:13px 0}
+  header.nav.scrolled .wordmark{color:var(--teal-deep)}
+  header.nav.scrolled nav.links a{color:var(--ink-soft)}
+  header.nav.scrolled nav.links a:hover{color:var(--teal-deep)}
+  header.nav.scrolled .lang{background:rgba(38,27,20,.07);border-color:var(--line)}
+  header.nav.scrolled .lang-globe{color:var(--ink-soft)}
+  header.nav.scrolled .lang button{color:var(--ink-soft)}
+  header.nav.scrolled .lang button:hover{color:var(--teal-deep)}
+  header.nav.scrolled .lang button.active{background:var(--accent);color:var(--ink)}
+  @media(max-width:820px){nav.links{display:none}}
+  @media(max-width:560px){
+    header.nav .wrap{gap:12px}
+    .wordmark{font-size:1.12rem;min-width:0;overflow:hidden;text-overflow:ellipsis}
+    .lang{flex:0 0 auto}
+    .lang button{padding:6px 10px}
+  }
+
+  /* HERO */
+  .hero{position:relative;min-height:100vh;display:flex;align-items:center;padding:140px 0 100px;color:var(--paper);overflow:hidden;
+    background:radial-gradient(120% 90% at 78% 12%,rgba(196,128,90,.45),transparent 52%),
+      radial-gradient(90% 70% at 12% 95%,rgba(54,39,29,.55),transparent 60%),
+      linear-gradient(165deg,#4e4138 0%,#36271d 42%,#261b14 100%)}
+  .hero::before{content:"";position:absolute;right:-6%;top:14%;width:340px;height:340px;border-radius:50%;
+    background:radial-gradient(circle,#d6a78d 0%,#c4805a 55%,rgba(196,128,90,0) 72%);opacity:.55;filter:blur(2px)}
+  .hero::after{content:"";position:absolute;left:0;right:0;bottom:0;height:130px;background:linear-gradient(transparent,rgba(38,27,20,.7))}
+  .hero-grain{position:absolute;inset:0;opacity:.05;background-image:repeating-linear-gradient(115deg,transparent 0 22px,rgba(255,255,255,.5) 22px 23px)}
+  .hero-inner{position:relative;z-index:5;max-width:780px}
+  .hero .label{color:var(--accent-soft);margin-bottom:22px;display:block}
+  .hero h1{color:var(--paper);font-size:clamp(2.8rem,8vw,5.4rem);font-weight:500;margin-bottom:24px}
+  .hero h1 em{font-style:italic;color:var(--accent-soft)}
+  .hero p.promise{font-size:clamp(1.1rem,2.4vw,1.4rem);color:rgba(247,243,237,.9);max-width:560px;margin-bottom:38px}
+  .hero-cta{display:flex;gap:16px;flex-wrap:wrap;align-items:center}
+  .hero-meta{position:absolute;bottom:46px;right:26px;z-index:5;text-align:right;color:rgba(247,243,237,.7);font-size:.74rem;letter-spacing:.12em;text-transform:uppercase}
+  .hero-meta b{display:block;font-family:"Playfair Display",serif;font-size:1.1rem;letter-spacing:0;text-transform:none;color:var(--paper)}
+  @media(max-width:720px){.hero-meta{display:none}}
+
+  /* ABOUT */
+  .about .wrap{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+  @media(max-width:840px){.about .wrap{grid-template-columns:1fr;gap:40px}}
+  .about h2{font-size:clamp(2rem,4.4vw,3rem);margin:18px 0 22px}
+  .about p{color:var(--ink-soft);margin-bottom:18px;font-size:1.06rem}
+  .about .signature{font-family:"Playfair Display",serif;font-style:italic;font-size:1.15rem;color:var(--teal);margin-top:8px}
+  .about-visual{height:440px;border-radius:1px;position:relative;overflow:hidden;box-shadow:0 30px 70px -34px rgba(38,27,20,.6);
+    background:radial-gradient(80% 60% at 30% 20%,rgba(214,167,141,.5),transparent 55%),linear-gradient(155deg,#4e4138,#36271d 60%,#261b14)}
+  .about-visual::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(100deg,transparent 0 30px,rgba(255,255,255,.05) 30px 31px)}
+  .about-visual .cap{position:absolute;bottom:20px;left:20px;color:var(--paper);font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;opacity:.85}
+  .about-visual .cap::before{content:"";display:inline-block;width:26px;height:1px;background:var(--accent-soft);margin-right:10px;vertical-align:middle}
+
+  /* ROOMS */
+  .rooms{background:var(--sand)}
+  .sec-head{max-width:600px;margin-bottom:54px}
+  .sec-head.center{margin-left:auto;margin-right:auto;text-align:center}
+  .sec-head h2{font-size:clamp(2rem,4.4vw,3rem);margin:16px 0 14px}
+  .sec-head p{color:var(--ink-soft)}
+  .room-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+  @media(max-width:880px){.room-grid{grid-template-columns:1fr 1fr}}
+  @media(max-width:600px){.room-grid{grid-template-columns:1fr}}
+  .room{background:var(--paper);border-radius:1px;overflow:hidden;display:flex;flex-direction:column;
+    box-shadow:0 18px 44px -30px rgba(38,27,20,.5);transition:transform .4s cubic-bezier(.2,.8,.2,1),box-shadow .4s}
+  .room:hover{transform:translateY(-6px);box-shadow:0 30px 60px -30px rgba(38,27,20,.55)}
+  .room-img{height:190px;position:relative}
+  .room-img .cap{position:absolute;bottom:12px;left:14px;color:var(--paper);font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;opacity:.9}
+  .ri1{background:radial-gradient(70% 70% at 70% 20%,rgba(214,167,141,.6),transparent 60%),linear-gradient(150deg,#4e4138,#261b14)}
+  .ri2{background:radial-gradient(70% 80% at 30% 30%,rgba(196,128,90,.55),transparent 60%),linear-gradient(150deg,#36271d,#1c140f)}
+  .ri3{background:radial-gradient(80% 70% at 60% 80%,rgba(214,167,141,.5),transparent 55%),linear-gradient(150deg,#62574f,#36271d)}
+  .room-body{padding:26px 24px 28px;display:flex;flex-direction:column;flex:1}
+  .room-body h3{font-size:1.4rem;margin-bottom:6px}
+  .rate{font-family:"Playfair Display",serif;font-size:1.05rem;color:var(--accent);margin-bottom:14px}
+  .rate small{color:var(--ink-soft);font-family:"Inter",sans-serif;font-size:.82rem}
+  .room-body p{color:var(--ink-soft);font-size:.95rem;margin-bottom:18px;flex:1}
+  .feats{list-style:none;display:flex;flex-direction:column;gap:9px;margin-bottom:22px}
+  .feats li{display:flex;align-items:center;gap:10px;font-size:.88rem;color:var(--ink-soft)}
+  .feats svg{width:16px;height:16px;stroke:var(--teal);stroke-width:1.5;flex:none}
+  .room .btn-line{align-self:flex-start;padding:11px 22px;font-size:.88rem}
+
+  /* GALLERY */
+  .gal-grid{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:160px;gap:16px}
+  @media(max-width:760px){.gal-grid{grid-template-columns:repeat(2,1fr)}}
+  .tile{border-radius:1px;position:relative;overflow:hidden}
+  .tile .cap{position:absolute;bottom:14px;left:16px;color:var(--paper);font-size:.7rem;letter-spacing:.13em;text-transform:uppercase;z-index:2;opacity:.92}
+  .tile::after{content:"";position:absolute;inset:0;background:linear-gradient(transparent 55%,rgba(38,27,20,.45))}
+  .tile.big{grid-column:span 2;grid-row:span 2}
+  .t1{background:radial-gradient(80% 70% at 70% 25%,rgba(214,167,141,.55),transparent 58%),linear-gradient(150deg,#4e4138,#261b14)}
+  .t2{background:radial-gradient(70% 70% at 30% 30%,rgba(196,128,90,.6),transparent 55%),linear-gradient(150deg,#b9683b,#36271d)}
+  .t3{background:linear-gradient(150deg,#62574f,#1c140f)}
+  .t4{background:radial-gradient(80% 80% at 60% 70%,rgba(214,167,141,.5),transparent 55%),linear-gradient(150deg,#36271d,#261b14)}
+  .t5{background:radial-gradient(70% 70% at 40% 30%,rgba(196,128,90,.5),transparent 60%),linear-gradient(150deg,#4e4138,#36271d)}
+
+  /* TESTIMONIALS */
+  .testi{background:var(--teal-deep);color:var(--paper)}
+  .testi .label{color:var(--accent-soft)}
+  .testi .sec-head h2{color:var(--paper)}
+  .testi .sec-head p{color:rgba(247,243,237,.75)}
+  .t-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+  @media(max-width:840px){.t-grid{grid-template-columns:1fr}}
+  .quote{border:1px solid rgba(247,243,237,.16);border-radius:1px;padding:34px 30px;background:rgba(247,243,237,.04)}
+  .rating{font-family:"Playfair Display",serif;font-size:.95rem;letter-spacing:.1em;color:var(--accent-soft);margin-bottom:18px}
+  .rating b{font-size:1.5rem;letter-spacing:0}
+  .quote p{font-family:"Playfair Display",serif;font-style:italic;font-size:1.12rem;line-height:1.55;color:rgba(247,243,237,.94);margin-bottom:24px}
+  .who{display:flex;align-items:center;gap:14px}
+  .who .mono{width:46px;height:46px;border-radius:50%;flex:none;display:grid;place-items:center;font-family:"Playfair Display",serif;font-size:1.05rem;color:var(--paper);border:1px solid rgba(247,243,237,.3)}
+  .m1{background:linear-gradient(135deg,#b9683b,#36271d)}
+  .m2{background:linear-gradient(135deg,#4e4138,#261b14)}
+  .m3{background:linear-gradient(135deg,#62574f,#b9683b)}
+  .who b{display:block;font-size:.95rem;font-family:"Inter",sans-serif;font-weight:600}
+  .who small{color:rgba(247,243,237,.6);font-size:.82rem;letter-spacing:.06em}
+
+  /* CONTACT */
+  .contact .wrap{display:grid;grid-template-columns:1fr 1fr;gap:60px}
+  @media(max-width:840px){.contact .wrap{grid-template-columns:1fr;gap:40px}}
+  .contact h2{font-size:clamp(2rem,4.4vw,3rem);margin:16px 0 20px}
+  .contact .lede{margin-bottom:30px}
+  .ci{list-style:none}
+  .ci li{display:flex;gap:16px;padding:18px 0;border-top:1px solid var(--line)}
+  .ci li:last-child{border-bottom:1px solid var(--line)}
+  .ci svg{width:22px;height:22px;stroke:var(--accent);stroke-width:1.5;flex:none;margin-top:3px}
+  .ci b{display:block;font-family:"Playfair Display",serif;font-size:1.05rem;color:var(--teal-deep)}
+  .ci span{color:var(--ink-soft);font-size:.92rem}
+  .contact-card{background:var(--teal);color:var(--paper);border-radius:1px;padding:46px 40px;display:flex;flex-direction:column;justify-content:center;
+    background-image:radial-gradient(90% 70% at 80% 10%,rgba(196,128,90,.35),transparent 55%)}
+  .contact-card h3{color:var(--paper);font-size:1.7rem;margin-bottom:12px}
+  .contact-card p{color:rgba(247,243,237,.85);margin-bottom:28px;font-size:.98rem}
+  .contact-card .btn-solid{width:100%;justify-content:center}
+  .contact-card .note{margin-top:18px;font-size:.82rem;color:rgba(247,243,237,.6);text-align:center}
+
+  /* PROPOSAL */
+  .proposal{background:var(--sand);position:relative;overflow:hidden}
+  .proposal::before{content:"";position:absolute;top:-120px;right:-120px;width:360px;height:360px;border-radius:50%;background:radial-gradient(circle,rgba(185,104,59,.18),transparent 70%)}
+  .prop-inner{max-width:860px;margin:0 auto;text-align:center;position:relative;z-index:2}
+  .proposal .label{color:var(--accent)}
+  .proposal h2{font-size:clamp(2.2rem,5.2vw,3.4rem);margin:18px 0 10px}
+  .proposal h2 .price{color:var(--accent);font-style:italic}
+  .proposal .sub{color:var(--ink-soft);font-size:1.1rem;max-width:560px;margin:0 auto 48px}
+  .reasons{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:1px;overflow:hidden;text-align:left;margin-bottom:42px}
+  @media(max-width:680px){.reasons{grid-template-columns:1fr}}
+  .reason{background:var(--paper);padding:30px 28px;display:flex;gap:18px;align-items:flex-start}
+  .reason .num{font-family:"Playfair Display",serif;font-size:1.5rem;color:var(--accent);line-height:1;flex:none;min-width:30px}
+  .reason h4{font-size:1.12rem;margin-bottom:6px}
+  .reason p{color:var(--ink-soft);font-size:.93rem;line-height:1.6}
+  .anchor{max-width:600px;margin:0 auto 36px;padding:22px 28px;border-left:2px solid var(--accent);text-align:left;background:rgba(247,243,237,.6)}
+  .anchor p{font-family:"Playfair Display",serif;font-style:italic;font-size:1.12rem;color:var(--teal-deep);line-height:1.5}
+  .anchor b{font-style:normal;color:var(--accent)}
+  .proposal .btn-solid{font-size:1.02rem;padding:17px 38px}
+  .proposal .closing{margin-top:18px;font-size:.86rem;color:var(--ink-soft);letter-spacing:.04em}
+
+  footer{background:var(--teal-deep);color:rgba(247,243,237,.7);padding:54px 0 40px}
+  footer .wrap{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px}
+  footer .wordmark{color:var(--paper)}
+  footer p{font-size:.85rem}
+  footer .smol{width:100%;border-top:1px solid rgba(247,243,237,.12);padding-top:22px;margin-top:8px;font-size:.78rem;opacity:.6}
+
+  .reveal{opacity:0;transform:translateY(26px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.8,.2,1)}
+  .reveal.in{opacity:1;transform:none}
+</style>
+</head>
+<body>
+
+<header class="nav" id="nav">
+  <div class="wrap">
+    <a href="#top" class="wordmark">Beach Walk<span class="dot">.</span></a>
+    <div class="nav-right">
+      <nav class="links">
+        <a href="#about" data-es="Nosotros" data-en="About">Nosotros</a>
+        <a href="#rooms" data-es="Cabinas" data-en="Chalets">Cabinas</a>
+        <a href="#gallery" data-es="Galería" data-en="Gallery">Galería</a>
+        <a href="#testi" data-es="Opiniones" data-en="Reviews">Opiniones</a>
+        <a href="#contact" data-es="Reservar" data-en="Book">Reservar</a>
+      </nav>
+      <div class="lang" role="group" aria-label="Idioma / Language" title="Cambiar idioma / Switch language">
+        <svg class="lang-globe" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.6 2.7 2.6 15.3 0 18M12 3c-2.6 2.7-2.6 15.3 0 18"/></svg>
+        <button id="btn-es" class="active" onclick="setLang('es')">ES</button>
+        <button id="btn-en" onclick="setLang('en')">EN</button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="hero-grain"></div>
+  <div class="wrap hero-inner">
+    <span class="label" data-es="Pacífico Central · Costa Rica" data-en="Central Pacific · Costa Rica">Pacífico Central · Costa Rica</span>
+    <h1 data-es="Beach Walk, tu chalet <em>entre selva y mar</em>" data-en="Beach Walk, your chalet <em>between jungle and sea</em>">Beach Walk, tu chalet <em>entre selva y mar</em></h1>
+    <p class="promise" data-es="Un chalet privado y tranquilo a pasos de la playa. Despierta con el canto de la selva y la brisa del Pacífico — el Pura Vida que viniste a buscar." data-en="A private, peaceful chalet steps from the beach. Wake to the song of the jungle and the Pacific breeze — the Pura Vida you came for.">Un chalet privado y tranquilo a pasos de la playa. Despierta con el canto de la selva y la brisa del Pacífico — el Pura Vida que viniste a buscar.</p>
+    <div class="hero-cta">
+      <a href="#contact" class="btn btn-solid" data-es="Reservar directo" data-en="Book direct">Reservar directo
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <a href="#rooms" class="btn btn-ghost" data-es="Ver chalets" data-en="View chalets">Ver chalets</a>
+    </div>
+  </div>
+  <div class="hero-meta">
+    <b>4.9 / 5</b>
+    <span data-es="Calificación de huéspedes" data-en="Guest rating">Calificación de huéspedes</span>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="wrap">
+    <div class="reveal">
+      <span class="label" data-es="Nuestra historia" data-en="Our story">Nuestra historia</span>
+      <h2 data-es="Un retiro hecho con calma y cariño" data-en="A retreat made with calm and care">Un retiro hecho con calma y cariño</h2>
+      <p data-es="Beach Walk es un pequeño chalet de familia, rodeado de jardín tropical y a minutos de la playa. Pocas unidades, mucho silencio y todo el detalle que merece un buen descanso." data-en="Beach Walk is a small family chalet surrounded by tropical garden, minutes from the beach. Few units, plenty of quiet, and all the care a true rest deserves.">Beach Walk es un pequeño chalet de familia, rodeado de jardín tropical y a minutos de la playa. Pocas unidades, mucho silencio y todo el detalle que merece un buen descanso.</p>
+      <p data-es="Aquí no eres un número de reserva. Te recibimos como familia, te damos las mejores recomendaciones locales y te dejamos disfrutar a tu ritmo." data-en="Here you are not a booking number. We welcome you like family, share the best local tips, and let you enjoy at your own pace.">Aquí no eres un número de reserva. Te recibimos como familia, te damos las mejores recomendaciones locales y te dejamos disfrutar a tu ritmo.</p>
+      <p class="signature" data-es="— Con gusto te recibimos, como en casa." data-en="— We welcome you warmly, just like home.">— Con gusto te recibimos, como en casa.</p>
+    </div>
+    <div class="about-visual reveal">
+      <span class="cap" data-es="Jardín y terraza al amanecer" data-en="Garden and terrace at dawn">Jardín y terraza al amanecer</span>
+    </div>
+  </div>
+</section>
+
+<hr class="hr">
+
+<!-- ROOMS -->
+<section class="rooms" id="rooms">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="label" data-es="Chalets &amp; tarifas" data-en="Chalets &amp; rates">Chalets &amp; tarifas</span>
+      <h2 data-es="Espacios para descansar de verdad" data-en="Spaces made for real rest">Espacios para descansar de verdad</h2>
+      <p data-es="Tarifas por noche, impuestos incluidos. Reservando directo siempre obtienes el mejor precio." data-en="Rates per night, taxes included. Booking direct always gets you the best price.">Tarifas por noche, impuestos incluidos. Reservando directo siempre obtienes el mejor precio.</p>
+    </div>
+    <div class="room-grid">
+
+      <div class="room reveal">
+        <div class="room-img ri1"><span class="cap" data-es="Chalet jardín" data-en="Garden chalet">Chalet jardín</span></div>
+        <div class="room-body">
+          <h3 data-es="Chalet Jardín" data-en="Garden Chalet">Chalet Jardín</h3>
+          <div class="rate">$65 <small data-es="/ noche" data-en="/ night">/ noche</small></div>
+          <p data-es="Acogedor para dos, con vista al jardín tropical y entrada independiente." data-en="Cozy for two, with tropical garden views and a private entrance.">Acogedor para dos, con vista al jardín tropical y entrada independiente.</p>
+          <ul class="feats">
+            <li><svg viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-es="Cama matrimonial" data-en="Queen bed">Cama matrimonial</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-es="Aire acondicionado" data-en="Air conditioning">Aire acondicionado</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-es="WiFi y baño privado" data-en="WiFi and private bath">WiFi y baño privado</span></li>
+          </ul>
+          <a href="#contact" class="btn btn-line" data-es="Reservar" data-en="Book">Reservar</a>
+        </div>
+      </div>
+
+      <div class="room reveal">
+        <div class="room-img ri2"><span class="cap" data-es="Chalet familiar" data-en="Family chalet">Chalet familiar</span></div>
+        <div class="room-body">
+          <h3 data-es="Chalet Familiar" data-en="Family Chalet">Chalet Familiar</h3>
+          <div class="rate">$98 <small data-es="/ noche" data-en="/ night">/ noche</small></div>
+          <p data-es="Amplio para hasta cuatro personas, con cocineta y terraza propia." data-en="Spacious for up to four guests, with a kitchenette and private terrace.">Amplio para hasta cuatro personas, con cocineta y terraza propia.</p>
+          <ul class="feats">
+            <li><svg viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-es="Hasta 4 huéspedes" data-en="Up to 4 guests">Hasta 4 huéspedes</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-es="Cocineta equipada" data-en="Equipped kitchenette">Cocineta equipada</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-es="Terraza privada" data-en="Private terrace">Terraza privada</span></li>
+          </ul>
+          <a href="#contact" class="btn btn-line" data-es="Reservar" data-en="Book">Reservar</a>
+        </div>
+      </div>
+
+      <div class="room reveal">
+        <div class="room-img ri3"><span class="cap" data-es="Suite vista mar" data-en="Ocean-view suite">Suite vista mar</span></div>
+        <div class="room-body">
+          <h3 data-es="Suite Vista Mar" data-en="Ocean-View Suite">Suite Vista Mar</h3>
+          <div class="rate">$140 <small data-es="/ noche" data-en="/ night">/ noche</small></div>
+          <p data-es="Nuestro mejor chalet, con vista al atardecer del Pacífico y balcón privado." data-en="Our finest chalet, with Pacific sunset views and a private balcony.">Nuestro mejor chalet, con vista al atardecer del Pacífico y balcón privado.</p>
+          <ul class="feats">
+            <li><svg viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-es="Vista al océano" data-en="Ocean view">Vista al océano</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-es="Balcón privado" data-en="Private balcony">Balcón privado</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-es="Desayuno incluido" data-en="Breakfast included">Desayuno incluido</span></li>
+          </ul>
+          <a href="#contact" class="btn btn-line" data-es="Reservar" data-en="Book">Reservar</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="gallery" id="gallery">
+  <div class="wrap">
+    <div class="sec-head center reveal">
+      <span class="label" data-es="Galería" data-en="Gallery">Galería</span>
+      <h2 data-es="Un vistazo a Beach Walk" data-en="A glimpse of Beach Walk">Un vistazo a Beach Walk</h2>
+    </div>
+    <div class="gal-grid reveal">
+      <div class="tile big t1"><span class="cap" data-es="Piscina entre palmeras" data-en="Pool among the palms">Piscina entre palmeras</span></div>
+      <div class="tile t2"><span class="cap" data-es="Atardecer en la playa" data-en="Sunset on the beach">Atardecer en la playa</span></div>
+      <div class="tile t3"><span class="cap" data-es="Interior del chalet" data-en="Chalet interior">Interior del chalet</span></div>
+      <div class="tile t4"><span class="cap" data-es="Sendero al mar" data-en="Path to the sea">Sendero al mar</span></div>
+      <div class="tile t5"><span class="cap" data-es="Desayuno tropical" data-en="Tropical breakfast">Desayuno tropical</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testi" id="testi">
+  <div class="wrap">
+    <div class="sec-head center reveal">
+      <span class="label" data-es="Opiniones de huéspedes" data-en="Guest reviews">Opiniones de huéspedes</span>
+      <h2 data-es="Lo que cuentan quienes ya vinieron" data-en="What past guests say">Lo que cuentan quienes ya vinieron</h2>
+    </div>
+    <div class="t-grid">
+      <div class="quote reveal">
+        <div class="rating"><b>5.0</b> &nbsp;/ 5 · <span data-es="Excelente" data-en="Excellent">Excelente</span></div>
+        <p data-es="«Limpio, tranquilo y la atención fue de otro nivel. Nos sentimos en casa desde el primer minuto. Volveremos sin duda.»" data-en="“Clean, peaceful, and the hospitality was next level. We felt at home from the first minute. We'll definitely return.”">«Limpio, tranquilo y la atención fue de otro nivel. Nos sentimos en casa desde el primer minuto. Volveremos sin duda.»</p>
+        <div class="who"><span class="mono m1">MR</span><div><b>María Rodríguez</b><small data-es="México" data-en="Mexico">México</small></div></div>
+      </div>
+      <div class="quote reveal">
+        <div class="rating"><b>5.0</b> &nbsp;/ 5 · <span data-es="Excelente" data-en="Excellent">Excelente</span></div>
+        <p data-es="«Un pequeño paraíso. Chalet impecable, a pasos de la playa, y los anfitriones nos dieron los mejores consejos locales. Pura Vida de verdad.»" data-en="“A little paradise. Spotless chalet, steps from the beach, and the hosts gave us the best local tips. Pura Vida indeed.”">«Un pequeño paraíso. Chalet impecable, a pasos de la playa, y los anfitriones nos dieron los mejores consejos locales. Pura Vida de verdad.»</p>
+        <div class="who"><span class="mono m2">JC</span><div><b>James Carter</b><small data-es="Canadá" data-en="Canada">Canadá</small></div></div>
+      </div>
+      <div class="quote reveal">
+        <div class="rating"><b>4.9</b> &nbsp;/ 5 · <span data-es="Excelente" data-en="Excellent">Excelente</span></div>
+        <p data-es="«Tranquilidad total y un trato humano que ya no se encuentra. El atardecer desde la terraza vale cada colón.»" data-en="“Total peace and a warmth that's rare these days. The sunset from the terrace is worth every colón.”">«Tranquilidad total y un trato humano que ya no se encuentra. El atardecer desde la terraza vale cada colón.»</p>
+        <div class="who"><span class="mono m3">LF</span><div><b>Lucía Fernández</b><small data-es="España" data-en="Spain">España</small></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="wrap">
+    <div class="reveal">
+      <span class="label" data-es="Reserva directo" data-en="Book direct">Reserva directo</span>
+      <h2 data-es="Hablemos de tu estadía" data-en="Let's plan your stay">Hablemos de tu estadía</h2>
+      <p class="lede" data-es="Escríbenos por WhatsApp y te respondemos al momento. Sin intermediarios y con el mejor precio garantizado." data-en="Message us on WhatsApp and we'll reply right away. No middlemen, best price guaranteed.">Escríbenos por WhatsApp y te respondemos al momento. Sin intermediarios y con el mejor precio garantizado.</p>
+      <ul class="ci">
+        <li>
+          <svg viewBox="0 0 24 24" fill="none"><path d="M12 21s-7-6.2-7-11a7 7 0 0114 0c0 4.8-7 11-7 11z" stroke-linejoin="round"/><circle cx="12" cy="10" r="2.5"/></svg>
+          <div><b data-es="Ubicación" data-en="Location">Ubicación</b><span data-es="Pacífico Central — Jacó / Quepos / Manuel Antonio, Costa Rica" data-en="Central Pacific — Jacó / Quepos / Manuel Antonio, Costa Rica">Pacífico Central — Jacó / Quepos / Manuel Antonio, Costa Rica</span></div>
+        </li>
+        <li>
+          <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <div><b data-es="Recepción" data-en="Front desk">Recepción</b><span data-es="Todos los días · 7:00 a.m. – 9:00 p.m." data-en="Every day · 7:00 a.m. – 9:00 p.m.">Todos los días · 7:00 a.m. – 9:00 p.m.</span></div>
+        </li>
+        <li>
+          <svg viewBox="0 0 24 24" fill="none"><path d="M4 6h16v12H4z" stroke-linejoin="round"/><path d="M4 7l8 6 8-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <div><b data-es="Correo" data-en="Email">Correo</b><span>hola@beachwalk.com</span></div>
+        </li>
+      </ul>
+    </div>
+    <div class="contact-card reveal">
+      <h3 data-es="Reserva en segundos" data-en="Book in seconds">Reserva en segundos</h3>
+      <p data-es="Toca el botón y escríbenos directamente por WhatsApp. Te confirmamos disponibilidad al instante." data-en="Tap the button and message us directly on WhatsApp. We'll confirm availability instantly.">Toca el botón y escríbenos directamente por WhatsApp. Te confirmamos disponibilidad al instante.</p>
+      <a href="https://wa.me/13213561951" class="btn btn-solid" data-es="Escribir por WhatsApp" data-en="Message on WhatsApp">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M20 12a8 8 0 01-11.5 7.2L4 20l.9-4.3A8 8 0 1120 12z" stroke-linejoin="round"/></svg>
+        Escribir por WhatsApp
+      </a>
+      <p class="note">+1 321 356 1951 · <span data-es="Respuesta inmediata" data-en="Instant reply">Respuesta inmediata</span></p>
+    </div>
+  </div>
+</section>
+
+<!-- PROPOSAL -->
+<section class="proposal" id="proposal">
+  <div class="prop-inner">
+    <span class="label reveal" data-es="Una propuesta para el dueño" data-en="A proposal for the owner">Una propuesta para el dueño</span>
+    <h2 class="reveal" data-es="Tu sitio web profesional — <span class='price'>$500</span>" data-en="Your professional website — <span class='price'>$500</span>">Tu sitio web profesional — <span class="price">$500</span></h2>
+    <p class="sub reveal" data-es="Lo que estás viendo es un ejemplo real de lo que puedo construir para tu negocio. Así de bien se puede ver Beach Walk en internet — y en dos idiomas." data-en="What you're seeing is a real example of what I can build for your business. This is how good Beach Walk can look online — in two languages.">Lo que estás viendo es un ejemplo real de lo que puedo construir para tu negocio. Así de bien se puede ver Beach Walk en internet — y en dos idiomas.</p>
+
+    <div class="reasons reveal">
+      <div class="reason">
+        <span class="num">01</span>
+        <div>
+          <h4 data-es="Reservas directas" data-en="Direct bookings">Reservas directas</h4>
+          <p data-es="Recibe reservas sin pagar 15–20% de comisión a Booking o Airbnb. Ese dinero se queda contigo." data-en="Take bookings without paying 15–20% commission to Booking or Airbnb. That money stays with you.">Recibe reservas sin pagar 15–20% de comisión a Booking o Airbnb. Ese dinero se queda contigo.</p>
+        </div>
+      </div>
+      <div class="reason">
+        <span class="num">02</span>
+        <div>
+          <h4 data-es="Aparece en Google" data-en="Show up on Google">Aparece en Google</h4>
+          <p data-es="Cuando los turistas buscan dónde quedarse en la zona, tu negocio aparece — no la competencia." data-en="When tourists search for where to stay in the area, your business shows up — not the competition.">Cuando los turistas buscan dónde quedarse en la zona, tu negocio aparece — no la competencia.</p>
+        </div>
+      </div>
+      <div class="reason">
+        <span class="num">03</span>
+        <div>
+          <h4 data-es="Genera confianza" data-en="Build trust">Genera confianza</h4>
+          <p data-es="Un sitio profesional hace que el viajero te tome en serio y reserve sin dudar." data-en="A professional site makes travelers take you seriously and book without hesitation.">Un sitio profesional hace que el viajero te tome en serio y reserve sin dudar.</p>
+        </div>
+      </div>
+      <div class="reason">
+        <span class="num">04</span>
+        <div>
+          <h4 data-es="Rápido, móvil y tuyo" data-en="Fast, mobile, and yours">Rápido, móvil y tuyo</h4>
+          <p data-es="Carga al instante, se ve perfecto en el teléfono y es tuyo para siempre — sin alquileres mensuales." data-en="Loads instantly, looks perfect on the phone, and is yours forever — no monthly rentals.">Carga al instante, se ve perfecto en el teléfono y es tuyo para siempre — sin alquileres mensuales.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="anchor reveal">
+      <p data-es="Las agencias cobran <b>$2,000 o más</b> por un sitio así. Este es un sitio completo, bilingüe y listo para vender, por <b>$500 — pago único.</b>" data-en="Agencies charge <b>$2,000 or more</b> for a site like this. This is a complete, bilingual, ready-to-sell site for <b>$500 — one-time payment.</b>">Las agencias cobran <b>$2,000 o más</b> por un sitio así. Este es un sitio completo, bilingüe y listo para vender, por <b>$500 — pago único.</b></p>
+    </div>
+
+    <a href="https://wa.me/13213561951" class="btn btn-solid reveal" data-es="Quiero mi sitio web" data-en="I want my website">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M20 12a8 8 0 01-11.5 7.2L4 20l.9-4.3A8 8 0 1120 12z" stroke-linejoin="round"/></svg>
+      Quiero mi sitio web
+    </a>
+    <p class="closing reveal" data-es="Sin compromiso · Conversemos por WhatsApp" data-en="No obligation · Let's talk on WhatsApp">Sin compromiso · Conversemos por WhatsApp</p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span class="wordmark">Beach Walk<span class="dot">.</span></span>
+    <p data-es="Pacífico Central, Costa Rica · +1 321 356 1951" data-en="Central Pacific, Costa Rica · +1 321 356 1951">Pacífico Central, Costa Rica · +1 321 356 1951</p>
+    <p class="smol" data-es="© 2026 Beach Walk · Pura Vida · Sitio de muestra con contenido de ejemplo." data-en="© 2026 Beach Walk · Pura Vida · Sample site with placeholder content.">© 2026 Beach Walk · Pura Vida · Sitio de muestra con contenido de ejemplo.</p>
+  </div>
+</footer>
+
+<script>
+  // sticky nav
+  const nav=document.getElementById('nav');
+  const onScroll=()=>nav.classList.toggle('scrolled',window.scrollY>40);
+  window.addEventListener('scroll',onScroll,{passive:true});onScroll();
+
+  // reveal on scroll
+  const io=new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});
+  },{threshold:.14});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+  // language toggle — swaps every element carrying data-es / data-en
+  function setLang(lang){
+    document.documentElement.lang=lang;
+    document.querySelectorAll('[data-es]').forEach(el=>{
+      const val=el.getAttribute('data-'+lang);
+      if(val!==null) el.innerHTML=val;
+    });
+    document.getElementById('btn-es').classList.toggle('active',lang==='es');
+    document.getElementById('btn-en').classList.toggle('active',lang==='en');
+    try{localStorage.setItem('demo-lang',lang);}catch(e){}
+  }
+  // restore saved choice (default Spanish)
+  try{
+    const saved=localStorage.getItem('demo-lang');
+    if(saved&&saved!=='es') setLang(saved);
+  }catch(e){}
+</script>
+</body>
+</html>
