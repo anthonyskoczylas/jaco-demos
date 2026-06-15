@@ -9,231 +9,241 @@
 <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital@0;1&family=Karla:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root{
-    --teal:#14212b;
-    --teal-deep:#0e171e;
-    --sand:#d7e3e2;
-    --paper:#f3f6f6;
-    --ink:#15212a;
-    --ink-soft:#727a80;
-    --accent:#3fb8a0;
-    --accent-soft:#5ec3af;
-    --line:rgba(20,33,43,.16);
-    --maxw:1080px;
+    --teal:#14212b; --teal-deep:#0e171e; --teal-mid:#303c44; --teal-light:#48525a; --teal-darkest:#0a1116;
+    --sand:#d7e3e2; --paper:#f3f6f6; --ink:#15212a; --ink-soft:#727a80;
+    --accent:#3fb8a0; --accent-soft:#5ec3af; --accent-glow:#90d6c8; --line:rgba(20,33,43,.14);
+    --maxw:1180px;
   }
   *{margin:0;padding:0;box-sizing:border-box}
-  html{scroll-behavior:smooth}
-  body{
-    font-family:"Karla",system-ui,sans-serif;
-    color:var(--ink);background:var(--paper);line-height:1.7;
-    -webkit-font-smoothing:antialiased;overflow-x:hidden;
-  }
-  h1,h2,h3,h4{font-family:"Libre Baskerville",Georgia,serif;font-weight:500;line-height:1.12;letter-spacing:-.015em;color:var(--teal-deep)}
-  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 26px}
-  section{padding:108px 0}
-  .label{font-size:.74rem;text-transform:uppercase;letter-spacing:.28em;font-weight:600;color:var(--accent);font-family:"Karla",sans-serif}
-  .hr{height:1px;background:var(--line);border:none}
-  p.lede{font-size:1.18rem;color:var(--ink-soft);max-width:620px}
+  ::selection{background:var(--accent);color:var(--ink)}
+  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+  body{font-family:"Karla",system-ui,sans-serif;color:var(--ink);background:var(--paper);line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  h1,h2,h3,h4{font-family:"Libre Baskerville",Georgia,serif;font-weight:400;line-height:1.04;letter-spacing:-.02em;color:var(--teal-deep)}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 32px}
+  @media(max-width:600px){.wrap{padding:0 22px}}
+  section{position:relative}
+  .eyebrow{font-size:.72rem;text-transform:uppercase;letter-spacing:.34em;font-weight:600;color:var(--accent);font-family:"Karla",sans-serif}
+  .mono{font-family:"Karla",sans-serif;font-variant-numeric:tabular-nums}
 
-  .btn{display:inline-flex;align-items:center;gap:11px;font-family:"Karla",sans-serif;font-size:.96rem;font-weight:600;letter-spacing:.01em;
-    text-decoration:none;cursor:pointer;border:none;padding:15px 30px;border-radius:1px;
-    transition:transform .35s cubic-bezier(.2,.8,.2,1),background .3s,color .3s,box-shadow .3s}
-  .btn svg{width:18px;height:18px;stroke-width:1.6}
+  /* buttons */
+  .btn{position:relative;display:inline-flex;align-items:center;gap:12px;font-family:"Karla",sans-serif;font-size:.95rem;font-weight:600;letter-spacing:.01em;
+    text-decoration:none;cursor:pointer;border:none;padding:16px 32px;border-radius:1px;overflow:hidden;
+    transition:transform .5s cubic-bezier(.16,1,.3,1),box-shadow .4s,color .4s}
+  .btn svg{width:17px;height:17px;stroke-width:1.7;transition:transform .5s cubic-bezier(.16,1,.3,1)}
+  .btn:hover svg{transform:translateX(4px)}
   .btn-solid{background:var(--accent);color:var(--ink)}
-  .btn-solid:hover{background:var(--accent-soft);transform:translateY(-2px);box-shadow:0 14px 30px -14px rgba(63,184,160,.7)}
+  .btn-solid::after{content:"";position:absolute;inset:0;background:var(--accent-soft);transform:scaleX(0);transform-origin:left;transition:transform .5s cubic-bezier(.16,1,.3,1);z-index:0}
+  .btn-solid:hover::after{transform:scaleX(1)}
+  .btn-solid span,.btn-solid svg{position:relative;z-index:1}
+  .btn-solid:hover{transform:translateY(-2px);box-shadow:0 18px 40px -18px rgba(63,184,160,.7)}
+  .btn-ghost{background:transparent;color:var(--paper);border:1px solid rgba(243,246,246,.45)}
+  .btn-ghost:hover{background:rgba(243,246,246,.1);border-color:rgba(243,246,246,.8);transform:translateY(-2px)}
   .btn-line{background:transparent;color:var(--teal-deep);border:1px solid var(--teal-deep)}
   .btn-line:hover{background:var(--teal-deep);color:var(--paper);transform:translateY(-2px)}
-  .btn-ghost{background:rgba(243,246,246,.12);color:var(--paper);border:1px solid rgba(243,246,246,.4)}
-  .btn-ghost:hover{background:rgba(243,246,246,.22);transform:translateY(-2px)}
 
   /* NAV */
-  header.nav{position:fixed;top:0;left:0;right:0;z-index:60;transition:background .4s,box-shadow .4s,padding .4s;padding:20px 0}
+  header.nav{position:fixed;top:0;left:0;right:0;z-index:80;padding:24px 0;transition:background .5s,box-shadow .5s,padding .5s}
   header.nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:20px}
-  .wordmark{font-family:"Libre Baskerville",serif;font-size:1.32rem;font-weight:500;letter-spacing:-.01em;color:var(--paper);transition:color .4s;text-decoration:none;white-space:nowrap}
-  .wordmark .dot{color:var(--accent-soft)}
-  .nav-right{display:flex;align-items:center;gap:30px}
-  nav.links{display:flex;gap:30px;align-items:center}
-  nav.links a{font-size:.92rem;font-weight:500;color:rgba(243,246,246,.82);text-decoration:none;transition:color .25s;position:relative}
-  nav.links a::after{content:"";position:absolute;left:0;bottom:-5px;width:0;height:1px;background:var(--accent-soft);transition:width .3s}
+  .wordmark{font-family:"Libre Baskerville",serif;font-size:1.42rem;font-weight:500;letter-spacing:-.01em;color:var(--paper);text-decoration:none;transition:color .5s;white-space:nowrap}
+  .wordmark i{font-style:italic;color:var(--accent-glow)}
+  .nav-right{display:flex;align-items:center;gap:34px}
+  nav.links{display:flex;gap:32px}
+  nav.links a{font-size:.88rem;font-weight:500;color:rgba(243,246,246,.85);text-decoration:none;position:relative;transition:color .3s}
+  nav.links a::after{content:"";position:absolute;left:0;bottom:-6px;height:1px;width:0;background:var(--accent-glow);transition:width .4s cubic-bezier(.16,1,.3,1)}
   nav.links a:hover::after{width:100%}
-  nav.links a:hover{color:var(--paper)}
-  .lang{display:flex;align-items:center;gap:2px;background:rgba(10,17,22,.46);border:1px solid rgba(243,246,246,.5);border-radius:6px;padding:3px 5px 3px 9px;backdrop-filter:blur(6px);transition:background .4s,border-color .4s}
-  .lang-globe{color:rgba(243,246,246,.92);flex:0 0 auto;margin-right:4px}
-  .lang button{background:transparent;border:none;cursor:pointer;font-family:"Karla",sans-serif;font-size:.82rem;font-weight:700;letter-spacing:.06em;
-    padding:6px 11px;border-radius:4px;color:rgba(243,246,246,.85);transition:background .25s,color .25s}
-  .lang button:hover{color:var(--paper)}
-  .lang button.active{background:var(--accent);color:var(--ink)}
-  header.nav.scrolled{background:rgba(243,246,246,.94);backdrop-filter:blur(12px);box-shadow:0 1px 0 var(--line);padding:13px 0}
+  .nav-tools{display:flex;align-items:center;gap:16px}
+  .lang{display:flex;gap:1px;align-items:center;font-size:.78rem;font-weight:700;letter-spacing:.08em}
+  .lang button{background:none;border:none;cursor:pointer;color:rgba(243,246,246,.6);padding:4px 6px;transition:color .3s;font-family:inherit;font-weight:700}
+  .lang button.active{color:var(--paper)}
+  .lang span{color:rgba(243,246,246,.4)}
+  header.nav.scrolled{background:rgba(243,246,246,.92);backdrop-filter:blur(14px) saturate(1.2);box-shadow:0 1px 0 var(--line);padding:14px 0}
   header.nav.scrolled .wordmark{color:var(--teal-deep)}
+  header.nav.scrolled .wordmark i{color:var(--accent)}
   header.nav.scrolled nav.links a{color:var(--ink-soft)}
   header.nav.scrolled nav.links a:hover{color:var(--teal-deep)}
-  header.nav.scrolled .lang{background:rgba(14,23,30,.07);border-color:var(--line)}
-  header.nav.scrolled .lang-globe{color:var(--ink-soft)}
   header.nav.scrolled .lang button{color:var(--ink-soft)}
-  header.nav.scrolled .lang button:hover{color:var(--teal-deep)}
-  header.nav.scrolled .lang button.active{background:var(--accent);color:var(--ink)}
-  @media(max-width:820px){nav.links{display:none}}
-  @media(max-width:560px){
-    header.nav .wrap{gap:12px}
-    .wordmark{font-size:1.12rem;min-width:0;overflow:hidden;text-overflow:ellipsis}
-    .lang{flex:0 0 auto}
-    .lang button{padding:6px 10px}
-  }
+  header.nav.scrolled .lang button.active{color:var(--teal-deep)}
+  header.nav.scrolled .lang span{color:var(--line)}
+  @media(max-width:860px){nav.links{display:none}}
 
   /* HERO */
-  .hero{position:relative;min-height:100vh;display:flex;align-items:center;padding:140px 0 100px;color:var(--paper);overflow:hidden;
-    background:radial-gradient(120% 90% at 78% 12%,rgba(94,195,175,.45),transparent 52%),
-      radial-gradient(90% 70% at 12% 95%,rgba(20,33,43,.55),transparent 60%),
-      linear-gradient(165deg,#303c44 0%,#14212b 42%,#0e171e 100%)}
-  .hero::before{content:"";position:absolute;right:-6%;top:14%;width:340px;height:340px;border-radius:50%;
-    background:radial-gradient(circle,#90d6c8 0%,#5ec3af 55%,rgba(94,195,175,0) 72%);opacity:.55;filter:blur(2px)}
-  .hero::after{content:"";position:absolute;left:0;right:0;bottom:0;height:130px;background:linear-gradient(transparent,rgba(14,23,30,.7))}
-  .hero-grain{position:absolute;inset:0;opacity:.05;background-image:repeating-linear-gradient(115deg,transparent 0 22px,rgba(255,255,255,.5) 22px 23px)}
-  .hero-inner{position:relative;z-index:5;max-width:780px}
-  .hero .label{color:var(--accent-soft);margin-bottom:22px;display:block}
-  .hero h1{color:var(--paper);font-size:clamp(2.8rem,8vw,5.4rem);font-weight:500;margin-bottom:24px}
-  .hero h1 em{font-style:italic;color:var(--accent-soft)}
-  .hero p.promise{font-size:clamp(1.1rem,2.4vw,1.4rem);color:rgba(243,246,246,.9);max-width:560px;margin-bottom:38px}
-  .hero-cta{display:flex;gap:16px;flex-wrap:wrap;align-items:center}
-  .hero-meta{position:absolute;bottom:46px;right:26px;z-index:5;text-align:right;color:rgba(243,246,246,.7);font-size:.74rem;letter-spacing:.12em;text-transform:uppercase}
-  .hero-meta b{display:block;font-family:"Libre Baskerville",serif;font-size:1.1rem;letter-spacing:0;text-transform:none;color:var(--paper)}
-  @media(max-width:720px){.hero-meta{display:none}}
+  .hero{position:relative;min-height:100svh;display:flex;align-items:flex-end;padding:0 0 9vh;overflow:hidden;color:var(--paper)}
+  .hero-bg{position:absolute;inset:0;z-index:0;
+    background:
+      radial-gradient(80% 55% at 75% 18%, rgba(144,214,200,.5), transparent 55%),
+      radial-gradient(70% 60% at 18% 88%, rgba(63,184,160,.4), transparent 60%),
+      linear-gradient(168deg,#303c44 0%,#14212b 38%,#0e171e 74%,#0a1116 100%)}
+  .hero-orb{position:absolute;top:12%;right:12%;width:min(46vw,440px);height:min(46vw,440px);border-radius:50%;z-index:1;
+    background:radial-gradient(circle at 38% 38%, #90d6c8 0%, #5ec3af 46%, rgba(94,195,175,0) 70%);
+    filter:blur(3px);opacity:.7;animation:rise 16s ease-in-out infinite alternate}
+  @keyframes rise{from{transform:translateY(14px) scale(1)}to{transform:translateY(-14px) scale(1.04)}}
+  .hero-grain{position:absolute;inset:0;z-index:2;opacity:.06;pointer-events:none;
+    background-image:repeating-linear-gradient(108deg,transparent 0 21px,rgba(255,255,255,.6) 21px 22px)}
+  .hero-fade{position:absolute;left:0;right:0;bottom:0;height:34%;z-index:2;background:linear-gradient(transparent,rgba(10,17,22,.55))}
+  .hero-inner{position:relative;z-index:5;width:100%}
+  .hero .eyebrow{color:var(--accent-glow);display:block;margin-bottom:26px;opacity:0;animation:fadeUp .9s .2s cubic-bezier(.16,1,.3,1) forwards}
+  .hero h1{font-size:clamp(3rem,9.2vw,7.2rem);font-weight:300;letter-spacing:-.025em;color:var(--paper);max-width:15ch;margin-bottom:30px;opacity:0;animation:fadeUp 1.1s .35s cubic-bezier(.16,1,.3,1) forwards}
+  .hero h1 .word{display:inline-block;overflow:hidden;vertical-align:top}
+  .hero h1 .word > span{display:inline-block;transform:translateY(105%);animation:wordUp 1s cubic-bezier(.16,1,.3,1) forwards}
+  .hero h1 em{font-style:italic;color:var(--accent-glow)}
+  @keyframes wordUp{to{transform:translateY(0)}}
+  @keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+  .hero-promise{font-size:clamp(1.05rem,1.9vw,1.32rem);color:rgba(243,246,246,.9);max-width:46ch;margin-bottom:40px;font-weight:400;opacity:0;animation:fadeUp 1s .85s cubic-bezier(.16,1,.3,1) forwards}
+  .hero-cta{display:flex;gap:16px;flex-wrap:wrap;opacity:0;animation:fadeUp 1s 1s cubic-bezier(.16,1,.3,1) forwards}
+  .hero-meta{position:absolute;right:0;bottom:9vh;z-index:5;text-align:right;font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(243,246,246,.62);line-height:2;opacity:0;animation:fadeUp 1s 1.2s forwards}
+  .hero-meta b{font-family:"Libre Baskerville",serif;font-size:1.5rem;letter-spacing:0;text-transform:none;color:var(--paper);display:block}
+  @media(max-width:760px){.hero-meta{display:none}}
+  .scrollcue{position:absolute;left:50%;bottom:26px;transform:translateX(-50%);z-index:5;width:1px;height:54px;background:linear-gradient(rgba(243,246,246,.5),transparent)}
+  .scrollcue::before{content:"";position:absolute;top:0;left:0;width:1px;height:18px;background:var(--accent-glow);animation:cue 2.4s cubic-bezier(.7,0,.3,1) infinite}
+  @keyframes cue{0%{transform:translateY(0);opacity:1}70%{transform:translateY(36px);opacity:0}100%{opacity:0}}
 
-  /* ABOUT */
-  .about .wrap{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
-  @media(max-width:840px){.about .wrap{grid-template-columns:1fr;gap:40px}}
-  .about h2{font-size:clamp(2rem,4.4vw,3rem);margin:18px 0 22px}
-  .about p{color:var(--ink-soft);margin-bottom:18px;font-size:1.06rem}
-  .about .signature{font-family:"Libre Baskerville",serif;font-style:italic;font-size:1.15rem;color:var(--teal);margin-top:8px}
-  .about-visual{height:440px;border-radius:1px;position:relative;overflow:hidden;box-shadow:0 30px 70px -34px rgba(14,23,30,.6);
-    background:radial-gradient(80% 60% at 30% 20%,rgba(144,214,200,.5),transparent 55%),linear-gradient(155deg,#303c44,#14212b 60%,#0e171e)}
-  .about-visual::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(100deg,transparent 0 30px,rgba(255,255,255,.05) 30px 31px)}
-  .about-visual .cap{position:absolute;bottom:20px;left:20px;color:var(--paper);font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;opacity:.85}
-  .about-visual .cap::before{content:"";display:inline-block;width:26px;height:1px;background:var(--accent-soft);margin-right:10px;vertical-align:middle}
+  /* MARQUEE */
+  .marquee{background:var(--teal-deep);color:var(--paper);padding:20px 0;overflow:hidden;white-space:nowrap;border-top:1px solid rgba(243,246,246,.08)}
+  .marquee-track{display:inline-block;animation:scrollx 32s linear infinite}
+  .marquee span{font-family:"Libre Baskerville",serif;font-style:italic;font-size:1.15rem;margin:0 28px;opacity:.85}
+  .marquee span::after{content:"·";margin-left:28px;color:var(--accent-soft);font-style:normal}
+  @keyframes scrollx{to{transform:translateX(-50%)}}
 
-  /* ROOMS */
-  .rooms{background:var(--sand)}
-  .sec-head{max-width:600px;margin-bottom:54px}
-  .sec-head.center{margin-left:auto;margin-right:auto;text-align:center}
-  .sec-head h2{font-size:clamp(2rem,4.4vw,3rem);margin:16px 0 14px}
-  .sec-head p{color:var(--ink-soft)}
-  .room-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
-  @media(max-width:880px){.room-grid{grid-template-columns:1fr 1fr}}
-  @media(max-width:600px){.room-grid{grid-template-columns:1fr}}
-  .room{background:var(--paper);border-radius:1px;overflow:hidden;display:flex;flex-direction:column;
-    box-shadow:0 18px 44px -30px rgba(14,23,30,.5);transition:transform .4s cubic-bezier(.2,.8,.2,1),box-shadow .4s}
-  .room:hover{transform:translateY(-6px);box-shadow:0 30px 60px -30px rgba(14,23,30,.55)}
-  .room-img{height:190px;position:relative}
-  .room-img .cap{position:absolute;bottom:12px;left:14px;color:var(--paper);font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;opacity:.9}
-  .ri1{background:radial-gradient(70% 70% at 70% 20%,rgba(144,214,200,.6),transparent 60%),linear-gradient(150deg,#303c44,#0e171e)}
-  .ri2{background:radial-gradient(70% 80% at 30% 30%,rgba(94,195,175,.55),transparent 60%),linear-gradient(150deg,#14212b,#0a1116)}
-  .ri3{background:radial-gradient(80% 70% at 60% 80%,rgba(144,214,200,.5),transparent 55%),linear-gradient(150deg,#48525a,#14212b)}
-  .room-body{padding:26px 24px 28px;display:flex;flex-direction:column;flex:1}
-  .room-body h3{font-size:1.4rem;margin-bottom:6px}
-  .rate{font-family:"Libre Baskerville",serif;font-size:1.05rem;color:var(--accent);margin-bottom:14px}
-  .rate small{color:var(--ink-soft);font-family:"Karla",sans-serif;font-size:.82rem}
-  .room-body p{color:var(--ink-soft);font-size:.95rem;margin-bottom:18px;flex:1}
-  .feats{list-style:none;display:flex;flex-direction:column;gap:9px;margin-bottom:22px}
-  .feats li{display:flex;align-items:center;gap:10px;font-size:.88rem;color:var(--ink-soft)}
-  .feats svg{width:16px;height:16px;stroke:var(--teal);stroke-width:1.5;flex:none}
-  .room .btn-line{align-self:flex-start;padding:11px 22px;font-size:.88rem}
-
-  /* GALLERY */
-  .gal-grid{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:160px;gap:16px}
-  @media(max-width:760px){.gal-grid{grid-template-columns:repeat(2,1fr)}}
-  .tile{border-radius:1px;position:relative;overflow:hidden}
-  .tile .cap{position:absolute;bottom:14px;left:16px;color:var(--paper);font-size:.7rem;letter-spacing:.13em;text-transform:uppercase;z-index:2;opacity:.92}
-  .tile::after{content:"";position:absolute;inset:0;background:linear-gradient(transparent 55%,rgba(14,23,30,.45))}
-  .tile.big{grid-column:span 2;grid-row:span 2}
-  .t1{background:radial-gradient(80% 70% at 70% 25%,rgba(144,214,200,.55),transparent 58%),linear-gradient(150deg,#303c44,#0e171e)}
-  .t2{background:radial-gradient(70% 70% at 30% 30%,rgba(94,195,175,.6),transparent 55%),linear-gradient(150deg,#3fb8a0,#14212b)}
-  .t3{background:linear-gradient(150deg,#48525a,#0a1116)}
-  .t4{background:radial-gradient(80% 80% at 60% 70%,rgba(144,214,200,.5),transparent 55%),linear-gradient(150deg,#14212b,#0e171e)}
-  .t5{background:radial-gradient(70% 70% at 40% 30%,rgba(94,195,175,.5),transparent 60%),linear-gradient(150deg,#303c44,#14212b)}
-
-  /* TESTIMONIALS */
-  .testi{background:var(--teal-deep);color:var(--paper)}
-  .testi .label{color:var(--accent-soft)}
-  .testi .sec-head h2{color:var(--paper)}
-  .testi .sec-head p{color:rgba(243,246,246,.75)}
-  .t-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
-  @media(max-width:840px){.t-grid{grid-template-columns:1fr}}
-  .quote{border:1px solid rgba(243,246,246,.16);border-radius:1px;padding:34px 30px;background:rgba(243,246,246,.04)}
-  .rating{font-family:"Libre Baskerville",serif;font-size:.95rem;letter-spacing:.1em;color:var(--accent-soft);margin-bottom:18px}
-  .rating b{font-size:1.5rem;letter-spacing:0}
-  .quote p{font-family:"Libre Baskerville",serif;font-style:italic;font-size:1.12rem;line-height:1.55;color:rgba(243,246,246,.94);margin-bottom:24px}
-  .who{display:flex;align-items:center;gap:14px}
-  .who .mono{width:46px;height:46px;border-radius:50%;flex:none;display:grid;place-items:center;font-family:"Libre Baskerville",serif;font-size:1.05rem;color:var(--paper);border:1px solid rgba(243,246,246,.3)}
-  .m1{background:linear-gradient(135deg,#3fb8a0,#14212b)}
-  .m2{background:linear-gradient(135deg,#303c44,#0e171e)}
-  .m3{background:linear-gradient(135deg,#48525a,#3fb8a0)}
-  .who b{display:block;font-size:.95rem;font-family:"Karla",sans-serif;font-weight:600}
-  .who small{color:rgba(243,246,246,.6);font-size:.82rem;letter-spacing:.06em}
-
-  /* CONTACT */
-  .contact .wrap{display:grid;grid-template-columns:1fr 1fr;gap:60px}
-  @media(max-width:840px){.contact .wrap{grid-template-columns:1fr;gap:40px}}
-  .contact h2{font-size:clamp(2rem,4.4vw,3rem);margin:16px 0 20px}
-  .contact .lede{margin-bottom:30px}
-  .ci{list-style:none}
-  .ci li{display:flex;gap:16px;padding:18px 0;border-top:1px solid var(--line)}
-  .ci li:last-child{border-bottom:1px solid var(--line)}
-  .ci svg{width:22px;height:22px;stroke:var(--accent);stroke-width:1.5;flex:none;margin-top:3px}
-  .ci b{display:block;font-family:"Libre Baskerville",serif;font-size:1.05rem;color:var(--teal-deep)}
-  .ci span{color:var(--ink-soft);font-size:.92rem}
-  .contact-card{background:var(--teal);color:var(--paper);border-radius:1px;padding:46px 40px;display:flex;flex-direction:column;justify-content:center;
-    background-image:radial-gradient(90% 70% at 80% 10%,rgba(94,195,175,.35),transparent 55%)}
-  .contact-card h3{color:var(--paper);font-size:1.7rem;margin-bottom:12px}
-  .contact-card p{color:rgba(243,246,246,.85);margin-bottom:28px;font-size:.98rem}
-  .contact-card .btn-solid{width:100%;justify-content:center}
-  .contact-card .note{margin-top:18px;font-size:.82rem;color:rgba(243,246,246,.6);text-align:center}
-
-  /* PROPOSAL */
-  .proposal{background:var(--sand);position:relative;overflow:hidden}
-  .proposal::before{content:"";position:absolute;top:-120px;right:-120px;width:360px;height:360px;border-radius:50%;background:radial-gradient(circle,rgba(63,184,160,.18),transparent 70%)}
-  .prop-inner{max-width:860px;margin:0 auto;text-align:center;position:relative;z-index:2}
-  .proposal .label{color:var(--accent)}
-  .proposal h2{font-size:clamp(2.2rem,5.2vw,3.4rem);margin:18px 0 10px}
-  .proposal h2 .price{color:var(--accent);font-style:italic}
-  .proposal .sub{color:var(--ink-soft);font-size:1.1rem;max-width:560px;margin:0 auto 48px}
-  .reasons{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:1px;overflow:hidden;text-align:left;margin-bottom:42px}
-  @media(max-width:680px){.reasons{grid-template-columns:1fr}}
-  .reason{background:var(--paper);padding:30px 28px;display:flex;gap:18px;align-items:flex-start}
-  .reason .num{font-family:"Libre Baskerville",serif;font-size:1.5rem;color:var(--accent);line-height:1;flex:none;min-width:30px}
-  .reason h4{font-size:1.12rem;margin-bottom:6px}
-  .reason p{color:var(--ink-soft);font-size:.93rem;line-height:1.6}
-  .anchor{max-width:600px;margin:0 auto 36px;padding:22px 28px;border-left:2px solid var(--accent);text-align:left;background:rgba(243,246,246,.6)}
-  .anchor p{font-family:"Libre Baskerville",serif;font-style:italic;font-size:1.12rem;color:var(--teal-deep);line-height:1.5}
-  .anchor b{font-style:normal;color:var(--accent)}
-  .proposal .btn-solid{font-size:1.02rem;padding:17px 38px}
-  .proposal .closing{margin-top:18px;font-size:.86rem;color:var(--ink-soft);letter-spacing:.04em}
-
-  footer{background:var(--teal-deep);color:rgba(243,246,246,.7);padding:54px 0 40px}
-  footer .wrap{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px}
-  footer .wordmark{color:var(--paper)}
-  footer p{font-size:.85rem}
-  footer .smol{width:100%;border-top:1px solid rgba(243,246,246,.12);padding-top:22px;margin-top:8px;font-size:.78rem;opacity:.6}
-
-  .reveal{opacity:0;transform:translateY(26px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.8,.2,1)}
+  /* reveal */
+  .reveal{opacity:0;transform:translateY(34px);transition:opacity 1s cubic-bezier(.16,1,.3,1),transform 1s cubic-bezier(.16,1,.3,1)}
   .reveal.in{opacity:1;transform:none}
+  .reveal[data-d="1"]{transition-delay:.1s}.reveal[data-d="2"]{transition-delay:.2s}.reveal[data-d="3"]{transition-delay:.3s}
+
+  /* INTRO */
+  .intro{padding:140px 0 120px}
+  .intro .wrap{display:grid;grid-template-columns:.85fr 1.15fr;gap:80px;align-items:start}
+  @media(max-width:880px){.intro{padding:96px 0 80px}.intro .wrap{grid-template-columns:1fr;gap:36px}}
+  .intro-left .num{font-family:"Libre Baskerville",serif;font-size:1rem;color:var(--accent);letter-spacing:.1em}
+  .intro-left h2{font-size:clamp(2rem,3.4vw,2.7rem);font-weight:300;margin-top:18px}
+  .intro-right p{font-size:clamp(1.15rem,1.9vw,1.5rem);font-family:"Libre Baskerville",serif;font-weight:300;color:var(--teal);line-height:1.5;margin-bottom:26px}
+  .intro-right p.small{font-family:"Karla",sans-serif;font-size:1.02rem;color:var(--ink-soft);line-height:1.8}
+  .intro-right .sign{font-family:"Libre Baskerville",serif;font-style:italic;color:var(--accent);font-size:1.1rem;margin-top:8px}
+
+  /* COTTAGES — editorial alternating rows */
+  .cottages{padding:40px 0 130px}
+  .sec-head{max-width:640px;margin:0 auto 70px;text-align:center}
+  .sec-head .eyebrow{display:block;margin-bottom:18px}
+  .sec-head h2{font-size:clamp(2.2rem,5vw,3.6rem);font-weight:300}
+  .sec-head p{color:var(--ink-soft);margin-top:16px;font-size:1.05rem}
+  .row{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;margin-bottom:90px}
+  .row:last-child{margin-bottom:0}
+  .row.flip .row-visual{order:2}
+  @media(max-width:840px){.row{grid-template-columns:1fr;gap:28px;margin-bottom:64px}.row.flip .row-visual{order:0}}
+  .row-visual{position:relative;height:480px;border-radius:1px;overflow:hidden;box-shadow:0 40px 80px -40px rgba(10,17,22,.6)}
+  @media(max-width:840px){.row-visual{height:340px}}
+  .row-visual .art{position:absolute;inset:0;transition:transform 1.4s cubic-bezier(.16,1,.3,1)}
+  .row:hover .row-visual .art{transform:scale(1.06)}
+  .art1{background:radial-gradient(70% 70% at 68% 26%,rgba(144,214,200,.6),transparent 58%),linear-gradient(150deg,#303c44,#0e171e)}
+  .art2{background:radial-gradient(68% 72% at 30% 30%,rgba(94,195,175,.6),transparent 56%),linear-gradient(150deg,#14212b,#0a1116)}
+  .art3{background:radial-gradient(76% 70% at 60% 74%,rgba(144,214,200,.55),transparent 56%),linear-gradient(150deg,#48525a,#14212b)}
+  .row-visual .grain{position:absolute;inset:0;opacity:.05;background-image:repeating-linear-gradient(100deg,transparent 0 28px,rgba(255,255,255,.6) 28px 29px)}
+  .row-visual .tag{position:absolute;left:22px;bottom:20px;color:var(--paper);font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;opacity:.9;z-index:2}
+  .row-visual .tag::before{content:"";display:inline-block;width:26px;height:1px;background:var(--accent-glow);vertical-align:middle;margin-right:10px}
+  .row-text .ix{font-family:"Libre Baskerville",serif;font-size:.95rem;color:var(--accent);letter-spacing:.08em}
+  .row-text h3{font-size:clamp(1.8rem,3.2vw,2.5rem);font-weight:300;margin:14px 0 8px}
+  .row-text .rate{font-family:"Libre Baskerville",serif;font-size:1.15rem;color:var(--teal);margin-bottom:20px}
+  .row-text .rate b{font-weight:500}
+  .row-text .rate small{color:var(--ink-soft);font-family:"Karla",sans-serif;font-size:.82rem}
+  .row-text p{color:var(--ink-soft);margin-bottom:24px;max-width:46ch}
+  .feats{list-style:none;display:flex;flex-wrap:wrap;gap:8px 10px;margin-bottom:30px}
+  .feats li{font-size:.82rem;color:var(--teal);border:1px solid var(--line);border-radius:100px;padding:7px 15px;background:rgba(255,255,255,.4)}
+
+  /* IMMERSIVE band */
+  .immersive{position:relative;padding:160px 0;color:var(--paper);overflow:hidden;text-align:center}
+  .immersive .imm-bg{position:absolute;inset:0;z-index:0;will-change:transform;
+    background:radial-gradient(60% 80% at 50% 30%,rgba(94,195,175,.42),transparent 60%),linear-gradient(160deg,#14212b,#0a1116)}
+  .immersive .grain{position:absolute;inset:0;z-index:1;opacity:.06;background-image:repeating-linear-gradient(112deg,transparent 0 24px,rgba(255,255,255,.6) 24px 25px)}
+  .immersive .wrap{position:relative;z-index:3}
+  .immersive .eyebrow{color:var(--accent-glow);display:block;margin-bottom:26px}
+  .immersive blockquote{font-family:"Libre Baskerville",serif;font-weight:300;font-size:clamp(2rem,5.5vw,4rem);line-height:1.16;letter-spacing:-.02em;max-width:18ch;margin:0 auto;color:var(--paper)}
+  .immersive blockquote em{font-style:italic;color:var(--accent-glow)}
+
+  /* CALENDAR / BOOKING */
+  .book{padding:130px 0}
+  .book .wrap{display:grid;grid-template-columns:1fr 1.1fr;gap:70px;align-items:start}
+  @media(max-width:900px){.book .wrap{grid-template-columns:1fr;gap:44px}}
+  .book-intro h2{font-size:clamp(2rem,4vw,3rem);font-weight:300;margin:18px 0 18px}
+  .book-intro p{color:var(--ink-soft);max-width:42ch;margin-bottom:30px}
+  .book-points{list-style:none;margin-top:26px}
+  .book-points li{display:flex;gap:14px;align-items:flex-start;padding:15px 0;border-top:1px solid var(--line);font-size:.95rem;color:var(--ink-soft)}
+  .book-points li:last-child{border-bottom:1px solid var(--line)}
+  .book-points svg{width:20px;height:20px;stroke:var(--accent);stroke-width:1.6;flex:none;margin-top:2px}
+  .book-points b{color:var(--teal-deep);font-family:"Libre Baskerville",serif;font-weight:500;display:block;font-size:1rem}
+
+  .cal{background:var(--paper);border:1px solid var(--line);border-radius:4px;box-shadow:0 40px 90px -50px rgba(10,17,22,.5);overflow:hidden}
+  .cal-top{display:flex;align-items:center;justify-content:space-between;padding:22px 26px;background:var(--teal-deep);color:var(--paper)}
+  .cal-top .lab{font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(243,246,246,.6)}
+  .cal-top .mon{font-family:"Libre Baskerville",serif;font-size:1.2rem;margin-top:2px}
+  .cal-nav{display:flex;gap:8px}
+  .cal-nav button{width:38px;height:38px;border-radius:50%;border:1px solid rgba(243,246,246,.25);background:transparent;color:var(--paper);cursor:pointer;display:grid;place-items:center;transition:background .3s,border-color .3s}
+  .cal-nav button:hover{background:rgba(243,246,246,.12);border-color:rgba(243,246,246,.5)}
+  .cal-nav svg{width:16px;height:16px;stroke:currentColor;stroke-width:2;fill:none}
+  .cal-grid{padding:18px 22px 8px}
+  .cal-dow{display:grid;grid-template-columns:repeat(7,1fr);gap:2px;margin-bottom:8px}
+  .cal-dow span{text-align:center;font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft);font-weight:600}
+  .cal-days{display:grid;grid-template-columns:repeat(7,1fr);gap:2px}
+  .day{aspect-ratio:1;display:grid;place-items:center;font-size:.9rem;font-variant-numeric:tabular-nums;color:var(--ink);cursor:pointer;position:relative;border-radius:1px;transition:background .2s,color .2s;user-select:none}
+  .day.empty{cursor:default}
+  .day.past{color:var(--line);cursor:not-allowed;text-decoration:line-through;opacity:.5}
+  .day:not(.past):not(.empty):hover{background:var(--sand)}
+  .day.in,.day.out{background:var(--accent);color:var(--ink);font-weight:600;z-index:2}
+  .day.range{background:rgba(94,195,175,.22);border-radius:0}
+  .day.in{border-radius:1px 0 0 2px}.day.out{border-radius:0 2px 2px 0}
+  .cal-foot{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:20px 26px;border-top:1px solid var(--line);flex-wrap:wrap}
+  .cal-sel{font-size:.82rem;color:var(--ink-soft);line-height:1.5}
+  .cal-sel b{color:var(--teal-deep);font-family:"Libre Baskerville",serif;font-weight:500;font-size:1.05rem;display:block}
+  .cal-foot .btn-solid{padding:14px 26px;font-size:.9rem}
+  .cal-foot .btn-solid[disabled]{opacity:.4;pointer-events:none}
+
+  /* REVIEWS */
+  .reviews{padding:30px 0 130px}
+  .r-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:60px}
+  @media(max-width:840px){.r-grid{grid-template-columns:1fr}}
+  .quote{border-top:2px solid var(--accent);padding-top:26px}
+  .quote .stars{color:var(--accent);font-size:.9rem;letter-spacing:.2em;margin-bottom:16px}
+  .quote p{font-family:"Libre Baskerville",serif;font-style:italic;font-weight:300;font-size:1.18rem;line-height:1.5;color:var(--teal-deep);margin-bottom:20px}
+  .quote .who{font-size:.84rem;color:var(--ink-soft);letter-spacing:.04em}
+  .quote .who b{color:var(--teal);font-style:normal}
+
+  /* OWNER PITCH (for the prospect) */
+  .pitch{background:var(--teal-deep);color:var(--paper);padding:120px 0;position:relative;overflow:hidden;text-align:center}
+  .pitch .glow{position:absolute;top:-30%;right:-10%;width:560px;height:560px;border-radius:50%;background:radial-gradient(circle,rgba(94,195,175,.25),transparent 70%);z-index:0}
+  .pitch .wrap{position:relative;z-index:2;max-width:760px}
+  .pitch .eyebrow{color:var(--accent-glow);display:block;margin-bottom:22px}
+  .pitch h2{color:var(--paper);font-size:clamp(2.2rem,5vw,3.4rem);font-weight:300;margin-bottom:18px}
+  .pitch h2 em{font-style:italic;color:var(--accent-glow)}
+  .pitch p{color:rgba(243,246,246,.82);font-size:1.1rem;max-width:54ch;margin:0 auto 14px}
+  .pitch .price{font-family:"Libre Baskerville",serif;font-size:1.3rem;color:var(--accent-glow);margin:30px 0 36px}
+  .pitch .price s{color:rgba(243,246,246,.4);font-size:1rem;margin-right:10px}
+  .pitch .mockup-note{margin:22px auto 0;font-size:.85rem;color:rgba(243,246,246,.55);letter-spacing:.02em;max-width:50ch}
+
+  /* FOOTER */
+  footer{background:var(--teal-darkest);color:rgba(243,246,246,.62);padding:70px 0 44px}
+  footer .wrap{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:30px}
+  footer .wordmark{color:var(--paper);font-size:1.6rem}
+  footer .fcol h4{color:var(--paper);font-family:"Karla",sans-serif;font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;font-weight:600;margin-bottom:16px}
+  footer .fcol a,footer .fcol p{display:block;color:rgba(243,246,246,.62);text-decoration:none;font-size:.92rem;margin-bottom:9px;transition:color .3s}
+  footer .fcol a:hover{color:var(--accent-glow)}
+  footer .base{width:100%;border-top:1px solid rgba(243,246,246,.1);margin-top:30px;padding-top:22px;font-size:.78rem;opacity:.6;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+
+  @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
 </style>
 </head>
 <body>
 
 <header class="nav" id="nav">
   <div class="wrap">
-    <a href="#top" class="wordmark">Bosques Del Tolomuco<span class="dot">.</span></a>
+    <a href="#top" class="wordmark">Bosques Del Tolomuco<i>.</i></a>
     <div class="nav-right">
       <nav class="links">
-        <a href="#about" data-es="Nosotros" data-en="About">Nosotros</a>
-        <a href="#rooms" data-es="Cabinas" data-en="Chalets">Cabinas</a>
-        <a href="#gallery" data-es="Galería" data-en="Gallery">Galería</a>
-        <a href="#testi" data-es="Opiniones" data-en="Reviews">Opiniones</a>
-        <a href="#contact" data-es="Reservar" data-en="Book">Reservar</a>
+        <a href="#story" data-es="Historia" data-en="Story">Historia</a>
+        <a href="#cottages" data-es="Casitas" data-en="Cottages">Casitas</a>
+        <a href="#book" data-es="Disponibilidad" data-en="Availability">Disponibilidad</a>
+        <a href="#reviews" data-es="Opiniones" data-en="Reviews">Opiniones</a>
       </nav>
-      <div class="lang" role="group" aria-label="Idioma / Language" title="Cambiar idioma / Switch language">
-        <svg class="lang-globe" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.6 2.7 2.6 15.3 0 18M12 3c-2.6 2.7-2.6 15.3 0 18"/></svg>
-        <button id="btn-es" class="active" onclick="setLang('es')">ES</button>
-        <button id="btn-en" onclick="setLang('en')">EN</button>
+      <div class="nav-tools">
+        <div class="lang"><button id="es" class="active" onclick="setLang('es')">ES</button><span>/</span><button id="en" onclick="setLang('en')">EN</button></div>
+        <a href="#book" class="btn btn-line" style="padding:11px 22px;font-size:.85rem" data-es="Reservar" data-en="Book">Reservar</a>
       </div>
     </div>
   </div>
@@ -241,265 +251,302 @@
 
 <!-- HERO -->
 <section class="hero" id="top">
+  <div class="hero-bg"></div>
+  <div class="hero-orb"></div>
   <div class="hero-grain"></div>
+  <div class="hero-fade"></div>
   <div class="wrap hero-inner">
-    <span class="label" data-es="Pacífico Central · Costa Rica" data-en="Central Pacific · Costa Rica">Pacífico Central · Costa Rica</span>
-    <h1 data-es="Bosques Del Tolomuco, tu chalet <em>entre selva y mar</em>" data-en="Bosques Del Tolomuco, your chalet <em>between jungle and sea</em>">Bosques Del Tolomuco, tu chalet <em>entre selva y mar</em></h1>
-    <p class="promise" data-es="Un chalet privado y tranquilo a pasos de la playa. Despierta con el canto de la selva y la brisa del Pacífico — el Pura Vida que viniste a buscar." data-en="A private, peaceful chalet steps from the beach. Wake to the song of the jungle and the Pacific breeze — the Pura Vida you came for.">Un chalet privado y tranquilo a pasos de la playa. Despierta con el canto de la selva y la brisa del Pacífico — el Pura Vida que viniste a buscar.</p>
+    <span class="eyebrow" data-es="Casitas boutique · Pacífico Central, Costa Rica" data-en="Boutique cottages · Central Pacific, Costa Rica">Casitas boutique · Pacífico Central, Costa Rica</span>
+    <h1 id="heroTitle" data-es="Donde la selva se asoma al &lt;em&gt;mar&lt;/em&gt;" data-en="Where the jungle leans into the &lt;em&gt;sea&lt;/em&gt;">Donde la selva se asoma al <em>mar</em></h1>
+    <p class="hero-promise" data-es="Cinco casitas frente al océano, escondidas entre jardín tropical. Despierta con la marea y el canto de los monos aulladores — el Pura Vida que viniste a buscar." data-en="Five oceanfront cottages tucked into tropical garden. Wake to the tide and the call of howler monkeys — the Pura Vida you came for.">Cinco casitas frente al océano, escondidas entre jardín tropical. Despierta con la marea y el canto de los monos aulladores — el Pura Vida que viniste a buscar.</p>
     <div class="hero-cta">
-      <a href="#contact" class="btn btn-solid" data-es="Reservar directo" data-en="Book direct">Reservar directo
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </a>
-      <a href="#rooms" class="btn btn-ghost" data-es="Ver chalets" data-en="View chalets">Ver chalets</a>
+      <a href="#book" class="btn btn-solid"><span data-es="Ver disponibilidad" data-en="Check availability">Ver disponibilidad</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      <a href="#cottages" class="btn btn-ghost" data-es="Conoce las casitas" data-en="Meet the cottages">Conoce las casitas</a>
     </div>
   </div>
-  <div class="hero-meta">
-    <b>4.9 / 5</b>
-    <span data-es="Calificación de huéspedes" data-en="Guest rating">Calificación de huéspedes</span>
+  <div class="hero-meta wrap" style="left:auto;max-width:none">
+    <b>4.9</b>
+    <span data-es="120+ huéspedes felices" data-en="120+ happy guests">120+ huéspedes felices</span>
   </div>
+  <div class="scrollcue"></div>
 </section>
 
-<!-- ABOUT -->
-<section class="about" id="about">
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track" id="mq">
+    <span data-es="Frente al mar" data-en="Oceanfront">Frente al mar</span><span data-es="Jardín tropical" data-en="Tropical garden">Jardín tropical</span><span data-es="Desayuno incluido" data-en="Breakfast included">Desayuno incluido</span><span data-es="Atardeceres del Pacífico" data-en="Pacific sunsets">Atardeceres del Pacífico</span><span data-es="Reserva directa" data-en="Direct booking">Reserva directa</span><span data-es="Pura Vida" data-en="Pura Vida">Pura Vida</span>
+    <span data-es="Frente al mar" data-en="Oceanfront">Frente al mar</span><span data-es="Jardín tropical" data-en="Tropical garden">Jardín tropical</span><span data-es="Desayuno incluido" data-en="Breakfast included">Desayuno incluido</span><span data-es="Atardeceres del Pacífico" data-en="Pacific sunsets">Atardeceres del Pacífico</span><span data-es="Reserva directa" data-en="Direct booking">Reserva directa</span><span data-es="Pura Vida" data-en="Pura Vida">Pura Vida</span>
+  </div>
+</div>
+
+<!-- INTRO -->
+<section class="intro" id="story">
   <div class="wrap">
-    <div class="reveal">
-      <span class="label" data-es="Nuestra historia" data-en="Our story">Nuestra historia</span>
-      <h2 data-es="Un retiro hecho con calma y cariño" data-en="A retreat made with calm and care">Un retiro hecho con calma y cariño</h2>
-      <p data-es="Bosques Del Tolomuco es un pequeño chalet de familia, rodeado de jardín tropical y a minutos de la playa. Pocas unidades, mucho silencio y todo el detalle que merece un buen descanso." data-en="Bosques Del Tolomuco is a small family chalet surrounded by tropical garden, minutes from the beach. Few units, plenty of quiet, and all the care a true rest deserves.">Bosques Del Tolomuco es un pequeño chalet de familia, rodeado de jardín tropical y a minutos de la playa. Pocas unidades, mucho silencio y todo el detalle que merece un buen descanso.</p>
-      <p data-es="Aquí no eres un número de reserva. Te recibimos como familia, te damos las mejores recomendaciones locales y te dejamos disfrutar a tu ritmo." data-en="Here you are not a booking number. We welcome you like family, share the best local tips, and let you enjoy at your own pace.">Aquí no eres un número de reserva. Te recibimos como familia, te damos las mejores recomendaciones locales y te dejamos disfrutar a tu ritmo.</p>
-      <p class="signature" data-es="— Con gusto te recibimos, como en casa." data-en="— We welcome you warmly, just like home.">— Con gusto te recibimos, como en casa.</p>
+    <div class="intro-left reveal">
+      <span class="num">01 — <span data-es="Nuestra historia" data-en="Our story">Nuestra historia</span></span>
+      <h2 data-es="Un refugio hecho con calma" data-en="A refuge made slowly">Un refugio hecho con calma</h2>
     </div>
-    <div class="about-visual reveal">
-      <span class="cap" data-es="Jardín y terraza al amanecer" data-en="Garden and terrace at dawn">Jardín y terraza al amanecer</span>
+    <div class="intro-right reveal" data-d="1">
+      <p data-es="Bosques Del Tolomuco nació de una idea sencilla: pocas casitas, mucho silencio, y el mar siempre cerca. Aquí no eres un número de reserva — te recibimos como familia." data-en="Bosques Del Tolomuco began with a simple idea: few cottages, plenty of quiet, and the sea always close. Here you're not a booking number — we welcome you like family.">Bosques Del Tolomuco nació de una idea sencilla: pocas casitas, mucho silencio, y el mar siempre cerca. Aquí no eres un número de reserva — te recibimos como familia.</p>
+      <p class="small" data-es="Cada casita está rodeada de jardín y a pasos de la arena. Te damos las mejores recomendaciones locales — las olas, las cascadas escondidas, el mejor ceviche del pueblo — y te dejamos disfrutar a tu propio ritmo." data-en="Each cottage is wrapped in garden and steps from the sand. We share the best local tips — the waves, the hidden waterfalls, the best ceviche in town — and let you enjoy at your own pace.">Cada casita está rodeada de jardín y a pasos de la arena. Te damos las mejores recomendaciones locales — las olas, las cascadas escondidas, el mejor ceviche del pueblo — y te dejamos disfrutar a tu propio ritmo.</p>
+      <p class="sign" data-es="— Te esperamos con los brazos abiertos." data-en="— We'll be waiting, arms open.">— Te esperamos con los brazos abiertos.</p>
     </div>
   </div>
 </section>
 
-<hr class="hr">
-
-<!-- ROOMS -->
-<section class="rooms" id="rooms">
+<!-- COTTAGES -->
+<section class="cottages" id="cottages">
   <div class="wrap">
     <div class="sec-head reveal">
-      <span class="label" data-es="Chalets &amp; tarifas" data-en="Chalets &amp; rates">Chalets &amp; tarifas</span>
+      <span class="eyebrow" data-es="02 — Las casitas" data-en="02 — The cottages">02 — Las casitas</span>
       <h2 data-es="Espacios para descansar de verdad" data-en="Spaces made for real rest">Espacios para descansar de verdad</h2>
       <p data-es="Tarifas por noche, impuestos incluidos. Reservando directo siempre obtienes el mejor precio." data-en="Rates per night, taxes included. Booking direct always gets you the best price.">Tarifas por noche, impuestos incluidos. Reservando directo siempre obtienes el mejor precio.</p>
     </div>
-    <div class="room-grid">
 
-      <div class="room reveal">
-        <div class="room-img ri1"><span class="cap" data-es="Chalet jardín" data-en="Garden chalet">Chalet jardín</span></div>
-        <div class="room-body">
-          <h3 data-es="Chalet Jardín" data-en="Garden Chalet">Chalet Jardín</h3>
-          <div class="rate">$65 <small data-es="/ noche" data-en="/ night">/ noche</small></div>
-          <p data-es="Acogedor para dos, con vista al jardín tropical y entrada independiente." data-en="Cozy for two, with tropical garden views and a private entrance.">Acogedor para dos, con vista al jardín tropical y entrada independiente.</p>
-          <ul class="feats">
-            <li><svg viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-es="Cama matrimonial" data-en="Queen bed">Cama matrimonial</span></li>
-            <li><svg viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-es="Aire acondicionado" data-en="Air conditioning">Aire acondicionado</span></li>
-            <li><svg viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-es="WiFi y baño privado" data-en="WiFi and private bath">WiFi y baño privado</span></li>
-          </ul>
-          <a href="#contact" class="btn btn-line" data-es="Reservar" data-en="Book">Reservar</a>
-        </div>
+    <div class="row reveal">
+      <div class="row-visual"><div class="art art1"></div><div class="grain"></div><span class="tag" data-es="Casita Jardín" data-en="Garden Cottage">Casita Jardín</span></div>
+      <div class="row-text">
+        <span class="ix">I</span>
+        <h3 data-es="Casita Jardín" data-en="Garden Cottage">Casita Jardín</h3>
+        <div class="rate"><span data-es="desde" data-en="from">desde</span> <b>$95</b> <small data-es="/ noche" data-en="/ night">/ noche</small></div>
+        <p data-es="Acogedora para dos, con vista al jardín tropical, hamaca privada y entrada independiente. El despertar más tranquilo." data-en="Cozy for two, with tropical garden views, a private hammock and independent entrance. The most peaceful of mornings.">Acogedora para dos, con vista al jardín tropical, hamaca privada y entrada independiente. El despertar más tranquilo.</p>
+        <ul class="feats"><li data-es="Cama matrimonial" data-en="Queen bed">Cama matrimonial</li><li data-es="A/C + ventilador" data-en="A/C + fan">A/C + ventilador</li><li data-es="WiFi" data-en="WiFi">WiFi</li><li data-es="Baño privado" data-en="Private bath">Baño privado</li></ul>
+        <a href="#book" class="btn btn-line" style="padding:12px 24px;font-size:.86rem" data-es="Reservar esta casita" data-en="Book this cottage">Reservar esta casita</a>
       </div>
-
-      <div class="room reveal">
-        <div class="room-img ri2"><span class="cap" data-es="Chalet familiar" data-en="Family chalet">Chalet familiar</span></div>
-        <div class="room-body">
-          <h3 data-es="Chalet Familiar" data-en="Family Chalet">Chalet Familiar</h3>
-          <div class="rate">$98 <small data-es="/ noche" data-en="/ night">/ noche</small></div>
-          <p data-es="Amplio para hasta cuatro personas, con cocineta y terraza propia." data-en="Spacious for up to four guests, with a kitchenette and private terrace.">Amplio para hasta cuatro personas, con cocineta y terraza propia.</p>
-          <ul class="feats">
-            <li><svg viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-es="Hasta 4 huéspedes" data-en="Up to 4 guests">Hasta 4 huéspedes</span></li>
-            <li><svg viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-es="Cocineta equipada" data-en="Equipped kitchenette">Cocineta equipada</span></li>
-            <li><svg viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-es="Terraza privada" data-en="Private terrace">Terraza privada</span></li>
-          </ul>
-          <a href="#contact" class="btn btn-line" data-es="Reservar" data-en="Book">Reservar</a>
-        </div>
-      </div>
-
-      <div class="room reveal">
-        <div class="room-img ri3"><span class="cap" data-es="Suite vista mar" data-en="Ocean-view suite">Suite vista mar</span></div>
-        <div class="room-body">
-          <h3 data-es="Suite Vista Mar" data-en="Ocean-View Suite">Suite Vista Mar</h3>
-          <div class="rate">$140 <small data-es="/ noche" data-en="/ night">/ noche</small></div>
-          <p data-es="Nuestro mejor chalet, con vista al atardecer del Pacífico y balcón privado." data-en="Our finest chalet, with Pacific sunset views and a private balcony.">Nuestro mejor chalet, con vista al atardecer del Pacífico y balcón privado.</p>
-          <ul class="feats">
-            <li><svg viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-es="Vista al océano" data-en="Ocean view">Vista al océano</span></li>
-            <li><svg viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-es="Balcón privado" data-en="Private balcony">Balcón privado</span></li>
-            <li><svg viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-es="Desayuno incluido" data-en="Breakfast included">Desayuno incluido</span></li>
-          </ul>
-          <a href="#contact" class="btn btn-line" data-es="Reservar" data-en="Book">Reservar</a>
-        </div>
-      </div>
-
     </div>
-  </div>
-</section>
 
-<!-- GALLERY -->
-<section class="gallery" id="gallery">
-  <div class="wrap">
-    <div class="sec-head center reveal">
-      <span class="label" data-es="Galería" data-en="Gallery">Galería</span>
-      <h2 data-es="Un vistazo a Bosques Del Tolomuco" data-en="A glimpse of Bosques Del Tolomuco">Un vistazo a Bosques Del Tolomuco</h2>
+    <div class="row flip reveal">
+      <div class="row-visual"><div class="art art2"></div><div class="grain"></div><span class="tag" data-es="Casita Marea" data-en="Tide Cottage">Casita Marea</span></div>
+      <div class="row-text">
+        <span class="ix">II</span>
+        <h3 data-es="Casita Marea" data-en="Tide Cottage">Casita Marea</h3>
+        <div class="rate"><span data-es="desde" data-en="from">desde</span> <b>$140</b> <small data-es="/ noche" data-en="/ night">/ noche</small></div>
+        <p data-es="Amplia para hasta cuatro personas, con cocineta, terraza propia y la brisa del mar de fondo. Perfecta para familias o amigos." data-en="Spacious for up to four, with a kitchenette, private terrace and the sea breeze running through. Perfect for families or friends.">Amplia para hasta cuatro personas, con cocineta, terraza propia y la brisa del mar de fondo. Perfecta para familias o amigos.</p>
+        <ul class="feats"><li data-es="Hasta 4 huéspedes" data-en="Up to 4 guests">Hasta 4 huéspedes</li><li data-es="Cocineta" data-en="Kitchenette">Cocineta</li><li data-es="Terraza privada" data-en="Private terrace">Terraza privada</li><li data-es="Desayuno incluido" data-en="Breakfast">Desayuno incluido</li></ul>
+        <a href="#book" class="btn btn-line" style="padding:12px 24px;font-size:.86rem" data-es="Reservar esta casita" data-en="Book this cottage">Reservar esta casita</a>
+      </div>
     </div>
-    <div class="gal-grid reveal">
-      <div class="tile big t1"><span class="cap" data-es="Piscina entre palmeras" data-en="Pool among the palms">Piscina entre palmeras</span></div>
-      <div class="tile t2"><span class="cap" data-es="Atardecer en la playa" data-en="Sunset on the beach">Atardecer en la playa</span></div>
-      <div class="tile t3"><span class="cap" data-es="Interior del chalet" data-en="Chalet interior">Interior del chalet</span></div>
-      <div class="tile t4"><span class="cap" data-es="Sendero al mar" data-en="Path to the sea">Sendero al mar</span></div>
-      <div class="tile t5"><span class="cap" data-es="Desayuno tropical" data-en="Tropical breakfast">Desayuno tropical</span></div>
-    </div>
-  </div>
-</section>
 
-<!-- TESTIMONIALS -->
-<section class="testi" id="testi">
-  <div class="wrap">
-    <div class="sec-head center reveal">
-      <span class="label" data-es="Opiniones de huéspedes" data-en="Guest reviews">Opiniones de huéspedes</span>
-      <h2 data-es="Lo que cuentan quienes ya vinieron" data-en="What past guests say">Lo que cuentan quienes ya vinieron</h2>
-    </div>
-    <div class="t-grid">
-      <div class="quote reveal">
-        <div class="rating"><b>5.0</b> &nbsp;/ 5 · <span data-es="Excelente" data-en="Excellent">Excelente</span></div>
-        <p data-es="«Limpio, tranquilo y la atención fue de otro nivel. Nos sentimos en casa desde el primer minuto. Volveremos sin duda.»" data-en="“Clean, peaceful, and the hospitality was next level. We felt at home from the first minute. We'll definitely return.”">«Limpio, tranquilo y la atención fue de otro nivel. Nos sentimos en casa desde el primer minuto. Volveremos sin duda.»</p>
-        <div class="who"><span class="mono m1">MR</span><div><b>María Rodríguez</b><small data-es="México" data-en="Mexico">México</small></div></div>
-      </div>
-      <div class="quote reveal">
-        <div class="rating"><b>5.0</b> &nbsp;/ 5 · <span data-es="Excelente" data-en="Excellent">Excelente</span></div>
-        <p data-es="«Un pequeño paraíso. Chalet impecable, a pasos de la playa, y los anfitriones nos dieron los mejores consejos locales. Pura Vida de verdad.»" data-en="“A little paradise. Spotless chalet, steps from the beach, and the hosts gave us the best local tips. Pura Vida indeed.”">«Un pequeño paraíso. Chalet impecable, a pasos de la playa, y los anfitriones nos dieron los mejores consejos locales. Pura Vida de verdad.»</p>
-        <div class="who"><span class="mono m2">JC</span><div><b>James Carter</b><small data-es="Canadá" data-en="Canada">Canadá</small></div></div>
-      </div>
-      <div class="quote reveal">
-        <div class="rating"><b>4.9</b> &nbsp;/ 5 · <span data-es="Excelente" data-en="Excellent">Excelente</span></div>
-        <p data-es="«Tranquilidad total y un trato humano que ya no se encuentra. El atardecer desde la terraza vale cada colón.»" data-en="“Total peace and a warmth that's rare these days. The sunset from the terrace is worth every colón.”">«Tranquilidad total y un trato humano que ya no se encuentra. El atardecer desde la terraza vale cada colón.»</p>
-        <div class="who"><span class="mono m3">LF</span><div><b>Lucía Fernández</b><small data-es="España" data-en="Spain">España</small></div></div>
+    <div class="row reveal">
+      <div class="row-visual"><div class="art art3"></div><div class="grain"></div><span class="tag" data-es="Suite Vista Mar" data-en="Ocean-View Suite">Suite Vista Mar</span></div>
+      <div class="row-text">
+        <span class="ix">III</span>
+        <h3 data-es="Suite Vista Mar" data-en="Ocean-View Suite">Suite Vista Mar</h3>
+        <div class="rate"><span data-es="desde" data-en="from">desde</span> <b>$190</b> <small data-es="/ noche" data-en="/ night">/ noche</small></div>
+        <p data-es="Nuestra joya: vista directa al atardecer del Pacífico, balcón privado y tina al aire libre. Para una ocasión que merece recordarse." data-en="Our crown jewel: direct Pacific sunset views, a private balcony and an open-air tub. For an occasion worth remembering.">Nuestra joya: vista directa al atardecer del Pacífico, balcón privado y tina al aire libre. Para una ocasión que merece recordarse.</p>
+        <ul class="feats"><li data-es="Vista al océano" data-en="Ocean view">Vista al océano</li><li data-es="Balcón privado" data-en="Private balcony">Balcón privado</li><li data-es="Tina exterior" data-en="Outdoor tub">Tina exterior</li><li data-es="Desayuno gourmet" data-en="Gourmet breakfast">Desayuno gourmet</li></ul>
+        <a href="#book" class="btn btn-line" style="padding:12px 24px;font-size:.86rem" data-es="Reservar esta casita" data-en="Book this cottage">Reservar esta casita</a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- CONTACT -->
-<section class="contact" id="contact">
+<!-- IMMERSIVE -->
+<section class="immersive">
+  <div class="imm-bg" id="immBg"></div>
+  <div class="grain"></div>
   <div class="wrap">
-    <div class="reveal">
-      <span class="label" data-es="Reserva directo" data-en="Book direct">Reserva directo</span>
-      <h2 data-es="Hablemos de tu estadía" data-en="Let's plan your stay">Hablemos de tu estadía</h2>
-      <p class="lede" data-es="Escríbenos por WhatsApp y te respondemos al momento. Sin intermediarios y con el mejor precio garantizado." data-en="Message us on WhatsApp and we'll reply right away. No middlemen, best price guaranteed.">Escríbenos por WhatsApp y te respondemos al momento. Sin intermediarios y con el mejor precio garantizado.</p>
-      <ul class="ci">
-        <li>
-          <svg viewBox="0 0 24 24" fill="none"><path d="M12 21s-7-6.2-7-11a7 7 0 0114 0c0 4.8-7 11-7 11z" stroke-linejoin="round"/><circle cx="12" cy="10" r="2.5"/></svg>
-          <div><b data-es="Ubicación" data-en="Location">Ubicación</b><span data-es="Pacífico Central — Jacó / Quepos / Manuel Antonio, Costa Rica" data-en="Central Pacific — Jacó / Quepos / Manuel Antonio, Costa Rica">Pacífico Central — Jacó / Quepos / Manuel Antonio, Costa Rica</span></div>
-        </li>
-        <li>
-          <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          <div><b data-es="Recepción" data-en="Front desk">Recepción</b><span data-es="Todos los días · 7:00 a.m. – 9:00 p.m." data-en="Every day · 7:00 a.m. – 9:00 p.m.">Todos los días · 7:00 a.m. – 9:00 p.m.</span></div>
-        </li>
-        <li>
-          <svg viewBox="0 0 24 24" fill="none"><path d="M4 6h16v12H4z" stroke-linejoin="round"/><path d="M4 7l8 6 8-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          <div><b data-es="Correo" data-en="Email">Correo</b><span>hola@bosquesdeltolomuco.com</span></div>
-        </li>
+    <span class="eyebrow" data-es="A pasos de la arena" data-en="Steps from the sand">A pasos de la arena</span>
+    <blockquote data-es="El Pura Vida no se explica. &lt;em&gt;Se siente.&lt;/em&gt;" data-en="Pura Vida isn't explained. &lt;em&gt;It's felt.&lt;/em&gt;">El Pura Vida no se explica. <em>Se siente.</em></blockquote>
+  </div>
+</section>
+
+<!-- BOOKING / CALENDAR -->
+<section class="book" id="book">
+  <div class="wrap">
+    <div class="book-intro reveal">
+      <span class="eyebrow" data-es="03 — Disponibilidad" data-en="03 — Availability">03 — Disponibilidad</span>
+      <h2 data-es="Elige tus fechas" data-en="Choose your dates">Elige tus fechas</h2>
+      <p data-es="Selecciona la entrada y la salida — te confirmamos por WhatsApp en minutos. Sin comisiones de Booking ni Airbnb." data-en="Pick your check-in and check-out — we confirm by WhatsApp within minutes. No Booking or Airbnb fees.">Selecciona la entrada y la salida — te confirmamos por WhatsApp en minutos. Sin comisiones de Booking ni Airbnb.</p>
+      <ul class="book-points">
+        <li><svg viewBox="0 0 24 24" fill="none"><path d="M20 6 9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg><div><b data-es="Mejor precio garantizado" data-en="Best price, guaranteed">Mejor precio garantizado</b><span data-es="Reservando directo, sin intermediarios." data-en="Booking direct, no middlemen.">Reservando directo, sin intermediarios.</span></div></li>
+        <li><svg viewBox="0 0 24 24" fill="none"><path d="M20 6 9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg><div><b data-es="Respuesta en minutos" data-en="Reply in minutes">Respuesta en minutos</b><span data-es="Hablas directo con nosotros por WhatsApp." data-en="You talk straight to us on WhatsApp.">Hablas directo con nosotros por WhatsApp.</span></div></li>
+        <li><svg viewBox="0 0 24 24" fill="none"><path d="M20 6 9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg><div><b data-es="Cancelación flexible" data-en="Flexible cancellation">Cancelación flexible</b><span data-es="Planes que cambian, lo entendemos." data-en="Plans change — we get it.">Planes que cambian, lo entendemos.</span></div></li>
       </ul>
     </div>
-    <div class="contact-card reveal">
-      <h3 data-es="Reserva en segundos" data-en="Book in seconds">Reserva en segundos</h3>
-      <p data-es="Toca el botón y escríbenos directamente por WhatsApp. Te confirmamos disponibilidad al instante." data-en="Tap the button and message us directly on WhatsApp. We'll confirm availability instantly.">Toca el botón y escríbenos directamente por WhatsApp. Te confirmamos disponibilidad al instante.</p>
-      <a href="https://wa.me/13213561951" class="btn btn-solid" data-es="Escribir por WhatsApp" data-en="Message on WhatsApp">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M20 12a8 8 0 01-11.5 7.2L4 20l.9-4.3A8 8 0 1120 12z" stroke-linejoin="round"/></svg>
-        Escribir por WhatsApp
-      </a>
-      <p class="note">+1 321 356 1951 · <span data-es="Respuesta inmediata" data-en="Instant reply">Respuesta inmediata</span></p>
+
+    <div class="cal reveal" data-d="1">
+      <div class="cal-top">
+        <div><div class="lab" data-es="Tu estadía" data-en="Your stay">Tu estadía</div><div class="mon" id="calMonth">—</div></div>
+        <div class="cal-nav">
+          <button id="prevM" aria-label="Prev"><svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg></button>
+          <button id="nextM" aria-label="Next"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button>
+        </div>
+      </div>
+      <div class="cal-grid">
+        <div class="cal-dow" id="calDow"></div>
+        <div class="cal-days" id="calDays"></div>
+      </div>
+      <div class="cal-foot">
+        <div class="cal-sel"><b id="selNights" data-es="Selecciona la entrada" data-en="Select check-in">Selecciona la entrada</b><span id="selDates"></span></div>
+        <a id="waBook" class="btn btn-solid" disabled><span data-es="Reservar por WhatsApp" data-en="Book on WhatsApp">Reservar por WhatsApp</span></a>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- PROPOSAL -->
-<section class="proposal" id="proposal">
-  <div class="prop-inner">
-    <span class="label reveal" data-es="Una propuesta para el dueño" data-en="A proposal for the owner">Una propuesta para el dueño</span>
-    <h2 class="reveal" data-es="Tu sitio web profesional — <span class='price'>$500</span>" data-en="Your professional website — <span class='price'>$500</span>">Tu sitio web profesional — <span class="price">$500</span></h2>
-    <p class="sub reveal" data-es="Lo que estás viendo es un ejemplo real de lo que puedo construir para tu negocio. Así de bien se puede ver Bosques Del Tolomuco en internet — y en dos idiomas." data-en="What you're seeing is a real example of what I can build for your business. This is how good Bosques Del Tolomuco can look online — in two languages.">Lo que estás viendo es un ejemplo real de lo que puedo construir para tu negocio. Así de bien se puede ver Bosques Del Tolomuco en internet — y en dos idiomas.</p>
-
-    <div class="reasons reveal">
-      <div class="reason">
-        <span class="num">01</span>
-        <div>
-          <h4 data-es="Reservas directas" data-en="Direct bookings">Reservas directas</h4>
-          <p data-es="Recibe reservas sin pagar 15–20% de comisión a Booking o Airbnb. Ese dinero se queda contigo." data-en="Take bookings without paying 15–20% commission to Booking or Airbnb. That money stays with you.">Recibe reservas sin pagar 15–20% de comisión a Booking o Airbnb. Ese dinero se queda contigo.</p>
-        </div>
-      </div>
-      <div class="reason">
-        <span class="num">02</span>
-        <div>
-          <h4 data-es="Aparece en Google" data-en="Show up on Google">Aparece en Google</h4>
-          <p data-es="Cuando los turistas buscan dónde quedarse en la zona, tu negocio aparece — no la competencia." data-en="When tourists search for where to stay in the area, your business shows up — not the competition.">Cuando los turistas buscan dónde quedarse en la zona, tu negocio aparece — no la competencia.</p>
-        </div>
-      </div>
-      <div class="reason">
-        <span class="num">03</span>
-        <div>
-          <h4 data-es="Genera confianza" data-en="Build trust">Genera confianza</h4>
-          <p data-es="Un sitio profesional hace que el viajero te tome en serio y reserve sin dudar." data-en="A professional site makes travelers take you seriously and book without hesitation.">Un sitio profesional hace que el viajero te tome en serio y reserve sin dudar.</p>
-        </div>
-      </div>
-      <div class="reason">
-        <span class="num">04</span>
-        <div>
-          <h4 data-es="Rápido, móvil y tuyo" data-en="Fast, mobile, and yours">Rápido, móvil y tuyo</h4>
-          <p data-es="Carga al instante, se ve perfecto en el teléfono y es tuyo para siempre — sin alquileres mensuales." data-en="Loads instantly, looks perfect on the phone, and is yours forever — no monthly rentals.">Carga al instante, se ve perfecto en el teléfono y es tuyo para siempre — sin alquileres mensuales.</p>
-        </div>
-      </div>
+<!-- REVIEWS -->
+<section class="reviews" id="reviews">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow" data-es="04 — Opiniones" data-en="04 — Reviews">04 — Opiniones</span>
+      <h2 data-es="Lo que dicen los huéspedes" data-en="What guests say">Lo que dicen los huéspedes</h2>
     </div>
-
-    <div class="anchor reveal">
-      <p data-es="Las agencias cobran <b>$2,000 o más</b> por un sitio así. Este es un sitio completo, bilingüe y listo para vender, por <b>$500 — pago único.</b>" data-en="Agencies charge <b>$2,000 or more</b> for a site like this. This is a complete, bilingual, ready-to-sell site for <b>$500 — one-time payment.</b>">Las agencias cobran <b>$2,000 o más</b> por un sitio así. Este es un sitio completo, bilingüe y listo para vender, por <b>$500 — pago único.</b></p>
+    <div class="r-grid">
+      <div class="quote reveal"><div class="stars">★★★★★</div><p data-es="“El lugar más tranquilo en el que nos hemos quedado en Costa Rica. Despertar con el sonido del mar no tiene precio.”" data-en="“The most peaceful place we've stayed in Costa Rica. Waking up to the sound of the sea is priceless.”">“El lugar más tranquilo en el que nos hemos quedado en Costa Rica. Despertar con el sonido del mar no tiene precio.”</p><div class="who"><b>Marie & Tom</b> · <span data-es="Canadá" data-en="Canada">Canadá</span></div></div>
+      <div class="quote reveal" data-d="1"><div class="stars">★★★★★</div><p data-es="“Nos trataron como familia. Las recomendaciones locales hicieron el viaje. Volveremos sin dudarlo.”" data-en="“They treated us like family. The local tips made the trip. We'll be back without a doubt.”">“Nos trataron como familia. Las recomendaciones locales hicieron el viaje. Volveremos sin dudarlo.”</p><div class="who"><b>Sofía R.</b> · <span data-es="México" data-en="Mexico">México</span></div></div>
+      <div class="quote reveal" data-d="2"><div class="stars">★★★★★</div><p data-es="“La Suite Vista Mar al atardecer es pura magia. Reservar directo fue fácil y rapidísimo.”" data-en="“The Ocean-View Suite at sunset is pure magic. Booking direct was easy and lightning fast.”">“La Suite Vista Mar al atardecer es pura magia. Reservar directo fue fácil y rapidísimo.”</p><div class="who"><b>James W.</b> · <span data-es="EE. UU." data-en="USA">EE. UU.</span></div></div>
     </div>
+  </div>
+</section>
 
-    <a href="https://wa.me/13213561951" class="btn btn-solid reveal" data-es="Quiero mi sitio web" data-en="I want my website">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M20 12a8 8 0 01-11.5 7.2L4 20l.9-4.3A8 8 0 1120 12z" stroke-linejoin="round"/></svg>
-      Quiero mi sitio web
-    </a>
-    <p class="closing reveal" data-es="Sin compromiso · Conversemos por WhatsApp" data-en="No obligation · Let's talk on WhatsApp">Sin compromiso · Conversemos por WhatsApp</p>
+<!-- OWNER PITCH -->
+<section class="pitch">
+  <div class="glow"></div>
+  <div class="wrap">
+    <span class="eyebrow" data-es="Para el dueño de Bosques Del Tolomuco" data-en="For the owner of Bosques Del Tolomuco">Para el dueño de Bosques Del Tolomuco</span>
+    <h2 data-es="Esta página la armé &lt;em&gt;para ustedes&lt;/em&gt;." data-en="I built this page &lt;em&gt;for you&lt;/em&gt;.">Esta página la armé <em>para ustedes</em>.</h2>
+    <p data-es="Hola, soy Tony. Diseño páginas web cinematográficas para hoteles y casitas en Costa Rica. Vi que aún no tenían una y quise mostrarles cómo se vería la suya — sin fotos todavía, y ya se ve así de bien." data-en="Hi, I'm Tony. I design cinematic websites for hotels and cottages in Costa Rica. I saw you didn't have one yet and wanted to show you how yours could look — no photos yet, and it already looks this good.">Hola, soy Tony. Diseño páginas web cinematográficas para hoteles y casitas en Costa Rica. Vi que aún no tenían una y quise mostrarles cómo se vería la suya — sin fotos todavía, y ya se ve así de bien.</p>
+    <p data-es="La dejo lista en su propio dominio, con reservas directas por WhatsApp y sin comisiones de Booking ni Airbnb." data-en="I set it up on your own domain, with direct WhatsApp bookings and no Booking or Airbnb fees.">La dejo lista en su propio dominio, con reservas directas por WhatsApp y sin comisiones de Booking ni Airbnb.</p>
+    <div class="price" data-es="&lt;s&gt;$2,000+ en una agencia&lt;/s&gt; $500 — su sitio completo, listo para recibir reservas." data-en="&lt;s&gt;$2,000+ at an agency&lt;/s&gt; $500 — your complete site, ready to take bookings."><s>$2,000+ en una agencia</s> $500 — su sitio completo, listo para recibir reservas.</div>
+    <a href="https://wa.me/13213561951?text=Hola%20Tony,%20vi%20el%20sitio%20de%20muestra%20de%20Bosques%20Del%20Tolomuco%20y%20me%20interesa." class="btn btn-solid"><span data-es="Hablar con Tony por WhatsApp" data-en="Talk to Tony on WhatsApp">Hablar con Tony por WhatsApp</span>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      <p class="mockup-note" data-es="Esto es solo una muestra para enseñarle posibilidades — puedo cambiar colores, textos, fotos y prácticamente todo a su gusto." data-en="This is just a sample to show what's possible — I can change the colors, text, photos and pretty much everything to your liking.">Esto es solo una muestra para enseñarle posibilidades — puedo cambiar colores, textos, fotos y prácticamente todo a su gusto.</p>
   </div>
 </section>
 
 <footer>
   <div class="wrap">
-    <span class="wordmark">Bosques Del Tolomuco<span class="dot">.</span></span>
-    <p data-es="Pacífico Central, Costa Rica · +1 321 356 1951" data-en="Central Pacific, Costa Rica · +1 321 356 1951">Pacífico Central, Costa Rica · +1 321 356 1951</p>
-    <p class="smol" data-es="© 2026 Bosques Del Tolomuco · Pura Vida · Sitio de muestra con contenido de ejemplo." data-en="© 2026 Bosques Del Tolomuco · Pura Vida · Sample site with placeholder content.">© 2026 Bosques Del Tolomuco · Pura Vida · Sitio de muestra con contenido de ejemplo.</p>
+    <div class="fcol">
+      <a href="#top" class="wordmark">Bosques Del Tolomuco<i>.</i></a>
+      <p style="margin-top:14px;max-width:30ch" data-es="Casitas boutique frente al mar. Pacífico Central, Costa Rica." data-en="Boutique oceanfront cottages. Central Pacific, Costa Rica.">Casitas boutique frente al mar. Pacífico Central, Costa Rica.</p>
+    </div>
+    <div class="fcol">
+      <h4 data-es="Explorar" data-en="Explore">Explorar</h4>
+      <a href="#story" data-es="Historia" data-en="Story">Historia</a>
+      <a href="#cottages" data-es="Casitas" data-en="Cottages">Casitas</a>
+      <a href="#book" data-es="Disponibilidad" data-en="Availability">Disponibilidad</a>
+    </div>
+    <div class="fcol">
+      <h4 data-es="Reservar" data-en="Book">Reservar</h4>
+      <a href="https://wa.me/13213561951">WhatsApp</a>
+      
+      <p data-es="Pacífico Central, CR" data-en="Central Pacific, CR">Pacífico Central, CR</p>
+    </div>
+    <div class="base">
+      <span>© 2026 Bosques Del Tolomuco</span>
+      <span data-es="Sitio de muestra · diseñado por Tony" data-en="Sample site · designed by Tony">Sitio de muestra · diseñado por Tony</span>
+    </div>
   </div>
 </footer>
 
 <script>
-  // sticky nav
-  const nav=document.getElementById('nav');
-  const onScroll=()=>nav.classList.toggle('scrolled',window.scrollY>40);
-  window.addEventListener('scroll',onScroll,{passive:true});onScroll();
+// ---- language toggle ----
+function setLang(l){
+  document.documentElement.lang=l;
+  document.querySelectorAll('[data-es]').forEach(el=>{
+    const v=el.getAttribute('data-'+l); if(v==null)return;
+    if(v.indexOf('<')>-1) el.innerHTML=v; else el.textContent=v;
+  });
+  document.getElementById('es').classList.toggle('active',l==='es');
+  document.getElementById('en').classList.toggle('active',l==='en');
+  try{localStorage.setItem('lang',l)}catch(e){}
+}
+// hero title needs word-by-word spans built AFTER language is known
+function buildHeroWords(){
+  const h=document.getElementById('heroTitle');
+  const html=h.getAttribute('data-'+document.documentElement.lang)||h.innerHTML;
+  // split on spaces but keep <em>..</em> intact
+  const tmp=html.replace(/<em>(.*?)<\/em>/g,'$1');
+  const parts=tmp.split(' ');
+  h.innerHTML=parts.map((w,i)=>{
+    const em=w.includes(''); const clean=w.replace(/[]/g,'');
+    const inner=em?`<em>${clean}</em>`:clean;
+    return `<span class="word"><span style="animation-delay:${.25+i*.08}s">${inner}&nbsp;</span></span>`;
+  }).join('');
+}
+(function(){try{const s=localStorage.getItem('lang');if(s&&s!=='es')setLang(s);}catch(e){}})();
 
-  // reveal on scroll
-  const io=new IntersectionObserver((entries)=>{
-    entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});
-  },{threshold:.14});
-  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+// ---- nav scroll state ----
+const nav=document.getElementById('nav');
+addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>40),{passive:true});
 
-  // language toggle — swaps every element carrying data-es / data-en
-  function setLang(lang){
-    document.documentElement.lang=lang;
-    document.querySelectorAll('[data-es]').forEach(el=>{
-      const val=el.getAttribute('data-'+lang);
-      if(val!==null) el.innerHTML=val;
-    });
-    document.getElementById('btn-es').classList.toggle('active',lang==='es');
-    document.getElementById('btn-en').classList.toggle('active',lang==='en');
-    try{localStorage.setItem('demo-lang',lang);}catch(e){}
+// ---- reveal on scroll ----
+const io=new IntersectionObserver((es)=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.16});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+// ---- parallax on the immersive band ----
+const immBg=document.getElementById('immBg');
+let ticking=false;
+addEventListener('scroll',()=>{if(ticking)return;ticking=true;requestAnimationFrame(()=>{
+  const sec=immBg.parentElement, r=sec.getBoundingClientRect();
+  if(r.bottom>0&&r.top<innerHeight){const p=(r.top+r.height/2-innerHeight/2)/innerHeight; immBg.style.transform=`translateY(${p*-60}px) scale(1.15)`;}
+  ticking=false;
+});},{passive:true});
+
+// ---- availability calendar ----
+const WA="13213561951", RATE=95;
+const MON={es:["Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"],en:["January","February","March","April","May","June","July","August","September","October","November","December"]};
+const DOW={es:["L","M","M","J","V","S","D"],en:["M","T","W","T","F","S","S"]};
+let view=new Date(); view.setDate(1);
+let ci=null, co=null;
+const today=new Date(); today.setHours(0,0,0,0);
+const dEls={month:document.getElementById('calMonth'),dow:document.getElementById('calDow'),days:document.getElementById('calDays'),nights:document.getElementById('selNights'),dates:document.getElementById('selDates'),wa:document.getElementById('waBook')};
+const fmt=(d,l)=>`${d.getDate()} ${MON[l][d.getMonth()].slice(0,3)}`;
+function render(){
+  const l=document.documentElement.lang;
+  dEls.month.textContent=`${MON[l][view.getMonth()]} ${view.getFullYear()}`;
+  dEls.dow.innerHTML=DOW[l].map(d=>`<span>${d}</span>`).join('');
+  const first=(new Date(view.getFullYear(),view.getMonth(),1).getDay()+6)%7; // Mon=0
+  const days=new Date(view.getFullYear(),view.getMonth()+1,0).getDate();
+  let h='';
+  for(let i=0;i<first;i++)h+='<div class="day empty"></div>';
+  for(let d=1;d<=days;d++){
+    const dt=new Date(view.getFullYear(),view.getMonth(),d); dt.setHours(0,0,0,0);
+    let c='day';
+    if(dt<today)c+=' past';
+    if(ci&&dt.getTime()===ci.getTime())c+=' in';
+    if(co&&dt.getTime()===co.getTime())c+=' out';
+    if(ci&&co&&dt>ci&&dt<co)c+=' range';
+    h+=`<div class="${c}" data-t="${dt.getTime()}">${d}</div>`;
   }
-  // restore saved choice (default Spanish)
-  try{
-    const saved=localStorage.getItem('demo-lang');
-    if(saved&&saved!=='es') setLang(saved);
-  }catch(e){}
+  dEls.days.innerHTML=h;
+  dEls.days.querySelectorAll('.day:not(.past):not(.empty)').forEach(el=>el.onclick=()=>pick(+el.dataset.t));
+  updateFoot();
+}
+function pick(t){
+  const d=new Date(t);
+  if(!ci||co){ci=d;co=null;}
+  else if(d>ci){co=d;}
+  else {ci=d;}
+  render();
+}
+function updateFoot(){
+  const l=document.documentElement.lang;
+  if(ci&&co){
+    const n=Math.round((co-ci)/86400000);
+    dEls.nights.textContent=(l==='es'?`${n} noche${n>1?'s':''} · desde $${n*RATE}`:`${n} night${n>1?'s':''} · from $${n*RATE}`);
+    dEls.dates.textContent=`${fmt(ci,l)} → ${fmt(co,l)}`;
+    dEls.wa.removeAttribute('disabled');
+    const msg=(l==='es'
+      ?`Hola! Quiero reservar en Bosques Del Tolomuco del ${fmt(ci,l)} al ${fmt(co,l)} (${n} noche${n>1?'s':''}). ¿Hay disponibilidad?`
+      :`Hi! I'd like to book Bosques Del Tolomuco from ${fmt(ci,l)} to ${fmt(co,l)} (${n} night${n>1?'s':''}). Is it available?`);
+    dEls.wa.href=`https://wa.me/${WA}?text=${encodeURIComponent(msg)}`;
+  }else if(ci){
+    dEls.nights.textContent=(l==='es'?'Selecciona la salida':'Select check-out');
+    dEls.dates.textContent=fmt(ci,l);
+    dEls.wa.setAttribute('disabled','');
+  }else{
+    dEls.nights.textContent=(l==='es'?'Selecciona la entrada':'Select check-in');
+    dEls.dates.textContent='';
+    dEls.wa.setAttribute('disabled','');
+  }
+}
+document.getElementById('prevM').onclick=()=>{const m=new Date(view);m.setMonth(m.getMonth()-1);if(m.getFullYear()>today.getFullYear()||(m.getFullYear()===today.getFullYear()&&m.getMonth()>=today.getMonth())){view=m;render();}};
+document.getElementById('nextM').onclick=()=>{view.setMonth(view.getMonth()+1);render();};
+render();
+// keep calendar text in sync when language flips
+const _sl=setLang; setLang=function(l){_sl(l);render();};
 </script>
 </body>
 </html>

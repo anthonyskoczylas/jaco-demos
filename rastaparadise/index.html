@@ -9,497 +9,297 @@
 <link href="https://fonts.googleapis.com/css2?family=Prata&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root{
-    --teal:#5a3220;
-    --teal-deep:#3f2316;
-    --sand:#ead9cc;
-    --paper:#f8f4ef;
-    --ink:#2a1c12;
-    --ink-soft:#81776f;
-    --accent:#2a8f86;
-    --accent-soft:#4ca199;
-    --line:rgba(90,50,32,.16);
-    --maxw:1080px;
+    --teal:#5a3220; --teal-deep:#3f2316; --teal-mid:#6e4b3b; --teal-light:#7e5f51; --teal-darkest:#2f1a11;
+    --sand:#ead9cc; --paper:#f8f4ef; --ink:#2a1c12; --ink-soft:#81776f;
+    --accent:#2a8f86; --accent-soft:#4ca199; --accent-glow:#83beb9; --line:rgba(90,50,32,.14);
   }
   *{margin:0;padding:0;box-sizing:border-box}
-  html{scroll-behavior:smooth}
-  body{
-    font-family:"Inter",system-ui,sans-serif;
-    color:var(--ink);background:var(--paper);line-height:1.7;
-    -webkit-font-smoothing:antialiased;overflow-x:hidden;
-  }
-  h1,h2,h3,h4{font-family:"Prata",Georgia,serif;font-weight:500;line-height:1.12;letter-spacing:-.015em;color:var(--teal-deep)}
-  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 26px}
-  section{padding:108px 0}
-  .label{font-size:.74rem;text-transform:uppercase;letter-spacing:.28em;font-weight:600;color:var(--accent);font-family:"Inter",sans-serif}
-  .hr{height:1px;background:var(--line);border:none}
-  p.lede{font-size:1.18rem;color:var(--ink-soft);max-width:620px}
-
-  .btn{display:inline-flex;align-items:center;gap:11px;font-family:"Inter",sans-serif;font-size:.96rem;font-weight:600;letter-spacing:.01em;
-    text-decoration:none;cursor:pointer;border:none;padding:15px 30px;border-radius:5px;
-    transition:transform .35s cubic-bezier(.2,.8,.2,1),background .3s,color .3s,box-shadow .3s}
-  .btn svg{width:18px;height:18px;stroke-width:1.6}
+  ::selection{background:var(--accent);color:var(--ink)}
+  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+  body{font-family:"Inter",system-ui,sans-serif;color:var(--ink);background:var(--paper);line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  h1,h2,h3,h4{font-family:"Prata",Georgia,serif;font-weight:300;line-height:1.06;letter-spacing:-.02em;color:var(--teal-deep)}
+  .wrap{max-width:1140px;margin:0 auto;padding:0 32px}
+  @media(max-width:600px){.wrap{padding:0 22px}}
+  .eyebrow{font-size:.72rem;text-transform:uppercase;letter-spacing:.36em;font-weight:600;color:var(--accent)}
+  .rule{width:54px;height:1px;background:var(--accent);margin:0 auto}
+  .btn{position:relative;display:inline-flex;align-items:center;gap:11px;font-size:.93rem;font-weight:600;text-decoration:none;cursor:pointer;border:none;padding:15px 30px;border-radius:13px;transition:transform .5s cubic-bezier(.16,1,.3,1),box-shadow .4s,background .3s,color .3s}
+  .btn svg{width:17px;height:17px;stroke-width:1.7;transition:transform .5s}.btn:hover svg{transform:translateX(4px)}
   .btn-solid{background:var(--accent);color:var(--ink)}
-  .btn-solid:hover{background:var(--accent-soft);transform:translateY(-2px);box-shadow:0 14px 30px -14px rgba(42,143,134,.7)}
+  .btn-solid:hover{background:var(--accent-soft);transform:translateY(-2px);box-shadow:0 16px 36px -16px rgba(42,143,134,.65)}
   .btn-line{background:transparent;color:var(--teal-deep);border:1px solid var(--teal-deep)}
   .btn-line:hover{background:var(--teal-deep);color:var(--paper);transform:translateY(-2px)}
-  .btn-ghost{background:rgba(248,244,239,.12);color:var(--paper);border:1px solid rgba(248,244,239,.4)}
-  .btn-ghost:hover{background:rgba(248,244,239,.22);transform:translateY(-2px)}
 
-  /* NAV */
-  header.nav{position:fixed;top:0;left:0;right:0;z-index:60;transition:background .4s,box-shadow .4s,padding .4s;padding:20px 0}
+  /* NAV (dark on light) */
+  header.nav{position:fixed;top:0;left:0;right:0;z-index:70;padding:22px 0;transition:background .4s,box-shadow .4s,padding .4s}
   header.nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:20px}
-  .wordmark{font-family:"Prata",serif;font-size:1.32rem;font-weight:500;letter-spacing:-.01em;color:var(--paper);transition:color .4s;text-decoration:none;white-space:nowrap}
-  .wordmark .dot{color:var(--accent-soft)}
-  .nav-right{display:flex;align-items:center;gap:30px}
-  nav.links{display:flex;gap:30px;align-items:center}
-  nav.links a{font-size:.92rem;font-weight:500;color:rgba(248,244,239,.82);text-decoration:none;transition:color .25s;position:relative}
-  nav.links a::after{content:"";position:absolute;left:0;bottom:-5px;width:0;height:1px;background:var(--accent-soft);transition:width .3s}
-  nav.links a:hover::after{width:100%}
-  nav.links a:hover{color:var(--paper)}
-  .lang{display:flex;align-items:center;gap:2px;background:rgba(47,26,17,.46);border:1px solid rgba(248,244,239,.5);border-radius:6px;padding:3px 5px 3px 9px;backdrop-filter:blur(6px);transition:background .4s,border-color .4s}
-  .lang-globe{color:rgba(248,244,239,.92);flex:0 0 auto;margin-right:4px}
-  .lang button{background:transparent;border:none;cursor:pointer;font-family:"Inter",sans-serif;font-size:.82rem;font-weight:700;letter-spacing:.06em;
-    padding:6px 11px;border-radius:4px;color:rgba(248,244,239,.85);transition:background .25s,color .25s}
-  .lang button:hover{color:var(--paper)}
-  .lang button.active{background:var(--accent);color:var(--ink)}
-  header.nav.scrolled{background:rgba(248,244,239,.94);backdrop-filter:blur(12px);box-shadow:0 1px 0 var(--line);padding:13px 0}
-  header.nav.scrolled .wordmark{color:var(--teal-deep)}
-  header.nav.scrolled nav.links a{color:var(--ink-soft)}
-  header.nav.scrolled nav.links a:hover{color:var(--teal-deep)}
-  header.nav.scrolled .lang{background:rgba(63,35,22,.07);border-color:var(--line)}
-  header.nav.scrolled .lang-globe{color:var(--ink-soft)}
-  header.nav.scrolled .lang button{color:var(--ink-soft)}
-  header.nav.scrolled .lang button:hover{color:var(--teal-deep)}
-  header.nav.scrolled .lang button.active{background:var(--accent);color:var(--ink)}
-  @media(max-width:820px){nav.links{display:none}}
-  @media(max-width:560px){
-    header.nav .wrap{gap:12px}
-    .wordmark{font-size:1.12rem;min-width:0;overflow:hidden;text-overflow:ellipsis}
-    .lang{flex:0 0 auto}
-    .lang button{padding:6px 10px}
-  }
+  .wordmark{font-family:"Prata",serif;font-size:1.4rem;font-weight:500;color:var(--teal-deep);text-decoration:none}
+  .wordmark i{font-style:italic;color:var(--accent)}
+  nav.links{display:flex;gap:30px}
+  nav.links a{font-size:.88rem;font-weight:500;color:var(--ink-soft);text-decoration:none;position:relative;transition:color .3s}
+  nav.links a::after{content:"";position:absolute;left:0;bottom:-5px;height:1px;width:0;background:var(--accent);transition:width .35s}
+  nav.links a:hover{color:var(--teal-deep)}nav.links a:hover::after{width:100%}
+  .nav-tools{display:flex;align-items:center;gap:16px}
+  .lang{display:flex;gap:1px;align-items:center;font-size:.78rem;font-weight:700}
+  .lang button{background:none;border:none;cursor:pointer;color:var(--ink-soft);padding:4px 6px;font-family:inherit;font-weight:700;transition:color .3s}
+  .lang button.active{color:var(--teal-deep)}.lang span{color:var(--line)}
+  header.nav.scrolled{background:rgba(248,244,239,.9);backdrop-filter:blur(12px);box-shadow:0 1px 0 var(--line);padding:13px 0}
+  @media(max-width:780px){nav.links{display:none}}
 
-  /* HERO */
-  .hero{position:relative;min-height:100vh;display:flex;align-items:center;padding:140px 0 100px;color:var(--paper);overflow:hidden;
-    background:radial-gradient(120% 90% at 78% 12%,rgba(76,161,153,.45),transparent 52%),
-      radial-gradient(90% 70% at 12% 95%,rgba(90,50,32,.55),transparent 60%),
-      linear-gradient(165deg,#6e4b3b 0%,#5a3220 42%,#3f2316 100%)}
-  .hero::before{content:"";position:absolute;right:-6%;top:14%;width:340px;height:340px;border-radius:50%;
-    background:radial-gradient(circle,#83beb9 0%,#4ca199 55%,rgba(76,161,153,0) 72%);opacity:.55;filter:blur(2px)}
-  .hero::after{content:"";position:absolute;left:0;right:0;bottom:0;height:130px;background:linear-gradient(transparent,rgba(63,35,22,.7))}
-  .hero-grain{position:absolute;inset:0;opacity:.05;background-image:repeating-linear-gradient(115deg,transparent 0 22px,rgba(255,255,255,.5) 22px 23px)}
-  .hero-inner{position:relative;z-index:5;max-width:780px}
-  .hero .label{color:var(--accent-soft);margin-bottom:22px;display:block}
-  .hero h1{color:var(--paper);font-size:clamp(2.8rem,8vw,5.4rem);font-weight:500;margin-bottom:24px}
-  .hero h1 em{font-style:italic;color:var(--accent-soft)}
-  .hero p.promise{font-size:clamp(1.1rem,2.4vw,1.4rem);color:rgba(248,244,239,.9);max-width:560px;margin-bottom:38px}
-  .hero-cta{display:flex;gap:16px;flex-wrap:wrap;align-items:center}
-  .hero-meta{position:absolute;bottom:46px;right:26px;z-index:5;text-align:right;color:rgba(248,244,239,.7);font-size:.74rem;letter-spacing:.12em;text-transform:uppercase}
-  .hero-meta b{display:block;font-family:"Prata",serif;font-size:1.1rem;letter-spacing:0;text-transform:none;color:var(--paper)}
-  @media(max-width:720px){.hero-meta{display:none}}
+  /* HERO — light, centered, airy */
+  .hero{position:relative;min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:120px 24px 90px;overflow:hidden}
+  .hero-orb{position:absolute;z-index:0;top:8%;left:50%;transform:translateX(-50%);width:min(72vw,720px);height:min(72vw,720px);border-radius:50%;
+    background:radial-gradient(circle at 50% 45%,rgba(131,190,185,.55),rgba(76,161,153,.18) 45%,transparent 68%);filter:blur(6px);opacity:.85;animation:breathe 14s ease-in-out infinite alternate}
+  @keyframes breathe{from{transform:translateX(-50%) scale(1)}to{transform:translateX(-50%) scale(1.06)}}
+  .hero-inner{position:relative;z-index:3;max-width:1000px}
+  .hero .eyebrow{display:block;margin-bottom:30px;opacity:0;animation:fadeUp .9s .15s forwards}
+  .hero h1{font-size:clamp(3rem,9vw,7rem);font-weight:300;letter-spacing:-.03em;margin-bottom:30px;opacity:0;animation:fadeUp 1.1s .3s forwards}
+  .hero h1 em{font-style:italic;color:var(--accent)}
+  .hero .sub{font-size:clamp(1.05rem,1.8vw,1.3rem);color:var(--ink-soft);max-width:52ch;margin:0 auto 38px;opacity:0;animation:fadeUp 1s .55s forwards}
+  .hero-cta{display:flex;gap:15px;justify-content:center;flex-wrap:wrap;opacity:0;animation:fadeUp 1s .75s forwards}
+  @keyframes fadeUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
+  .hero-stats{display:flex;gap:46px;justify-content:center;margin-top:64px;opacity:0;animation:fadeUp 1s .95s forwards}
+  .hero-stats .s{text-align:center}
+  .hero-stats b{display:block;font-family:"Prata",serif;font-size:1.9rem;color:var(--teal-deep);font-weight:400}
+  .hero-stats span{font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-soft)}
+  @media(max-width:600px){.hero-stats{gap:30px}}
 
-  /* ABOUT */
-  .about .wrap{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
-  @media(max-width:840px){.about .wrap{grid-template-columns:1fr;gap:40px}}
-  .about h2{font-size:clamp(2rem,4.4vw,3rem);margin:18px 0 22px}
-  .about p{color:var(--ink-soft);margin-bottom:18px;font-size:1.06rem}
-  .about .signature{font-family:"Prata",serif;font-style:italic;font-size:1.15rem;color:var(--teal);margin-top:8px}
-  .about-visual{height:440px;border-radius:6px;position:relative;overflow:hidden;box-shadow:0 30px 70px -34px rgba(63,35,22,.6);
-    background:radial-gradient(80% 60% at 30% 20%,rgba(131,190,185,.5),transparent 55%),linear-gradient(155deg,#6e4b3b,#5a3220 60%,#3f2316)}
-  .about-visual::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(100deg,transparent 0 30px,rgba(255,255,255,.05) 30px 31px)}
-  .about-visual .cap{position:absolute;bottom:20px;left:20px;color:var(--paper);font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;opacity:.85}
-  .about-visual .cap::before{content:"";display:inline-block;width:26px;height:1px;background:var(--accent-soft);margin-right:10px;vertical-align:middle}
-
-  /* ROOMS */
-  .rooms{background:var(--sand)}
-  .sec-head{max-width:600px;margin-bottom:54px}
-  .sec-head.center{margin-left:auto;margin-right:auto;text-align:center}
-  .sec-head h2{font-size:clamp(2rem,4.4vw,3rem);margin:16px 0 14px}
-  .sec-head p{color:var(--ink-soft)}
-  .room-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
-  @media(max-width:880px){.room-grid{grid-template-columns:1fr 1fr}}
-  @media(max-width:600px){.room-grid{grid-template-columns:1fr}}
-  .room{background:var(--paper);border-radius:6px;overflow:hidden;display:flex;flex-direction:column;
-    box-shadow:0 18px 44px -30px rgba(63,35,22,.5);transition:transform .4s cubic-bezier(.2,.8,.2,1),box-shadow .4s}
-  .room:hover{transform:translateY(-6px);box-shadow:0 30px 60px -30px rgba(63,35,22,.55)}
-  .room-img{height:190px;position:relative}
-  .room-img .cap{position:absolute;bottom:12px;left:14px;color:var(--paper);font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;opacity:.9}
-  .ri1{background:radial-gradient(70% 70% at 70% 20%,rgba(131,190,185,.6),transparent 60%),linear-gradient(150deg,#6e4b3b,#3f2316)}
-  .ri2{background:radial-gradient(70% 80% at 30% 30%,rgba(76,161,153,.55),transparent 60%),linear-gradient(150deg,#5a3220,#2f1a11)}
-  .ri3{background:radial-gradient(80% 70% at 60% 80%,rgba(131,190,185,.5),transparent 55%),linear-gradient(150deg,#7e5f51,#5a3220)}
-  .room-body{padding:26px 24px 28px;display:flex;flex-direction:column;flex:1}
-  .room-body h3{font-size:1.4rem;margin-bottom:6px}
-  .rate{font-family:"Prata",serif;font-size:1.05rem;color:var(--accent);margin-bottom:14px}
-  .rate small{color:var(--ink-soft);font-family:"Inter",sans-serif;font-size:.82rem}
-  .room-body p{color:var(--ink-soft);font-size:.95rem;margin-bottom:18px;flex:1}
-  .feats{list-style:none;display:flex;flex-direction:column;gap:9px;margin-bottom:22px}
-  .feats li{display:flex;align-items:center;gap:10px;font-size:.88rem;color:var(--ink-soft)}
-  .feats svg{width:16px;height:16px;stroke:var(--teal);stroke-width:1.5;flex:none}
-  .room .btn-line{align-self:flex-start;padding:11px 22px;font-size:.88rem}
-
-  /* GALLERY */
-  .gal-grid{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:160px;gap:16px}
-  @media(max-width:760px){.gal-grid{grid-template-columns:repeat(2,1fr)}}
-  .tile{border-radius:6px;position:relative;overflow:hidden}
-  .tile .cap{position:absolute;bottom:14px;left:16px;color:var(--paper);font-size:.7rem;letter-spacing:.13em;text-transform:uppercase;z-index:2;opacity:.92}
-  .tile::after{content:"";position:absolute;inset:0;background:linear-gradient(transparent 55%,rgba(63,35,22,.45))}
-  .tile.big{grid-column:span 2;grid-row:span 2}
-  .t1{background:radial-gradient(80% 70% at 70% 25%,rgba(131,190,185,.55),transparent 58%),linear-gradient(150deg,#6e4b3b,#3f2316)}
-  .t2{background:radial-gradient(70% 70% at 30% 30%,rgba(76,161,153,.6),transparent 55%),linear-gradient(150deg,#2a8f86,#5a3220)}
-  .t3{background:linear-gradient(150deg,#7e5f51,#2f1a11)}
-  .t4{background:radial-gradient(80% 80% at 60% 70%,rgba(131,190,185,.5),transparent 55%),linear-gradient(150deg,#5a3220,#3f2316)}
-  .t5{background:radial-gradient(70% 70% at 40% 30%,rgba(76,161,153,.5),transparent 60%),linear-gradient(150deg,#6e4b3b,#5a3220)}
-
-  /* TESTIMONIALS */
-  .testi{background:var(--teal-deep);color:var(--paper)}
-  .testi .label{color:var(--accent-soft)}
-  .testi .sec-head h2{color:var(--paper)}
-  .testi .sec-head p{color:rgba(248,244,239,.75)}
-  .t-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
-  @media(max-width:840px){.t-grid{grid-template-columns:1fr}}
-  .quote{border:1px solid rgba(248,244,239,.16);border-radius:6px;padding:34px 30px;background:rgba(248,244,239,.04)}
-  .rating{font-family:"Prata",serif;font-size:.95rem;letter-spacing:.1em;color:var(--accent-soft);margin-bottom:18px}
-  .rating b{font-size:1.5rem;letter-spacing:0}
-  .quote p{font-family:"Prata",serif;font-style:italic;font-size:1.12rem;line-height:1.55;color:rgba(248,244,239,.94);margin-bottom:24px}
-  .who{display:flex;align-items:center;gap:14px}
-  .who .mono{width:46px;height:46px;border-radius:50%;flex:none;display:grid;place-items:center;font-family:"Prata",serif;font-size:1.05rem;color:var(--paper);border:1px solid rgba(248,244,239,.3)}
-  .m1{background:linear-gradient(135deg,#2a8f86,#5a3220)}
-  .m2{background:linear-gradient(135deg,#6e4b3b,#3f2316)}
-  .m3{background:linear-gradient(135deg,#7e5f51,#2a8f86)}
-  .who b{display:block;font-size:.95rem;font-family:"Inter",sans-serif;font-weight:600}
-  .who small{color:rgba(248,244,239,.6);font-size:.82rem;letter-spacing:.06em}
-
-  /* CONTACT */
-  .contact .wrap{display:grid;grid-template-columns:1fr 1fr;gap:60px}
-  @media(max-width:840px){.contact .wrap{grid-template-columns:1fr;gap:40px}}
-  .contact h2{font-size:clamp(2rem,4.4vw,3rem);margin:16px 0 20px}
-  .contact .lede{margin-bottom:30px}
-  .ci{list-style:none}
-  .ci li{display:flex;gap:16px;padding:18px 0;border-top:1px solid var(--line)}
-  .ci li:last-child{border-bottom:1px solid var(--line)}
-  .ci svg{width:22px;height:22px;stroke:var(--accent);stroke-width:1.5;flex:none;margin-top:3px}
-  .ci b{display:block;font-family:"Prata",serif;font-size:1.05rem;color:var(--teal-deep)}
-  .ci span{color:var(--ink-soft);font-size:.92rem}
-  .contact-card{background:var(--teal);color:var(--paper);border-radius:6px;padding:46px 40px;display:flex;flex-direction:column;justify-content:center;
-    background-image:radial-gradient(90% 70% at 80% 10%,rgba(76,161,153,.35),transparent 55%)}
-  .contact-card h3{color:var(--paper);font-size:1.7rem;margin-bottom:12px}
-  .contact-card p{color:rgba(248,244,239,.85);margin-bottom:28px;font-size:.98rem}
-  .contact-card .btn-solid{width:100%;justify-content:center}
-  .contact-card .note{margin-top:18px;font-size:.82rem;color:rgba(248,244,239,.6);text-align:center}
-
-  /* PROPOSAL */
-  .proposal{background:var(--sand);position:relative;overflow:hidden}
-  .proposal::before{content:"";position:absolute;top:-120px;right:-120px;width:360px;height:360px;border-radius:50%;background:radial-gradient(circle,rgba(42,143,134,.18),transparent 70%)}
-  .prop-inner{max-width:860px;margin:0 auto;text-align:center;position:relative;z-index:2}
-  .proposal .label{color:var(--accent)}
-  .proposal h2{font-size:clamp(2.2rem,5.2vw,3.4rem);margin:18px 0 10px}
-  .proposal h2 .price{color:var(--accent);font-style:italic}
-  .proposal .sub{color:var(--ink-soft);font-size:1.1rem;max-width:560px;margin:0 auto 48px}
-  .reasons{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:6px;overflow:hidden;text-align:left;margin-bottom:42px}
-  @media(max-width:680px){.reasons{grid-template-columns:1fr}}
-  .reason{background:var(--paper);padding:30px 28px;display:flex;gap:18px;align-items:flex-start}
-  .reason .num{font-family:"Prata",serif;font-size:1.5rem;color:var(--accent);line-height:1;flex:none;min-width:30px}
-  .reason h4{font-size:1.12rem;margin-bottom:6px}
-  .reason p{color:var(--ink-soft);font-size:.93rem;line-height:1.6}
-  .anchor{max-width:600px;margin:0 auto 36px;padding:22px 28px;border-left:2px solid var(--accent);text-align:left;background:rgba(248,244,239,.6)}
-  .anchor p{font-family:"Prata",serif;font-style:italic;font-size:1.12rem;color:var(--teal-deep);line-height:1.5}
-  .anchor b{font-style:normal;color:var(--accent)}
-  .proposal .btn-solid{font-size:1.02rem;padding:17px 38px}
-  .proposal .closing{margin-top:18px;font-size:.86rem;color:var(--ink-soft);letter-spacing:.04em}
-
-  footer{background:var(--teal-deep);color:rgba(248,244,239,.7);padding:54px 0 40px}
-  footer .wrap{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px}
-  footer .wordmark{color:var(--paper)}
-  footer p{font-size:.85rem}
-  footer .smol{width:100%;border-top:1px solid rgba(248,244,239,.12);padding-top:22px;margin-top:8px;font-size:.78rem;opacity:.6}
-
-  .reveal{opacity:0;transform:translateY(26px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.8,.2,1)}
+  .reveal{opacity:0;transform:translateY(32px);transition:opacity .9s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1)}
   .reveal.in{opacity:1;transform:none}
+  section.blk{padding:120px 0}
+
+  /* INTRO — big centered statement */
+  .intro{text-align:center}
+  .intro .rule{margin-bottom:30px}
+  .intro h2{font-size:clamp(1.8rem,3.6vw,2.9rem);font-weight:300;max-width:20ch;margin:0 auto 26px;line-height:1.25}
+  .intro h2 em{font-style:italic;color:var(--accent)}
+  .intro p{color:var(--ink-soft);max-width:60ch;margin:0 auto;font-size:1.05rem}
+
+  /* ROOMS — featured + grid */
+  .rooms{background:var(--sand)}
+  .sec-head{text-align:center;max-width:620px;margin:0 auto 60px}
+  .sec-head .eyebrow{display:block;margin-bottom:14px}
+  .sec-head h2{font-size:clamp(2rem,4.4vw,3.2rem)}
+  .feat{position:relative;border-radius:14px;overflow:hidden;min-height:460px;display:flex;align-items:flex-end;color:var(--paper);margin-bottom:26px;box-shadow:0 40px 80px -44px rgba(47,26,17,.6)}
+  .feat .art{position:absolute;inset:0;background:radial-gradient(60% 80% at 70% 24%,rgba(131,190,185,.6),transparent 56%),linear-gradient(150deg,#6e4b3b,#3f2316)}
+  .feat::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(47,26,17,.78),transparent 70%)}
+  .feat .b{position:relative;z-index:2;padding:42px 46px;max-width:560px}
+  .feat .tag{font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--accent-glow)}
+  .feat h3{color:var(--paper);font-size:clamp(1.9rem,3.2vw,2.6rem);font-weight:400;margin:8px 0 6px}
+  .feat .rate{font-family:"Prata",serif;color:var(--accent-glow);font-size:1.15rem;margin-bottom:14px}
+  .feat p{color:rgba(248,244,239,.88);max-width:42ch;margin-bottom:20px}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:26px}
+  @media(max-width:760px){.grid2{grid-template-columns:1fr}.feat{min-height:380px}.feat .b{padding:30px 26px}}
+  .card{background:var(--paper);border-radius:14px;overflow:hidden;box-shadow:0 24px 54px -36px rgba(47,26,17,.5);transition:transform .5s cubic-bezier(.16,1,.3,1)}
+  .card:hover{transform:translateY(-6px)}
+  .card .art{height:210px;position:relative}
+  .ca1{background:radial-gradient(70% 80% at 30% 30%,rgba(76,161,153,.6),transparent 56%),linear-gradient(150deg,#5a3220,#2f1a11)}
+  .ca2{background:radial-gradient(76% 70% at 64% 72%,rgba(131,190,185,.55),transparent 54%),linear-gradient(150deg,#7e5f51,#3f2316)}
+  .card .cb{padding:26px 26px 30px}
+  .card h3{font-size:1.5rem;font-weight:400;margin-bottom:4px}
+  .card .rate{font-family:"Prata",serif;color:var(--accent);margin-bottom:12px}
+  .card .rate small{color:var(--ink-soft);font-family:"Inter";font-size:.8rem}
+  .card p{color:var(--ink-soft);font-size:.93rem;margin-bottom:16px}
+
+  /* EXPERIENCES strip */
+  .exp{text-align:center}
+  .exp-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:30px;margin-top:54px}
+  @media(max-width:760px){.exp-grid{grid-template-columns:1fr 1fr;gap:26px}}
+  .exp .item svg{width:30px;height:30px;stroke:var(--accent);stroke-width:1.4;fill:none;margin-bottom:14px}
+  .exp .item h4{font-family:"Prata",serif;font-weight:400;font-size:1.15rem;margin-bottom:6px}
+  .exp .item p{color:var(--ink-soft);font-size:.9rem}
+
+  /* CALENDAR */
+  .book .wrap{display:grid;grid-template-columns:1fr 1.05fr;gap:64px;align-items:center}
+  @media(max-width:880px){.book .wrap{grid-template-columns:1fr;gap:40px}}
+  .book h2{font-size:clamp(2rem,4vw,3rem);margin:14px 0 18px}
+  .book p{color:var(--ink-soft);max-width:42ch}
+  .cal{background:var(--paper);border:1px solid var(--line);border-radius:4px;box-shadow:0 40px 90px -50px rgba(47,26,17,.5);overflow:hidden}
+  .cal-top{display:flex;align-items:center;justify-content:space-between;padding:20px 24px;background:var(--teal-deep);color:var(--paper)}
+  .cal-top .lab{font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(248,244,239,.6)}
+  .cal-top .mon{font-family:"Prata",serif;font-size:1.15rem;margin-top:2px}
+  .cal-nav{display:flex;gap:8px}.cal-nav button{width:36px;height:36px;border-radius:50%;border:1px solid rgba(248,244,239,.25);background:transparent;color:var(--paper);cursor:pointer;display:grid;place-items:center}
+  .cal-nav svg{width:15px;height:15px;stroke:currentColor;stroke-width:2;fill:none}
+  .cal-grid{padding:16px 20px 6px}.cal-dow{display:grid;grid-template-columns:repeat(7,1fr);gap:2px;margin-bottom:8px}
+  .cal-dow span{text-align:center;font-size:.64rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft);font-weight:600}
+  .cal-days{display:grid;grid-template-columns:repeat(7,1fr);gap:2px}
+  .day{aspect-ratio:1;display:grid;place-items:center;font-size:.88rem;font-variant-numeric:tabular-nums;cursor:pointer;border-radius:13px;transition:background .2s,color .2s;user-select:none}
+  .day.empty{cursor:default}.day.past{color:var(--line);cursor:not-allowed;text-decoration:line-through;opacity:.5}
+  .day:not(.past):not(.empty):hover{background:var(--sand)}.day.in,.day.out{background:var(--accent);color:var(--ink);font-weight:600}.day.range{background:rgba(76,161,153,.22)}
+  .cal-foot{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:18px 24px;border-top:1px solid var(--line);flex-wrap:wrap}
+  .cal-sel{font-size:.8rem;color:var(--ink-soft)}.cal-sel b{color:var(--teal-deep);font-family:"Prata",serif;font-size:1.02rem;display:block}
+  .cal-foot .btn-solid{padding:13px 24px;font-size:.88rem}.cal-foot .btn-solid[disabled]{opacity:.4;pointer-events:none}
+
+  /* REVIEWS */
+  .reviews{text-align:center;background:var(--teal-deep);color:var(--paper)}
+  .reviews .eyebrow{color:var(--accent-glow)}
+  .reviews h2{color:var(--paper);margin:14px 0 50px;font-size:clamp(2rem,4vw,3rem)}
+  .r-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:30px;text-align:left}
+  @media(max-width:840px){.r-grid{grid-template-columns:1fr}}
+  .q{border-top:1px solid rgba(248,244,239,.2);padding-top:24px}
+  .q .stars{color:var(--accent-glow);letter-spacing:.2em;margin-bottom:14px;font-size:.85rem}
+  .q p{font-family:"Prata",serif;font-style:italic;font-weight:300;font-size:1.15rem;color:var(--paper);margin-bottom:16px}
+  .q .who{font-size:.82rem;color:rgba(248,244,239,.6)}.q .who b{color:var(--paper);font-style:normal}
+
+  /* PITCH */
+  .pitch{background:var(--sand);text-align:center;position:relative;overflow:hidden}
+  .pitch .glow{position:absolute;top:-30%;left:50%;transform:translateX(-50%);width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(42,143,134,.16),transparent 70%)}
+  .pitch .wrap{position:relative;z-index:2;max-width:760px}
+  .pitch .eyebrow{display:block;margin-bottom:18px}
+  .pitch h2{font-size:clamp(2rem,4.4vw,3.2rem);margin-bottom:16px}.pitch h2 em{font-style:italic;color:var(--accent)}
+  .pitch p{color:var(--ink-soft);max-width:54ch;margin:0 auto 12px}
+  .pitch .price{font-family:"Prata",serif;font-size:1.3rem;color:var(--accent);margin:26px 0 32px}.pitch .price s{color:var(--ink-soft);opacity:.7;font-size:1rem;margin-right:10px}
+  .pitch .mockup-note{margin:22px auto 0;font-size:.85rem;color:var(--ink-soft);max-width:50ch}
+
+  footer{background:var(--teal-darkest);color:rgba(248,244,239,.62);padding:56px 0 40px;text-align:center}
+  footer .wordmark{color:var(--paper);font-size:1.5rem}
+  footer p{font-size:.86rem;margin:12px 0}
+  footer .base{border-top:1px solid rgba(248,244,239,.1);margin-top:22px;padding-top:20px;font-size:.78rem;opacity:.6}
+  @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
 </style>
 </head>
 <body>
-
 <header class="nav" id="nav">
   <div class="wrap">
-    <a href="#top" class="wordmark">Rasta Paradise<span class="dot">.</span></a>
-    <div class="nav-right">
-      <nav class="links">
-        <a href="#about" data-es="Nosotros" data-en="About">Nosotros</a>
-        <a href="#rooms" data-es="Cabinas" data-en="Chalets">Cabinas</a>
-        <a href="#gallery" data-es="Galería" data-en="Gallery">Galería</a>
-        <a href="#testi" data-es="Opiniones" data-en="Reviews">Opiniones</a>
-        <a href="#contact" data-es="Reservar" data-en="Book">Reservar</a>
-      </nav>
-      <div class="lang" role="group" aria-label="Idioma / Language" title="Cambiar idioma / Switch language">
-        <svg class="lang-globe" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.6 2.7 2.6 15.3 0 18M12 3c-2.6 2.7-2.6 15.3 0 18"/></svg>
-        <button id="btn-es" class="active" onclick="setLang('es')">ES</button>
-        <button id="btn-en" onclick="setLang('en')">EN</button>
-      </div>
+    <a href="#top" class="wordmark">Rasta Paradise<i>.</i></a>
+    <nav class="links">
+      <a href="#story" data-es="Historia" data-en="Story">Historia</a>
+      <a href="#rooms" data-es="Habitaciones" data-en="Rooms">Habitaciones</a>
+      <a href="#book" data-es="Reservar" data-en="Book">Reservar</a>
+    </nav>
+    <div class="nav-tools">
+      <div class="lang"><button id="es" class="active" onclick="setLang('es')">ES</button><span>/</span><button id="en" onclick="setLang('en')">EN</button></div>
+      <a href="#book" class="btn btn-line" style="padding:11px 22px;font-size:.85rem" data-es="Reservar" data-en="Book">Reservar</a>
     </div>
   </div>
 </header>
 
-<!-- HERO -->
 <section class="hero" id="top">
-  <div class="hero-grain"></div>
-  <div class="wrap hero-inner">
-    <span class="label" data-es="Pacífico Central · Costa Rica" data-en="Central Pacific · Costa Rica">Pacífico Central · Costa Rica</span>
-    <h1 data-es="Rasta Paradise, tu chalet <em>entre selva y mar</em>" data-en="Rasta Paradise, your chalet <em>between jungle and sea</em>">Rasta Paradise, tu chalet <em>entre selva y mar</em></h1>
-    <p class="promise" data-es="Un chalet privado y tranquilo a pasos de la playa. Despierta con el canto de la selva y la brisa del Pacífico — el Pura Vida que viniste a buscar." data-en="A private, peaceful chalet steps from the beach. Wake to the song of the jungle and the Pacific breeze — the Pura Vida you came for.">Un chalet privado y tranquilo a pasos de la playa. Despierta con el canto de la selva y la brisa del Pacífico — el Pura Vida que viniste a buscar.</p>
+  <div class="hero-orb"></div>
+  <div class="hero-inner">
+    <span class="eyebrow" data-es="Hotel boutique · Pacífico Central, Costa Rica" data-en="Boutique hotel · Central Pacific, Costa Rica">Hotel boutique · Pacífico Central, Costa Rica</span>
+    <h1 data-es="Un lugar para &lt;em&gt;respirar&lt;/em&gt;" data-en="A place to &lt;em&gt;breathe&lt;/em&gt;">Un lugar para <em>respirar</em></h1>
+    <p class="sub" data-es="Un hotel boutique entre jardín y mar, hecho para descansar de verdad. Pocas habitaciones, mucho silencio, y el Pacífico a unos pasos." data-en="A boutique hotel between garden and sea, made for real rest. Few rooms, deep quiet, and the Pacific a few steps away.">Un hotel boutique entre jardín y mar, hecho para descansar de verdad. Pocas habitaciones, mucho silencio, y el Pacífico a unos pasos.</p>
     <div class="hero-cta">
-      <a href="#contact" class="btn btn-solid" data-es="Reservar directo" data-en="Book direct">Reservar directo
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </a>
-      <a href="#rooms" class="btn btn-ghost" data-es="Ver chalets" data-en="View chalets">Ver chalets</a>
+      <a href="#book" class="btn btn-solid"><span data-es="Ver disponibilidad" data-en="Check availability">Ver disponibilidad</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      <a href="#rooms" class="btn btn-line" data-es="Habitaciones" data-en="Rooms">Habitaciones</a>
     </div>
-  </div>
-  <div class="hero-meta">
-    <b>4.9 / 5</b>
-    <span data-es="Calificación de huéspedes" data-en="Guest rating">Calificación de huéspedes</span>
+    <div class="hero-stats">
+      <div class="s"><b>4.9</b><span data-es="Calificación" data-en="Rating">Calificación</span></div>
+      <div class="s"><b>8</b><span data-es="Habitaciones" data-en="Rooms">Habitaciones</span></div>
+      <div class="s"><b>2 min</b><span data-es="A la playa" data-en="To the beach">A la playa</span></div>
+    </div>
   </div>
 </section>
 
-<!-- ABOUT -->
-<section class="about" id="about">
+<section class="blk intro" id="story">
+  <div class="wrap reveal">
+    <div class="rule"></div>
+    <h2 data-es="No es solo dónde te quedas. Es &lt;em&gt;cómo te sientes&lt;/em&gt; al despertar." data-en="It's not just where you stay. It's &lt;em&gt;how you feel&lt;/em&gt; waking up.">No es solo dónde te quedas. Es <em>cómo te sientes</em> al despertar.</h2>
+    <p data-es="Rasta Paradise nació de una idea sencilla: pocas habitaciones, mucho cariño, y el mar siempre cerca. Te recibimos como familia y te dejamos disfrutar a tu ritmo." data-en="Rasta Paradise began with a simple idea: few rooms, lots of care, and the sea always close. We welcome you like family and let you enjoy at your own pace.">Rasta Paradise nació de una idea sencilla: pocas habitaciones, mucho cariño, y el mar siempre cerca. Te recibimos como familia y te dejamos disfrutar a tu ritmo.</p>
+  </div>
+</section>
+
+<section class="blk rooms" id="rooms">
   <div class="wrap">
-    <div class="reveal">
-      <span class="label" data-es="Nuestra historia" data-en="Our story">Nuestra historia</span>
-      <h2 data-es="Un retiro hecho con calma y cariño" data-en="A retreat made with calm and care">Un retiro hecho con calma y cariño</h2>
-      <p data-es="Rasta Paradise es un pequeño chalet de familia, rodeado de jardín tropical y a minutos de la playa. Pocas unidades, mucho silencio y todo el detalle que merece un buen descanso." data-en="Rasta Paradise is a small family chalet surrounded by tropical garden, minutes from the beach. Few units, plenty of quiet, and all the care a true rest deserves.">Rasta Paradise es un pequeño chalet de familia, rodeado de jardín tropical y a minutos de la playa. Pocas unidades, mucho silencio y todo el detalle que merece un buen descanso.</p>
-      <p data-es="Aquí no eres un número de reserva. Te recibimos como familia, te damos las mejores recomendaciones locales y te dejamos disfrutar a tu ritmo." data-en="Here you are not a booking number. We welcome you like family, share the best local tips, and let you enjoy at your own pace.">Aquí no eres un número de reserva. Te recibimos como familia, te damos las mejores recomendaciones locales y te dejamos disfrutar a tu ritmo.</p>
-      <p class="signature" data-es="— Con gusto te recibimos, como en casa." data-en="— We welcome you warmly, just like home.">— Con gusto te recibimos, como en casa.</p>
+    <div class="sec-head reveal"><span class="eyebrow" data-es="Habitaciones &amp; tarifas" data-en="Rooms &amp; rates">Habitaciones &amp; tarifas</span><h2 data-es="Dónde vas a descansar" data-en="Where you'll rest">Dónde vas a descansar</h2></div>
+    <div class="feat reveal">
+      <div class="art"></div>
+      <div class="b">
+        <span class="tag" data-es="Lo mejor de Rasta Paradise" data-en="The best of Rasta Paradise">Lo mejor de Rasta Paradise</span>
+        <h3 data-es="Suite Vista Mar" data-en="Ocean-View Suite">Suite Vista Mar</h3>
+        <div class="rate"><span data-es="desde" data-en="from">desde</span> $195 <small data-es="/ noche" data-en="/ night" style="opacity:.8">/ noche</small></div>
+        <p data-es="Nuestra joya: vista directa al atardecer del Pacífico, balcón privado y tina al aire libre." data-en="Our jewel: direct Pacific sunset views, a private balcony and an open-air tub.">Nuestra joya: vista directa al atardecer del Pacífico, balcón privado y tina al aire libre.</p>
+        <a href="#book" class="btn btn-solid" style="padding:13px 26px;font-size:.88rem" data-es="Reservar" data-en="Book">Reservar</a>
+      </div>
     </div>
-    <div class="about-visual reveal">
-      <span class="cap" data-es="Jardín y terraza al amanecer" data-en="Garden and terrace at dawn">Jardín y terraza al amanecer</span>
+    <div class="grid2">
+      <div class="card reveal"><div class="art ca1"></div><div class="cb"><h3 data-es="Habitación Jardín" data-en="Garden Room">Habitación Jardín</h3><div class="rate">$90 <small data-es="/ noche" data-en="/ night">/ noche</small></div><p data-es="Acogedora para dos, con vista al jardín tropical y terraza privada." data-en="Cozy for two, with tropical garden views and a private terrace.">Acogedora para dos, con vista al jardín tropical y terraza privada.</p><a href="#book" class="btn btn-line" style="padding:11px 22px;font-size:.84rem" data-es="Reservar" data-en="Book">Reservar</a></div></div>
+      <div class="card reveal"><div class="art ca2"></div><div class="cb"><h3 data-es="Suite Familiar" data-en="Family Suite">Suite Familiar</h3><div class="rate">$145 <small data-es="/ noche" data-en="/ night">/ noche</small></div><p data-es="Amplia para hasta cuatro, con cocineta y balcón sobre el jardín." data-en="Spacious for up to four, with a kitchenette and a balcony over the garden.">Amplia para hasta cuatro, con cocineta y balcón sobre el jardín.</p><a href="#book" class="btn btn-line" style="padding:11px 22px;font-size:.84rem" data-es="Reservar" data-en="Book">Reservar</a></div></div>
     </div>
   </div>
 </section>
 
-<hr class="hr">
-
-<!-- ROOMS -->
-<section class="rooms" id="rooms">
+<section class="blk exp">
   <div class="wrap">
-    <div class="sec-head reveal">
-      <span class="label" data-es="Chalets &amp; tarifas" data-en="Chalets &amp; rates">Chalets &amp; tarifas</span>
-      <h2 data-es="Espacios para descansar de verdad" data-en="Spaces made for real rest">Espacios para descansar de verdad</h2>
-      <p data-es="Tarifas por noche, impuestos incluidos. Reservando directo siempre obtienes el mejor precio." data-en="Rates per night, taxes included. Booking direct always gets you the best price.">Tarifas por noche, impuestos incluidos. Reservando directo siempre obtienes el mejor precio.</p>
-    </div>
-    <div class="room-grid">
-
-      <div class="room reveal">
-        <div class="room-img ri1"><span class="cap" data-es="Chalet jardín" data-en="Garden chalet">Chalet jardín</span></div>
-        <div class="room-body">
-          <h3 data-es="Chalet Jardín" data-en="Garden Chalet">Chalet Jardín</h3>
-          <div class="rate">$65 <small data-es="/ noche" data-en="/ night">/ noche</small></div>
-          <p data-es="Acogedor para dos, con vista al jardín tropical y entrada independiente." data-en="Cozy for two, with tropical garden views and a private entrance.">Acogedor para dos, con vista al jardín tropical y entrada independiente.</p>
-          <ul class="feats">
-            <li><svg viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-es="Cama matrimonial" data-en="Queen bed">Cama matrimonial</span></li>
-            <li><svg viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-es="Aire acondicionado" data-en="Air conditioning">Aire acondicionado</span></li>
-            <li><svg viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-es="WiFi y baño privado" data-en="WiFi and private bath">WiFi y baño privado</span></li>
-          </ul>
-          <a href="#contact" class="btn btn-line" data-es="Reservar" data-en="Book">Reservar</a>
-        </div>
-      </div>
-
-      <div class="room reveal">
-        <div class="room-img ri2"><span class="cap" data-es="Chalet familiar" data-en="Family chalet">Chalet familiar</span></div>
-        <div class="room-body">
-          <h3 data-es="Chalet Familiar" data-en="Family Chalet">Chalet Familiar</h3>
-          <div class="rate">$98 <small data-es="/ noche" data-en="/ night">/ noche</small></div>
-          <p data-es="Amplio para hasta cuatro personas, con cocineta y terraza propia." data-en="Spacious for up to four guests, with a kitchenette and private terrace.">Amplio para hasta cuatro personas, con cocineta y terraza propia.</p>
-          <ul class="feats">
-            <li><svg viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-es="Hasta 4 huéspedes" data-en="Up to 4 guests">Hasta 4 huéspedes</span></li>
-            <li><svg viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-es="Cocineta equipada" data-en="Equipped kitchenette">Cocineta equipada</span></li>
-            <li><svg viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-es="Terraza privada" data-en="Private terrace">Terraza privada</span></li>
-          </ul>
-          <a href="#contact" class="btn btn-line" data-es="Reservar" data-en="Book">Reservar</a>
-        </div>
-      </div>
-
-      <div class="room reveal">
-        <div class="room-img ri3"><span class="cap" data-es="Suite vista mar" data-en="Ocean-view suite">Suite vista mar</span></div>
-        <div class="room-body">
-          <h3 data-es="Suite Vista Mar" data-en="Ocean-View Suite">Suite Vista Mar</h3>
-          <div class="rate">$140 <small data-es="/ noche" data-en="/ night">/ noche</small></div>
-          <p data-es="Nuestro mejor chalet, con vista al atardecer del Pacífico y balcón privado." data-en="Our finest chalet, with Pacific sunset views and a private balcony.">Nuestro mejor chalet, con vista al atardecer del Pacífico y balcón privado.</p>
-          <ul class="feats">
-            <li><svg viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-es="Vista al océano" data-en="Ocean view">Vista al océano</span></li>
-            <li><svg viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-es="Balcón privado" data-en="Private balcony">Balcón privado</span></li>
-            <li><svg viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-es="Desayuno incluido" data-en="Breakfast included">Desayuno incluido</span></li>
-          </ul>
-          <a href="#contact" class="btn btn-line" data-es="Reservar" data-en="Book">Reservar</a>
-        </div>
-      </div>
-
+    <div class="sec-head reveal" style="margin-bottom:0"><span class="eyebrow" data-es="La experiencia" data-en="The experience">La experiencia</span><h2 data-es="Todo lo que necesitas, nada que sobre" data-en="Everything you need, nothing you don't">Todo lo que necesitas, nada que sobre</h2></div>
+    <div class="exp-grid reveal">
+      <div class="item"><svg viewBox="0 0 24 24"><path d="M3 18c3-3 6-3 9 0s6 3 9 0M3 12c3-3 6-3 9 0s6 3 9 0"/></svg><h4 data-es="Frente al mar" data-en="Oceanfront">Frente al mar</h4><p data-es="A dos minutos de la arena." data-en="Two minutes from the sand.">A dos minutos de la arena.</p></div>
+      <div class="item"><svg viewBox="0 0 24 24"><path d="M4 19h16M6 19V9l6-4 6 4v10M10 19v-5h4v5"/></svg><h4 data-es="Desayuno incluido" data-en="Breakfast included">Desayuno incluido</h4><p data-es="Fruta fresca y café local." data-en="Fresh fruit and local coffee.">Fruta fresca y café local.</p></div>
+      <div class="item"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 3c2.6 2.7 2.6 15.3 0 18M3 12h18"/></svg><h4 data-es="Tours locales" data-en="Local tours">Tours locales</h4><p data-es="Surf, cascadas y más." data-en="Surf, waterfalls and more.">Surf, cascadas y más.</p></div>
+      <div class="item"><svg viewBox="0 0 24 24"><path d="M5 12h14M5 12a7 7 0 0114 0M5 12a7 7 0 0014 0"/></svg><h4 data-es="Piscina &amp; jardín" data-en="Pool &amp; garden">Piscina &amp; jardín</h4><p data-es="Para desconectar de verdad." data-en="To truly disconnect.">Para desconectar de verdad.</p></div>
     </div>
   </div>
 </section>
 
-<!-- GALLERY -->
-<section class="gallery" id="gallery">
+<section class="blk book" id="book">
   <div class="wrap">
-    <div class="sec-head center reveal">
-      <span class="label" data-es="Galería" data-en="Gallery">Galería</span>
-      <h2 data-es="Un vistazo a Rasta Paradise" data-en="A glimpse of Rasta Paradise">Un vistazo a Rasta Paradise</h2>
-    </div>
-    <div class="gal-grid reveal">
-      <div class="tile big t1"><span class="cap" data-es="Piscina entre palmeras" data-en="Pool among the palms">Piscina entre palmeras</span></div>
-      <div class="tile t2"><span class="cap" data-es="Atardecer en la playa" data-en="Sunset on the beach">Atardecer en la playa</span></div>
-      <div class="tile t3"><span class="cap" data-es="Interior del chalet" data-en="Chalet interior">Interior del chalet</span></div>
-      <div class="tile t4"><span class="cap" data-es="Sendero al mar" data-en="Path to the sea">Sendero al mar</span></div>
-      <div class="tile t5"><span class="cap" data-es="Desayuno tropical" data-en="Tropical breakfast">Desayuno tropical</span></div>
+    <div class="reveal"><span class="eyebrow" data-es="Disponibilidad" data-en="Availability">Disponibilidad</span><h2 data-es="Elige tus fechas" data-en="Choose your dates">Elige tus fechas</h2><p data-es="Selecciona entrada y salida — te confirmamos por WhatsApp en minutos, sin comisiones de Booking ni Airbnb." data-en="Pick check-in and check-out — we confirm on WhatsApp within minutes, no Booking or Airbnb fees.">Selecciona entrada y salida — te confirmamos por WhatsApp en minutos, sin comisiones de Booking ni Airbnb.</p></div>
+    <div class="cal reveal">
+      <div class="cal-top"><div><div class="lab" data-es="Tu estadía" data-en="Your stay">Tu estadía</div><div class="mon" id="calMonth">—</div></div><div class="cal-nav"><button id="prevM"><svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg></button><button id="nextM"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button></div></div>
+      <div class="cal-grid"><div class="cal-dow" id="calDow"></div><div class="cal-days" id="calDays"></div></div>
+      <div class="cal-foot"><div class="cal-sel"><b id="selNights" data-es="Selecciona la entrada" data-en="Select check-in">Selecciona la entrada</b><span id="selDates"></span></div><a id="waBook" class="btn btn-solid" disabled><span data-es="Reservar por WhatsApp" data-en="Book on WhatsApp">Reservar por WhatsApp</span></a></div>
     </div>
   </div>
 </section>
 
-<!-- TESTIMONIALS -->
-<section class="testi" id="testi">
+<section class="blk reviews">
   <div class="wrap">
-    <div class="sec-head center reveal">
-      <span class="label" data-es="Opiniones de huéspedes" data-en="Guest reviews">Opiniones de huéspedes</span>
-      <h2 data-es="Lo que cuentan quienes ya vinieron" data-en="What past guests say">Lo que cuentan quienes ya vinieron</h2>
-    </div>
-    <div class="t-grid">
-      <div class="quote reveal">
-        <div class="rating"><b>5.0</b> &nbsp;/ 5 · <span data-es="Excelente" data-en="Excellent">Excelente</span></div>
-        <p data-es="«Limpio, tranquilo y la atención fue de otro nivel. Nos sentimos en casa desde el primer minuto. Volveremos sin duda.»" data-en="“Clean, peaceful, and the hospitality was next level. We felt at home from the first minute. We'll definitely return.”">«Limpio, tranquilo y la atención fue de otro nivel. Nos sentimos en casa desde el primer minuto. Volveremos sin duda.»</p>
-        <div class="who"><span class="mono m1">MR</span><div><b>María Rodríguez</b><small data-es="México" data-en="Mexico">México</small></div></div>
-      </div>
-      <div class="quote reveal">
-        <div class="rating"><b>5.0</b> &nbsp;/ 5 · <span data-es="Excelente" data-en="Excellent">Excelente</span></div>
-        <p data-es="«Un pequeño paraíso. Chalet impecable, a pasos de la playa, y los anfitriones nos dieron los mejores consejos locales. Pura Vida de verdad.»" data-en="“A little paradise. Spotless chalet, steps from the beach, and the hosts gave us the best local tips. Pura Vida indeed.”">«Un pequeño paraíso. Chalet impecable, a pasos de la playa, y los anfitriones nos dieron los mejores consejos locales. Pura Vida de verdad.»</p>
-        <div class="who"><span class="mono m2">JC</span><div><b>James Carter</b><small data-es="Canadá" data-en="Canada">Canadá</small></div></div>
-      </div>
-      <div class="quote reveal">
-        <div class="rating"><b>4.9</b> &nbsp;/ 5 · <span data-es="Excelente" data-en="Excellent">Excelente</span></div>
-        <p data-es="«Tranquilidad total y un trato humano que ya no se encuentra. El atardecer desde la terraza vale cada colón.»" data-en="“Total peace and a warmth that's rare these days. The sunset from the terrace is worth every colón.”">«Tranquilidad total y un trato humano que ya no se encuentra. El atardecer desde la terraza vale cada colón.»</p>
-        <div class="who"><span class="mono m3">LF</span><div><b>Lucía Fernández</b><small data-es="España" data-en="Spain">España</small></div></div>
-      </div>
+    <span class="eyebrow" data-es="Opiniones" data-en="Reviews">Opiniones</span>
+    <h2 data-es="Lo que dicen los huéspedes" data-en="What guests say">Lo que dicen los huéspedes</h2>
+    <div class="r-grid">
+      <div class="q reveal"><div class="stars">★★★★★</div><p data-es="“El lugar más tranquilo en el que nos hemos quedado en Costa Rica.”" data-en="“The most peaceful place we've stayed in Costa Rica.”">“El lugar más tranquilo en el que nos hemos quedado en Costa Rica.”</p><div class="who"><b>Marie &amp; Tom</b> · <span data-es="Canadá" data-en="Canada">Canadá</span></div></div>
+      <div class="q reveal"><div class="stars">★★★★★</div><p data-es="“Nos trataron como familia. Volveremos sin dudarlo.”" data-en="“They treated us like family. We'll be back without a doubt.”">“Nos trataron como familia. Volveremos sin dudarlo.”</p><div class="who"><b>Sofía R.</b> · <span data-es="México" data-en="Mexico">México</span></div></div>
+      <div class="q reveal"><div class="stars">★★★★★</div><p data-es="“La suite al atardecer es pura magia. Reservar directo fue facilísimo.”" data-en="“The suite at sunset is pure magic. Booking direct was so easy.”">“La suite al atardecer es pura magia. Reservar directo fue facilísimo.”</p><div class="who"><b>James W.</b> · <span data-es="EE. UU." data-en="USA">EE. UU.</span></div></div>
     </div>
   </div>
 </section>
 
-<!-- CONTACT -->
-<section class="contact" id="contact">
+<section class="blk pitch">
+  <div class="glow"></div>
   <div class="wrap">
-    <div class="reveal">
-      <span class="label" data-es="Reserva directo" data-en="Book direct">Reserva directo</span>
-      <h2 data-es="Hablemos de tu estadía" data-en="Let's plan your stay">Hablemos de tu estadía</h2>
-      <p class="lede" data-es="Escríbenos por WhatsApp y te respondemos al momento. Sin intermediarios y con el mejor precio garantizado." data-en="Message us on WhatsApp and we'll reply right away. No middlemen, best price guaranteed.">Escríbenos por WhatsApp y te respondemos al momento. Sin intermediarios y con el mejor precio garantizado.</p>
-      <ul class="ci">
-        <li>
-          <svg viewBox="0 0 24 24" fill="none"><path d="M12 21s-7-6.2-7-11a7 7 0 0114 0c0 4.8-7 11-7 11z" stroke-linejoin="round"/><circle cx="12" cy="10" r="2.5"/></svg>
-          <div><b data-es="Ubicación" data-en="Location">Ubicación</b><span data-es="Pacífico Central — Jacó / Quepos / Manuel Antonio, Costa Rica" data-en="Central Pacific — Jacó / Quepos / Manuel Antonio, Costa Rica">Pacífico Central — Jacó / Quepos / Manuel Antonio, Costa Rica</span></div>
-        </li>
-        <li>
-          <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          <div><b data-es="Recepción" data-en="Front desk">Recepción</b><span data-es="Todos los días · 7:00 a.m. – 9:00 p.m." data-en="Every day · 7:00 a.m. – 9:00 p.m.">Todos los días · 7:00 a.m. – 9:00 p.m.</span></div>
-        </li>
-        <li>
-          <svg viewBox="0 0 24 24" fill="none"><path d="M4 6h16v12H4z" stroke-linejoin="round"/><path d="M4 7l8 6 8-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          <div><b data-es="Correo" data-en="Email">Correo</b><span>hola@rastaparadise.com</span></div>
-        </li>
-      </ul>
-    </div>
-    <div class="contact-card reveal">
-      <h3 data-es="Reserva en segundos" data-en="Book in seconds">Reserva en segundos</h3>
-      <p data-es="Toca el botón y escríbenos directamente por WhatsApp. Te confirmamos disponibilidad al instante." data-en="Tap the button and message us directly on WhatsApp. We'll confirm availability instantly.">Toca el botón y escríbenos directamente por WhatsApp. Te confirmamos disponibilidad al instante.</p>
-      <a href="https://wa.me/13213561951" class="btn btn-solid" data-es="Escribir por WhatsApp" data-en="Message on WhatsApp">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M20 12a8 8 0 01-11.5 7.2L4 20l.9-4.3A8 8 0 1120 12z" stroke-linejoin="round"/></svg>
-        Escribir por WhatsApp
-      </a>
-      <p class="note">+1 321 356 1951 · <span data-es="Respuesta inmediata" data-en="Instant reply">Respuesta inmediata</span></p>
-    </div>
-  </div>
-</section>
-
-<!-- PROPOSAL -->
-<section class="proposal" id="proposal">
-  <div class="prop-inner">
-    <span class="label reveal" data-es="Una propuesta para el dueño" data-en="A proposal for the owner">Una propuesta para el dueño</span>
-    <h2 class="reveal" data-es="Tu sitio web profesional — <span class='price'>$500</span>" data-en="Your professional website — <span class='price'>$500</span>">Tu sitio web profesional — <span class="price">$500</span></h2>
-    <p class="sub reveal" data-es="Lo que estás viendo es un ejemplo real de lo que puedo construir para tu negocio. Así de bien se puede ver Rasta Paradise en internet — y en dos idiomas." data-en="What you're seeing is a real example of what I can build for your business. This is how good Rasta Paradise can look online — in two languages.">Lo que estás viendo es un ejemplo real de lo que puedo construir para tu negocio. Así de bien se puede ver Rasta Paradise en internet — y en dos idiomas.</p>
-
-    <div class="reasons reveal">
-      <div class="reason">
-        <span class="num">01</span>
-        <div>
-          <h4 data-es="Reservas directas" data-en="Direct bookings">Reservas directas</h4>
-          <p data-es="Recibe reservas sin pagar 15–20% de comisión a Booking o Airbnb. Ese dinero se queda contigo." data-en="Take bookings without paying 15–20% commission to Booking or Airbnb. That money stays with you.">Recibe reservas sin pagar 15–20% de comisión a Booking o Airbnb. Ese dinero se queda contigo.</p>
-        </div>
-      </div>
-      <div class="reason">
-        <span class="num">02</span>
-        <div>
-          <h4 data-es="Aparece en Google" data-en="Show up on Google">Aparece en Google</h4>
-          <p data-es="Cuando los turistas buscan dónde quedarse en la zona, tu negocio aparece — no la competencia." data-en="When tourists search for where to stay in the area, your business shows up — not the competition.">Cuando los turistas buscan dónde quedarse en la zona, tu negocio aparece — no la competencia.</p>
-        </div>
-      </div>
-      <div class="reason">
-        <span class="num">03</span>
-        <div>
-          <h4 data-es="Genera confianza" data-en="Build trust">Genera confianza</h4>
-          <p data-es="Un sitio profesional hace que el viajero te tome en serio y reserve sin dudar." data-en="A professional site makes travelers take you seriously and book without hesitation.">Un sitio profesional hace que el viajero te tome en serio y reserve sin dudar.</p>
-        </div>
-      </div>
-      <div class="reason">
-        <span class="num">04</span>
-        <div>
-          <h4 data-es="Rápido, móvil y tuyo" data-en="Fast, mobile, and yours">Rápido, móvil y tuyo</h4>
-          <p data-es="Carga al instante, se ve perfecto en el teléfono y es tuyo para siempre — sin alquileres mensuales." data-en="Loads instantly, looks perfect on the phone, and is yours forever — no monthly rentals.">Carga al instante, se ve perfecto en el teléfono y es tuyo para siempre — sin alquileres mensuales.</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="anchor reveal">
-      <p data-es="Las agencias cobran <b>$2,000 o más</b> por un sitio así. Este es un sitio completo, bilingüe y listo para vender, por <b>$500 — pago único.</b>" data-en="Agencies charge <b>$2,000 or more</b> for a site like this. This is a complete, bilingual, ready-to-sell site for <b>$500 — one-time payment.</b>">Las agencias cobran <b>$2,000 o más</b> por un sitio así. Este es un sitio completo, bilingüe y listo para vender, por <b>$500 — pago único.</b></p>
-    </div>
-
-    <a href="https://wa.me/13213561951" class="btn btn-solid reveal" data-es="Quiero mi sitio web" data-en="I want my website">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M20 12a8 8 0 01-11.5 7.2L4 20l.9-4.3A8 8 0 1120 12z" stroke-linejoin="round"/></svg>
-      Quiero mi sitio web
-    </a>
-    <p class="closing reveal" data-es="Sin compromiso · Conversemos por WhatsApp" data-en="No obligation · Let's talk on WhatsApp">Sin compromiso · Conversemos por WhatsApp</p>
+    <span class="eyebrow">Para el dueño de Rasta Paradise</span>
+    <h2 data-es="Esta página la armé &lt;em&gt;para ustedes&lt;/em&gt;." data-en="I built this page &lt;em&gt;for you&lt;/em&gt;.">Esta página la armé <em>para ustedes</em>.</h2>
+    <p data-es="Hola, soy Tony. Diseño páginas web cinematográficas para hoteles en Costa Rica. Vi que aún no tenían una y quise mostrarles cómo se vería la suya." data-en="Hi, I'm Tony. I design cinematic websites for hotels in Costa Rica. I saw you didn't have one and wanted to show you how yours could look.">Hola, soy Tony. Diseño páginas web cinematográficas para hoteles en Costa Rica. Vi que aún no tenían una y quise mostrarles cómo se vería la suya.</p>
+    <div class="price" data-es="&lt;s&gt;$2,000+ en una agencia&lt;/s&gt; $500 — su sitio completo, listo para reservas." data-en="&lt;s&gt;$2,000+ at an agency&lt;/s&gt; $500 — your complete site, ready for bookings."><s>$2,000+ en una agencia</s> $500 — su sitio completo, listo para reservas.</div>
+    <a href="https://wa.me/13213561951?text=Hola%20Tony,%20vi%20el%20sitio%20de%20muestra%20de%20Rasta%20Paradise%20y%20me%20interesa." class="btn btn-solid"><span data-es="Hablar con Tony por WhatsApp" data-en="Talk to Tony on WhatsApp">Hablar con Tony por WhatsApp</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+    <p class="mockup-note" data-es="Esto es solo una muestra para enseñarle posibilidades — puedo cambiar colores, textos, fotos y prácticamente todo a su gusto." data-en="This is just a sample to show what's possible — I can change the colors, text, photos and pretty much everything to your liking.">Esto es solo una muestra para enseñarle posibilidades — puedo cambiar colores, textos, fotos y prácticamente todo a su gusto.</p>
   </div>
 </section>
 
 <footer>
   <div class="wrap">
-    <span class="wordmark">Rasta Paradise<span class="dot">.</span></span>
-    <p data-es="Pacífico Central, Costa Rica · +1 321 356 1951" data-en="Central Pacific, Costa Rica · +1 321 356 1951">Pacífico Central, Costa Rica · +1 321 356 1951</p>
-    <p class="smol" data-es="© 2026 Rasta Paradise · Pura Vida · Sitio de muestra con contenido de ejemplo." data-en="© 2026 Rasta Paradise · Pura Vida · Sample site with placeholder content.">© 2026 Rasta Paradise · Pura Vida · Sitio de muestra con contenido de ejemplo.</p>
+    <a href="#top" class="wordmark">Rasta Paradise<i>.</i></a>
+    <p data-es="Hotel boutique frente al mar. Pacífico Central, Costa Rica." data-en="Boutique oceanfront hotel. Central Pacific, Costa Rica.">Hotel boutique frente al mar. Pacífico Central, Costa Rica.</p>
+    <p>WhatsApp</p>
+    <div class="base"><span>© 2026 Rasta Paradise</span> · <span data-es="Sitio de muestra · diseñado por Tony" data-en="Sample site · designed by Tony">Sitio de muestra · diseñado por Tony</span></div>
   </div>
 </footer>
 
 <script>
-  // sticky nav
-  const nav=document.getElementById('nav');
-  const onScroll=()=>nav.classList.toggle('scrolled',window.scrollY>40);
-  window.addEventListener('scroll',onScroll,{passive:true});onScroll();
-
-  // reveal on scroll
-  const io=new IntersectionObserver((entries)=>{
-    entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});
-  },{threshold:.14});
-  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
-
-  // language toggle — swaps every element carrying data-es / data-en
-  function setLang(lang){
-    document.documentElement.lang=lang;
-    document.querySelectorAll('[data-es]').forEach(el=>{
-      const val=el.getAttribute('data-'+lang);
-      if(val!==null) el.innerHTML=val;
-    });
-    document.getElementById('btn-es').classList.toggle('active',lang==='es');
-    document.getElementById('btn-en').classList.toggle('active',lang==='en');
-    try{localStorage.setItem('demo-lang',lang);}catch(e){}
-  }
-  // restore saved choice (default Spanish)
-  try{
-    const saved=localStorage.getItem('demo-lang');
-    if(saved&&saved!=='es') setLang(saved);
-  }catch(e){}
+function setLang(l){document.documentElement.lang=l;
+  document.querySelectorAll('[data-es]').forEach(el=>{const v=el.getAttribute('data-'+l);if(v==null)return;if(v.indexOf('<')>-1)el.innerHTML=v;else el.textContent=v;});
+  document.getElementById('es').classList.toggle('active',l==='es');document.getElementById('en').classList.toggle('active',l==='en');
+  try{localStorage.setItem('lang',l)}catch(e){}}
+(function(){try{const s=localStorage.getItem('lang');if(s&&s!=='es')setLang(s);}catch(e){}})();
+const nav=document.getElementById('nav');addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>40),{passive:true});
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}}),{threshold:.14});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+const WA="13213561951",RATE=90,BIZ="Rasta Paradise";
+const MON={es:["Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"],en:["January","February","March","April","May","June","July","August","September","October","November","December"]};
+const DOW={es:["L","M","M","J","V","S","D"],en:["M","T","W","T","F","S","S"]};
+let view=new Date();view.setDate(1);let ci=null,co=null;const today=new Date();today.setHours(0,0,0,0);
+const E={month:calMonth,dow:calDow,days:calDays,nights:selNights,dates:selDates,wa:waBook};
+const fmt=(d,l)=>d.getDate()+" "+MON[l][d.getMonth()].slice(0,3);
+function render(){const l=document.documentElement.lang;E.month.textContent=MON[l][view.getMonth()]+" "+view.getFullYear();E.dow.innerHTML=DOW[l].map(d=>"<span>"+d+"</span>").join("");
+  const first=(new Date(view.getFullYear(),view.getMonth(),1).getDay()+6)%7,days=new Date(view.getFullYear(),view.getMonth()+1,0).getDate();let h="";
+  for(let i=0;i<first;i++)h+='<div class="day empty"></div>';
+  for(let d=1;d<=days;d++){const dt=new Date(view.getFullYear(),view.getMonth(),d);dt.setHours(0,0,0,0);let c="day";if(dt<today)c+=" past";if(ci&&dt.getTime()===ci.getTime())c+=" in";if(co&&dt.getTime()===co.getTime())c+=" out";if(ci&&co&&dt>ci&&dt<co)c+=" range";h+='<div class="'+c+'" data-t="'+dt.getTime()+'">'+d+'</div>';}
+  E.days.innerHTML=h;E.days.querySelectorAll('.day:not(.past):not(.empty)').forEach(el=>el.onclick=()=>pick(+el.dataset.t));foot();}
+function pick(t){const d=new Date(t);if(!ci||co){ci=d;co=null;}else if(d>ci){co=d;}else{ci=d;}render();}
+function foot(){const l=document.documentElement.lang;if(ci&&co){const n=Math.round((co-ci)/864e5);E.nights.textContent=n+(l==='es'?" noche"+(n>1?"s":"")+" · desde $"+n*RATE:" night"+(n>1?"s":"")+" · from $"+n*RATE);E.dates.textContent=fmt(ci,l)+" → "+fmt(co,l);E.wa.removeAttribute("disabled");const m=l==='es'?("Hola! Quiero reservar en "+BIZ+" del "+fmt(ci,l)+" al "+fmt(co,l)+" ("+n+" noche"+(n>1?"s":"")+"). ¿Disponible?"):("Hi! I'd like to book "+BIZ+" from "+fmt(ci,l)+" to "+fmt(co,l)+" ("+n+" night"+(n>1?"s":"")+"). Available?");E.wa.href="https://wa.me/"+WA+"?text="+encodeURIComponent(m);}else if(ci){E.nights.textContent=l==='es'?"Selecciona la salida":"Select check-out";E.dates.textContent=fmt(ci,l);E.wa.setAttribute("disabled","");}else{E.nights.textContent=l==='es'?"Selecciona la entrada":"Select check-in";E.dates.textContent="";E.wa.setAttribute("disabled","");}}
+prevM.onclick=()=>{const m=new Date(view);m.setMonth(m.getMonth()-1);if(m.getFullYear()>today.getFullYear()||(m.getFullYear()===today.getFullYear()&&m.getMonth()>=today.getMonth())){view=m;render();}};
+nextM.onclick=()=>{view.setMonth(view.getMonth()+1);render();};
+render();const _sl=setLang;setLang=function(l){_sl(l);render();};
 </script>
 </body>
 </html>
