@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ecoglide Arenal Park — Canopy & Nature Tours in La Fortuna, Costa Rica</title>
+<meta name="description" content="Ziplines, Tarzan swing, and rainforest walks on the slopes of Arenal Volcano. Family adventures in La Fortuna. Book direct.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: oklch(0.18 0.04 150);
+    --bg-2: oklch(0.22 0.045 150);
+    --surface: oklch(0.25 0.045 150);
+    --ink: oklch(0.96 0.012 100);
+    --muted: oklch(0.80 0.035 145);
+    --line: oklch(0.43 0.04 150 / 0.5);
+    --accent: oklch(0.86 0.17 102);    /* adventure yellow-lime (their brand) */
+    --accent-2: oklch(0.76 0.16 132);
+    --ink-on-accent: oklch(0.24 0.05 135);
+    --f-display: "Fraunces", Georgia, serif;
+    --f-body: "Inter", system-ui, sans-serif;
+    --step--1: clamp(0.82rem, 0.79rem + 0.15vw, 0.9rem);
+    --step-0: clamp(1rem, 0.95rem + 0.25vw, 1.13rem);
+    --step-1: clamp(1.3rem, 1.18rem + 0.6vw, 1.6rem);
+    --step-2: clamp(1.75rem, 1.5rem + 1.2vw, 2.4rem);
+    --step-3: clamp(2.3rem, 1.85rem + 2.3vw, 3.6rem);
+    --hero: clamp(3rem, 2.1rem + 4.6vw, 5.6rem);
+    --ease: cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:var(--step-0);line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  img{display:block;max-width:100%}
+  a{color:inherit;text-decoration:none}
+  h1,h2,h3{font-family:var(--f-display);font-weight:500;line-height:1.05;letter-spacing:-0.02em;text-wrap:balance;margin:0}
+  p{text-wrap:pretty}
+  .wrap{width:min(1180px,92vw);margin-inline:auto}
+  header.nav{position:fixed;inset:0 0 auto 0;z-index:70;display:flex;align-items:center;justify-content:space-between;padding:18px clamp(16px,4vw,48px);transition:background .4s var(--ease),backdrop-filter .4s var(--ease),padding .4s var(--ease)}
+  header.nav.scrolled{background:oklch(0.16 0.04 150 / 0.82);backdrop-filter:blur(12px);padding-block:12px;border-bottom:1px solid var(--line)}
+  .brand{font-family:var(--f-display);font-weight:600;font-size:1.16rem;letter-spacing:.12em;text-transform:uppercase}
+  .brand small{display:block;font-family:var(--f-body);font-weight:400;font-size:.58rem;letter-spacing:.3em;color:var(--muted);margin-top:2px}
+  nav.links{display:flex;gap:28px;align-items:center}
+  nav.links a{font-size:var(--step--1);letter-spacing:.04em;opacity:.85;transition:opacity .2s}
+  nav.links a:hover{opacity:1}
+  .btn{font-family:var(--f-body);font-weight:600;font-size:var(--step--1);letter-spacing:.02em;padding:11px 20px;border-radius:999px;cursor:pointer;border:1px solid transparent;transition:transform .25s var(--ease),background .25s,border-color .25s;white-space:nowrap}
+  .btn-accent{background:var(--accent);color:var(--ink-on-accent)}
+  .btn-accent:hover{transform:translateY(-2px);background:oklch(0.90 0.17 103)}
+  .btn-ghost{border-color:oklch(0.92 0.01 100 / 0.5);color:var(--ink)}
+  .btn-ghost:hover{border-color:var(--ink);transform:translateY(-2px)}
+  .menu-toggle{display:none}
+  .hero{position:relative;min-height:100svh;display:flex;align-items:flex-end;isolation:isolate}
+  .hero::before{content:"";position:absolute;inset:0;z-index:-2;background:url("img/hero.jpg") center/cover no-repeat;transform:scale(1.06);animation:kenburns 18s var(--ease) forwards}
+  @keyframes kenburns{to{transform:scale(1)}}
+  .hero::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,oklch(0.14 0.04 150 / 0.5) 0%,oklch(0.14 0.04 150 / 0.12) 40%,oklch(0.13 0.04 150 / 0.92) 100%)}
+  .hero-inner{padding:0 clamp(16px,4vw,48px) clamp(56px,9vh,120px);width:min(1180px,92vw);margin-inline:auto;position:relative;z-index:2}
+  .spotlight{position:absolute;top:-12%;left:-8%;width:78vw;height:80vh;z-index:1;pointer-events:none;background:radial-gradient(ellipse 60% 50% at 50% 40%,oklch(0.93 0.12 102 / 0.16),transparent 62%);filter:blur(42px);transform:translateY(-34px) rotate(-12deg);opacity:0;animation:spotlight 2.4s var(--ease) .15s forwards}
+  @keyframes spotlight{to{opacity:1;transform:translateY(0) rotate(-12deg)}}
+  .hero .eyebrow{font-size:var(--step--1);letter-spacing:.32em;text-transform:uppercase;color:var(--accent);margin-bottom:22px}
+  .hero h1{font-size:var(--hero);max-width:15ch}
+  .hero h1 em{font-style:italic;font-weight:400;color:var(--accent)}
+  .hero h1 .w{display:inline-block;opacity:0;filter:blur(10px);transform:translateY(10px);animation:tg .8s var(--ease) forwards}
+  @keyframes tg{to{opacity:1;filter:blur(0);transform:translateY(0)}}
+  .hero p.lede{font-size:var(--step-1);max-width:48ch;margin:22px 0 34px;line-height:1.45;font-weight:400}
+  .hero-actions{display:flex;gap:14px;flex-wrap:wrap}
+  @media(prefers-reduced-motion:reduce){.spotlight{animation:none;opacity:1;transform:rotate(-12deg)}.hero h1 .w{animation:none;opacity:1;filter:none;transform:none}}
+  .trust{background:var(--bg-2);border-block:1px solid var(--line)}
+  .trust .wrap{display:flex;align-items:center;justify-content:center;gap:14px 34px;flex-wrap:wrap;padding:18px 0;text-align:center}
+  .trust span{font-size:var(--step--1);color:var(--muted);letter-spacing:.02em}
+  .trust b{color:var(--ink);font-weight:600}
+  section{padding-block:clamp(72px,11vh,150px)}
+  .section-head{max-width:60ch}
+  .section-head h2{font-size:var(--step-3);margin-bottom:18px}
+  .section-head p{color:var(--muted);font-size:var(--step-1);line-height:1.5;max-width:52ch}
+  .feat{display:grid;grid-template-columns:1.15fr 1fr;gap:clamp(28px,5vw,72px);align-items:center;margin-top:64px}
+  .feat:nth-child(even){grid-template-columns:1fr 1.15fr}
+  .feat:nth-child(even) .feat-media{order:2}
+  .feat-media{position:relative;border-radius:6px;overflow:hidden;aspect-ratio:4/3}
+  .feat-media img{width:100%;height:100%;object-fit:cover;transition:transform .9s var(--ease)}
+  .feat:hover .feat-media img{transform:scale(1.05)}
+  .feat-media .tag{position:absolute;top:16px;left:16px;background:oklch(0.14 0.04 150 / 0.78);backdrop-filter:blur(6px);font-size:var(--step--1);letter-spacing:.04em;padding:7px 14px;border-radius:999px}
+  .feat-body h3{font-size:var(--step-2);margin-bottom:14px}
+  .feat-body p{color:var(--muted);margin:0 0 22px}
+  .feat-feat{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:26px}
+  .feat-feat li{list-style:none;font-size:var(--step--1);background:var(--surface);border:1px solid var(--line);padding:7px 14px;border-radius:999px}
+  ul{padding:0;margin:0}
+  .about{position:relative;isolation:isolate}
+  .about::before{content:"";position:absolute;inset:0;z-index:-2;background:url("img/nature.jpg") center/cover fixed no-repeat}
+  .about::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,oklch(0.13 0.04 150 / 0.94) 0%,oklch(0.13 0.04 150 / 0.7) 55%,oklch(0.13 0.04 150 / 0.35) 100%)}
+  .about .copy{max-width:54ch}
+  .about h2{font-size:var(--step-3);margin-bottom:22px}
+  .about p{font-size:var(--step-1);line-height:1.55;margin:0 0 20px;color:oklch(0.94 0.012 100)}
+  .tours .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:6px;overflow:hidden;margin-top:56px}
+  .tour{background:var(--bg);padding:34px 30px;transition:background .3s}
+  .tour:hover{background:var(--surface)}
+  .tour .num{font-family:var(--f-display);font-size:1.1rem;color:var(--accent);margin-bottom:16px;font-weight:500}
+  .tour h3{font-size:var(--step-1);margin-bottom:8px}
+  .tour p{color:var(--muted);font-size:var(--step--1);margin:0}
+  .strip{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:56px}
+  .strip a{display:block;aspect-ratio:1;overflow:hidden;border-radius:4px}
+  .strip img{width:100%;height:100%;object-fit:cover;transition:transform .8s var(--ease)}
+  .strip a:hover img{transform:scale(1.08)}
+  .cta{text-align:center;background:linear-gradient(180deg,var(--bg) 0%,var(--bg-2) 100%)}
+  .cta h2{font-size:var(--step-3);max-width:18ch;margin-inline:auto;margin-bottom:18px}
+  .cta p{color:var(--muted);font-size:var(--step-1);max-width:46ch;margin:0 auto 32px}
+  footer{border-top:1px solid var(--line);padding:40px 0;text-align:center;color:var(--muted);font-size:var(--step--1)}
+  footer .brand{font-size:1rem;margin-bottom:10px;color:var(--ink)}
+  .pitch-note{background:var(--bg-2);border-top:1px solid var(--line)}
+  .pitch-note .wrap{padding-block:clamp(48px,8vh,92px)}
+  .pitch-note .label{display:inline-block;font-size:var(--step--1);letter-spacing:.28em;text-transform:uppercase;color:var(--accent);margin-bottom:18px}
+  .pitch-note h2{font-size:var(--step-2);margin-bottom:18px;max-width:26ch}
+  .pitch-note .intro{color:var(--muted);max-width:60ch;font-size:var(--step-1);line-height:1.5;margin:0}
+  .pitch-note .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:22px 40px;margin:34px 0}
+  .pitch-note .grid p{margin:0;color:var(--muted);font-size:var(--step-0)}
+  .pitch-note .grid b{color:var(--ink);font-weight:600;display:block;margin-bottom:5px}
+  .pitch-note .talk{display:flex;gap:12px 26px;flex-wrap:wrap;align-items:center}
+  .pitch-note .talk .lead-in{font-family:var(--f-display);font-size:var(--step-1);color:var(--ink)}
+  .pitch-note .talk a{color:var(--ink);border-bottom:1px solid var(--line);padding-bottom:3px;transition:border-color .25s}
+  .pitch-note .talk a:hover{border-color:var(--accent)}
+  @media (prefers-reduced-motion: no-preference){
+    html.reveal-on .reveal{opacity:0;transform:translateY(26px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+    html.reveal-on .reveal.in{opacity:1;transform:none}
+  }
+  @media(max-width:880px){
+    nav.links{position:fixed;inset:0 0 0 auto;width:min(78vw,320px);flex-direction:column;align-items:flex-start;justify-content:center;gap:26px;background:oklch(0.14 0.04 150 / 0.98);backdrop-filter:blur(14px);padding:40px;transform:translateX(100%);transition:transform .45s var(--ease);z-index:70}
+    nav.links.open{transform:translateX(0)}
+    nav.links a{font-size:var(--step-1);opacity:1}
+    .menu-toggle{display:inline-flex;background:none;border:none;color:var(--ink);font-size:1.6rem;cursor:pointer;z-index:71}
+    .feat,.feat:nth-child(even){grid-template-columns:1fr}
+    .feat:nth-child(even) .feat-media{order:0}
+    .about::before{background-attachment:scroll}
+    .strip{grid-template-columns:repeat(2,1fr)}
+  }
+</style>
+</head>
+<body>
+<header class="nav" id="nav">
+  <a class="brand" href="#top">Ecoglide<small>Arenal Park · La Fortuna</small></a>
+  <nav class="links" id="links">
+    <a href="#canopy">Canopy</a>
+    <a href="#nature">Nature</a>
+    <a href="#tours">Tours</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#contact">Contact</a>
+    <a class="btn btn-accent" href="#contact">Book a tour</a>
+  </nav>
+  <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false">☰</button>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="spotlight" aria-hidden="true"></div>
+    <div class="hero-inner">
+      <p class="eyebrow">La Fortuna · Arenal Volcano · Costa Rica</p>
+      <h1><span class="w" style="animation-delay:.15s">Fly</span> <span class="w" style="animation-delay:.26s">through</span> <span class="w" style="animation-delay:.37s">the</span> <em><span class="w" style="animation-delay:.52s">Arenal</span> <span class="w" style="animation-delay:.64s">canopy</span></em></h1>
+      <p class="lede">Ziplines, a Tarzan swing, and rainforest walks on the slopes of the volcano. Family adventure, built safe, surrounded by nature.</p>
+      <div class="hero-actions">
+        <a class="btn btn-accent" href="#tours">See the tours</a>
+        <a class="btn btn-ghost" href="#canopy">The canopy tour</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="trust">
+    <div class="wrap">
+      <span><b>Book direct</b> with the park</span>
+      <span>Built to international canopy standards</span>
+      <span>Family-friendly</span>
+      <span>On the slopes of Arenal</span>
+    </div>
+  </div>
+
+  <section id="canopy" class="wrap">
+    <div class="section-head reveal">
+      <h2>The home of adventure in La Fortuna</h2>
+      <p>One park, every way to feel the rainforest, from the cables in the trees to a quiet night walk.</p>
+    </div>
+
+    <article class="feat reveal">
+      <div class="feat-media">
+        <img src="img/canopy.jpg" alt="Canopy zipline tour at Ecoglide Arenal Park" loading="lazy">
+        <span class="tag">Canopy Tour</span>
+      </div>
+      <div class="feat-body">
+        <h3>Canopy Tour with Tarzan Swing</h3>
+        <p>Eleven cables, thirteen platforms, a suspension bridge, and the Tarzan swing, woven through the treetops on the slopes of the Arenal Volcano. Built and maintained to international canopy standards.</p>
+        <ul class="feat-feat"><li>11 cables</li><li>13 platforms</li><li>Suspension bridge</li><li>Tarzan swing</li></ul>
+        <a class="btn btn-ghost" href="#contact">Book the canopy</a>
+      </div>
+    </article>
+
+    <article class="feat reveal" id="nature">
+      <div class="feat-media">
+        <img src="img/adventure.jpg" alt="Rainforest nature walk at Ecoglide Arenal Park" loading="lazy">
+        <span class="tag">Nature &amp; wildlife</span>
+      </div>
+      <div class="feat-body">
+        <h3>Birds, forest, and the night</h3>
+        <p>La Fortuna is one of the best places in the Americas to spot birds. Walk the rainforest by day with a naturalist guide, or after dark to meet the creatures that only come out at night.</p>
+        <ul class="feat-feat"><li>Birdwatching</li><li>Naturalist walk</li><li>Night walk</li><li>Guided</li></ul>
+        <a class="btn btn-ghost" href="#tours">See nature tours</a>
+      </div>
+    </article>
+  </section>
+
+  <section class="about">
+    <div class="wrap">
+      <div class="copy reveal">
+        <h2>On the slopes of the volcano</h2>
+        <p>Ecoglide Arenal Park sits among rivers, forests, mountains and gardens on the flank of the Arenal Volcano, with direct contact with the flora and fauna of Costa Rica's tropical rainforest.</p>
+        <p>La Fortuna is the home of adventure. We put it all in one park, safely, for the whole family.</p>
+        <a class="btn btn-accent" href="#contact">Plan your visit</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="tours" class="tours wrap">
+    <div class="section-head reveal">
+      <h2>Choose your adventure</h2>
+      <p>Go all-in on the canopy, take it slow with nature, or combine both in an Eco Combo.</p>
+    </div>
+    <div class="grid reveal">
+      <div class="tour"><div class="num">01</div><h3>Canopy + Tarzan Swing</h3><p>The full ride: cables, platforms, suspension bridge and the swing.</p></div>
+      <div class="tour"><div class="num">02</div><h3>Classic Canopy</h3><p>Eleven cables and thirteen platforms, without the Tarzan swing.</p></div>
+      <div class="tour"><div class="num">03</div><h3>Birdwatching Tour</h3><p>Spot the birds of one of the Americas' richest regions.</p></div>
+      <div class="tour"><div class="num">04</div><h3>Naturalist Walk</h3><p>The rainforest, rivers and gardens with a guide.</p></div>
+      <div class="tour"><div class="num">05</div><h3>Arenal Night Walk</h3><p>Meet the nocturnal world of the volcano's forest.</p></div>
+      <div class="tour"><div class="num">06</div><h3>Eco Combos</h3><p>Adventure plus nature, the perfect balance in one day.</p></div>
+    </div>
+  </section>
+
+  <section id="gallery" class="wrap">
+    <div class="section-head reveal"><h2>In the park</h2></div>
+    <div class="strip reveal">
+      <a href="img/g1.jpg" target="_blank"><img src="img/g1.jpg" alt="Ecoglide Arenal Park" loading="lazy"></a>
+      <a href="img/g2.jpg" target="_blank"><img src="img/g2.jpg" alt="Birdwatching at Ecoglide" loading="lazy"></a>
+      <a href="img/g3.jpg" target="_blank"><img src="img/g3.jpg" alt="Rainforest nature at Ecoglide" loading="lazy"></a>
+      <a href="img/canopy.jpg" target="_blank"><img src="img/canopy.jpg" alt="Canopy tour" loading="lazy"></a>
+    </div>
+  </section>
+
+  <section class="cta" id="contact">
+    <div class="wrap">
+      <h2 class="reveal">Ready for the canopy?</h2>
+      <p class="reveal">Message us directly to book your adventure. No middleman, no booking fees.</p>
+      <div class="reveal" style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap">
+        <a class="btn btn-accent" href="#contact">Book your adventure</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<section class="pitch-note" id="preview-note">
+  <div class="wrap">
+    <span class="label">A preview from Tony</span>
+    <h2>Here is what a modern Ecoglide site could look like.</h2>
+    <p class="intro">I'm Tony, I design websites for businesses on the coast. I built this free sample using your own photos and words, just to show what's possible. It's one page, a preview, not the finished site.</p>
+    <div class="grid">
+      <p><b>What you'd get</b>A fast, modern website you own, with direct tour bookings, no third-party commissions, live on your own domain.</p>
+      <p><b>This is only a taste</b>The full site would add each tour's details, prices, a real booking flow, gallery, and more pages.</p>
+      <p><b>Change anything</b>Photos, colors, wording, layout, all to your liking. A starting point, not a final answer.</p>
+    </div>
+    <div class="talk">
+      <span class="lead-in">Like it? Let's make it yours.</span>
+      <a href="mailto:anthonyskoczylas@yahoo.com">anthonyskoczylas@yahoo.com</a>
+      <a href="https://instagram.com/Tonysko__" target="_blank" rel="noopener">@Tonysko__</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="brand">Ecoglide Arenal Park</div>
+    <p>La Fortuna de San Carlos · Arenal Volcano · Costa Rica</p>
+  </div>
+</footer>
+
+<script>
+  const nav=document.getElementById('nav');
+  const onScroll=()=>nav.classList.toggle('scrolled',window.scrollY>40);
+  onScroll();window.addEventListener('scroll',onScroll,{passive:true});
+  const links=document.getElementById('links'),toggle=document.getElementById('menuToggle');
+  toggle.addEventListener('click',()=>{const o=links.classList.toggle('open');toggle.setAttribute('aria-expanded',o);toggle.textContent=o?'✕':'☰';});
+  links.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{links.classList.remove('open');toggle.textContent='☰';toggle.setAttribute('aria-expanded','false');}));
+  (function(){
+    if(!('IntersectionObserver' in window))return;
+    if(!matchMedia('(prefers-reduced-motion: no-preference)').matches)return;
+    const els=Array.from(document.querySelectorAll('.reveal'));
+    document.documentElement.classList.add('reveal-on');
+    const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{rootMargin:'0px 0px -8% 0px',threshold:0.08});
+    els.forEach(el=>io.observe(el));
+    setTimeout(()=>els.forEach(el=>el.classList.add('in')),1200);
+  })();
+</script>
+</body>
+</html>

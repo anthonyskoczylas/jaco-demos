@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Backyard Hotel — Oceanfront in Playa Hermosa, Costa Rica</title>
+<meta name="description" content="Oceanfront rooms and suites in Playa Hermosa, 4 km south of Jacó. Book direct — no Booking or Airbnb fees.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: oklch(0.17 0.018 205);
+    --bg-2: oklch(0.21 0.02 205);
+    --surface: oklch(0.24 0.022 205);
+    --ink: oklch(0.96 0.012 85);
+    --muted: oklch(0.78 0.02 200);
+    --line: oklch(0.40 0.02 205 / 0.55);
+    --accent: oklch(0.81 0.13 60);      /* sunset amber */
+    --accent-2: oklch(0.72 0.16 42);    /* coral dusk */
+    --ink-on-accent: oklch(0.22 0.03 60);
+
+    --f-display: "Fraunces", Georgia, serif;
+    --f-body: "Inter", system-ui, sans-serif;
+
+    --step--1: clamp(0.82rem, 0.79rem + 0.15vw, 0.9rem);
+    --step-0: clamp(1rem, 0.95rem + 0.25vw, 1.13rem);
+    --step-1: clamp(1.3rem, 1.18rem + 0.6vw, 1.6rem);
+    --step-2: clamp(1.75rem, 1.5rem + 1.2vw, 2.4rem);
+    --step-3: clamp(2.3rem, 1.85rem + 2.3vw, 3.6rem);
+    --hero: clamp(3rem, 2.1rem + 4.6vw, 5.6rem);
+
+    --z-sticky: 50; --z-bar: 60; --z-nav: 70;
+    --ease: cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0; background:var(--bg); color:var(--ink);
+    font-family:var(--f-body); font-size:var(--step-0); line-height:1.65;
+    -webkit-font-smoothing:antialiased; overflow-x:hidden;
+  }
+  img{display:block;max-width:100%}
+  a{color:inherit;text-decoration:none}
+  h1,h2,h3{font-family:var(--f-display); font-weight:500; line-height:1.05; letter-spacing:-0.02em; text-wrap:balance; margin:0}
+  p{text-wrap:pretty}
+  .wrap{width:min(1180px, 92vw); margin-inline:auto}
+
+  /* ---------- top nav ---------- */
+  header.nav{
+    position:fixed; inset:0 0 auto 0; z-index:var(--z-nav);
+    display:flex; align-items:center; justify-content:space-between;
+    padding:18px clamp(16px,4vw,48px);
+    transition:background .4s var(--ease), backdrop-filter .4s var(--ease), padding .4s var(--ease);
+  }
+  header.nav.scrolled{ background:oklch(0.16 0.018 205 / 0.82); backdrop-filter:blur(12px); padding-block:12px; border-bottom:1px solid var(--line); }
+  .brand{font-family:var(--f-display); font-weight:600; font-size:1.18rem; letter-spacing:.18em; text-transform:uppercase}
+  .brand small{display:block; font-family:var(--f-body); font-weight:400; font-size:.58rem; letter-spacing:.32em; color:var(--muted); margin-top:2px}
+  nav.links{display:flex; gap:28px; align-items:center}
+  nav.links a{font-size:var(--step--1); letter-spacing:.04em; color:var(--ink); opacity:.85; transition:opacity .2s}
+  nav.links a:hover{opacity:1}
+  .btn{
+    font-family:var(--f-body); font-weight:600; font-size:var(--step--1); letter-spacing:.02em;
+    padding:11px 20px; border-radius:999px; cursor:pointer; border:1px solid transparent;
+    transition:transform .25s var(--ease), background .25s, color .25s, border-color .25s; white-space:nowrap;
+  }
+  .btn-accent{background:var(--accent); color:var(--ink-on-accent)}
+  .btn-accent:hover{transform:translateY(-2px); background:oklch(0.85 0.13 62)}
+  .btn-ghost{border-color:oklch(0.92 0.01 90 / 0.55); color:var(--ink)}
+  .btn-ghost:hover{border-color:var(--ink); transform:translateY(-2px)}
+  .nav-cta{display:inline-block}
+  .menu-toggle{display:none}
+
+  /* ---------- hero ---------- */
+  .hero{position:relative; min-height:100svh; display:flex; align-items:flex-end; isolation:isolate}
+  .hero::before{
+    content:""; position:absolute; inset:0; z-index:-2;
+    background:url("https://backyardhotel.com/assets/img/photo-slide-1.jpg") center/cover no-repeat;
+    transform:scale(1.06); animation:kenburns 18s var(--ease) forwards;
+  }
+  @keyframes kenburns{to{transform:scale(1)}}
+  .hero::after{
+    content:""; position:absolute; inset:0; z-index:-1;
+    background:linear-gradient(180deg, oklch(0.16 0.02 205 / 0.55) 0%, oklch(0.16 0.02 205 / 0.15) 40%, oklch(0.15 0.02 205 / 0.92) 100%);
+  }
+  .hero-inner{padding:0 clamp(16px,4vw,48px) clamp(56px,9vh,120px); width:min(1180px,92vw); margin-inline:auto}
+  .hero .eyebrow{font-size:var(--step--1); letter-spacing:.34em; text-transform:uppercase; color:var(--accent); margin-bottom:22px}
+  .hero h1{font-size:var(--hero); max-width:14ch}
+  .hero h1 em{font-style:italic; font-weight:400; color:var(--accent)}
+  .hero p.lede{font-size:var(--step-1); color:var(--ink); max-width:46ch; margin:22px 0 34px; line-height:1.45; font-weight:400}
+  .hero-actions{display:flex; gap:14px; flex-wrap:wrap}
+  .hero-inner{position:relative; z-index:2}
+
+  /* ---- Aceternity-style Spotlight (vanilla port): warm light beam sweeps in over the photo ---- */
+  .spotlight{
+    position:absolute; top:-12%; left:-8%; width:78vw; height:80vh; z-index:1; pointer-events:none;
+    background:radial-gradient(ellipse 60% 50% at 50% 40%, oklch(0.97 0.05 80 / 0.20), transparent 62%);
+    filter:blur(42px); transform:translateY(-34px) rotate(-12deg); opacity:0;
+    animation:spotlight 2.4s var(--ease) .15s forwards;
+  }
+  @keyframes spotlight{ to{ opacity:1; transform:translateY(0) rotate(-12deg) } }
+
+  /* ---- Aceternity-style Text Generate (vanilla port): headline words blur-fade up in sequence ---- */
+  .hero h1 .w{ display:inline-block; opacity:0; filter:blur(10px); transform:translateY(10px); animation:tg .8s var(--ease) forwards }
+  @keyframes tg{ to{ opacity:1; filter:blur(0); transform:translateY(0) } }
+  @media (prefers-reduced-motion: reduce){
+    .spotlight{ animation:none; opacity:1; transform:rotate(-12deg) }
+    .hero h1 .w{ animation:none; opacity:1; filter:none; transform:none }
+  }
+
+  /* ---------- direct-booking trust bar ---------- */
+  .trust{background:var(--bg-2); border-block:1px solid var(--line)}
+  .trust .wrap{display:flex; align-items:center; justify-content:center; gap:14px 34px; flex-wrap:wrap; padding:18px 0; text-align:center}
+  .trust span{font-size:var(--step--1); color:var(--muted); letter-spacing:.02em}
+  .trust b{color:var(--ink); font-weight:600}
+
+  /* ---------- section scaffolding ---------- */
+  section{padding-block:clamp(72px,11vh,150px)}
+  .section-head{max-width:60ch}
+  .section-head h2{font-size:var(--step-3); margin-bottom:18px}
+  .section-head p{color:var(--muted); font-size:var(--step-1); line-height:1.5; max-width:52ch}
+
+  /* ---------- rooms (editorial, asymmetric — not card grid) ---------- */
+  .room{display:grid; grid-template-columns:1.15fr 1fr; gap:clamp(28px,5vw,72px); align-items:center; margin-top:64px}
+  .room:nth-child(even){grid-template-columns:1fr 1.15fr}
+  .room:nth-child(even) .room-media{order:2}
+  .room-media{position:relative; border-radius:6px; overflow:hidden; aspect-ratio:4/3}
+  .room-media img{width:100%; height:100%; object-fit:cover; transition:transform .9s var(--ease)}
+  .room:hover .room-media img{transform:scale(1.05)}
+  .room-media .tag{position:absolute; top:16px; left:16px; background:oklch(0.16 0.02 205 / 0.78); backdrop-filter:blur(6px); color:var(--ink); font-size:var(--step--1); letter-spacing:.04em; padding:7px 14px; border-radius:999px}
+  .room-body h3{font-size:var(--step-2); margin-bottom:14px}
+  .room-body p{color:var(--muted); margin:0 0 22px}
+  .room-feat{display:flex; flex-wrap:wrap; gap:10px; margin-bottom:26px}
+  .room-feat li{list-style:none; font-size:var(--step--1); color:var(--ink); background:var(--surface); border:1px solid var(--line); padding:7px 14px; border-radius:999px}
+  ul{padding:0; margin:0}
+
+  /* ---------- about (full-bleed photo + copy) ---------- */
+  .about{position:relative; isolation:isolate; color:var(--ink)}
+  .about::before{content:""; position:absolute; inset:0; z-index:-2; background:url("https://backyardhotel.com/assets/img/photo-about.jpg") center/cover fixed no-repeat}
+  .about::after{content:""; position:absolute; inset:0; z-index:-1; background:linear-gradient(90deg, oklch(0.14 0.02 205 / 0.94) 0%, oklch(0.14 0.02 205 / 0.7) 55%, oklch(0.14 0.02 205 / 0.35) 100%)}
+  .about .copy{max-width:54ch}
+  .about h2{font-size:var(--step-3); margin-bottom:22px}
+  .about p{font-size:var(--step-1); line-height:1.55; margin:0 0 20px; color:oklch(0.94 0.012 85)}
+
+  /* ---------- facilities ---------- */
+  .facilities .grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:1px; background:var(--line); border:1px solid var(--line); border-radius:6px; overflow:hidden; margin-top:56px}
+  .fac{background:var(--bg); padding:34px 30px; transition:background .3s}
+  .fac:hover{background:var(--surface)}
+  .fac .num{font-family:var(--f-display); font-size:1.1rem; color:var(--accent); margin-bottom:16px; font-weight:500}
+  .fac h3{font-size:var(--step-1); margin-bottom:8px}
+  .fac p{color:var(--muted); font-size:var(--step--1); margin:0}
+
+  /* ---------- gallery strip ---------- */
+  .strip{display:grid; grid-template-columns:repeat(4,1fr); gap:8px; margin-top:56px}
+  .strip a{display:block; aspect-ratio:1; overflow:hidden; border-radius:4px}
+  .strip img{width:100%;height:100%;object-fit:cover;transition:transform .8s var(--ease)}
+  .strip a:hover img{transform:scale(1.08)}
+
+  /* ---------- contact / footer ---------- */
+  .cta{text-align:center; background:linear-gradient(180deg, var(--bg) 0%, var(--bg-2) 100%)}
+  .cta h2{font-size:var(--step-3); max-width:18ch; margin-inline:auto; margin-bottom:18px}
+  .cta p{color:var(--muted); font-size:var(--step-1); max-width:46ch; margin:0 auto 32px}
+  .contact-rows{display:flex; gap:14px 40px; justify-content:center; flex-wrap:wrap; margin-top:36px}
+  .contact-rows a{font-size:var(--step-0); color:var(--ink); border-bottom:1px solid var(--line); padding-bottom:3px; transition:border-color .25s}
+  .contact-rows a:hover{border-color:var(--accent)}
+  footer{border-top:1px solid var(--line); padding:40px 0; text-align:center; color:var(--muted); font-size:var(--step--1)}
+  footer .brand{font-size:1rem; margin-bottom:10px; color:var(--ink)}
+
+  /* ---- owner-pitch note (this is a preview built by Tony, addressed to the business owner) ---- */
+  .pitch-note{background:var(--bg-2); border-top:1px solid var(--line)}
+  .pitch-note .wrap{padding-block:clamp(48px,8vh,92px)}
+  .pitch-note .label{display:inline-block; font-size:var(--step--1); letter-spacing:.28em; text-transform:uppercase; color:var(--accent); margin-bottom:18px}
+  .pitch-note h2{font-size:var(--step-2); margin-bottom:18px; max-width:24ch}
+  .pitch-note .intro{color:var(--muted); max-width:60ch; font-size:var(--step-1); line-height:1.5; margin:0}
+  .pitch-note .grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:22px 40px; margin:34px 0 34px}
+  .pitch-note .grid p{margin:0; color:var(--muted); font-size:var(--step-0)}
+  .pitch-note .grid b{color:var(--ink); font-weight:600; display:block; margin-bottom:5px}
+  .pitch-note .talk{display:flex; gap:12px 26px; flex-wrap:wrap; align-items:center}
+  .pitch-note .talk .lead-in{font-family:var(--f-display); font-size:var(--step-1); color:var(--ink)}
+  .pitch-note .talk a{color:var(--ink); border-bottom:1px solid var(--line); padding-bottom:3px; transition:border-color .25s}
+  .pitch-note .talk a:hover{border-color:var(--accent)}
+
+  /* ---------- sticky mobile book bar ---------- */
+  .book-bar{
+    position:fixed; inset:auto 0 0 0; z-index:var(--z-bar); display:none;
+    background:oklch(0.16 0.018 205 / 0.92); backdrop-filter:blur(12px); border-top:1px solid var(--line);
+    padding:12px 16px calc(12px + env(safe-area-inset-bottom)); gap:12px; align-items:center; justify-content:space-between;
+  }
+  .book-bar .price{font-size:var(--step--1); color:var(--muted)}
+  .book-bar .price b{display:block; color:var(--ink); font-family:var(--f-display); font-size:1.05rem}
+
+  /* ---------- reveal motion — ADDITIVE ONLY: content is visible unless JS opts in ---------- */
+  @media (prefers-reduced-motion: no-preference){
+    html.reveal-on .reveal{opacity:0; transform:translateY(26px); transition:opacity .8s var(--ease), transform .8s var(--ease)}
+    html.reveal-on .reveal.in{opacity:1; transform:none}
+  }
+
+  /* ---------- responsive ---------- */
+  @media (max-width:880px){
+    nav.links{
+      position:fixed; inset:0 0 0 auto; width:min(78vw,320px); flex-direction:column; align-items:flex-start; justify-content:center; gap:26px;
+      background:oklch(0.15 0.018 205 / 0.98); backdrop-filter:blur(14px); padding:40px; transform:translateX(100%); transition:transform .45s var(--ease); z-index:var(--z-nav);
+    }
+    nav.links.open{transform:translateX(0)}
+    nav.links a{font-size:var(--step-1); opacity:1}
+    .nav-cta{display:none}
+    .menu-toggle{display:inline-flex; background:none;border:none;color:var(--ink);font-size:1.6rem;cursor:pointer;z-index:calc(var(--z-nav) + 1)}
+    .room, .room:nth-child(even){grid-template-columns:1fr}
+    .room:nth-child(even) .room-media{order:0}
+    .about::before{background-attachment:scroll}
+    .strip{grid-template-columns:repeat(2,1fr)}
+    .book-bar{display:flex}
+    body{padding-bottom:74px}
+  }
+</style>
+</head>
+<body>
+
+<header class="nav" id="nav">
+  <a class="brand" href="#top">Backyard<small>Hotel · Playa Hermosa</small></a>
+  <nav class="links" id="links">
+    <a href="#rooms">Rooms</a>
+    <a href="#about">The Beach</a>
+    <a href="#facilities">Stay</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#contact">Contact</a>
+    <a class="btn btn-accent nav-cta" href="#contact">Book direct</a>
+  </nav>
+  <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false">☰</button>
+</header>
+
+<main id="top">
+
+  <section class="hero">
+    <div class="spotlight" aria-hidden="true"></div>
+    <div class="hero-inner">
+      <p class="eyebrow">Oceanfront · Playa Hermosa, Costa Rica</p>
+      <h1><span class="w" style="animation-delay:.15s">Touch</span> <span class="w" style="animation-delay:.27s">the</span> <span class="w" style="animation-delay:.39s">sea</span> <em><span class="w" style="animation-delay:.56s">in</span> <span class="w" style="animation-delay:.66s">the</span> <span class="w" style="animation-delay:.79s">Backyard</span></em></h1>
+      <p class="lede">Ocean-front rooms and suites on the central Pacific coast, 4 km south of Jacó, where the surf breaks right below your balcony.</p>
+      <div class="hero-actions">
+        <a class="btn btn-accent" href="#rooms">See the rooms</a>
+        <a class="btn btn-ghost" href="#contact">Book a beach house</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="trust">
+    <div class="wrap">
+      <span><b>Book direct</b> with the hotel</span>
+      <span>No Booking.com or Airbnb fees</span>
+      <span>Oceanfront, every room</span>
+      <span>Pet friendly</span>
+    </div>
+  </div>
+
+  <section id="rooms" class="wrap">
+    <div class="section-head reveal">
+      <h2>Two ways to wake up on the water</h2>
+      <p>Every room and suite faces the Pacific, with private ocean and pool views from the balcony.</p>
+    </div>
+
+    <article class="room reveal">
+      <div class="room-media">
+        <img src="https://backyardhotel.com/assets/img/photo-room-0.jpg" alt="Deluxe oceanfront room at Backyard Hotel" loading="lazy">
+        <span class="tag">Deluxe Room</span>
+      </div>
+      <div class="room-body">
+        <h3>Deluxe Room</h3>
+        <p>One king bed and a double, or a king with two twin bunks. Spectacular private ocean and pool views from your balcony.</p>
+        <ul class="room-feat">
+          <li>Sleeps 3–4</li><li>Private balcony</li><li>Ocean &amp; pool view</li><li>King + bunks</li>
+        </ul>
+        <a class="btn btn-ghost" href="#contact">Check availability</a>
+      </div>
+    </article>
+
+    <article class="room reveal">
+      <div class="room-media">
+        <img src="https://backyardhotel.com/assets/img/photo-room-2.jpg" alt="Master suite at Backyard Hotel with 180-degree ocean views" loading="lazy">
+        <span class="tag">Master Suite</span>
+      </div>
+      <div class="room-body">
+        <h3>Master Suite</h3>
+        <p>A king, two twin bunks, and a separate private bedroom with a queen. A full 180° of private ocean and pool views from the balcony.</p>
+        <ul class="room-feat">
+          <li>Sleeps 5–6</li><li>Private bedroom</li><li>180° ocean view</li><li>Family-sized</li>
+        </ul>
+        <a class="btn btn-ghost" href="#contact">Check availability</a>
+      </div>
+    </article>
+  </section>
+
+  <section class="about" id="about">
+    <div class="wrap">
+      <div class="copy reveal">
+        <h2>Where the jungle meets the break</h2>
+        <p>The Backyard Hotel sits on the lush central Pacific coast in Playa Hermosa, 4 km south of Jacó, one of Costa Rica's best-known surfing and sunbathing beaches.</p>
+        <p>Your ocean-front room overlooks the Refugio de Vida Silvestre national park, with breathtaking whitewater views of the Pacific. Wake up, walk down, paddle out.</p>
+        <a class="btn btn-accent" href="#contact">Plan your stay</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="facilities" class="facilities wrap">
+    <div class="section-head reveal">
+      <h2>Everything the day needs</h2>
+      <p>Beyond the rooms and the sunsets, the Backyard is built around the water.</p>
+    </div>
+    <div class="grid reveal">
+      <div class="fac"><div class="num">01</div><h3>World-class waves</h3><p>One of Costa Rica's most consistent breaks, steps from your door.</p></div>
+      <div class="fac"><div class="num">02</div><h3>Oceanfront pool</h3><p>A swimming pool right on the water, facing the sunset.</p></div>
+      <div class="fac"><div class="num">03</div><h3>Live surfcam &amp; tours</h3><p>Check the swell before you wake, then book a tour at the desk.</p></div>
+      <div class="fac"><div class="num">04</div><h3>Pet friendly</h3><p>Bring the dog. The Backyard is happy to have them.</p></div>
+    </div>
+  </section>
+
+  <section id="gallery" class="wrap">
+    <div class="section-head reveal">
+      <h2>The Backyard, frame by frame</h2>
+    </div>
+    <div class="strip reveal">
+      <a href="https://backyardhotel.com/assets/img/photo-slide-2.jpg"><img src="https://backyardhotel.com/assets/img/photo-slide-2.jpg" alt="Backyard Hotel ocean view" loading="lazy"></a>
+      <a href="https://backyardhotel.com/assets/img/photo-explore-4.jpg"><img src="https://backyardhotel.com/assets/img/photo-explore-4.jpg" alt="Backyard Hotel grounds" loading="lazy"></a>
+      <a href="https://backyardhotel.com/assets/img/photo-explore-5.jpg"><img src="https://backyardhotel.com/assets/img/photo-explore-5.jpg" alt="Backyard Hotel pool" loading="lazy"></a>
+      <a href="https://backyardhotel.com/assets/img/photo-slide-3.jpg"><img src="https://backyardhotel.com/assets/img/photo-slide-3.jpg" alt="Backyard Hotel sunset" loading="lazy"></a>
+    </div>
+  </section>
+
+  <section class="cta" id="contact">
+    <div class="wrap">
+      <h2 class="reveal">Reserve your spot on the water</h2>
+      <p class="reveal">Message us directly and we'll hold your dates. No middleman, no booking fees.</p>
+      <div class="reveal" style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap">
+        <a class="btn btn-accent" href="https://wa.me/50683549511" target="_blank" rel="noopener">Book on WhatsApp</a>
+        <a class="btn btn-ghost" href="mailto:backyardhotel01@gmail.com">Email the hotel</a>
+      </div>
+      <div class="contact-rows reveal">
+        <a href="tel:+50626437011">+506 2643-7011</a>
+        <a href="tel:+50683549511">+506 8354-9511</a>
+        <a href="mailto:backyardhotel01@gmail.com">backyardhotel01@gmail.com</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<section class="pitch-note" id="preview-note">
+  <div class="wrap">
+    <span class="label">A preview from Tony</span>
+    <h2>Here is what a modern Backyard Hotel site could look like.</h2>
+    <p class="intro">I'm Tony, I design websites for businesses on the coast. I built this free sample using your own photos and words, just to show what's possible. It's one page, a preview, not the finished site.</p>
+    <div class="grid">
+      <p><b>What you'd get</b>A fast, modern website you own, with direct bookings, no Booking.com or Airbnb commissions, live on your own domain.</p>
+      <p><b>This is only a taste</b>The full site would add your rooms, a real booking calendar, gallery, surf info, and more pages.</p>
+      <p><b>Change anything</b>Photos, colors, wording, layout, all to your liking. A starting point, not a final answer.</p>
+    </div>
+    <div class="talk">
+      <span class="lead-in">Like it? Let's make it yours.</span>
+      <a href="mailto:anthonyskoczylas@yahoo.com">anthonyskoczylas@yahoo.com</a>
+      <a href="https://instagram.com/Tonysko__" target="_blank" rel="noopener">@Tonysko__</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="brand">Backyard Hotel</div>
+    <p>Playa Hermosa, 4 km south of Jacó · Central Pacific, Costa Rica</p>
+  </div>
+</footer>
+
+<div class="book-bar">
+  <div class="price">Oceanfront rooms<b>Book direct</b></div>
+  <a class="btn btn-accent" href="#contact">Reserve</a>
+</div>
+
+<script>
+  // sticky nav state
+  const nav = document.getElementById('nav');
+  const onScroll = () => nav.classList.toggle('scrolled', window.scrollY > 40);
+  onScroll(); window.addEventListener('scroll', onScroll, {passive:true});
+
+  // mobile menu
+  const links = document.getElementById('links'), toggle = document.getElementById('menuToggle');
+  toggle.addEventListener('click', () => {
+    const open = links.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', open);
+    toggle.textContent = open ? '✕' : '☰';
+  });
+  links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    links.classList.remove('open'); toggle.textContent = '☰'; toggle.setAttribute('aria-expanded','false');
+  }));
+
+  // scroll reveal — additive only: content is visible by default. We hide-then-reveal
+  // ONLY when JS + motion + IntersectionObserver are all present, with a safety timer
+  // so nothing can stay hidden (covers headless capture, background tabs, observer misses).
+  (function(){
+    if (!('IntersectionObserver' in window)) return;
+    if (!matchMedia('(prefers-reduced-motion: no-preference)').matches) return;
+    const els = Array.from(document.querySelectorAll('.reveal'));
+    document.documentElement.classList.add('reveal-on');
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, {rootMargin:'0px 0px -8% 0px', threshold:0.08});
+    els.forEach(el => io.observe(el));
+    setTimeout(() => els.forEach(el => el.classList.add('in')), 1200); // never leave content hidden
+  })();
+</script>
+</body>
+</html>
