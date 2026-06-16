@@ -155,6 +155,11 @@
   footer p{font-size:.86rem;margin:12px 0}
   footer .base{border-top:1px solid rgba(250,245,246,.1);margin-top:22px;padding-top:20px;font-size:.78rem;opacity:.6}
   @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
+
+  /* Backyard-baseline headline entrance: blur-fade-up (added 2026-06-16) */
+  .hero h1,#heroTitle{opacity:0;animation:bhTitleIn 1.1s .35s cubic-bezier(.16,1,.3,1) forwards}
+  @keyframes bhTitleIn{from{opacity:0;transform:translateY(16px);filter:blur(12px)}to{opacity:1;transform:none;filter:blur(0)}}
+  @media(prefers-reduced-motion:reduce){.hero h1,#heroTitle{opacity:1!important;animation:none!important;filter:none!important}}
 </style>
 </head>
 <body>
@@ -233,11 +238,11 @@
 
 <section class="blk book" id="book">
   <div class="wrap">
-    <div class="reveal"><span class="eyebrow" data-es="Disponibilidad" data-en="Availability">Disponibilidad</span><h2 data-es="Elige tus fechas" data-en="Choose your dates">Elige tus fechas</h2><p data-es="Selecciona entrada y salida — te confirmamos por WhatsApp en minutos, sin comisiones de Booking ni Airbnb." data-en="Pick check-in and check-out — we confirm on WhatsApp within minutes, no Booking or Airbnb fees.">Selecciona entrada y salida — te confirmamos por WhatsApp en minutos, sin comisiones de Booking ni Airbnb.</p></div>
+    <div class="reveal"><span class="eyebrow" data-es="Disponibilidad" data-en="Availability">Disponibilidad</span><h2 data-es="Elige tus fechas" data-en="Choose your dates">Elige tus fechas</h2><p data-es="Selecciona entrada y salida — te confirmamos en minutos, sin comisiones de Booking ni Airbnb." data-en="Pick check-in and check-out — we confirm within minutes, no Booking or Airbnb fees.">Selecciona entrada y salida — te confirmamos en minutos, sin comisiones de Booking ni Airbnb.</p></div>
     <div class="cal reveal">
       <div class="cal-top"><div><div class="lab" data-es="Tu estadía" data-en="Your stay">Tu estadía</div><div class="mon" id="calMonth">—</div></div><div class="cal-nav"><button id="prevM"><svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg></button><button id="nextM"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button></div></div>
       <div class="cal-grid"><div class="cal-dow" id="calDow"></div><div class="cal-days" id="calDays"></div></div>
-      <div class="cal-foot"><div class="cal-sel"><b id="selNights" data-es="Selecciona la entrada" data-en="Select check-in">Selecciona la entrada</b><span id="selDates"></span></div><a id="waBook" class="btn btn-solid" disabled><span data-es="Reservar por WhatsApp" data-en="Book on WhatsApp">Reservar por WhatsApp</span></a></div>
+      <div class="cal-foot"><div class="cal-sel"><b id="selNights" data-es="Selecciona la entrada" data-en="Select check-in">Selecciona la entrada</b><span id="selDates"></span></div><a id="waBook" class="btn btn-solid" disabled><span data-es="Reservar" data-en="Book">Reservar</span></a></div>
     </div>
   </div>
 </section>
@@ -261,8 +266,8 @@
     <h2 data-es="Esta página la armé &lt;em&gt;para ustedes&lt;/em&gt;." data-en="I built this page &lt;em&gt;for you&lt;/em&gt;.">Esta página la armé <em>para ustedes</em>.</h2>
     <p data-es="Hola, soy Tony. Diseño páginas web cinematográficas para hoteles en Costa Rica. Vi que aún no tenían una y quise mostrarles cómo se vería la suya." data-en="Hi, I'm Tony. I design cinematic websites for hotels in Costa Rica. I saw you didn't have one and wanted to show you how yours could look.">Hola, soy Tony. Diseño páginas web cinematográficas para hoteles en Costa Rica. Vi que aún no tenían una y quise mostrarles cómo se vería la suya.</p>
     <div class="price" data-es="&lt;s&gt;$2,000+ en una agencia&lt;/s&gt; $500 — su sitio completo, listo para reservas." data-en="&lt;s&gt;$2,000+ at an agency&lt;/s&gt; $500 — your complete site, ready for bookings."><s>$2,000+ en una agencia</s> $500 — su sitio completo, listo para reservas.</div>
-    <a href="https://wa.me/13213561951?text=Hola%20Tony,%20vi%20el%20sitio%20de%20muestra%20de%20Arenal%20Vista%20Lodge%20y%20me%20interesa." class="btn btn-solid"><span data-es="Hablar con Tony por WhatsApp" data-en="Talk to Tony on WhatsApp">Hablar con Tony por WhatsApp</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-    <p class="mockup-note" data-es="Esto es solo una muestra para enseñarle posibilidades — puedo cambiar colores, textos, fotos y prácticamente todo a su gusto." data-en="This is just a sample to show what's possible — I can change the colors, text, photos and pretty much everything to your liking.">Esto es solo una muestra para enseñarle posibilidades — puedo cambiar colores, textos, fotos y prácticamente todo a su gusto.</p>
+    <a href="mailto:anthonyskoczylas@yahoo.com?subject=Sitio%20web%20para%20Arenal%20Vista%20Lodge" class="btn btn-solid"><span data-es="Escribir a Tony" data-en="Email Tony">Escribir a Tony</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+    <p class="mockup-note" data-es="Es solo una página — una muestra de cómo se vería su sitio completo. Puedo cambiar colores, textos, fotos y prácticamente todo a su gusto." data-en="This is just one page — a preview of what your full site could look like. I can change the colors, text, photos and pretty much everything to your liking.">Es solo una página — una muestra de cómo se vería su sitio completo. Puedo cambiar colores, textos, fotos y prácticamente todo a su gusto.</p>
   </div>
 </section>
 
@@ -270,7 +275,8 @@
   <div class="wrap">
     <a href="#top" class="wordmark">Arenal Vista Lodge<i>.</i></a>
     <p data-es="Hotel boutique frente al mar. Pacífico Central, Costa Rica." data-en="Boutique oceanfront hotel. Central Pacific, Costa Rica.">Hotel boutique frente al mar. Pacífico Central, Costa Rica.</p>
-    <p>WhatsApp</p>
+    <p><a href="mailto:anthonyskoczylas@yahoo.com">Email</a></p>
+      <p><a href="https://instagram.com/Tonysko__" target="_blank" rel="noopener">@Tonysko__</a></p>
     <div class="base"><span>© 2026 Arenal Vista Lodge</span> · <span data-es="Sitio de muestra · diseñado por Tony" data-en="Sample site · designed by Tony">Sitio de muestra · diseñado por Tony</span></div>
   </div>
 </footer>
@@ -296,7 +302,7 @@ function render(){const l=document.documentElement.lang;E.month.textContent=MON[
   for(let d=1;d<=days;d++){const dt=new Date(view.getFullYear(),view.getMonth(),d);dt.setHours(0,0,0,0);let c="day";if(dt<today)c+=" past";if(ci&&dt.getTime()===ci.getTime())c+=" in";if(co&&dt.getTime()===co.getTime())c+=" out";if(ci&&co&&dt>ci&&dt<co)c+=" range";h+='<div class="'+c+'" data-t="'+dt.getTime()+'">'+d+'</div>';}
   E.days.innerHTML=h;E.days.querySelectorAll('.day:not(.past):not(.empty)').forEach(el=>el.onclick=()=>pick(+el.dataset.t));foot();}
 function pick(t){const d=new Date(t);if(!ci||co){ci=d;co=null;}else if(d>ci){co=d;}else{ci=d;}render();}
-function foot(){const l=document.documentElement.lang;if(ci&&co){const n=Math.round((co-ci)/864e5);E.nights.textContent=n+(l==='es'?" noche"+(n>1?"s":"")+" · desde $"+n*RATE:" night"+(n>1?"s":"")+" · from $"+n*RATE);E.dates.textContent=fmt(ci,l)+" → "+fmt(co,l);E.wa.removeAttribute("disabled");const m=l==='es'?("Hola! Quiero reservar en "+BIZ+" del "+fmt(ci,l)+" al "+fmt(co,l)+" ("+n+" noche"+(n>1?"s":"")+"). ¿Disponible?"):("Hi! I'd like to book "+BIZ+" from "+fmt(ci,l)+" to "+fmt(co,l)+" ("+n+" night"+(n>1?"s":"")+"). Available?");E.wa.href="https://wa.me/"+WA+"?text="+encodeURIComponent(m);}else if(ci){E.nights.textContent=l==='es'?"Selecciona la salida":"Select check-out";E.dates.textContent=fmt(ci,l);E.wa.setAttribute("disabled","");}else{E.nights.textContent=l==='es'?"Selecciona la entrada":"Select check-in";E.dates.textContent="";E.wa.setAttribute("disabled","");}}
+function foot(){const l=document.documentElement.lang;if(ci&&co){const n=Math.round((co-ci)/864e5);E.nights.textContent=n+(l==='es'?" noche"+(n>1?"s":"")+" · desde $"+n*RATE:" night"+(n>1?"s":"")+" · from $"+n*RATE);E.dates.textContent=fmt(ci,l)+" → "+fmt(co,l);E.wa.removeAttribute("disabled");const m=l==='es'?("Hola! Quiero reservar en "+BIZ+" del "+fmt(ci,l)+" al "+fmt(co,l)+" ("+n+" noche"+(n>1?"s":"")+"). ¿Disponible?"):("Hi! I'd like to book "+BIZ+" from "+fmt(ci,l)+" to "+fmt(co,l)+" ("+n+" night"+(n>1?"s":"")+"). Available?");E.wa.removeAttribute("href");}else if(ci){E.nights.textContent=l==='es'?"Selecciona la salida":"Select check-out";E.dates.textContent=fmt(ci,l);E.wa.setAttribute("disabled","");}else{E.nights.textContent=l==='es'?"Selecciona la entrada":"Select check-in";E.dates.textContent="";E.wa.setAttribute("disabled","");}}
 prevM.onclick=()=>{const m=new Date(view);m.setMonth(m.getMonth()-1);if(m.getFullYear()>today.getFullYear()||(m.getFullYear()===today.getFullYear()&&m.getMonth()>=today.getMonth())){view=m;render();}};
 nextM.onclick=()=>{view.setMonth(view.getMonth()+1);render();};
 render();const _sl=setLang;setLang=function(l){_sl(l);render();};
