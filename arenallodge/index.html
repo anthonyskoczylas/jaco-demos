@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Arenal Lodge — Pacífico Central, Costa Rica</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Prata&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --teal:#5a3220; --teal-deep:#3f2316; --teal-mid:#6e4b3b; --teal-light:#7e5f51; --teal-darkest:#2f1a11;
+    --sand:#ead9cc; --paper:#f8f4ef; --ink:#2a1c12; --ink-soft:#81776f;
+    --accent:#2a8f86; --accent-soft:#4ca199; --accent-glow:#83beb9; --line:rgba(90,50,32,.14);
+    --maxw:1180px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  ::selection{background:var(--accent);color:var(--ink)}
+  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+  body{font-family:"Inter",system-ui,sans-serif;color:var(--ink);background:var(--paper);line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  h1,h2,h3,h4{font-family:"Prata",Georgia,serif;font-weight:400;line-height:1.04;letter-spacing:-.02em;color:var(--teal-deep)}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 32px}
+  @media(max-width:600px){.wrap{padding:0 22px}}
+  section{position:relative}
+  .eyebrow{font-size:.72rem;text-transform:uppercase;letter-spacing:.34em;font-weight:600;color:var(--accent);font-family:"Inter",sans-serif}
+  .mono{font-family:"Inter",sans-serif;font-variant-numeric:tabular-nums}
+
+  /* buttons */
+  .btn{position:relative;display:inline-flex;align-items:center;gap:12px;font-family:"Inter",sans-serif;font-size:.95rem;font-weight:600;letter-spacing:.01em;
+    text-decoration:none;cursor:pointer;border:none;padding:16px 32px;border-radius:5px;overflow:hidden;
+    transition:transform .5s cubic-bezier(.16,1,.3,1),box-shadow .4s,color .4s}
+  .btn svg{width:17px;height:17px;stroke-width:1.7;transition:transform .5s cubic-bezier(.16,1,.3,1)}
+  .btn:hover svg{transform:translateX(4px)}
+  .btn-solid{background:var(--accent);color:var(--ink)}
+  .btn-solid::after{content:"";position:absolute;inset:0;background:var(--accent-soft);transform:scaleX(0);transform-origin:left;transition:transform .5s cubic-bezier(.16,1,.3,1);z-index:0}
+  .btn-solid:hover::after{transform:scaleX(1)}
+  .btn-solid span,.btn-solid svg{position:relative;z-index:1}
+  .btn-solid:hover{transform:translateY(-2px);box-shadow:0 18px 40px -18px rgba(42,143,134,.7)}
+  .btn-ghost{background:transparent;color:var(--paper);border:1px solid rgba(248,244,239,.45)}
+  .btn-ghost:hover{background:rgba(248,244,239,.1);border-color:rgba(248,244,239,.8);transform:translateY(-2px)}
+  .btn-line{background:transparent;color:var(--teal-deep);border:1px solid var(--teal-deep)}
+  .btn-line:hover{background:var(--teal-deep);color:var(--paper);transform:translateY(-2px)}
+
+  /* NAV */
+  header.nav{position:fixed;top:0;left:0;right:0;z-index:80;padding:24px 0;transition:background .5s,box-shadow .5s,padding .5s}
+  header.nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:20px}
+  .wordmark{font-family:"Prata",serif;font-size:1.42rem;font-weight:500;letter-spacing:-.01em;color:var(--paper);text-decoration:none;transition:color .5s;white-space:nowrap}
+  .wordmark i{font-style:italic;color:var(--accent-glow)}
+  .nav-right{display:flex;align-items:center;gap:34px}
+  nav.links{display:flex;gap:32px}
+  nav.links a{font-size:.88rem;font-weight:500;color:rgba(248,244,239,.85);text-decoration:none;position:relative;transition:color .3s}
+  nav.links a::after{content:"";position:absolute;left:0;bottom:-6px;height:1px;width:0;background:var(--accent-glow);transition:width .4s cubic-bezier(.16,1,.3,1)}
+  nav.links a:hover::after{width:100%}
+  .nav-tools{display:flex;align-items:center;gap:16px}
+  .lang{display:flex;gap:1px;align-items:center;font-size:.78rem;font-weight:700;letter-spacing:.08em}
+  .lang button{background:none;border:none;cursor:pointer;color:rgba(248,244,239,.6);padding:4px 6px;transition:color .3s;font-family:inherit;font-weight:700}
+  .lang button.active{color:var(--paper)}
+  .lang span{color:rgba(248,244,239,.4)}
+  header.nav.scrolled{background:rgba(248,244,239,.92);backdrop-filter:blur(14px) saturate(1.2);box-shadow:0 1px 0 var(--line);padding:14px 0}
+  header.nav.scrolled .wordmark{color:var(--teal-deep)}
+  header.nav.scrolled .wordmark i{color:var(--accent)}
+  header.nav.scrolled nav.links a{color:var(--ink-soft)}
+  header.nav.scrolled nav.links a:hover{color:var(--teal-deep)}
+  header.nav.scrolled .lang button{color:var(--ink-soft)}
+  header.nav.scrolled .lang button.active{color:var(--teal-deep)}
+  header.nav.scrolled .lang span{color:var(--line)}
+  @media(max-width:860px){nav.links{display:none}}
+
+  /* HERO */
+  .hero{position:relative;min-height:100svh;display:flex;align-items:flex-end;padding:0 0 9vh;overflow:hidden;color:var(--paper)}
+  .hero-bg{position:absolute;inset:0;z-index:0;
+    background:
+      radial-gradient(80% 55% at 75% 18%, rgba(131,190,185,.5), transparent 55%),
+      radial-gradient(70% 60% at 18% 88%, rgba(42,143,134,.4), transparent 60%),
+      linear-gradient(168deg,#6e4b3b 0%,#5a3220 38%,#3f2316 74%,#2f1a11 100%)}
+  .hero-orb{position:absolute;top:12%;right:12%;width:min(46vw,440px);height:min(46vw,440px);border-radius:50%;z-index:1;
+    background:radial-gradient(circle at 38% 38%, #83beb9 0%, #4ca199 46%, rgba(76,161,153,0) 70%);
+    filter:blur(3px);opacity:.7;animation:rise 16s ease-in-out infinite alternate}
+  @keyframes rise{from{transform:translateY(14px) scale(1)}to{transform:translateY(-14px) scale(1.04)}}
+  .hero-grain{position:absolute;inset:0;z-index:2;opacity:.06;pointer-events:none;
+    background-image:repeating-linear-gradient(108deg,transparent 0 21px,rgba(255,255,255,.6) 21px 22px)}
+  .hero-fade{position:absolute;left:0;right:0;bottom:0;height:34%;z-index:2;background:linear-gradient(transparent,rgba(47,26,17,.55))}
+  .hero-inner{position:relative;z-index:5;width:100%}
+  .hero .eyebrow{color:var(--accent-glow);display:block;margin-bottom:26px;opacity:0;animation:fadeUp .9s .2s cubic-bezier(.16,1,.3,1) forwards}
+  .hero h1{font-size:clamp(3rem,9.2vw,7.2rem);font-weight:300;letter-spacing:-.025em;color:var(--paper);max-width:15ch;margin-bottom:30px;opacity:0;animation:fadeUp 1.1s .35s cubic-bezier(.16,1,.3,1) forwards}
+  .hero h1 .word{display:inline-block;overflow:hidden;vertical-align:top}
+  .hero h1 .word > span{display:inline-block;transform:translateY(105%);animation:wordUp 1s cubic-bezier(.16,1,.3,1) forwards}
+  .hero h1 em{font-style:italic;color:var(--accent-glow)}
+  @keyframes wordUp{to{transform:translateY(0)}}
+  @keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+  .hero-promise{font-size:clamp(1.05rem,1.9vw,1.32rem);color:rgba(248,244,239,.9);max-width:46ch;margin-bottom:40px;font-weight:400;opacity:0;animation:fadeUp 1s .85s cubic-bezier(.16,1,.3,1) forwards}
+  .hero-cta{display:flex;gap:16px;flex-wrap:wrap;opacity:0;animation:fadeUp 1s 1s cubic-bezier(.16,1,.3,1) forwards}
+  .hero-meta{position:absolute;right:0;bottom:9vh;z-index:5;text-align:right;font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(248,244,239,.62);line-height:2;opacity:0;animation:fadeUp 1s 1.2s forwards}
+  .hero-meta b{font-family:"Prata",serif;font-size:1.5rem;letter-spacing:0;text-transform:none;color:var(--paper);display:block}
+  @media(max-width:760px){.hero-meta{display:none}}
+  .scrollcue{position:absolute;left:50%;bottom:26px;transform:translateX(-50%);z-index:5;width:1px;height:54px;background:linear-gradient(rgba(248,244,239,.5),transparent)}
+  .scrollcue::before{content:"";position:absolute;top:0;left:0;width:1px;height:18px;background:var(--accent-glow);animation:cue 2.4s cubic-bezier(.7,0,.3,1) infinite}
+  @keyframes cue{0%{transform:translateY(0);opacity:1}70%{transform:translateY(36px);opacity:0}100%{opacity:0}}
+
+  /* MARQUEE */
+  .marquee{background:var(--teal-deep);color:var(--paper);padding:20px 0;overflow:hidden;white-space:nowrap;border-top:1px solid rgba(248,244,239,.08)}
+  .marquee-track{display:inline-block;animation:scrollx 32s linear infinite}
+  .marquee span{font-family:"Prata",serif;font-style:italic;font-size:1.15rem;margin:0 28px;opacity:.85}
+  .marquee span::after{content:"·";margin-left:28px;color:var(--accent-soft);font-style:normal}
+  @keyframes scrollx{to{transform:translateX(-50%)}}
+
+  /* reveal */
+  .reveal{opacity:0;transform:translateY(34px);transition:opacity 1s cubic-bezier(.16,1,.3,1),transform 1s cubic-bezier(.16,1,.3,1)}
+  .reveal.in{opacity:1;transform:none}
+  .reveal[data-d="1"]{transition-delay:.1s}.reveal[data-d="2"]{transition-delay:.2s}.reveal[data-d="3"]{transition-delay:.3s}
+
+  /* INTRO */
+  .intro{padding:140px 0 120px}
+  .intro .wrap{display:grid;grid-template-columns:.85fr 1.15fr;gap:80px;align-items:start}
+  @media(max-width:880px){.intro{padding:96px 0 80px}.intro .wrap{grid-template-columns:1fr;gap:36px}}
+  .intro-left .num{font-family:"Prata",serif;font-size:1rem;color:var(--accent);letter-spacing:.1em}
+  .intro-left h2{font-size:clamp(2rem,3.4vw,2.7rem);font-weight:300;margin-top:18px}
+  .intro-right p{font-size:clamp(1.15rem,1.9vw,1.5rem);font-family:"Prata",serif;font-weight:300;color:var(--teal);line-height:1.5;margin-bottom:26px}
+  .intro-right p.small{font-family:"Inter",sans-serif;font-size:1.02rem;color:var(--ink-soft);line-height:1.8}
+  .intro-right .sign{font-family:"Prata",serif;font-style:italic;color:var(--accent);font-size:1.1rem;margin-top:8px}
+
+  /* COTTAGES — editorial alternating rows */
+  .cottages{padding:40px 0 130px}
+  .sec-head{max-width:640px;margin:0 auto 70px;text-align:center}
+  .sec-head .eyebrow{display:block;margin-bottom:18px}
+  .sec-head h2{font-size:clamp(2.2rem,5vw,3.6rem);font-weight:300}
+  .sec-head p{color:var(--ink-soft);margin-top:16px;font-size:1.05rem}
+  .row{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;margin-bottom:90px}
+  .row:last-child{margin-bottom:0}
+  .row.flip .row-visual{order:2}
+  @media(max-width:840px){.row{grid-template-columns:1fr;gap:28px;margin-bottom:64px}.row.flip .row-visual{order:0}}
+  .row-visual{position:relative;height:480px;border-radius:6px;overflow:hidden;box-shadow:0 40px 80px -40px rgba(47,26,17,.6)}
+  @media(max-width:840px){.row-visual{height:340px}}
+  .row-visual .art{position:absolute;inset:0;transition:transform 1.4s cubic-bezier(.16,1,.3,1)}
+  .row:hover .row-visual .art{transform:scale(1.06)}
+  .art1{background:radial-gradient(70% 70% at 68% 26%,rgba(131,190,185,.6),transparent 58%),linear-gradient(150deg,#6e4b3b,#3f2316)}
+  .art2{background:radial-gradient(68% 72% at 30% 30%,rgba(76,161,153,.6),transparent 56%),linear-gradient(150deg,#5a3220,#2f1a11)}
+  .art3{background:radial-gradient(76% 70% at 60% 74%,rgba(131,190,185,.55),transparent 56%),linear-gradient(150deg,#7e5f51,#5a3220)}
+  .row-visual .grain{position:absolute;inset:0;opacity:.05;background-image:repeating-linear-gradient(100deg,transparent 0 28px,rgba(255,255,255,.6) 28px 29px)}
+  .row-visual .tag{position:absolute;left:22px;bottom:20px;color:var(--paper);font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;opacity:.9;z-index:2}
+  .row-visual .tag::before{content:"";display:inline-block;width:26px;height:1px;background:var(--accent-glow);vertical-align:middle;margin-right:10px}
+  .row-text .ix{font-family:"Prata",serif;font-size:.95rem;color:var(--accent);letter-spacing:.08em}
+  .row-text h3{font-size:clamp(1.8rem,3.2vw,2.5rem);font-weight:300;margin:14px 0 8px}
+  .row-text .rate{font-family:"Prata",serif;font-size:1.15rem;color:var(--teal);margin-bottom:20px}
+  .row-text .rate b{font-weight:500}
+  .row-text .rate small{color:var(--ink-soft);font-family:"Inter",sans-serif;font-size:.82rem}
+  .row-text p{color:var(--ink-soft);margin-bottom:24px;max-width:46ch}
+  .feats{list-style:none;display:flex;flex-wrap:wrap;gap:8px 10px;margin-bottom:30px}
+  .feats li{font-size:.82rem;color:var(--teal);border:1px solid var(--line);border-radius:100px;padding:7px 15px;background:rgba(255,255,255,.4)}
+
+  /* IMMERSIVE band */
+  .immersive{position:relative;padding:160px 0;color:var(--paper);overflow:hidden;text-align:center}
+  .immersive .imm-bg{position:absolute;inset:0;z-index:0;will-change:transform;
+    background:radial-gradient(60% 80% at 50% 30%,rgba(76,161,153,.42),transparent 60%),linear-gradient(160deg,#5a3220,#2f1a11)}
+  .immersive .grain{position:absolute;inset:0;z-index:1;opacity:.06;background-image:repeating-linear-gradient(112deg,transparent 0 24px,rgba(255,255,255,.6) 24px 25px)}
+  .immersive .wrap{position:relative;z-index:3}
+  .immersive .eyebrow{color:var(--accent-glow);display:block;margin-bottom:26px}
+  .immersive blockquote{font-family:"Prata",serif;font-weight:300;font-size:clamp(2rem,5.5vw,4rem);line-height:1.16;letter-spacing:-.02em;max-width:18ch;margin:0 auto;color:var(--paper)}
+  .immersive blockquote em{font-style:italic;color:var(--accent-glow)}
+
+  /* CALENDAR / BOOKING */
+  .book{padding:130px 0}
+  .book .wrap{display:grid;grid-template-columns:1fr 1.1fr;gap:70px;align-items:start}
+  @media(max-width:900px){.book .wrap{grid-template-columns:1fr;gap:44px}}
+  .book-intro h2{font-size:clamp(2rem,4vw,3rem);font-weight:300;margin:18px 0 18px}
+  .book-intro p{color:var(--ink-soft);max-width:42ch;margin-bottom:30px}
+  .book-points{list-style:none;margin-top:26px}
+  .book-points li{display:flex;gap:14px;align-items:flex-start;padding:15px 0;border-top:1px solid var(--line);font-size:.95rem;color:var(--ink-soft)}
+  .book-points li:last-child{border-bottom:1px solid var(--line)}
+  .book-points svg{width:20px;height:20px;stroke:var(--accent);stroke-width:1.6;flex:none;margin-top:2px}
+  .book-points b{color:var(--teal-deep);font-family:"Prata",serif;font-weight:500;display:block;font-size:1rem}
+
+  .cal{background:var(--paper);border:1px solid var(--line);border-radius:4px;box-shadow:0 40px 90px -50px rgba(47,26,17,.5);overflow:hidden}
+  .cal-top{display:flex;align-items:center;justify-content:space-between;padding:22px 26px;background:var(--teal-deep);color:var(--paper)}
+  .cal-top .lab{font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(248,244,239,.6)}
+  .cal-top .mon{font-family:"Prata",serif;font-size:1.2rem;margin-top:2px}
+  .cal-nav{display:flex;gap:8px}
+  .cal-nav button{width:38px;height:38px;border-radius:50%;border:1px solid rgba(248,244,239,.25);background:transparent;color:var(--paper);cursor:pointer;display:grid;place-items:center;transition:background .3s,border-color .3s}
+  .cal-nav button:hover{background:rgba(248,244,239,.12);border-color:rgba(248,244,239,.5)}
+  .cal-nav svg{width:16px;height:16px;stroke:currentColor;stroke-width:2;fill:none}
+  .cal-grid{padding:18px 22px 8px}
+  .cal-dow{display:grid;grid-template-columns:repeat(7,1fr);gap:2px;margin-bottom:8px}
+  .cal-dow span{text-align:center;font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft);font-weight:600}
+  .cal-days{display:grid;grid-template-columns:repeat(7,1fr);gap:2px}
+  .day{aspect-ratio:1;display:grid;place-items:center;font-size:.9rem;font-variant-numeric:tabular-nums;color:var(--ink);cursor:pointer;position:relative;border-radius:5px;transition:background .2s,color .2s;user-select:none}
+  .day.empty{cursor:default}
+  .day.past{color:var(--line);cursor:not-allowed;text-decoration:line-through;opacity:.5}
+  .day:not(.past):not(.empty):hover{background:var(--sand)}
+  .day.in,.day.out{background:var(--accent);color:var(--ink);font-weight:600;z-index:2}
+  .day.range{background:rgba(76,161,153,.22);border-radius:0}
+  .day.in{border-radius:5px 0 0 2px}.day.out{border-radius:0 2px 2px 0}
+  .cal-foot{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:20px 26px;border-top:1px solid var(--line);flex-wrap:wrap}
+  .cal-sel{font-size:.82rem;color:var(--ink-soft);line-height:1.5}
+  .cal-sel b{color:var(--teal-deep);font-family:"Prata",serif;font-weight:500;font-size:1.05rem;display:block}
+  .cal-foot .btn-solid{padding:14px 26px;font-size:.9rem}
+  .cal-foot .btn-solid[disabled]{opacity:.4;pointer-events:none}
+
+  /* REVIEWS */
+  .reviews{padding:30px 0 130px}
+  .r-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:60px}
+  @media(max-width:840px){.r-grid{grid-template-columns:1fr}}
+  .quote{border-top:2px solid var(--accent);padding-top:26px}
+  .quote .stars{color:var(--accent);font-size:.9rem;letter-spacing:.2em;margin-bottom:16px}
+  .quote p{font-family:"Prata",serif;font-style:italic;font-weight:300;font-size:1.18rem;line-height:1.5;color:var(--teal-deep);margin-bottom:20px}
+  .quote .who{font-size:.84rem;color:var(--ink-soft);letter-spacing:.04em}
+  .quote .who b{color:var(--teal);font-style:normal}
+
+  /* OWNER PITCH (for the prospect) */
+  .pitch{background:var(--teal-deep);color:var(--paper);padding:120px 0;position:relative;overflow:hidden;text-align:center}
+  .pitch .glow{position:absolute;top:-30%;right:-10%;width:560px;height:560px;border-radius:50%;background:radial-gradient(circle,rgba(76,161,153,.25),transparent 70%);z-index:0}
+  .pitch .wrap{position:relative;z-index:2;max-width:760px}
+  .pitch .eyebrow{color:var(--accent-glow);display:block;margin-bottom:22px}
+  .pitch h2{color:var(--paper);font-size:clamp(2.2rem,5vw,3.4rem);font-weight:300;margin-bottom:18px}
+  .pitch h2 em{font-style:italic;color:var(--accent-glow)}
+  .pitch p{color:rgba(248,244,239,.82);font-size:1.1rem;max-width:54ch;margin:0 auto 14px}
+  .pitch .price{font-family:"Prata",serif;font-size:1.3rem;color:var(--accent-glow);margin:30px 0 36px}
+  .pitch .price s{color:rgba(248,244,239,.4);font-size:1rem;margin-right:10px}
+  .pitch .mockup-note{margin:22px auto 0;font-size:.85rem;color:rgba(248,244,239,.55);letter-spacing:.02em;max-width:50ch}
+
+  /* FOOTER */
+  footer{background:var(--teal-darkest);color:rgba(248,244,239,.62);padding:70px 0 44px}
+  footer .wrap{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:30px}
+  footer .wordmark{color:var(--paper);font-size:1.6rem}
+  footer .fcol h4{color:var(--paper);font-family:"Inter",sans-serif;font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;font-weight:600;margin-bottom:16px}
+  footer .fcol a,footer .fcol p{display:block;color:rgba(248,244,239,.62);text-decoration:none;font-size:.92rem;margin-bottom:9px;transition:color .3s}
+  footer .fcol a:hover{color:var(--accent-glow)}
+  footer .base{width:100%;border-top:1px solid rgba(248,244,239,.1);margin-top:30px;padding-top:22px;font-size:.78rem;opacity:.6;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+
+  @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+
+<header class="nav" id="nav">
+  <div class="wrap">
+    <a href="#top" class="wordmark">Arenal Lodge<i>.</i></a>
+    <div class="nav-right">
+      <nav class="links">
+        <a href="#story" data-es="Historia" data-en="Story">Historia</a>
+        <a href="#cottages" data-es="Casitas" data-en="Cottages">Casitas</a>
+        <a href="#book" data-es="Disponibilidad" data-en="Availability">Disponibilidad</a>
+        <a href="#reviews" data-es="Opiniones" data-en="Reviews">Opiniones</a>
+      </nav>
+      <div class="nav-tools">
+        <div class="lang"><button id="es" class="active" onclick="setLang('es')">ES</button><span>/</span><button id="en" onclick="setLang('en')">EN</button></div>
+        <a href="#book" class="btn btn-line" style="padding:11px 22px;font-size:.85rem" data-es="Reservar" data-en="Book">Reservar</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="hero-bg"></div>
+  <div class="hero-orb"></div>
+  <div class="hero-grain"></div>
+  <div class="hero-fade"></div>
+  <div class="wrap hero-inner">
+    <span class="eyebrow" data-es="Casitas boutique · Pacífico Central, Costa Rica" data-en="Boutique cottages · Central Pacific, Costa Rica">Casitas boutique · Pacífico Central, Costa Rica</span>
+    <h1 id="heroTitle" data-es="Donde la selva se asoma al &lt;em&gt;mar&lt;/em&gt;" data-en="Where the jungle leans into the &lt;em&gt;sea&lt;/em&gt;">Donde la selva se asoma al <em>mar</em></h1>
+    <p class="hero-promise" data-es="Cinco casitas frente al océano, escondidas entre jardín tropical. Despierta con la marea y el canto de los monos aulladores — el Pura Vida que viniste a buscar." data-en="Five oceanfront cottages tucked into tropical garden. Wake to the tide and the call of howler monkeys — the Pura Vida you came for.">Cinco casitas frente al océano, escondidas entre jardín tropical. Despierta con la marea y el canto de los monos aulladores — el Pura Vida que viniste a buscar.</p>
+    <div class="hero-cta">
+      <a href="#book" class="btn btn-solid"><span data-es="Ver disponibilidad" data-en="Check availability">Ver disponibilidad</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      <a href="#cottages" class="btn btn-ghost" data-es="Conoce las casitas" data-en="Meet the cottages">Conoce las casitas</a>
+    </div>
+  </div>
+  <div class="hero-meta wrap" style="left:auto;max-width:none">
+    <b>4.9</b>
+    <span data-es="120+ huéspedes felices" data-en="120+ happy guests">120+ huéspedes felices</span>
+  </div>
+  <div class="scrollcue"></div>
+</section>
+
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track" id="mq">
+    <span data-es="Frente al mar" data-en="Oceanfront">Frente al mar</span><span data-es="Jardín tropical" data-en="Tropical garden">Jardín tropical</span><span data-es="Desayuno incluido" data-en="Breakfast included">Desayuno incluido</span><span data-es="Atardeceres del Pacífico" data-en="Pacific sunsets">Atardeceres del Pacífico</span><span data-es="Reserva directa" data-en="Direct booking">Reserva directa</span><span data-es="Pura Vida" data-en="Pura Vida">Pura Vida</span>
+    <span data-es="Frente al mar" data-en="Oceanfront">Frente al mar</span><span data-es="Jardín tropical" data-en="Tropical garden">Jardín tropical</span><span data-es="Desayuno incluido" data-en="Breakfast included">Desayuno incluido</span><span data-es="Atardeceres del Pacífico" data-en="Pacific sunsets">Atardeceres del Pacífico</span><span data-es="Reserva directa" data-en="Direct booking">Reserva directa</span><span data-es="Pura Vida" data-en="Pura Vida">Pura Vida</span>
+  </div>
+</div>
+
+<!-- INTRO -->
+<section class="intro" id="story">
+  <div class="wrap">
+    <div class="intro-left reveal">
+      <span class="num">01 — <span data-es="Nuestra historia" data-en="Our story">Nuestra historia</span></span>
+      <h2 data-es="Un refugio hecho con calma" data-en="A refuge made slowly">Un refugio hecho con calma</h2>
+    </div>
+    <div class="intro-right reveal" data-d="1">
+      <p data-es="Arenal Lodge nació de una idea sencilla: pocas casitas, mucho silencio, y el mar siempre cerca. Aquí no eres un número de reserva — te recibimos como familia." data-en="Arenal Lodge began with a simple idea: few cottages, plenty of quiet, and the sea always close. Here you're not a booking number — we welcome you like family.">Arenal Lodge nació de una idea sencilla: pocas casitas, mucho silencio, y el mar siempre cerca. Aquí no eres un número de reserva — te recibimos como familia.</p>
+      <p class="small" data-es="Cada casita está rodeada de jardín y a pasos de la arena. Te damos las mejores recomendaciones locales — las olas, las cascadas escondidas, el mejor ceviche del pueblo — y te dejamos disfrutar a tu propio ritmo." data-en="Each cottage is wrapped in garden and steps from the sand. We share the best local tips — the waves, the hidden waterfalls, the best ceviche in town — and let you enjoy at your own pace.">Cada casita está rodeada de jardín y a pasos de la arena. Te damos las mejores recomendaciones locales — las olas, las cascadas escondidas, el mejor ceviche del pueblo — y te dejamos disfrutar a tu propio ritmo.</p>
+      <p class="sign" data-es="— Te esperamos con los brazos abiertos." data-en="— We'll be waiting, arms open.">— Te esperamos con los brazos abiertos.</p>
+    </div>
+  </div>
+</section>
+
+<!-- COTTAGES -->
+<section class="cottages" id="cottages">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow" data-es="02 — Las casitas" data-en="02 — The cottages">02 — Las casitas</span>
+      <h2 data-es="Espacios para descansar de verdad" data-en="Spaces made for real rest">Espacios para descansar de verdad</h2>
+      <p data-es="Tarifas por noche, impuestos incluidos. Reservando directo siempre obtienes el mejor precio." data-en="Rates per night, taxes included. Booking direct always gets you the best price.">Tarifas por noche, impuestos incluidos. Reservando directo siempre obtienes el mejor precio.</p>
+    </div>
+
+    <div class="row reveal">
+      <div class="row-visual"><div class="art art1"></div><div class="grain"></div><span class="tag" data-es="Casita Jardín" data-en="Garden Cottage">Casita Jardín</span></div>
+      <div class="row-text">
+        <span class="ix">I</span>
+        <h3 data-es="Casita Jardín" data-en="Garden Cottage">Casita Jardín</h3>
+        <div class="rate"><span data-es="desde" data-en="from">desde</span> <b>$95</b> <small data-es="/ noche" data-en="/ night">/ noche</small></div>
+        <p data-es="Acogedora para dos, con vista al jardín tropical, hamaca privada y entrada independiente. El despertar más tranquilo." data-en="Cozy for two, with tropical garden views, a private hammock and independent entrance. The most peaceful of mornings.">Acogedora para dos, con vista al jardín tropical, hamaca privada y entrada independiente. El despertar más tranquilo.</p>
+        <ul class="feats"><li data-es="Cama matrimonial" data-en="Queen bed">Cama matrimonial</li><li data-es="A/C + ventilador" data-en="A/C + fan">A/C + ventilador</li><li data-es="WiFi" data-en="WiFi">WiFi</li><li data-es="Baño privado" data-en="Private bath">Baño privado</li></ul>
+        <a href="#book" class="btn btn-line" style="padding:12px 24px;font-size:.86rem" data-es="Reservar esta casita" data-en="Book this cottage">Reservar esta casita</a>
+      </div>
+    </div>
+
+    <div class="row flip reveal">
+      <div class="row-visual"><div class="art art2"></div><div class="grain"></div><span class="tag" data-es="Casita Marea" data-en="Tide Cottage">Casita Marea</span></div>
+      <div class="row-text">
+        <span class="ix">II</span>
+        <h3 data-es="Casita Marea" data-en="Tide Cottage">Casita Marea</h3>
+        <div class="rate"><span data-es="desde" data-en="from">desde</span> <b>$140</b> <small data-es="/ noche" data-en="/ night">/ noche</small></div>
+        <p data-es="Amplia para hasta cuatro personas, con cocineta, terraza propia y la brisa del mar de fondo. Perfecta para familias o amigos." data-en="Spacious for up to four, with a kitchenette, private terrace and the sea breeze running through. Perfect for families or friends.">Amplia para hasta cuatro personas, con cocineta, terraza propia y la brisa del mar de fondo. Perfecta para familias o amigos.</p>
+        <ul class="feats"><li data-es="Hasta 4 huéspedes" data-en="Up to 4 guests">Hasta 4 huéspedes</li><li data-es="Cocineta" data-en="Kitchenette">Cocineta</li><li data-es="Terraza privada" data-en="Private terrace">Terraza privada</li><li data-es="Desayuno incluido" data-en="Breakfast">Desayuno incluido</li></ul>
+        <a href="#book" class="btn btn-line" style="padding:12px 24px;font-size:.86rem" data-es="Reservar esta casita" data-en="Book this cottage">Reservar esta casita</a>
+      </div>
+    </div>
+
+    <div class="row reveal">
+      <div class="row-visual"><div class="art art3"></div><div class="grain"></div><span class="tag" data-es="Suite Vista Mar" data-en="Ocean-View Suite">Suite Vista Mar</span></div>
+      <div class="row-text">
+        <span class="ix">III</span>
+        <h3 data-es="Suite Vista Mar" data-en="Ocean-View Suite">Suite Vista Mar</h3>
+        <div class="rate"><span data-es="desde" data-en="from">desde</span> <b>$190</b> <small data-es="/ noche" data-en="/ night">/ noche</small></div>
+        <p data-es="Nuestra joya: vista directa al atardecer del Pacífico, balcón privado y tina al aire libre. Para una ocasión que merece recordarse." data-en="Our crown jewel: direct Pacific sunset views, a private balcony and an open-air tub. For an occasion worth remembering.">Nuestra joya: vista directa al atardecer del Pacífico, balcón privado y tina al aire libre. Para una ocasión que merece recordarse.</p>
+        <ul class="feats"><li data-es="Vista al océano" data-en="Ocean view">Vista al océano</li><li data-es="Balcón privado" data-en="Private balcony">Balcón privado</li><li data-es="Tina exterior" data-en="Outdoor tub">Tina exterior</li><li data-es="Desayuno gourmet" data-en="Gourmet breakfast">Desayuno gourmet</li></ul>
+        <a href="#book" class="btn btn-line" style="padding:12px 24px;font-size:.86rem" data-es="Reservar esta casita" data-en="Book this cottage">Reservar esta casita</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- IMMERSIVE -->
+<section class="immersive">
+  <div class="imm-bg" id="immBg"></div>
+  <div class="grain"></div>
+  <div class="wrap">
+    <span class="eyebrow" data-es="A pasos de la arena" data-en="Steps from the sand">A pasos de la arena</span>
+    <blockquote data-es="El Pura Vida no se explica. &lt;em&gt;Se siente.&lt;/em&gt;" data-en="Pura Vida isn't explained. &lt;em&gt;It's felt.&lt;/em&gt;">El Pura Vida no se explica. <em>Se siente.</em></blockquote>
+  </div>
+</section>
+
+<!-- BOOKING / CALENDAR -->
+<section class="book" id="book">
+  <div class="wrap">
+    <div class="book-intro reveal">
+      <span class="eyebrow" data-es="03 — Disponibilidad" data-en="03 — Availability">03 — Disponibilidad</span>
+      <h2 data-es="Elige tus fechas" data-en="Choose your dates">Elige tus fechas</h2>
+      <p data-es="Selecciona la entrada y la salida — te confirmamos por WhatsApp en minutos. Sin comisiones de Booking ni Airbnb." data-en="Pick your check-in and check-out — we confirm by WhatsApp within minutes. No Booking or Airbnb fees.">Selecciona la entrada y la salida — te confirmamos por WhatsApp en minutos. Sin comisiones de Booking ni Airbnb.</p>
+      <ul class="book-points">
+        <li><svg viewBox="0 0 24 24" fill="none"><path d="M20 6 9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg><div><b data-es="Mejor precio garantizado" data-en="Best price, guaranteed">Mejor precio garantizado</b><span data-es="Reservando directo, sin intermediarios." data-en="Booking direct, no middlemen.">Reservando directo, sin intermediarios.</span></div></li>
+        <li><svg viewBox="0 0 24 24" fill="none"><path d="M20 6 9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg><div><b data-es="Respuesta en minutos" data-en="Reply in minutes">Respuesta en minutos</b><span data-es="Hablas directo con nosotros por WhatsApp." data-en="You talk straight to us on WhatsApp.">Hablas directo con nosotros por WhatsApp.</span></div></li>
+        <li><svg viewBox="0 0 24 24" fill="none"><path d="M20 6 9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg><div><b data-es="Cancelación flexible" data-en="Flexible cancellation">Cancelación flexible</b><span data-es="Planes que cambian, lo entendemos." data-en="Plans change — we get it.">Planes que cambian, lo entendemos.</span></div></li>
+      </ul>
+    </div>
+
+    <div class="cal reveal" data-d="1">
+      <div class="cal-top">
+        <div><div class="lab" data-es="Tu estadía" data-en="Your stay">Tu estadía</div><div class="mon" id="calMonth">—</div></div>
+        <div class="cal-nav">
+          <button id="prevM" aria-label="Prev"><svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg></button>
+          <button id="nextM" aria-label="Next"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button>
+        </div>
+      </div>
+      <div class="cal-grid">
+        <div class="cal-dow" id="calDow"></div>
+        <div class="cal-days" id="calDays"></div>
+      </div>
+      <div class="cal-foot">
+        <div class="cal-sel"><b id="selNights" data-es="Selecciona la entrada" data-en="Select check-in">Selecciona la entrada</b><span id="selDates"></span></div>
+        <a id="waBook" class="btn btn-solid" disabled><span data-es="Reservar por WhatsApp" data-en="Book on WhatsApp">Reservar por WhatsApp</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="reviews" id="reviews">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow" data-es="04 — Opiniones" data-en="04 — Reviews">04 — Opiniones</span>
+      <h2 data-es="Lo que dicen los huéspedes" data-en="What guests say">Lo que dicen los huéspedes</h2>
+    </div>
+    <div class="r-grid">
+      <div class="quote reveal"><div class="stars">★★★★★</div><p data-es="“El lugar más tranquilo en el que nos hemos quedado en Costa Rica. Despertar con el sonido del mar no tiene precio.”" data-en="“The most peaceful place we've stayed in Costa Rica. Waking up to the sound of the sea is priceless.”">“El lugar más tranquilo en el que nos hemos quedado en Costa Rica. Despertar con el sonido del mar no tiene precio.”</p><div class="who"><b>Marie & Tom</b> · <span data-es="Canadá" data-en="Canada">Canadá</span></div></div>
+      <div class="quote reveal" data-d="1"><div class="stars">★★★★★</div><p data-es="“Nos trataron como familia. Las recomendaciones locales hicieron el viaje. Volveremos sin dudarlo.”" data-en="“They treated us like family. The local tips made the trip. We'll be back without a doubt.”">“Nos trataron como familia. Las recomendaciones locales hicieron el viaje. Volveremos sin dudarlo.”</p><div class="who"><b>Sofía R.</b> · <span data-es="México" data-en="Mexico">México</span></div></div>
+      <div class="quote reveal" data-d="2"><div class="stars">★★★★★</div><p data-es="“La Suite Vista Mar al atardecer es pura magia. Reservar directo fue fácil y rapidísimo.”" data-en="“The Ocean-View Suite at sunset is pure magic. Booking direct was easy and lightning fast.”">“La Suite Vista Mar al atardecer es pura magia. Reservar directo fue fácil y rapidísimo.”</p><div class="who"><b>James W.</b> · <span data-es="EE. UU." data-en="USA">EE. UU.</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- OWNER PITCH -->
+<section class="pitch">
+  <div class="glow"></div>
+  <div class="wrap">
+    <span class="eyebrow" data-es="Para el dueño de Arenal Lodge" data-en="For the owner of Arenal Lodge">Para el dueño de Arenal Lodge</span>
+    <h2 data-es="Esta página la armé &lt;em&gt;para ustedes&lt;/em&gt;." data-en="I built this page &lt;em&gt;for you&lt;/em&gt;.">Esta página la armé <em>para ustedes</em>.</h2>
+    <p data-es="Hola, soy Tony. Diseño páginas web cinematográficas para hoteles y casitas en Costa Rica. Vi que aún no tenían una y quise mostrarles cómo se vería la suya — sin fotos todavía, y ya se ve así de bien." data-en="Hi, I'm Tony. I design cinematic websites for hotels and cottages in Costa Rica. I saw you didn't have one yet and wanted to show you how yours could look — no photos yet, and it already looks this good.">Hola, soy Tony. Diseño páginas web cinematográficas para hoteles y casitas en Costa Rica. Vi que aún no tenían una y quise mostrarles cómo se vería la suya — sin fotos todavía, y ya se ve así de bien.</p>
+    <p data-es="La dejo lista en su propio dominio, con reservas directas por WhatsApp y sin comisiones de Booking ni Airbnb." data-en="I set it up on your own domain, with direct WhatsApp bookings and no Booking or Airbnb fees.">La dejo lista en su propio dominio, con reservas directas por WhatsApp y sin comisiones de Booking ni Airbnb.</p>
+    <div class="price" data-es="&lt;s&gt;$2,000+ en una agencia&lt;/s&gt; $500 — su sitio completo, listo para recibir reservas." data-en="&lt;s&gt;$2,000+ at an agency&lt;/s&gt; $500 — your complete site, ready to take bookings."><s>$2,000+ en una agencia</s> $500 — su sitio completo, listo para recibir reservas.</div>
+    <a href="https://wa.me/13213561951?text=Hola%20Tony,%20vi%20el%20sitio%20de%20muestra%20de%20Arenal%20Lodge%20y%20me%20interesa." class="btn btn-solid"><span data-es="Hablar con Tony por WhatsApp" data-en="Talk to Tony on WhatsApp">Hablar con Tony por WhatsApp</span>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      <p class="mockup-note" data-es="Esto es solo una muestra para enseñarle posibilidades — puedo cambiar colores, textos, fotos y prácticamente todo a su gusto." data-en="This is just a sample to show what's possible — I can change the colors, text, photos and pretty much everything to your liking.">Esto es solo una muestra para enseñarle posibilidades — puedo cambiar colores, textos, fotos y prácticamente todo a su gusto.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="fcol">
+      <a href="#top" class="wordmark">Arenal Lodge<i>.</i></a>
+      <p style="margin-top:14px;max-width:30ch" data-es="Casitas boutique frente al mar. Pacífico Central, Costa Rica." data-en="Boutique oceanfront cottages. Central Pacific, Costa Rica.">Casitas boutique frente al mar. Pacífico Central, Costa Rica.</p>
+    </div>
+    <div class="fcol">
+      <h4 data-es="Explorar" data-en="Explore">Explorar</h4>
+      <a href="#story" data-es="Historia" data-en="Story">Historia</a>
+      <a href="#cottages" data-es="Casitas" data-en="Cottages">Casitas</a>
+      <a href="#book" data-es="Disponibilidad" data-en="Availability">Disponibilidad</a>
+    </div>
+    <div class="fcol">
+      <h4 data-es="Reservar" data-en="Book">Reservar</h4>
+      <a href="https://wa.me/13213561951">WhatsApp</a>
+      
+      <p data-es="Pacífico Central, CR" data-en="Central Pacific, CR">Pacífico Central, CR</p>
+    </div>
+    <div class="base">
+      <span>© 2026 Arenal Lodge</span>
+      <span data-es="Sitio de muestra · diseñado por Tony" data-en="Sample site · designed by Tony">Sitio de muestra · diseñado por Tony</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+// ---- language toggle ----
+function setLang(l){
+  document.documentElement.lang=l;
+  document.querySelectorAll('[data-es]').forEach(el=>{
+    const v=el.getAttribute('data-'+l); if(v==null)return;
+    if(v.indexOf('<')>-1) el.innerHTML=v; else el.textContent=v;
+  });
+  document.getElementById('es').classList.toggle('active',l==='es');
+  document.getElementById('en').classList.toggle('active',l==='en');
+  try{localStorage.setItem('lang',l)}catch(e){}
+}
+// hero title needs word-by-word spans built AFTER language is known
+function buildHeroWords(){
+  const h=document.getElementById('heroTitle');
+  const html=h.getAttribute('data-'+document.documentElement.lang)||h.innerHTML;
+  // split on spaces but keep <em>..</em> intact
+  const tmp=html.replace(/<em>(.*?)<\/em>/g,'$1');
+  const parts=tmp.split(' ');
+  h.innerHTML=parts.map((w,i)=>{
+    const em=w.includes(''); const clean=w.replace(/[]/g,'');
+    const inner=em?`<em>${clean}</em>`:clean;
+    return `<span class="word"><span style="animation-delay:${.25+i*.08}s">${inner}&nbsp;</span></span>`;
+  }).join('');
+}
+(function(){try{const s=localStorage.getItem('lang');if(s&&s!=='es')setLang(s);}catch(e){}})();
+
+// ---- nav scroll state ----
+const nav=document.getElementById('nav');
+addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>40),{passive:true});
+
+// ---- reveal on scroll ----
+const io=new IntersectionObserver((es)=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.16});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+// ---- parallax on the immersive band ----
+const immBg=document.getElementById('immBg');
+let ticking=false;
+addEventListener('scroll',()=>{if(ticking)return;ticking=true;requestAnimationFrame(()=>{
+  const sec=immBg.parentElement, r=sec.getBoundingClientRect();
+  if(r.bottom>0&&r.top<innerHeight){const p=(r.top+r.height/2-innerHeight/2)/innerHeight; immBg.style.transform=`translateY(${p*-60}px) scale(1.15)`;}
+  ticking=false;
+});},{passive:true});
+
+// ---- availability calendar ----
+const WA="13213561951", RATE=95;
+const MON={es:["Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"],en:["January","February","March","April","May","June","July","August","September","October","November","December"]};
+const DOW={es:["L","M","M","J","V","S","D"],en:["M","T","W","T","F","S","S"]};
+let view=new Date(); view.setDate(1);
+let ci=null, co=null;
+const today=new Date(); today.setHours(0,0,0,0);
+const dEls={month:document.getElementById('calMonth'),dow:document.getElementById('calDow'),days:document.getElementById('calDays'),nights:document.getElementById('selNights'),dates:document.getElementById('selDates'),wa:document.getElementById('waBook')};
+const fmt=(d,l)=>`${d.getDate()} ${MON[l][d.getMonth()].slice(0,3)}`;
+function render(){
+  const l=document.documentElement.lang;
+  dEls.month.textContent=`${MON[l][view.getMonth()]} ${view.getFullYear()}`;
+  dEls.dow.innerHTML=DOW[l].map(d=>`<span>${d}</span>`).join('');
+  const first=(new Date(view.getFullYear(),view.getMonth(),1).getDay()+6)%7; // Mon=0
+  const days=new Date(view.getFullYear(),view.getMonth()+1,0).getDate();
+  let h='';
+  for(let i=0;i<first;i++)h+='<div class="day empty"></div>';
+  for(let d=1;d<=days;d++){
+    const dt=new Date(view.getFullYear(),view.getMonth(),d); dt.setHours(0,0,0,0);
+    let c='day';
+    if(dt<today)c+=' past';
+    if(ci&&dt.getTime()===ci.getTime())c+=' in';
+    if(co&&dt.getTime()===co.getTime())c+=' out';
+    if(ci&&co&&dt>ci&&dt<co)c+=' range';
+    h+=`<div class="${c}" data-t="${dt.getTime()}">${d}</div>`;
+  }
+  dEls.days.innerHTML=h;
+  dEls.days.querySelectorAll('.day:not(.past):not(.empty)').forEach(el=>el.onclick=()=>pick(+el.dataset.t));
+  updateFoot();
+}
+function pick(t){
+  const d=new Date(t);
+  if(!ci||co){ci=d;co=null;}
+  else if(d>ci){co=d;}
+  else {ci=d;}
+  render();
+}
+function updateFoot(){
+  const l=document.documentElement.lang;
+  if(ci&&co){
+    const n=Math.round((co-ci)/86400000);
+    dEls.nights.textContent=(l==='es'?`${n} noche${n>1?'s':''} · desde $${n*RATE}`:`${n} night${n>1?'s':''} · from $${n*RATE}`);
+    dEls.dates.textContent=`${fmt(ci,l)} → ${fmt(co,l)}`;
+    dEls.wa.removeAttribute('disabled');
+    const msg=(l==='es'
+      ?`Hola! Quiero reservar en Arenal Lodge del ${fmt(ci,l)} al ${fmt(co,l)} (${n} noche${n>1?'s':''}). ¿Hay disponibilidad?`
+      :`Hi! I'd like to book Arenal Lodge from ${fmt(ci,l)} to ${fmt(co,l)} (${n} night${n>1?'s':''}). Is it available?`);
+    dEls.wa.href=`https://wa.me/${WA}?text=${encodeURIComponent(msg)}`;
+  }else if(ci){
+    dEls.nights.textContent=(l==='es'?'Selecciona la salida':'Select check-out');
+    dEls.dates.textContent=fmt(ci,l);
+    dEls.wa.setAttribute('disabled','');
+  }else{
+    dEls.nights.textContent=(l==='es'?'Selecciona la entrada':'Select check-in');
+    dEls.dates.textContent='';
+    dEls.wa.setAttribute('disabled','');
+  }
+}
+document.getElementById('prevM').onclick=()=>{const m=new Date(view);m.setMonth(m.getMonth()-1);if(m.getFullYear()>today.getFullYear()||(m.getFullYear()===today.getFullYear()&&m.getMonth()>=today.getMonth())){view=m;render();}};
+document.getElementById('nextM').onclick=()=>{view.setMonth(view.getMonth()+1);render();};
+render();
+// keep calendar text in sync when language flips
+const _sl=setLang; setLang=function(l){_sl(l);render();};
+</script>
+</body>
+</html>
