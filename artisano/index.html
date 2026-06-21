@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Artisano — Pacífico Central, Costa Rica</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --teal:#14212b; --teal-deep:#0e171e; --teal-mid:#303c44; --teal-light:#48525a; --teal-darkest:#0a1116;
+    --sand:#d7e3e2; --paper:#f3f6f6; --ink:#15212a; --ink-soft:#727a80;
+    --accent:#3fb8a0; --accent-soft:#5ec3af; --accent-glow:#90d6c8; --line:rgba(20,33,43,.14);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  ::selection{background:var(--accent);color:var(--ink)}
+  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+  body{font-family:"Inter",system-ui,sans-serif;color:var(--ink);background:var(--paper);line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  h1,h2,h3,h4{font-family:"Playfair Display",Georgia,serif;font-weight:300;line-height:1.05;letter-spacing:-.02em;color:var(--teal-deep)}
+  .wrap{max-width:1140px;margin:0 auto;padding:0 32px}@media(max-width:600px){.wrap{padding:0 22px}}
+  .eyebrow{font-size:.72rem;text-transform:uppercase;letter-spacing:.34em;font-weight:600;color:var(--accent)}
+  .btn{position:relative;display:inline-flex;align-items:center;gap:11px;font-size:.93rem;font-weight:600;text-decoration:none;cursor:pointer;border:none;padding:15px 30px;border-radius:1px;transition:transform .5s cubic-bezier(.16,1,.3,1),box-shadow .4s,background .3s,color .3s}
+  .btn svg{width:17px;height:17px;stroke-width:1.7;transition:transform .5s}.btn:hover svg{transform:translateX(4px)}
+  .btn-solid{background:var(--accent);color:var(--ink)}.btn-solid:hover{background:var(--accent-soft);transform:translateY(-2px);box-shadow:0 16px 36px -16px rgba(63,184,160,.65)}
+  .btn-solid[disabled]{opacity:.4;pointer-events:none}
+  .btn-ghost{background:transparent;color:var(--paper);border:1px solid rgba(243,246,246,.4)}.btn-ghost:hover{background:rgba(243,246,246,.12);transform:translateY(-2px)}
+  .btn-line{background:transparent;color:var(--teal-deep);border:1px solid var(--teal-deep)}.btn-line:hover{background:var(--teal-deep);color:var(--paper)}
+
+  header.nav{position:fixed;top:0;left:0;right:0;z-index:70;padding:24px 0;transition:background .4s,box-shadow .4s,padding .4s;color:var(--paper)}
+  header.nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:20px}
+  .wordmark{font-family:"Playfair Display",serif;font-size:1.4rem;font-weight:500;color:var(--paper);text-decoration:none;transition:color .4s}
+  .wordmark i{font-style:italic;color:var(--accent-glow)}
+  nav.links{display:flex;gap:30px}
+  nav.links a{font-size:.88rem;font-weight:500;color:rgba(243,246,246,.82);text-decoration:none;transition:color .3s}
+  nav.links a:hover{color:var(--paper)}
+  .nav-tools{display:flex;align-items:center;gap:16px}
+  .lang{display:flex;gap:1px;align-items:center;font-size:.78rem;font-weight:700}
+  .lang button{background:none;border:none;cursor:pointer;color:rgba(243,246,246,.6);padding:4px 6px;font-family:inherit;font-weight:700;transition:color .3s}
+  .lang button.active{color:var(--paper)}.lang span{color:rgba(243,246,246,.4)}
+  header.nav.scrolled{background:rgba(243,246,246,.92);backdrop-filter:blur(12px);box-shadow:0 1px 0 var(--line);padding:13px 0}
+  header.nav.scrolled .wordmark{color:var(--teal-deep)}header.nav.scrolled .wordmark i{color:var(--accent)}
+  header.nav.scrolled nav.links a{color:var(--ink-soft)}header.nav.scrolled nav.links a:hover{color:var(--teal-deep)}
+  header.nav.scrolled .lang button{color:var(--ink-soft)}header.nav.scrolled .lang button.active{color:var(--teal-deep)}header.nav.scrolled .lang span{color:var(--line)}
+  @media(max-width:780px){nav.links{display:none}}
+
+  /* HERO — dark, food-forward */
+  .hero{position:relative;min-height:100svh;display:flex;align-items:flex-end;padding:0 0 11vh;overflow:hidden;color:var(--paper)}
+  .hero .bg{position:absolute;inset:0;z-index:0;background:radial-gradient(75% 55% at 22% 16%,rgba(144,214,200,.45),transparent 54%),radial-gradient(60% 60% at 88% 90%,rgba(63,184,160,.42),transparent 60%),linear-gradient(160deg,#303c44,#0e171e 46%,#0a1116)}
+  .hero .grain{position:absolute;inset:0;z-index:1;opacity:.06;background-image:repeating-linear-gradient(112deg,transparent 0 22px,rgba(255,255,255,.6) 22px 23px)}
+  .hero .fade{position:absolute;left:0;right:0;bottom:0;height:34%;z-index:1;background:linear-gradient(transparent,rgba(10,17,22,.55))}
+  .hero .inner{position:relative;z-index:3;width:100%}
+  .hero .eyebrow{color:var(--accent-glow);display:block;margin-bottom:24px;opacity:0;animation:fadeUp .9s .2s forwards}
+  .hero h1{font-size:clamp(3rem,9vw,7rem);color:var(--paper);max-width:16ch;margin-bottom:26px;opacity:0;animation:fadeUp 1.1s .35s forwards}
+  .hero h1 em{font-style:italic;color:var(--accent-glow)}
+  .hero p{font-size:clamp(1.05rem,1.9vw,1.3rem);color:rgba(243,246,246,.9);max-width:46ch;margin-bottom:34px;opacity:0;animation:fadeUp 1s .6s forwards}
+  .hero .hc{display:flex;gap:15px;flex-wrap:wrap;opacity:0;animation:fadeUp 1s .8s forwards}
+  @keyframes fadeUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
+
+  .marquee{background:var(--teal-deep);color:var(--paper);padding:18px 0;overflow:hidden;white-space:nowrap}
+  .mq{display:inline-block;animation:scrollx 30s linear infinite}
+  .mq span{font-family:"Playfair Display",serif;font-style:italic;font-size:1.1rem;margin:0 26px;opacity:.85}.mq span::after{content:"·";margin-left:26px;color:var(--accent-soft);font-style:normal}
+  @keyframes scrollx{to{transform:translateX(-50%)}}
+
+  .reveal{opacity:0;transform:translateY(30px);transition:opacity .9s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1)}.reveal.in{opacity:1;transform:none}
+  section.blk{padding:120px 0}
+  .intro{text-align:center}.intro h2{font-size:clamp(1.9rem,3.6vw,2.9rem);max-width:20ch;margin:0 auto 22px}.intro h2 em{font-style:italic;color:var(--accent)}.intro p{color:var(--ink-soft);max-width:60ch;margin:0 auto;font-size:1.05rem}
+
+  /* MENU */
+  .menu{background:var(--sand)}
+  .sec-head{text-align:center;max-width:640px;margin:0 auto 60px}.sec-head .eyebrow{display:block;margin-bottom:14px}.sec-head h2{font-size:clamp(2rem,4.4vw,3.2rem)}
+  .menu-cols{display:grid;grid-template-columns:1fr 1fr;gap:56px}@media(max-width:780px){.menu-cols{grid-template-columns:1fr;gap:40px}}
+  .mcat h3{font-family:"Playfair Display",serif;font-weight:400;font-size:1.5rem;color:var(--teal-deep);margin-bottom:8px}
+  .mcat .cl{width:40px;height:1px;background:var(--accent);margin-bottom:22px}
+  .mi{display:flex;justify-content:space-between;gap:16px;align-items:baseline;padding:14px 0;border-bottom:1px dotted var(--line)}
+  .mi:last-child{border-bottom:none}
+  .mi .nm{font-weight:600;color:var(--teal-deep)}.mi .ds{display:block;font-weight:400;color:var(--ink-soft);font-size:.88rem;margin-top:2px}
+  .mi .pr{font-family:"Playfair Display",serif;color:var(--accent);font-size:1.05rem;white-space:nowrap}
+  .menu-note{text-align:center;color:var(--ink-soft);font-size:.9rem;margin-top:42px;font-style:italic}
+
+  /* AMBIANCE band */
+  .amb{position:relative;padding:150px 0;text-align:center;color:var(--paper);overflow:hidden}
+  .amb .bg{position:absolute;inset:0;z-index:0;background:radial-gradient(60% 70% at 50% 32%,rgba(94,195,175,.4),transparent 60%),linear-gradient(160deg,#14212b,#0a1116)}
+  .amb .grain{position:absolute;inset:0;z-index:1;opacity:.06;background-image:repeating-linear-gradient(112deg,transparent 0 24px,rgba(255,255,255,.6) 24px 25px)}
+  .amb .wrap{position:relative;z-index:2}.amb .eyebrow{color:var(--accent-glow);display:block;margin-bottom:22px}
+  .amb blockquote{font-family:"Playfair Display",serif;font-weight:300;font-size:clamp(2rem,5.5vw,4rem);line-height:1.14;max-width:18ch;margin:0 auto;color:var(--paper)}.amb blockquote em{font-style:italic;color:var(--accent-glow)}
+
+  /* RESERVE */
+  .book .wrap{display:grid;grid-template-columns:1fr 1.05fr;gap:60px;align-items:center}@media(max-width:880px){.book .wrap{grid-template-columns:1fr;gap:40px}}
+  .book h2{font-size:clamp(2rem,4vw,3rem);margin:14px 0 16px}.book p{color:var(--ink-soft);max-width:42ch;margin-bottom:24px}
+  .book-points{list-style:none}.book-points li{display:flex;gap:13px;align-items:flex-start;padding:13px 0;border-top:1px solid var(--line);font-size:.94rem;color:var(--ink-soft)}.book-points li:last-child{border-bottom:1px solid var(--line)}
+  .book-points svg{width:19px;height:19px;stroke:var(--accent);stroke-width:1.6;flex:none;margin-top:3px}.book-points b{color:var(--teal-deep);font-family:"Playfair Display",serif;font-weight:500;display:block}
+  .resv{background:var(--paper);border:1px solid var(--line);border-radius:4px;box-shadow:0 40px 90px -50px rgba(10,17,22,.5);overflow:hidden}
+  .resv-top{padding:22px 26px;background:var(--teal-deep);color:var(--paper)}.resv-top .lab{font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(243,246,246,.6)}.resv-top .ti{font-family:"Playfair Display",serif;font-size:1.25rem;margin-top:3px}
+  .resv-body{padding:26px}
+  .fld{margin-bottom:18px}.fld label{display:block;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft);font-weight:600;margin-bottom:7px}
+  .fld input,.fld select{width:100%;padding:13px 14px;border:1px solid var(--line);border-radius:1px;background:var(--paper);color:var(--ink);font-family:"Inter";font-size:.95rem}
+  .fld input:focus,.fld select:focus{outline:none;border-color:var(--accent)}
+  .resv .btn-solid{width:100%;justify-content:center;margin-top:6px}
+  .resv-note{font-size:.78rem;color:var(--ink-soft);text-align:center;margin-top:14px}
+
+  .reviews{background:var(--teal-deep);color:var(--paper);text-align:center}.reviews .eyebrow{color:var(--accent-glow)}.reviews h2{color:var(--paper);margin:14px 0 50px;font-size:clamp(2rem,4vw,3rem)}
+  .r-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:30px;text-align:left}@media(max-width:840px){.r-grid{grid-template-columns:1fr}}
+  .q{border-top:1px solid rgba(243,246,246,.2);padding-top:24px}.q .stars{color:var(--accent-glow);letter-spacing:.2em;margin-bottom:14px;font-size:.85rem}
+  .q p{font-family:"Playfair Display",serif;font-style:italic;font-weight:300;font-size:1.15rem;color:var(--paper);margin-bottom:16px}.q .who{font-size:.82rem;color:rgba(243,246,246,.6)}.q .who b{color:var(--paper);font-style:normal}
+
+  .pitch{background:var(--sand);text-align:center;position:relative;overflow:hidden}.pitch .glow{position:absolute;top:-30%;left:50%;transform:translateX(-50%);width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(63,184,160,.16),transparent 70%)}
+  .pitch .wrap{position:relative;z-index:2;max-width:760px}.pitch .eyebrow{display:block;margin-bottom:18px}.pitch h2{font-size:clamp(2rem,4.4vw,3.2rem);margin-bottom:16px}.pitch h2 em{font-style:italic;color:var(--accent)}
+  .pitch p{color:var(--ink-soft);max-width:54ch;margin:0 auto 12px}.pitch .price{font-family:"Playfair Display",serif;font-size:1.3rem;color:var(--accent);margin:26px 0 32px}.pitch .price s{color:var(--ink-soft);opacity:.7;font-size:1rem;margin-right:10px}
+  .pitch .mockup-note{margin:22px auto 0;font-size:.85rem;color:var(--ink-soft);max-width:50ch}
+
+  footer{background:var(--teal-darkest);color:rgba(243,246,246,.62);padding:56px 0 40px;text-align:center}footer .wordmark{color:var(--paper);font-size:1.5rem}footer p{font-size:.86rem;margin:12px 0}footer .base{border-top:1px solid rgba(243,246,246,.1);margin-top:22px;padding-top:20px;font-size:.78rem;opacity:.6}
+  @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
+
+  /* Backyard-baseline headline entrance: blur-fade-up (added 2026-06-16) */
+  .hero h1,#heroTitle{opacity:0;animation:bhTitleIn 1.1s .35s cubic-bezier(.16,1,.3,1) forwards}
+  @keyframes bhTitleIn{from{opacity:0;transform:translateY(16px);filter:blur(12px)}to{opacity:1;transform:none;filter:blur(0)}}
+  @media(prefers-reduced-motion:reduce){.hero h1,#heroTitle{opacity:1!important;animation:none!important;filter:none!important}}
+</style>
+</head>
+<body>
+<header class="nav" id="nav">
+  <div class="wrap">
+    <a href="#top" class="wordmark">Artisano<i>.</i></a>
+    <nav class="links">
+      <a href="#story" data-es="Nosotros" data-en="About">Nosotros</a>
+      <a href="#menu" data-es="Menú" data-en="Menu">Menú</a>
+      <a href="#book" data-es="Reservar" data-en="Reserve">Reservar</a>
+    </nav>
+    <div class="nav-tools">
+      <div class="lang"><button id="es" class="active" onclick="setLang('es')">ES</button><span>/</span><button id="en" onclick="setLang('en')">EN</button></div>
+      <a href="#book" class="btn btn-line" style="padding:11px 22px;font-size:.85rem;border-color:rgba(243,246,246,.5);color:var(--paper)" data-es="Reservar mesa" data-en="Book a table">Reservar mesa</a>
+    </div>
+  </div>
+</header>
+
+<section class="hero" id="top">
+  <div class="bg"></div><div class="grain"></div><div class="fade"></div>
+  <div class="wrap inner">
+    <span class="eyebrow" data-es="Restaurante · Pacífico Central, Costa Rica" data-en="Restaurant · Central Pacific, Costa Rica">Restaurante · Pacífico Central, Costa Rica</span>
+    <h1 data-es="Sabor que sabe a &lt;em&gt;Costa Rica&lt;/em&gt;" data-en="Flavor that tastes like &lt;em&gt;Costa Rica&lt;/em&gt;">Sabor que sabe a <em>Costa Rica</em></h1>
+    <p data-es="Cocina fresca frente al Pacífico — ingredientes locales, mariscos del día y el mejor atardecer del pueblo. Reservá tu mesa directo, sin apps." data-en="Fresh cooking facing the Pacific — local ingredients, catch of the day, and the best sunset in town. Book your table direct, no apps.">Cocina fresca frente al Pacífico — ingredientes locales, mariscos del día y el mejor atardecer del pueblo. Reservá tu mesa directo, sin apps.</p>
+    <div class="hc">
+      <a href="#book" class="btn btn-solid"><span data-es="Reservar mesa" data-en="Book a table">Reservar mesa</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      <a href="#menu" class="btn btn-ghost" data-es="Ver el menú" data-en="See the menu">Ver el menú</a>
+    </div>
+  </div>
+</section>
+
+<div class="marquee" aria-hidden="true"><div class="mq">
+  <span data-es="Mariscos del día" data-en="Catch of the day">Mariscos del día</span><span data-es="Ingredientes locales" data-en="Local ingredients">Ingredientes locales</span><span data-es="Frente al mar" data-en="Oceanfront">Frente al mar</span><span data-es="Cocteles al atardecer" data-en="Sunset cocktails">Cocteles al atardecer</span><span data-es="Pura Vida" data-en="Pura Vida">Pura Vida</span>
+  <span data-es="Mariscos del día" data-en="Catch of the day">Mariscos del día</span><span data-es="Ingredientes locales" data-en="Local ingredients">Ingredientes locales</span><span data-es="Frente al mar" data-en="Oceanfront">Frente al mar</span><span data-es="Cocteles al atardecer" data-en="Sunset cocktails">Cocteles al atardecer</span><span data-es="Pura Vida" data-en="Pura Vida">Pura Vida</span>
+</div></div>
+
+<section class="blk intro" id="story">
+  <div class="wrap reveal">
+    <h2 data-es="Comida hecha con &lt;em&gt;cariño&lt;/em&gt;, servida sin prisa." data-en="Food made with &lt;em&gt;love&lt;/em&gt;, served unhurried.">Comida hecha con <em>cariño</em>, servida sin prisa.</h2>
+    <p data-es="En Artisano cocinamos lo que crece y se pesca aquí. Recetas de familia, productos frescos del día, y un lugar donde quedarse horas. Te recibimos como en casa." data-en="At Artisano we cook what grows and is caught here. Family recipes, fresh daily produce, and a place to linger for hours. We welcome you like home.">En Artisano cocinamos lo que crece y se pesca aquí. Recetas de familia, productos frescos del día, y un lugar donde quedarse horas. Te recibimos como en casa.</p>
+  </div>
+</section>
+
+<section class="blk menu" id="menu">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="eyebrow" data-es="El menú" data-en="The menu">El menú</span><h2 data-es="Una probadita" data-en="A taste of it">Una probadita</h2></div>
+    <div class="menu-cols reveal">
+      <div class="mcat">
+        <h3 data-es="Para empezar" data-en="To start">Para empezar</h3><div class="cl"></div>
+        <div class="mi"><div><span class="nm" data-es="Ceviche del día" data-en="Catch ceviche">Ceviche del día</span><span class="ds" data-es="Pesca fresca, limón, cilantro" data-en="Fresh catch, lime, cilantro">Pesca fresca, limón, cilantro</span></div><span class="pr">₡6.500</span></div>
+        <div class="mi"><div><span class="nm" data-es="Patacones" data-en="Patacones">Patacones</span><span class="ds" data-es="Plátano verde, frijoles, pico" data-en="Green plantain, beans, pico">Plátano verde, frijoles, pico</span></div><span class="pr">₡4.500</span></div>
+        <div class="mi"><div><span class="nm" data-es="Tacos de pescado" data-en="Fish tacos">Tacos de pescado</span><span class="ds" data-es="Tres, salsa de la casa" data-en="Three, house sauce">Tres, salsa de la casa</span></div><span class="pr">₡7.000</span></div>
+      </div>
+      <div class="mcat">
+        <h3 data-es="Platos fuertes" data-en="Mains">Platos fuertes</h3><div class="cl"></div>
+        <div class="mi"><div><span class="nm" data-es="Casado del mar" data-en="Seafood casado">Casado del mar</span><span class="ds" data-es="Pescado, arroz, frijoles, ensalada" data-en="Fish, rice, beans, salad">Pescado, arroz, frijoles, ensalada</span></div><span class="pr">₡9.500</span></div>
+        <div class="mi"><div><span class="nm" data-es="Camarones al ajillo" data-en="Garlic shrimp">Camarones al ajillo</span><span class="ds" data-es="Mantequilla, ajo, pan" data-en="Butter, garlic, bread">Mantequilla, ajo, pan</span></div><span class="pr">₡11.000</span></div>
+        <div class="mi"><div><span class="nm" data-es="Pollo a la plancha" data-en="Grilled chicken">Pollo a la plancha</span><span class="ds" data-es="Vegetales locales, chimichurri" data-en="Local veggies, chimichurri">Vegetales locales, chimichurri</span></div><span class="pr">₡8.000</span></div>
+      </div>
+    </div>
+    <p class="menu-note reveal" data-es="Menú de muestra — adaptamos todo a sus platillos y precios reales." data-en="Sample menu — we adapt it all to your real dishes and prices.">Menú de muestra — adaptamos todo a sus platillos y precios reales.</p>
+  </div>
+</section>
+
+<section class="amb">
+  <div class="bg"></div><div class="grain"></div>
+  <div class="wrap"><span class="eyebrow" data-es="Frente al mar" data-en="Oceanfront">Frente al mar</span><blockquote data-es="El mejor sabor &lt;em&gt;se comparte&lt;/em&gt;." data-en="The best flavor &lt;em&gt;is shared&lt;/em&gt;.">El mejor sabor <em>se comparte</em>.</blockquote></div>
+</section>
+
+<section class="blk book" id="book">
+  <div class="wrap">
+    <div class="reveal">
+      <span class="eyebrow" data-es="Reservaciones" data-en="Reservations">Reservaciones</span>
+      <h2 data-es="Reservá tu mesa" data-en="Book your table">Reservá tu mesa</h2>
+      <p data-es="Elegí día y personas — te confirmamos en minutos. Directo con nosotros." data-en="Pick a day and party size — we confirm within minutes. Straight with us.">Elegí día y personas — te confirmamos en minutos. Directo con nosotros.</p>
+      <ul class="book-points">
+        <li><svg viewBox="0 0 24 24" fill="none"><path d="M20 6 9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg><div><b data-es="Respuesta en minutos" data-en="Reply in minutes">Respuesta en minutos</b><span data-es="Hablás directo con el restaurante." data-en="You talk straight to the restaurant.">Hablás directo con el restaurante.</span></div></li>
+        <li><svg viewBox="0 0 24 24" fill="none"><path d="M20 6 9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg><div><b data-es="Sin apps ni comisiones" data-en="No apps, no fees">Sin apps ni comisiones</b><span data-es="Reservás directo, gratis." data-en="Book direct, free.">Reservás directo, gratis.</span></div></li>
+      </ul>
+    </div>
+    <div class="resv reveal">
+      <div class="resv-top"><div class="lab" data-es="Tu reserva" data-en="Your reservation">Tu reserva</div><div class="ti" data-es="Mesa para…" data-en="Table for…">Mesa para…</div></div>
+      <div class="resv-body">
+        <div class="fld"><label data-es="Fecha" data-en="Date">Fecha</label><input type="date" id="rDate"></div>
+        <div class="fld"><label data-es="Personas" data-en="Guests">Personas</label><select id="rGuests"><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7+">7+</option></select></div>
+        <div class="fld"><label data-es="Hora" data-en="Time">Hora</label><select id="rTime"><option>6:00 PM</option><option>6:30 PM</option><option>7:00 PM</option><option>7:30 PM</option><option>8:00 PM</option><option>8:30 PM</option></select></div>
+        <a id="rWa" class="btn btn-solid" disabled><span data-es="Reservar" data-en="Book">Reservar</span></a>
+        <p class="resv-note" data-es="Elegí una fecha para continuar." data-en="Pick a date to continue.">Elegí una fecha para continuar.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="blk reviews">
+  <div class="wrap">
+    <span class="eyebrow" data-es="Opiniones" data-en="Reviews">Opiniones</span><h2 data-es="Lo que dicen los comensales" data-en="What diners say">Lo que dicen los comensales</h2>
+    <div class="r-grid">
+      <div class="q reveal"><div class="stars">★★★★★</div><p data-es="“El mejor ceviche que probamos en todo el viaje. Volvimos tres veces.”" data-en="“The best ceviche we had the whole trip. We came back three times.”">“El mejor ceviche que probamos en todo el viaje. Volvimos tres veces.”</p><div class="who"><b>Marie &amp; Tom</b> · <span data-es="Canadá" data-en="Canada">Canadá</span></div></div>
+      <div class="q reveal"><div class="stars">★★★★★</div><p data-es="“Atardecer, mariscos frescos y trato de familia. Perfecto.”" data-en="“Sunset, fresh seafood and family treatment. Perfect.”">“Atardecer, mariscos frescos y trato de familia. Perfecto.”</p><div class="who"><b>Sofía R.</b> · <span data-es="México" data-en="Mexico">México</span></div></div>
+      <div class="q reveal"><div class="stars">★★★★★</div><p data-es="“Reservé en un minuto. Todo riquísimo.”" data-en="“Booked in a minute. Everything delicious.”">“Reservé en un minuto. Todo riquísimo.”</p><div class="who"><b>James W.</b> · <span data-es="EE. UU." data-en="USA">EE. UU.</span></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="blk pitch">
+  <div class="glow"></div>
+  <div class="wrap">
+    <span class="eyebrow">Para el dueño de Artisano</span>
+    <h2 data-es="Esta página la armé &lt;em&gt;para ustedes&lt;/em&gt;." data-en="I built this page &lt;em&gt;for you&lt;/em&gt;.">Esta página la armé <em>para ustedes</em>.</h2>
+    <p data-es="Hola, soy Tony. Diseño páginas web cinematográficas para restaurantes en Costa Rica. Vi que aún no tenían una y quise mostrarles cómo se vería la suya." data-en="Hi, I'm Tony. I design cinematic websites for restaurants in Costa Rica. I saw you didn't have one and wanted to show you how yours could look.">Hola, soy Tony. Diseño páginas web cinematográficas para restaurantes en Costa Rica. Vi que aún no tenían una y quise mostrarles cómo se vería la suya.</p>
+    <p data-es="La dejo lista para que más turistas los encuentren en Google y reserven mesa directo, sin comisiones." data-en="I set it up so more tourists find you on Google and book a table direct, no fees.">La dejo lista para que más turistas los encuentren en Google y reserven mesa directo, sin comisiones.</p>
+    <div class="price" data-es="&lt;s&gt;$2,000+ en una agencia&lt;/s&gt; $500 — su sitio completo, listo para reservas." data-en="&lt;s&gt;$2,000+ at an agency&lt;/s&gt; $500 — your complete site, ready for reservations."><s>$2,000+ en una agencia</s> $500 — su sitio completo, listo para reservas.</div>
+    <a href="mailto:anthonyskoczylas@yahoo.com?subject=Sitio%20web%20para%20Artisano" class="btn btn-solid"><span data-es="Escribir a Tony" data-en="Email Tony">Escribir a Tony</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+    <p class="mockup-note" data-es="Es solo una página — una muestra de cómo se vería su sitio completo. Puedo cambiar colores, textos, platillos y prácticamente todo a su gusto." data-en="This is just one page — a preview of what your full site could look like. I can change the colors, text, dishes and pretty much everything to your liking.">Es solo una página — una muestra de cómo se vería su sitio completo. Puedo cambiar colores, textos, platillos y prácticamente todo a su gusto.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <a href="#top" class="wordmark">Artisano<i>.</i></a>
+    <p data-es="Restaurante frente al mar. Pacífico Central, Costa Rica." data-en="Oceanfront restaurant. Central Pacific, Costa Rica.">Restaurante frente al mar. Pacífico Central, Costa Rica.</p>
+    <p><a href="mailto:anthonyskoczylas@yahoo.com">Email</a></p>
+      <p><a href="https://instagram.com/Tonysko__" target="_blank" rel="noopener">@Tonysko__</a></p>
+    <div class="base"><span>© 2026 Artisano · </span><span data-es="Sitio de muestra · diseñado por Tony" data-en="Sample site · designed by Tony">Sitio de muestra · diseñado por Tony</span></div>
+  </div>
+</footer>
+
+<script>
+function setLang(l){document.documentElement.lang=l;
+  document.querySelectorAll('[data-es]').forEach(el=>{const v=el.getAttribute('data-'+l);if(v==null)return;if(v.indexOf('<')>-1)el.innerHTML=v;else el.textContent=v;});
+  document.getElementById('es').classList.toggle('active',l==='es');document.getElementById('en').classList.toggle('active',l==='en');
+  try{localStorage.setItem('lang',l)}catch(e){}}
+(function(){try{const s=localStorage.getItem('lang');if(s&&s!=='es')setLang(s);}catch(e){}})();
+const nav=document.getElementById('nav');addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>40),{passive:true});
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}}),{threshold:.14});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+// reservation -> email (neutral demo)
+const WA="13213561951",BIZ="Artisano";
+const rDate=document.getElementById('rDate'),rG=document.getElementById('rGuests'),rT=document.getElementById('rTime'),rWa=document.getElementById('rWa'),rNote=document.querySelector('.resv-note');
+const todayISO=new Date().toISOString().slice(0,10);rDate.min=todayISO;
+function upd(){const l=document.documentElement.lang;if(!rDate.value){rWa.setAttribute('disabled','');return;}rWa.removeAttribute('disabled');
+  const d=new Date(rDate.value+'T00:00');const ds=d.toLocaleDateString(l==='es'?'es-CR':'en-US',{day:'numeric',month:'short'});
+  const m=l==='es'?('Hola! Quiero reservar mesa en '+BIZ+' para '+rG.value+' personas el '+ds+' a las '+rT.value+'. ¿Hay disponibilidad?'):('Hi! I\\'d like a table at '+BIZ+' for '+rG.value+' on '+ds+' at '+rT.value+'. Any availability?');
+  rWa.removeAttribute('href');
+  rNote.textContent=l==='es'?('Mesa para '+rG.value+' · '+ds+' · '+rT.value):('Table for '+rG.value+' · '+ds+' · '+rT.value);}
+[rDate,rG,rT].forEach(e=>e.addEventListener('change',upd));
+</script>
+</body>
+</html>
