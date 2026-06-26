@@ -394,19 +394,29 @@ function setLang(l, save){
   if(save){ try{ localStorage.setItem('co_lang', l); }catch(e){} }
 }
 
-function buildPill(){
-  var navLinks = document.querySelector('.nav-links');
-  if(!navLinks || navLinks.querySelector('.lang-pill')) return;
+function makePill(extra){
   var pill = document.createElement('div');
-  pill.className = 'lang-pill';
+  pill.className = 'lang-pill' + (extra ? ' ' + extra : '');
   ['en','es','de'].forEach(function(l){
     var b = document.createElement('button');
     b.type = 'button'; b.dataset.l = l; b.textContent = l.toUpperCase();
     b.addEventListener('click', function(){ setLang(l, true); });
     pill.appendChild(b);
   });
-  var book = navLinks.querySelector('.btn-primary');
-  navLinks.insertBefore(pill, book || null);
+  return pill;
+}
+function buildPill(){
+  var navLinks = document.querySelector('.nav-links');
+  var navIn = document.querySelector('.nav-in');
+  var toggle = document.querySelector('.nav-toggle');
+  // desktop pill: inside the nav links, before the "Book a stay" button
+  if(navLinks && !navLinks.querySelector('.lang-pill')){
+    navLinks.insertBefore(makePill(''), navLinks.querySelector('.btn-primary') || null);
+  }
+  // mobile pill: always visible in the top bar, before the hamburger
+  if(navIn && toggle && !navIn.querySelector('.lang-pill-mobile')){
+    navIn.insertBefore(makePill('lang-pill-mobile'), toggle);
+  }
 }
 
 /* ---------- scroll reveal ---------- */
