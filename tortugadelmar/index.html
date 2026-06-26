@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Tortuga del Mar — Beachfront Lodge in Playa Hermosa, Costa Rica</title>
+<meta name="description" content="A quiet beachfront garden lodge on Playa Hermosa, Costa Rica. Ocean-view rooms and studios steps from the surf, a pool in a tropical garden, and a yoga deck by the sea. 4.8★ across 146 reviews." />
+<meta name="theme-color" content="#0C2A2E" />
+
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Tortuga del Mar — Beachfront Lodge, Playa Hermosa Costa Rica" />
+<meta property="og:description" content="Wake up to the sound of waves. A quiet beachfront garden lodge on Costa Rica's best surf beach. 4.8★ · #3 in Playa Hermosa." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..500&family=Hanken+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org","@type":"LodgingBusiness",
+  "name":"Tortuga del Mar","description":"Beachfront garden lodge on Playa Hermosa, Costa Rica.",
+  "image":"","priceRange":"$$",
+  "address":{"@type":"PostalAddress","addressLocality":"Playa Hermosa","addressRegion":"Puntarenas","addressCountry":"CR"},
+  "aggregateRating":{"@type":"AggregateRating","ratingValue":"4.8","reviewCount":"146"},
+  "amenityFeature":[
+    {"@type":"LocationFeatureSpecification","name":"Beachfront pool","value":true},
+    {"@type":"LocationFeatureSpecification","name":"Direct beach access","value":true},
+    {"@type":"LocationFeatureSpecification","name":"Yoga deck","value":true},
+    {"@type":"LocationFeatureSpecification","name":"Free WiFi","value":true}
+  ]
+}
+</script>
+
+<style>
+:root{
+  --ink:#0C2A2E;
+  --ocean:#15494B;
+  --ocean-2:#0a3a3c;
+  --sea:#3E8C82;
+  --sea-soft:#8FBDB3;
+  --sand:#F4ECDC;
+  --sand-2:#EADFC9;
+  --cream:#FBF7EF;
+  --coral:#E07A5F;
+  --coral-soft:#EBA890;
+  --muted:#5C6B66;
+  --line:rgba(12,42,46,.14);
+  --serif:'Newsreader',Georgia,serif;
+  --sans:'Hanken Grotesk',system-ui,-apple-system,sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);color:var(--ink);background:var(--cream);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+h1,h2,h3,h4{font-family:var(--serif);font-weight:400;line-height:1.06;letter-spacing:-.015em}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+.wrap{max-width:1220px;margin:0 auto;padding:0 28px}
+.eyebrow{font-size:.72rem;font-weight:600;letter-spacing:.26em;text-transform:uppercase;color:var(--coral)}
+.pad{padding:clamp(72px,11vw,140px) 0}
+
+/* turtle mark */
+.turtle{width:1em;height:1em;display:inline-block;vertical-align:-.12em}
+
+/* ---------- NAV ---------- */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:18px 28px;transition:.4s}
+nav.scrolled{background:rgba(251,247,239,.92);backdrop-filter:blur(14px);box-shadow:0 1px 0 var(--line);padding:12px 28px}
+.brand{display:flex;align-items:center;gap:11px;color:#fff;transition:color .4s}
+nav.scrolled .brand{color:var(--ink)}
+.brand .mark{width:34px;height:34px;flex-shrink:0}
+.brand .mark svg{width:100%;height:100%}
+.brand .wm{font-family:var(--serif);font-size:1.18rem;line-height:1;letter-spacing:-.01em}
+.brand .wm small{display:block;font-family:var(--sans);font-size:.56rem;letter-spacing:.24em;text-transform:uppercase;opacity:.75;margin-top:3px}
+.nav-links{display:flex;align-items:center;gap:32px}
+.nav-links a{font-size:.82rem;font-weight:500;color:rgba(255,255,255,.92);transition:.25s}
+nav.scrolled .nav-links a{color:var(--muted)}
+.nav-links a:hover{color:var(--coral-soft)}
+nav.scrolled .nav-links a:hover{color:var(--coral)}
+.nav-cta{display:flex;align-items:center;gap:14px}
+.btn{display:inline-flex;align-items:center;gap:8px;font-family:var(--sans);font-size:.8rem;font-weight:600;letter-spacing:.02em;padding:11px 22px;border-radius:999px;cursor:pointer;transition:transform .25s,box-shadow .25s,background .25s,color .25s}
+.btn-coral{background:var(--coral);color:#fff;box-shadow:0 6px 20px rgba(224,122,95,.35)}
+.btn-coral:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(224,122,95,.45)}
+.btn-ghost{border:1px solid rgba(255,255,255,.5);color:#fff}
+nav.scrolled .btn-ghost{border-color:var(--line);color:var(--ink)}
+.btn-ghost:hover{background:rgba(255,255,255,.12)}
+nav.scrolled .btn-ghost:hover{background:rgba(12,42,46,.05)}
+.lang{display:inline-flex;border:1px solid rgba(255,255,255,.45);border-radius:999px;overflow:hidden;font-size:.72rem;font-weight:600}
+nav.scrolled .lang{border-color:var(--line)}
+.lang button{background:none;border:0;cursor:pointer;padding:7px 12px;color:rgba(255,255,255,.82);font-family:var(--sans);font-weight:600;transition:.2s}
+nav.scrolled .lang button{color:var(--muted)}
+.lang button.active{background:var(--coral);color:#fff}
+.menu-toggle{display:none;background:none;border:0;cursor:pointer;flex-direction:column;gap:5px}
+.menu-toggle span{width:26px;height:2px;background:#fff;transition:.3s}
+nav.scrolled .menu-toggle span{background:var(--ink)}
+
+/* ---------- HERO ---------- */
+.hero{position:relative;min-height:100svh;display:flex;align-items:center;overflow:hidden;color:#fff;
+  background:linear-gradient(165deg,#0a3a3c 0%,#15494B 42%,#2E7D74 100%)}
+.hero-glow{position:absolute;top:-20%;right:-10%;width:60vw;height:60vw;border-radius:50%;
+  background:radial-gradient(circle,rgba(224,122,95,.32),transparent 62%);filter:blur(8px);z-index:0}
+.hero-inner{position:relative;z-index:3;width:100%;padding-top:60px}
+.hero .eyebrow{color:var(--coral-soft)}
+.hero h1{font-size:clamp(3rem,8.5vw,7rem);font-weight:300;margin:.26em 0 .3em;max-width:14ch}
+.hero h1 em{font-style:italic;color:var(--sand)}
+.hero-sub{font-size:clamp(1.02rem,1.6vw,1.25rem);max-width:520px;color:rgba(255,255,255,.9);font-weight:300}
+.hero-actions{display:flex;gap:14px;margin-top:34px;flex-wrap:wrap}
+.hero-badge{display:inline-flex;align-items:center;gap:12px;margin-bottom:8px;padding:8px 16px 8px 8px;border-radius:999px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);backdrop-filter:blur(4px)}
+.hero-badge .score{font-family:var(--serif);font-size:1.15rem;background:var(--coral);color:#fff;width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center}
+.hero-badge .stars{color:var(--sand);letter-spacing:2px;font-size:.82rem;line-height:1}
+.hero-badge .sub{font-size:.72rem;color:rgba(255,255,255,.8);letter-spacing:.04em}
+.waves{position:absolute;left:0;right:0;bottom:-1px;z-index:2;width:100%;height:auto;display:block}
+.waves path{fill:var(--cream)}
+.scroll-hint{position:absolute;bottom:120px;right:32px;z-index:3;font-size:.64rem;letter-spacing:.25em;text-transform:uppercase;color:rgba(255,255,255,.65);display:flex;align-items:center;gap:10px;writing-mode:vertical-rl}
+.scroll-hint::after{content:"";width:1px;height:38px;background:rgba(255,255,255,.5)}
+
+/* ---------- REVEAL ---------- */
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .9s cubic-bezier(.2,.6,.2,1),transform .9s cubic-bezier(.2,.6,.2,1)}
+.reveal.in{opacity:1;transform:none}
+
+/* ---------- AMENITIES MARQUEE ---------- */
+.strip{background:var(--ink);color:var(--sand);overflow:hidden;padding:18px 0}
+.strip-track{display:flex;gap:48px;white-space:nowrap;animation:scroll 32s linear infinite;width:max-content}
+.strip:hover .strip-track{animation-play-state:paused}
+.strip-item{display:inline-flex;align-items:center;gap:12px;font-size:.86rem;letter-spacing:.08em;text-transform:uppercase;font-weight:500}
+.strip-item::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--coral)}
+@keyframes scroll{to{transform:translateX(-50%)}}
+
+/* ---------- STORY ---------- */
+.story{display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,7vw,100px);align-items:center}
+.story-text h2{font-size:clamp(2rem,4.3vw,3.4rem);margin:.32em 0 .5em}
+.story-text h2 em{font-style:italic;color:var(--sea)}
+.story-text p{color:var(--muted);font-size:1.06rem;margin-bottom:1.1em}
+.hosts{display:flex;align-items:center;gap:14px;margin-top:24px;padding-top:22px;border-top:1px solid var(--line)}
+.hosts .av{width:48px;height:48px;border-radius:50%;background:var(--sea);color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:1.1rem;flex-shrink:0}
+.hosts small{display:block;font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;color:var(--coral)}
+.story-card{position:relative;background:linear-gradient(165deg,var(--ocean),var(--ocean-2));color:#fff;border-radius:22px;padding:clamp(32px,4vw,52px);overflow:hidden}
+.story-card .big{font-family:var(--serif);font-size:clamp(3.2rem,7vw,5rem);line-height:.92;color:var(--sand)}
+.story-card .big span{display:block;font-family:var(--sans);font-size:.8rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.7);margin-top:10px}
+.story-card .rule{height:1px;background:rgba(255,255,255,.18);margin:26px 0}
+.story-card ul{list-style:none;display:grid;gap:13px}
+.story-card li{display:flex;align-items:center;gap:12px;font-size:.96rem;color:rgba(255,255,255,.9)}
+.story-card li svg{width:18px;height:18px;stroke:var(--coral-soft);fill:none;stroke-width:1.6;flex-shrink:0}
+.story-card .turtle-bg{position:absolute;right:-30px;bottom:-30px;width:200px;height:200px;opacity:.07;color:#fff}
+
+/* ---------- STAY ---------- */
+.stay{background:var(--sand)}
+.section-head{max-width:640px;margin-bottom:52px}
+.section-head h2{font-size:clamp(2.1rem,4.6vw,3.5rem);margin:.3em 0 .35em}
+.section-head p{font-size:1.05rem;color:var(--muted)}
+.stay-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.unit{position:relative;background:var(--cream);border:1px solid var(--line);border-radius:18px;padding:32px;display:flex;flex-direction:column;transition:transform .3s,box-shadow .3s;overflow:hidden}
+.unit:hover{transform:translateY(-5px);box-shadow:0 22px 50px rgba(12,42,46,.12)}
+.unit .top{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:18px}
+.unit .num{font-family:var(--serif);font-size:1.1rem;color:var(--sea)}
+.unit .cap{font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--coral);background:rgba(224,122,95,.1);padding:5px 11px;border-radius:999px}
+.unit h3{font-size:1.7rem;margin-bottom:6px}
+.unit>p{color:var(--muted);font-size:.94rem;margin-bottom:20px}
+.unit ul{list-style:none;display:grid;gap:9px;margin-bottom:24px}
+.unit li{font-size:.88rem;color:var(--ink);display:flex;align-items:center;gap:9px}
+.unit li::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--sea);flex-shrink:0}
+.unit .foot{margin-top:auto;display:flex;align-items:center;justify-content:space-between;gap:10px;padding-top:18px;border-top:1px solid var(--line)}
+.unit .price{font-family:var(--serif);font-size:1.3rem}
+.unit .price small{font-family:var(--sans);font-size:.72rem;color:var(--muted)}
+.unit .go{font-size:.78rem;font-weight:600;color:var(--coral);display:inline-flex;align-items:center;gap:6px;transition:gap .2s}
+.unit .go:hover{gap:10px}
+.stay-note{text-align:center;margin-top:34px;color:var(--muted);font-size:.92rem}
+
+/* ---------- BEACH (dark band) ---------- */
+.beach{position:relative;color:#fff;overflow:hidden;background:linear-gradient(150deg,#15494B,#0a3a3c 80%);text-align:center}
+.beach .wrap{position:relative;z-index:2;max-width:760px}
+.beach h2{font-size:clamp(2.3rem,5.5vw,4.2rem);margin:.3em 0 .4em;font-weight:300}
+.beach h2 em{font-style:italic;color:var(--sand)}
+.beach p{font-size:1.1rem;color:rgba(255,255,255,.85);max-width:560px;margin:0 auto 1.2em}
+.beach-feats{display:flex;justify-content:center;gap:clamp(28px,5vw,64px);margin-top:42px;flex-wrap:wrap}
+.beach-feats div{display:flex;flex-direction:column;align-items:center;gap:8px}
+.beach-feats svg{width:30px;height:30px;stroke:var(--coral-soft);fill:none;stroke-width:1.5}
+.beach-feats span{font-size:.8rem;letter-spacing:.06em;color:rgba(255,255,255,.85)}
+.beach .waves-top{position:absolute;top:-1px;left:0;width:100%;transform:rotate(180deg)}
+.beach .waves-top path{fill:var(--sand)}
+
+/* ---------- REVIEWS ---------- */
+.rev-head{text-align:center;max-width:620px;margin:0 auto 54px}
+.rev-rating{display:inline-flex;align-items:center;gap:12px;margin-top:16px}
+.rev-rating .n{font-family:var(--serif);font-size:2.4rem;color:var(--sea);line-height:1}
+.rev-rating .stars{color:var(--coral);letter-spacing:2px}
+.rev-rating .meta{text-align:left;font-size:.8rem;color:var(--muted)}
+.rev-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.rev{background:var(--cream);border:1px solid var(--line);border-radius:16px;padding:28px}
+.rev .q{font-family:var(--serif);font-size:1.12rem;line-height:1.45;margin-bottom:18px}
+.rev .who{display:flex;align-items:center;gap:10px;font-size:.82rem}
+.rev .who .dot{width:30px;height:30px;border-radius:50%;background:var(--sea-soft);color:var(--ink);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.8rem}
+.rev .who b{font-weight:600}
+.rev .who span{color:var(--muted)}
+
+/* ---------- LOCATION ---------- */
+.loc{background:var(--sand-2)}
+.loc-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:clamp(40px,6vw,80px);align-items:center}
+.loc h2{font-size:clamp(2rem,4.4vw,3.3rem);margin-bottom:.4em}
+.loc h2 em{font-style:italic;color:var(--sea)}
+.loc p{color:var(--muted);margin-bottom:1.4em;max-width:440px}
+.loc-list{list-style:none;display:grid;gap:16px;margin-bottom:30px}
+.loc-list li{display:flex;gap:14px;align-items:flex-start}
+.loc-list .ic{width:40px;height:40px;border-radius:50%;background:var(--cream);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--sea)}
+.loc-list .ic svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:1.7}
+.loc-list small{display:block;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--coral);margin-bottom:2px}
+.loc-map{position:relative;background:linear-gradient(160deg,var(--ocean),var(--ocean-2));border-radius:22px;min-height:340px;display:flex;align-items:flex-end;padding:32px;overflow:hidden;color:#fff}
+.loc-map .waves2{position:absolute;left:0;right:0;top:38%;opacity:.5}
+.loc-map .waves2 path{fill:none;stroke:rgba(255,255,255,.25);stroke-width:2}
+.loc-map .pin{position:relative;z-index:2}
+.loc-map .pin .turtle{width:42px;height:42px;color:var(--coral-soft);margin-bottom:12px}
+.loc-map .pin strong{font-family:var(--serif);font-size:1.5rem;display:block}
+.loc-map .pin span{font-size:.85rem;color:rgba(255,255,255,.8)}
+
+/* ---------- BOOK CTA ---------- */
+.book{background:var(--ink);color:#fff;text-align:center}
+.book h2{font-size:clamp(2.2rem,5vw,3.6rem);margin-bottom:.35em;font-weight:300}
+.book h2 em{font-style:italic;color:var(--sand)}
+.book p{color:rgba(255,255,255,.8);max-width:480px;margin:0 auto 30px}
+.book-actions{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+
+/* ---------- FOOTER ---------- */
+footer{background:var(--ocean-2);color:rgba(255,255,255,.6);padding:56px 0 32px}
+.foot-top{display:flex;justify-content:space-between;gap:40px;flex-wrap:wrap;padding-bottom:34px;border-bottom:1px solid rgba(255,255,255,.12)}
+.foot-brand{max-width:300px}
+.foot-brand .brand{color:#fff;margin-bottom:14px}
+.foot-brand p{font-size:.9rem}
+.foot-links{display:flex;gap:56px;flex-wrap:wrap}
+.foot-links h4{font-family:var(--sans);font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--coral-soft);margin-bottom:14px}
+.foot-links ul{list-style:none;display:grid;gap:9px}
+.foot-links a{font-size:.9rem;transition:.2s}
+.foot-links a:hover{color:#fff}
+.foot-bottom{padding-top:24px;display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;font-size:.8rem}
+
+.wa-float{position:fixed;right:22px;bottom:22px;z-index:90;width:56px;height:56px;border-radius:50%;background:var(--coral);display:flex;align-items:center;justify-content:center;box-shadow:0 10px 28px rgba(224,122,95,.45);transition:transform .25s;color:#fff}
+.wa-float:hover{transform:scale(1.08)}
+.wa-float svg{width:26px;height:26px;stroke:#fff;fill:none;stroke-width:1.8}
+
+@media(max-width:900px){
+  .nav-links{position:fixed;top:0;right:0;bottom:0;width:74%;max-width:330px;background:var(--ocean-2);flex-direction:column;justify-content:center;gap:26px;padding:40px;transform:translateX(100%);transition:transform .4s cubic-bezier(.2,.6,.2,1)}
+  .nav-links.open{transform:none}
+  .nav-links a{color:#fff!important;font-size:1.15rem}
+  .menu-toggle{display:flex;z-index:101}
+  .menu-toggle.open span:nth-child(1){transform:translateY(7px) rotate(45deg);background:#fff}
+  .menu-toggle.open span:nth-child(2){opacity:0}
+  .menu-toggle.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);background:#fff}
+  .nav-cta .btn-ghost{display:none}
+  .nav-cta .btn-coral{font-size:.72rem;padding:9px 14px}
+  .story,.loc-grid{grid-template-columns:1fr}
+  .stay-grid{grid-template-columns:1fr}
+  .rev-grid{grid-template-columns:1fr 1fr}
+  .scroll-hint{display:none}
+}
+@media(max-width:600px){
+  .wrap{padding:0 20px}nav{padding:14px 20px}
+  .rev-grid{grid-template-columns:1fr}
+  .brand .wm small{display:none}
+}
+</style>
+</head>
+<body>
+
+<!-- turtle mark def reused inline -->
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="#top" class="brand">
+    <span class="mark">
+      <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+        <ellipse cx="24" cy="25" rx="12" ry="10"/>
+        <circle cx="24" cy="11.5" r="3.6"/>
+        <path d="M12.5 19l-4.5-2.5M35.5 19l4.5-2.5M14 35l-3 4M34 35l3 4"/>
+        <path d="M24 16v18M16 21l16 8M32 21l-16 8" opacity=".55"/>
+      </svg>
+    </span>
+    <span class="wm">Tortuga del Mar<small>Playa Hermosa</small></span>
+  </a>
+  <div class="nav-links" id="navLinks">
+    <a href="#stay" data-en="Stay" data-es="Hospedaje">Stay</a>
+    <a href="#beach" data-en="The Beach" data-es="La Playa">The Beach</a>
+    <a href="#reviews" data-en="Reviews" data-es="Reseñas">Reviews</a>
+    <a href="#location" data-en="Location" data-es="Ubicación">Location</a>
+    <a href="#book" data-en="Book" data-es="Reservar">Book</a>
+  </div>
+  <div class="nav-cta">
+    <div class="lang" id="lang"><button data-lang="en">EN</button><button data-lang="es">ES</button></div>
+    <a href="https://www.airbnb.com/rooms/19736600" target="_blank" rel="noopener" class="btn btn-coral" data-en="Check Availability" data-es="Ver Disponibilidad">Check Availability</a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero" id="top">
+  <div class="hero-glow"></div>
+  <div class="hero-inner wrap">
+    <div class="hero-badge">
+      <span class="score">4.8</span>
+      <span>
+        <span class="stars">★★★★★</span><br/>
+        <span class="sub" data-en="#3 of 18 in Playa Hermosa · 146 reviews" data-es="#3 de 18 en Playa Hermosa · 146 reseñas">#3 of 18 in Playa Hermosa · 146 reviews</span>
+      </span>
+    </div>
+    <p class="eyebrow" data-en="Beachfront lodge · Pacific Coast · Costa Rica" data-es="Lodge frente al mar · Costa Pacífica · Costa Rica">Beachfront lodge · Pacific Coast · Costa Rica</p>
+    <h1 data-en="Wake up to the<br />sound of <em>waves</em>" data-es="Despierta con el<br />sonido de las <em>olas</em>">Wake up to the<br />sound of <em>waves</em></h1>
+    <p class="hero-sub" data-en="A quiet garden lodge right on Playa Hermosa — ocean-view rooms steps from the surf, a pool in the trees, and a yoga deck where the sand meets the sea." data-es="Un tranquilo lodge entre jardines sobre Playa Hermosa — habitaciones con vista al mar a pasos del surf, una piscina entre los árboles y un deck de yoga donde la arena se encuentra con el mar.">A quiet garden lodge right on Playa Hermosa — ocean-view rooms steps from the surf, a pool in the trees, and a yoga deck where the sand meets the sea.</p>
+    <div class="hero-actions">
+      <a href="https://www.airbnb.com/rooms/19736600" target="_blank" rel="noopener" class="btn btn-coral" data-en="Check Availability" data-es="Ver Disponibilidad">Check Availability</a>
+      <a href="#stay" class="btn btn-ghost" data-en="Explore the Lodge" data-es="Conoce el Lodge">Explore the Lodge</a>
+    </div>
+  </div>
+  <div class="scroll-hint" data-en="Scroll" data-es="Desliza">Scroll</div>
+  <svg class="waves" viewBox="0 0 1440 120" preserveAspectRatio="none"><path d="M0,64 C240,110 480,20 720,48 C960,76 1200,120 1440,72 L1440,120 L0,120 Z"/></svg>
+</header>
+
+<!-- AMENITIES MARQUEE -->
+<section class="strip" aria-hidden="true">
+  <div class="strip-track" id="stripTrack">
+    <span class="strip-item">Beachfront pool</span><span class="strip-item">Direct beach access</span><span class="strip-item">Yoga deck by the sea</span><span class="strip-item">Tropical garden</span><span class="strip-item">Free high-speed WiFi</span><span class="strip-item">Free parking</span><span class="strip-item">Kitchenettes</span><span class="strip-item">Ocean-view rooms</span>
+    <span class="strip-item">Beachfront pool</span><span class="strip-item">Direct beach access</span><span class="strip-item">Yoga deck by the sea</span><span class="strip-item">Tropical garden</span><span class="strip-item">Free high-speed WiFi</span><span class="strip-item">Free parking</span><span class="strip-item">Kitchenettes</span><span class="strip-item">Ocean-view rooms</span>
+  </div>
+</section>
+
+<!-- STORY -->
+<section class="pad wrap">
+  <div class="story">
+    <div class="story-text reveal">
+      <p class="eyebrow" data-en="The lodge" data-es="El lodge">The lodge</p>
+      <h2 data-en="Small, quiet, and <em>right on the sand</em>" data-es="Pequeño, tranquilo y <em>justo sobre la arena</em>">Small, quiet, and <em>right on the sand</em></h2>
+      <p data-en="Tortuga del Mar is a handful of ocean-view rooms and studios wrapped around a pool in a tropical garden, opening straight onto one of Costa Rica's finest surf beaches. No crowds, no resort buzz — just the waves, the garden, and the kind of quiet you came here for." data-es="Tortuga del Mar son unas pocas habitaciones y estudios con vista al mar alrededor de una piscina en un jardín tropical, abiertos directamente a una de las mejores playas de surf de Costa Rica. Sin multitudes, sin bullicio de resort — solo las olas, el jardín y la calma que viniste a buscar.">Tortuga del Mar is a handful of ocean-view rooms and studios wrapped around a pool in a tropical garden, opening straight onto one of Costa Rica's finest surf beaches. No crowds, no resort buzz — just the waves, the garden, and the kind of quiet you came here for.</p>
+      <p data-en="Run with care by hosts who live on-site, it's the kind of place guests come back to year after year." data-es="Atendido con cariño por anfitriones que viven en el lugar, es de esos sitios a los que los huéspedes vuelven año tras año.">Run with care by hosts who live on-site, it's the kind of place guests come back to year after year.</p>
+      <div class="hosts">
+        <span class="av">T&amp;L</span>
+        <div>
+          <strong>Till &amp; Lilli</strong>
+          <small data-en="Your hosts, on-site" data-es="Tus anfitriones, en el lugar">Your hosts, on-site</small>
+        </div>
+      </div>
+    </div>
+    <div class="story-card reveal">
+      <div class="big">4.8<span data-en="out of 5 · 146 guest reviews" data-es="de 5 · 146 reseñas">out of 5 · 146 guest reviews</span></div>
+      <div class="rule"></div>
+      <ul>
+        <li><svg viewBox="0 0 24 24"><path d="M3 17c2-2 4-2 6 0s4 2 6 0 4-2 6 0M3 12c2-2 4-2 6 0s4 2 6 0 4-2 6 0"/></svg><span data-en="Steps from the surf break" data-es="A pasos del punto de surf">Steps from the surf break</span></li>
+        <li><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span data-en="90 min from San José airport" data-es="90 min del aeropuerto de San José">90 min from San José airport</span></li>
+        <li><svg viewBox="0 0 24 24"><path d="M4 20V10l8-5 8 5v10M9 20v-6h6v6"/></svg><span data-en="Rooms, studios & an apartment" data-es="Habitaciones, estudios y un apartamento">Rooms, studios &amp; an apartment</span></li>
+      </ul>
+      <svg class="turtle-bg" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="24" cy="25" rx="12" ry="10"/><circle cx="24" cy="11.5" r="3.6"/><path d="M24 16v18M16 21l16 8M32 21l-16 8"/></svg>
+    </div>
+  </div>
+</section>
+
+<!-- STAY -->
+<section class="stay pad" id="stay">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <p class="eyebrow" data-en="Where you'll sleep" data-es="Dónde dormirás">Where you'll sleep</p>
+      <h2 data-en="Rooms & studios by the sea" data-es="Habitaciones y estudios junto al mar">Rooms &amp; studios by the sea</h2>
+      <p data-en="Every unit has its own private bathroom with hot water, air conditioning, and its own porch or balcony — most with a view of the garden or the sea." data-es="Cada unidad tiene su baño privado con agua caliente, aire acondicionado y su propio porche o balcón — la mayoría con vista al jardín o al mar.">Every unit has its own private bathroom with hot water, air conditioning, and its own porch or balcony — most with a view of the garden or the sea.</p>
+    </div>
+    <div class="stay-grid">
+      <article class="unit reveal">
+        <div class="top"><span class="num">01</span><span class="cap" data-en="Sleeps 3" data-es="Hasta 3">Sleeps 3</span></div>
+        <h3 data-en="Ocean-View Room" data-es="Habitación Vista al Mar">Ocean-View Room</h3>
+        <p data-en="A bright en-suite room that opens to the garden and the sound of the waves." data-es="Una habitación luminosa con baño que abre al jardín y al sonido de las olas.">A bright en-suite room that opens to the garden and the sound of the waves.</p>
+        <ul>
+          <li data-en="Private bathroom · hot water" data-es="Baño privado · agua caliente">Private bathroom · hot water</li>
+          <li data-en="Air conditioning" data-es="Aire acondicionado">Air conditioning</li>
+          <li data-en="Private porch" data-es="Porche privado">Private porch</li>
+          <li data-en="Pool & garden access" data-es="Acceso a piscina y jardín">Pool &amp; garden access</li>
+        </ul>
+        <div class="foot">
+          <span class="price">$<span>ask</span></span>
+          <a href="https://www.airbnb.com/rooms/16626027" target="_blank" rel="noopener" class="go" data-en="Check dates →" data-es="Ver fechas →">Check dates →</a>
+        </div>
+      </article>
+      <article class="unit reveal">
+        <div class="top"><span class="num">02</span><span class="cap" data-en="Sleeps 4" data-es="Hasta 4">Sleeps 4</span></div>
+        <h3 data-en="Studio Loft" data-es="Estudio Loft">Studio Loft</h3>
+        <p data-en="A self-contained studio with a kitchenette — perfect for a longer surf stay." data-es="Un estudio independiente con cocineta — ideal para una estadía de surf más larga.">A self-contained studio with a kitchenette — perfect for a longer surf stay.</p>
+        <ul>
+          <li data-en="Kitchenette · fridge · coffee" data-es="Cocineta · refri · café">Kitchenette · fridge · coffee</li>
+          <li data-en="Air conditioning · hot water" data-es="A/C · agua caliente">Air conditioning · hot water</li>
+          <li data-en="Balcony / porch" data-es="Balcón / porche">Balcony / porch</li>
+          <li data-en="Pool & beach access" data-es="Acceso a piscina y playa">Pool &amp; beach access</li>
+        </ul>
+        <div class="foot">
+          <span class="price">$63<small data-en=" / night" data-es=" / noche"> / night</small></span>
+          <a href="https://www.airbnb.com/rooms/19736600" target="_blank" rel="noopener" class="go" data-en="Check dates →" data-es="Ver fechas →">Check dates →</a>
+        </div>
+      </article>
+      <article class="unit reveal">
+        <div class="top"><span class="num">03</span><span class="cap" data-en="Sleeps 4" data-es="Hasta 4">Sleeps 4</span></div>
+        <h3 data-en="XL Studio" data-es="Estudio XL">XL Studio</h3>
+        <p data-en="The biggest unit — extra space, full kitchenette, steps from the pool and sand." data-es="La unidad más grande — más espacio, cocineta completa, a pasos de la piscina y la arena.">The biggest unit — extra space, full kitchenette, steps from the pool and sand.</p>
+        <ul>
+          <li data-en="Extra living space" data-es="Espacio extra de estar">Extra living space</li>
+          <li data-en="Kitchenette · microwave" data-es="Cocineta · microondas">Kitchenette · microwave</li>
+          <li data-en="Air conditioning · hot water" data-es="A/C · agua caliente">Air conditioning · hot water</li>
+          <li data-en="Beachfront deck access" data-es="Acceso al deck frente al mar">Beachfront deck access</li>
+        </ul>
+        <div class="foot">
+          <span class="price">$73<small data-en=" / night" data-es=" / noche"> / night</small></span>
+          <a href="https://www.airbnb.com/rooms/16626027" target="_blank" rel="noopener" class="go" data-en="Check dates →" data-es="Ver fechas →">Check dates →</a>
+        </div>
+      </article>
+    </div>
+    <p class="stay-note" data-en="Rates shown are recent Airbnb prices · book direct for the best rate" data-es="Las tarifas mostradas son precios recientes de Airbnb · reserva directo para el mejor precio">Rates shown are recent Airbnb prices · book direct for the best rate</p>
+  </div>
+</section>
+
+<!-- BEACH -->
+<section class="beach pad" id="beach">
+  <svg class="waves-top" viewBox="0 0 1440 100" preserveAspectRatio="none"><path d="M0,40 C360,90 720,0 1080,40 C1260,60 1380,70 1440,50 L1440,0 L0,0 Z"/></svg>
+  <div class="wrap reveal">
+    <p class="eyebrow" data-en="The beach" data-es="La playa">The beach</p>
+    <h2 data-en="One of Costa Rica's <em>best surf breaks</em>" data-es="Uno de los <em>mejores breaks</em> de Costa Rica">One of Costa Rica's <em>best surf breaks</em></h2>
+    <p data-en="Playa Hermosa is a long stretch of dark-sand beach famous for its waves — paddle out front, watch the surf comps, or just sink into a lounger as the sun drops into the Pacific." data-es="Playa Hermosa es una larga playa de arena oscura famosa por sus olas — rema justo enfrente, mira las competencias de surf, o simplemente húndete en una tumbona mientras el sol cae en el Pacífico.">Playa Hermosa is a long stretch of dark-sand beach famous for its waves — paddle out front, watch the surf comps, or just sink into a lounger as the sun drops into the Pacific.</p>
+    <div class="beach-feats">
+      <div><svg viewBox="0 0 24 24"><path d="M3 17c2-2 4-2 6 0s4 2 6 0 4-2 6 0"/><path d="M12 3v8M8 7l4-4 4 4"/></svg><span data-en="Surf out front" data-es="Surf enfrente">Surf out front</span></div>
+      <div><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.5 1.5M17.5 17.5L19 19M19 5l-1.5 1.5M6.5 17.5L5 19"/></svg><span data-en="Sunset every night" data-es="Atardecer cada noche">Sunset every night</span></div>
+      <div><svg viewBox="0 0 24 24"><circle cx="12" cy="5" r="2"/><path d="M12 7v6M12 13l-4 6M12 13l4 6M6 10l6 1 6-1"/></svg><span data-en="Yoga deck on the sand" data-es="Deck de yoga en la arena">Yoga deck on the sand</span></div>
+      <div><svg viewBox="0 0 24 24"><ellipse cx="12" cy="13" rx="6" ry="5"/><circle cx="12" cy="6" r="2"/><path d="M12 8v10"/></svg><span data-en="Turtle nesting beach" data-es="Playa de tortugas">Turtle nesting beach</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="pad wrap" id="reviews">
+  <div class="rev-head reveal">
+    <p class="eyebrow" data-en="Guest reviews" data-es="Reseñas de huéspedes">Guest reviews</p>
+    <h2 data-en="Loved by the people who stay" data-es="Amado por quienes se quedan">Loved by the people who stay</h2>
+    <div class="rev-rating">
+      <span class="n">4.8</span>
+      <span class="meta"><span class="stars">★★★★★</span><br/><span data-en="146 reviews · #3 of 18 in Playa Hermosa" data-es="146 reseñas · #3 de 18 en Playa Hermosa">146 reviews · #3 of 18 in Playa Hermosa</span></span>
+    </div>
+  </div>
+  <div class="rev-grid">
+    <article class="rev reveal">
+      <p class="q" data-en="“Quiet, clean, beautiful and tranquil — a really peaceful place.”" data-es="“Tranquilo, limpio, hermoso y apacible — un lugar realmente en paz.”">“Quiet, clean, beautiful and tranquil — a really peaceful place.”</p>
+      <div class="who"><span class="dot">P</span><div><b>philhelb</b> · <span>TripAdvisor</span></div></div>
+    </article>
+    <article class="rev reveal">
+      <p class="q" data-en="“Clean, safe, in front of the ocean — amazing to wake up to the sound of waves.”" data-es="“Limpio, seguro, frente al mar — increíble despertar con el sonido de las olas.”">“Clean, safe, in front of the ocean — amazing to wake up to the sound of waves.”</p>
+      <div class="who"><span class="dot">A</span><div><b>Alvaro O</b> · <span>TripAdvisor</span></div></div>
+    </article>
+    <article class="rev reveal">
+      <p class="q" data-en="“Super clean and cozy — the hosts are discrete and very kind.”" data-es="“Súper limpio y acogedor — los anfitriones son discretos y muy amables.”">“Super clean and cozy — the hosts are discrete and very kind.”</p>
+      <div class="who"><span class="dot">E</span><div><b>Elisabeth</b> · <span>Luxembourg</span></div></div>
+    </article>
+    <article class="rev reveal">
+      <p class="q" data-en="“Pictures don't do it justice. We had a wonderful time.”" data-es="“Las fotos no le hacen justicia. La pasamos maravilloso.”">“Pictures don't do it justice. We had a wonderful time.”</p>
+      <div class="who"><span class="dot">K</span><div><b>Kevin M</b> · <span>TripAdvisor</span></div></div>
+    </article>
+  </div>
+</section>
+
+<!-- LOCATION -->
+<section class="loc pad" id="location">
+  <div class="wrap loc-grid">
+    <div class="reveal">
+      <p class="eyebrow" data-en="Getting here" data-es="Cómo llegar">Getting here</p>
+      <h2 data-en="Right on Playa Hermosa, <em>just south of Jacó</em>" data-es="Justo en Playa Hermosa, <em>al sur de Jacó</em>">Right on Playa Hermosa, <em>just south of Jacó</em></h2>
+      <p data-en="Beachfront, behind the school and soccer field — close enough to Jacó for dinner and nightlife, far enough for real quiet." data-es="Frente al mar, detrás de la escuela y la cancha de fútbol — cerca de Jacó para cenar y salir, lo bastante lejos para verdadera calma.">Beachfront, behind the school and soccer field — close enough to Jacó for dinner and nightlife, far enough for real quiet.</p>
+      <ul class="loc-list">
+        <li><span class="ic"><svg viewBox="0 0 24 24"><path d="M12 21s-7-6-7-11a7 7 0 0 1 14 0c0 5-7 11-7 11Z"/><circle cx="12" cy="10" r="2.5"/></svg></span><div><small data-en="Address" data-es="Dirección">Address</small>Playa Hermosa, Puntarenas, Costa Rica</div></li>
+        <li><span class="ic"><svg viewBox="0 0 24 24"><path d="M5 12h14M5 12l4-4M5 12l4 4"/></svg></span><div><small data-en="From Jacó" data-es="Desde Jacó">From Jacó</small><span data-en="7 km / 10 min south" data-es="7 km / 10 min al sur">7 km / 10 min south</span></div></li>
+        <li><span class="ic"><svg viewBox="0 0 24 24"><path d="M2 16l20-7-9 13-2-6-9 0Z"/></svg></span><div><small data-en="From the airport" data-es="Desde el aeropuerto">From the airport</small><span data-en="90 min from San José (SJO)" data-es="90 min de San José (SJO)">90 min from San José (SJO)</span></div></li>
+      </ul>
+      <a href="https://maps.google.com/?q=Tortuga+del+Mar+Playa+Hermosa+Jaco+Costa+Rica" target="_blank" rel="noopener" class="btn btn-coral" data-en="Open in Google Maps" data-es="Abrir en Google Maps">Open in Google Maps</a>
+    </div>
+    <div class="loc-map reveal">
+      <svg class="waves2" viewBox="0 0 400 120" preserveAspectRatio="none"><path d="M0,30 C80,60 160,0 240,30 C320,60 360,40 400,30"/><path d="M0,60 C80,90 160,30 240,60 C320,90 360,70 400,60"/><path d="M0,90 C80,120 160,60 240,90 C320,120 360,100 400,90"/></svg>
+      <div class="pin">
+        <svg class="turtle" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="24" cy="25" rx="12" ry="10"/><circle cx="24" cy="11.5" r="3.6"/><path d="M12.5 19l-4.5-2.5M35.5 19l4.5-2.5M14 35l-3 4M34 35l3 4"/></svg>
+        <strong>Tortuga del Mar</strong>
+        <span data-en="Beachfront · Playa Hermosa" data-es="Frente al mar · Playa Hermosa">Beachfront · Playa Hermosa</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BOOK -->
+<section class="book pad" id="book">
+  <div class="wrap reveal">
+    <p class="eyebrow" data-en="Reserve your stay" data-es="Reserva tu estadía">Reserve your stay</p>
+    <h2 data-en="Your spot by the <em>waves</em> awaits" data-es="Tu lugar junto a las <em>olas</em> te espera">Your spot by the <em>waves</em> awaits</h2>
+    <p data-en="Check live availability on Airbnb, or message us directly to book your dates and ask about longer stays." data-es="Mira la disponibilidad en vivo en Airbnb, o escríbenos directo para reservar tus fechas y consultar estadías largas.">Check live availability on Airbnb, or message us directly to book your dates and ask about longer stays.</p>
+    <div class="book-actions">
+      <a href="https://www.airbnb.com/rooms/19736600" target="_blank" rel="noopener" class="btn btn-coral" data-en="Check Availability" data-es="Ver Disponibilidad">Check Availability</a>
+      <a href="https://wa.me/?text=Hola%20Tortuga%20del%20Mar%2C%20quisiera%20reservar" target="_blank" rel="noopener" class="btn btn-ghost" data-en="Message us" data-es="Escríbenos">Message us</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <a href="#top" class="brand">
+          <span class="mark"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="24" cy="25" rx="12" ry="10"/><circle cx="24" cy="11.5" r="3.6"/><path d="M12.5 19l-4.5-2.5M35.5 19l4.5-2.5M14 35l-3 4M34 35l3 4"/></svg></span>
+          <span class="wm">Tortuga del Mar</span>
+        </a>
+        <p data-en="A quiet beachfront garden lodge on Playa Hermosa, Costa Rica. Wake up to the sound of waves." data-es="Un tranquilo lodge frente al mar entre jardines en Playa Hermosa, Costa Rica. Despierta con el sonido de las olas.">A quiet beachfront garden lodge on Playa Hermosa, Costa Rica. Wake up to the sound of waves.</p>
+      </div>
+      <div class="foot-links">
+        <div>
+          <h4 data-en="Explore" data-es="Explorar">Explore</h4>
+          <ul>
+            <li><a href="#stay" data-en="Rooms & Studios" data-es="Habitaciones y Estudios">Rooms &amp; Studios</a></li>
+            <li><a href="#beach" data-en="The Beach" data-es="La Playa">The Beach</a></li>
+            <li><a href="#reviews" data-en="Reviews" data-es="Reseñas">Reviews</a></li>
+            <li><a href="#location" data-en="Location" data-es="Ubicación">Location</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 data-en="Book" data-es="Reservar">Book</h4>
+          <ul>
+            <li><a href="https://www.airbnb.com/rooms/19736600" target="_blank" rel="noopener">Airbnb · Studio Loft</a></li>
+            <li><a href="https://www.airbnb.com/rooms/16626027" target="_blank" rel="noopener">Airbnb · XL Studio</a></li>
+            <li><a href="https://maps.google.com/?q=Tortuga+del+Mar+Playa+Hermosa+Jaco" target="_blank" rel="noopener" data-en="Find us" data-es="Encuéntranos">Find us</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© <span id="year"></span> Tortuga del Mar · Playa Hermosa, Costa Rica</span>
+      <span data-en="4.8★ · 146 guest reviews" data-es="4.8★ · 146 reseñas">4.8★ · 146 guest reviews</span>
+    </div>
+  </div>
+</footer>
+
+<a class="wa-float" href="https://wa.me/?text=Hola%20Tortuga%20del%20Mar%2C%20quisiera%20reservar" target="_blank" rel="noopener" aria-label="Message">
+  <svg viewBox="0 0 24 24"><path d="M21 11.5a8.5 8.5 0 0 1-12.5 7.5L3 21l2-5.5A8.5 8.5 0 1 1 21 11.5Z"/></svg>
+</a>
+
+<script>
+const nav=document.getElementById('nav');
+addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>40),{passive:true});
+const mt=document.getElementById('menuToggle'),nl=document.getElementById('navLinks');
+mt.addEventListener('click',()=>{mt.classList.toggle('open');nl.classList.toggle('open')});
+nl.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{mt.classList.remove('open');nl.classList.remove('open')}));
+const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.12});
+document.querySelectorAll('.reveal').forEach((el,i)=>{el.style.transitionDelay=(i%3*70)+'ms';io.observe(el)});
+document.getElementById('year').textContent=new Date().getFullYear();
+
+// i18n
+const i18nEls=document.querySelectorAll('[data-en],[data-es]');
+function setLang(lang){
+  document.documentElement.lang=lang;
+  i18nEls.forEach(el=>{const v=el.getAttribute('data-'+lang);if(v!=null)el.innerHTML=v;});
+  document.querySelectorAll('#lang button').forEach(b=>b.classList.toggle('active',b.dataset.lang===lang));
+  try{localStorage.setItem('tortuga-lang',lang)}catch(e){}
+}
+document.querySelectorAll('#lang button').forEach(b=>b.addEventListener('click',()=>setLang(b.dataset.lang)));
+let saved='en';try{saved=localStorage.getItem('tortuga-lang')||'en'}catch(e){}
+setLang(saved);
+</script>
+</body>
+</html>
