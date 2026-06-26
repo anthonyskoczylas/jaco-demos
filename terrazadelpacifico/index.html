@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Hotel Terraza del Pacífico — Beachfront in Playa Hermosa, Costa Rica</title>
+<meta name="description" content="Beachfront hotel in Playa Hermosa, Costa Rica. 20+ years of hospitality, direct beach access, a 1,200 LED-light pool, and the Vivace Beachfront restaurant. 90 minutes from San José." />
+<meta name="theme-color" content="#0E3B3A" />
+<link rel="icon" href="assets/favicon.png" />
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
+
+<!-- Open Graph -->
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Hotel Terraza del Pacífico — Playa Hermosa, Costa Rica" />
+<meta property="og:description" content="Oceanfront luxury, unforgettable sunsets, and authentic Costa Rican hospitality. 20+ years on Playa Hermosa." />
+<meta property="og:image" content="assets/pool-aerial-night-BvFgNxHn.jpg" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+<!-- LocalBusiness schema for SEO -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Resort",
+  "name": "Hotel Terraza del Pacífico",
+  "description": "Beachfront hotel in Playa Hermosa, Costa Rica with 20+ years of hospitality, a 1,200 LED-light pool, and the Vivace Beachfront restaurant.",
+  "url": "https://terrazadelpacifico.com",
+  "telephone": "+506 8431 9953",
+  "email": "info@terrazadelpacifico.com",
+  "image": "https://terrazadelpacifico.com/assets/hero-aerial-beach.webp",
+  "priceRange": "$$",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Playa Hermosa",
+    "addressRegion": "Puntarenas",
+    "addressCountry": "CR"
+  },
+  "amenityFeature": [
+    {"@type":"LocationFeatureSpecification","name":"Direct beach access","value":true},
+    {"@type":"LocationFeatureSpecification","name":"Pool","value":true},
+    {"@type":"LocationFeatureSpecification","name":"Beachfront restaurant","value":true},
+    {"@type":"LocationFeatureSpecification","name":"Free yoga","value":true}
+  ]
+}
+</script>
+
+<style>
+:root{
+  --sand:#F6F1E8;
+  --sand-2:#EFE7D8;
+  --ink:#1B201E;
+  --ink-soft:#5C564C;
+  --ocean:#0E3B3A;
+  --ocean-deep:#082826;
+  --gold:#C49A4A;
+  --gold-soft:#D9BC83;
+  --line:rgba(27,32,30,.12);
+  --serif:'Fraunces',Georgia,serif;
+  --sans:'Inter',system-ui,-apple-system,sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:var(--sans);
+  color:var(--ink);
+  background:var(--sand);
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+h1,h2,h3,h4{font-family:var(--serif);font-weight:400;line-height:1.08;letter-spacing:-.01em}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1240px;margin:0 auto;padding:0 28px}
+.eyebrow{
+  font-family:var(--sans);font-size:.72rem;font-weight:600;
+  letter-spacing:.28em;text-transform:uppercase;color:var(--gold);
+}
+.muted{color:var(--ink-soft)}
+
+/* ---------- NAV ---------- */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:18px 28px;transition:background .4s,padding .4s,box-shadow .4s;
+}
+nav.scrolled{
+  background:rgba(246,241,232,.92);
+  backdrop-filter:blur(14px);
+  box-shadow:0 1px 0 var(--line);
+  padding:12px 28px;
+}
+.brand{display:flex;align-items:center;gap:12px;color:#fff;transition:color .4s}
+nav.scrolled .brand{color:var(--ink)}
+.brand img{height:42px;width:auto;filter:drop-shadow(0 1px 3px rgba(0,0,0,.3))}
+nav.scrolled .brand img{filter:none}
+.nav-links{display:flex;align-items:center;gap:34px}
+.nav-links a{font-size:.82rem;font-weight:500;letter-spacing:.04em;color:rgba(255,255,255,.92);transition:color .25s}
+nav.scrolled .nav-links a{color:var(--ink-soft)}
+.nav-links a:hover{color:var(--gold)}
+.btn{
+  display:inline-flex;align-items:center;gap:8px;
+  font-family:var(--sans);font-size:.8rem;font-weight:600;letter-spacing:.04em;
+  padding:11px 22px;border-radius:999px;cursor:pointer;transition:transform .25s,box-shadow .25s,background .25s;
+}
+.btn-gold{background:var(--gold);color:#fff;box-shadow:0 6px 20px rgba(196,154,74,.35)}
+.btn-gold:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(196,154,74,.45)}
+.btn-ghost{border:1px solid rgba(255,255,255,.5);color:#fff}
+nav.scrolled .btn-ghost{border-color:var(--line);color:var(--ink)}
+.btn-ghost:hover{background:rgba(255,255,255,.12)}
+.nav-cta{display:flex;align-items:center;gap:14px}
+.menu-toggle{display:none;background:none;border:0;cursor:pointer;flex-direction:column;gap:5px}
+.menu-toggle span{width:26px;height:2px;background:#fff;transition:.3s}
+nav.scrolled .menu-toggle span{background:var(--ink)}
+
+/* lang toggle */
+.lang{display:inline-flex;border:1px solid rgba(255,255,255,.45);border-radius:999px;overflow:hidden;font-size:.72rem;font-weight:600;letter-spacing:.04em}
+nav.scrolled .lang{border-color:var(--line)}
+.lang button{background:none;border:0;cursor:pointer;padding:7px 12px;color:rgba(255,255,255,.8);transition:.2s;font-family:var(--sans);font-weight:600}
+nav.scrolled .lang button{color:var(--ink-soft)}
+.lang button.active{background:var(--gold);color:#fff}
+
+/* ---------- HERO ---------- */
+.hero{
+  position:relative;min-height:100svh;display:flex;align-items:flex-end;
+  color:#fff;overflow:hidden;
+}
+.hero-bg{position:absolute;inset:0;z-index:0}
+.hero-bg img{width:100%;height:100%;object-fit:cover;animation:slowzoom 18s ease-out forwards}
+@keyframes slowzoom{from{transform:scale(1.08)}to{transform:scale(1)}}
+.hero-bg::after{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(180deg,rgba(8,40,38,.36) 0%,rgba(8,40,38,.08) 40%,rgba(8,40,38,.78) 100%);
+}
+.hero-inner{position:relative;z-index:2;width:100%;padding-bottom:7vh}
+.hero .eyebrow{color:var(--gold-soft)}
+.hero h1{
+  font-size:clamp(3rem,9vw,7.2rem);font-weight:300;margin:.28em 0 .22em;
+  text-shadow:0 2px 40px rgba(0,0,0,.3);
+}
+.hero h1 em{font-style:italic;color:var(--gold-soft)}
+.hero-sub{font-size:clamp(1rem,1.6vw,1.22rem);max-width:560px;color:rgba(255,255,255,.92);font-weight:300}
+.hero-actions{display:flex;gap:14px;margin-top:34px;flex-wrap:wrap}
+.hero-meta{
+  display:flex;gap:30px;margin-top:46px;padding-top:26px;
+  border-top:1px solid rgba(255,255,255,.2);max-width:620px;flex-wrap:wrap;
+}
+.hero-meta div{font-size:.82rem;color:rgba(255,255,255,.82)}
+.hero-meta strong{display:block;font-family:var(--serif);font-size:1.5rem;color:#fff;font-weight:400}
+.scroll-hint{
+  position:absolute;bottom:26px;left:50%;transform:translateX(-50%);z-index:2;
+  font-size:.66rem;letter-spacing:.25em;text-transform:uppercase;color:rgba(255,255,255,.7);
+  display:flex;flex-direction:column;align-items:center;gap:8px;
+}
+.scroll-hint::after{content:"";width:1px;height:34px;background:rgba(255,255,255,.5);animation:pulse 2s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:.3;transform:scaleY(.6)}50%{opacity:1;transform:scaleY(1)}}
+
+/* ---------- REVEAL ---------- */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .9s cubic-bezier(.2,.6,.2,1),transform .9s cubic-bezier(.2,.6,.2,1)}
+.reveal.in{opacity:1;transform:none}
+
+/* ---------- SECTIONS ---------- */
+section{position:relative}
+.pad{padding:clamp(70px,11vw,140px) 0}
+.section-head{max-width:680px;margin-bottom:54px}
+.section-head h2{font-size:clamp(2.1rem,4.6vw,3.6rem);margin:.3em 0 .35em}
+.section-head p{font-size:1.05rem;color:var(--ink-soft)}
+
+/* intro */
+.intro{display:grid;grid-template-columns:1.05fr 1fr;gap:clamp(40px,6vw,90px);align-items:center}
+.intro-text h2{font-size:clamp(2rem,4vw,3.1rem);margin:.35em 0 .5em}
+.intro-text p{color:var(--ink-soft);font-size:1.05rem;margin-bottom:1.1em}
+.intro-figs{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.intro-figs img{border-radius:14px;width:100%;height:100%;object-fit:cover;box-shadow:0 18px 50px rgba(27,32,30,.16)}
+.intro-figs .tall{grid-row:span 2;height:100%}
+.stat-row{display:flex;gap:40px;margin-top:30px;flex-wrap:wrap}
+.stat-row .s strong{font-family:var(--serif);font-size:2.4rem;display:block;line-height:1;color:var(--ocean)}
+.stat-row .s span{font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-soft)}
+
+/* ---------- POOL (dark showpiece) ---------- */
+.pool{
+  position:relative;color:#fff;background:var(--ocean-deep);overflow:hidden;
+  min-height:88vh;display:flex;align-items:center;
+}
+.pool-bg{position:absolute;inset:0;z-index:0}
+.pool-bg img{width:100%;height:100%;object-fit:cover;opacity:.55}
+.pool-bg::after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 30% 50%,rgba(8,40,38,.4),rgba(8,40,38,.92))}
+.pool-inner{position:relative;z-index:2;max-width:620px}
+.pool h2{font-size:clamp(2.3rem,5vw,4rem);margin:.3em 0 .4em}
+.pool h2 em{font-style:italic;color:var(--gold-soft)}
+.pool p{color:rgba(255,255,255,.85);font-size:1.08rem;margin-bottom:1.1em}
+.pool .big-stat{font-family:var(--serif);font-size:clamp(3.4rem,8vw,6rem);line-height:.9;color:var(--gold-soft);margin-bottom:.1em}
+.pool .big-stat span{font-size:1rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.7);display:block;font-family:var(--sans)}
+
+/* ---------- ROOMS ---------- */
+.rooms-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:26px}
+.room{
+  position:relative;border-radius:16px;overflow:hidden;background:#000;
+  aspect-ratio:4/3;box-shadow:0 14px 44px rgba(27,32,30,.14);
+}
+.room img{width:100%;height:100%;object-fit:cover;transition:transform 1s cubic-bezier(.2,.6,.2,1)}
+.room:hover img{transform:scale(1.06)}
+.room::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0) 30%,rgba(8,40,38,.82))}
+.room-info{position:absolute;left:0;right:0;bottom:0;z-index:2;padding:26px;color:#fff}
+.room-info h3{font-size:1.7rem;margin-bottom:4px}
+.room-info .cap{font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gold-soft);margin-bottom:10px}
+.room-info .row{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.room-info .price{font-family:var(--serif);font-size:1.05rem;color:#fff}
+.room-info .price small{color:rgba(255,255,255,.65);font-family:var(--sans);font-size:.72rem}
+.room-link{font-size:.78rem;font-weight:600;color:#fff;border:1px solid rgba(255,255,255,.5);padding:8px 16px;border-radius:999px;transition:.25s;white-space:nowrap}
+.room-link:hover{background:var(--gold);border-color:var(--gold)}
+.rooms-note{text-align:center;margin-top:34px;color:var(--ink-soft);font-size:.92rem}
+
+/* ---------- EXPERIENCES ---------- */
+.exp{background:var(--sand-2)}
+.exp-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:20px}
+.exp-card{
+  position:relative;border-radius:16px;overflow:hidden;min-height:260px;
+  display:flex;align-items:flex-end;color:#fff;box-shadow:0 12px 36px rgba(27,32,30,.14);
+}
+.exp-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 1s cubic-bezier(.2,.6,.2,1)}
+.exp-card:hover img{transform:scale(1.07)}
+.exp-card::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0) 35%,rgba(8,40,38,.85))}
+.exp-card .c{position:relative;z-index:2;padding:24px}
+.exp-card h3{font-size:1.45rem;margin-bottom:4px}
+.exp-card p{font-size:.84rem;color:rgba(255,255,255,.85)}
+.span7{grid-column:span 7}.span5{grid-column:span 5}.span4{grid-column:span 4}.span8{grid-column:span 8}
+.tall-exp{min-height:300px}
+
+/* ---------- RESTAURANT ---------- */
+.resto{display:grid;grid-template-columns:1fr 1fr;align-items:stretch;min-height:80vh}
+.resto-img{position:relative;overflow:hidden}
+.resto-img img{width:100%;height:100%;object-fit:cover;min-height:340px}
+.resto-text{background:var(--ocean);color:#fff;display:flex;align-items:center;padding:clamp(40px,7vw,96px)}
+.resto-text .inner{max-width:480px}
+.resto-text .eyebrow{color:var(--gold-soft)}
+.resto-text h2{font-size:clamp(2.1rem,4.4vw,3.4rem);margin:.3em 0 .45em}
+.resto-text h2 em{font-style:italic;color:var(--gold-soft)}
+.resto-text p{color:rgba(255,255,255,.86);margin-bottom:1.1em;font-size:1.05rem}
+.chef{display:flex;align-items:center;gap:14px;margin-top:24px;padding-top:22px;border-top:1px solid rgba(255,255,255,.2)}
+.chef-badge{width:50px;height:50px;border-radius:50%;background:var(--gold);display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:1.4rem;color:#fff;flex-shrink:0}
+.chef div small{display:block;font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;color:var(--gold-soft)}
+
+/* ---------- TESTIMONIALS ---------- */
+.testi-head{text-align:center;max-width:620px;margin:0 auto 56px}
+.rating-line{display:inline-flex;align-items:center;gap:10px;margin-top:14px;font-size:.86rem;color:var(--ink-soft)}
+.stars{color:var(--gold);letter-spacing:2px;font-size:1rem}
+.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.testi{
+  background:#fff;border:1px solid var(--line);border-radius:16px;padding:32px;
+  box-shadow:0 10px 34px rgba(27,32,30,.06);
+}
+.testi .q{font-family:var(--serif);font-size:1.18rem;line-height:1.45;color:var(--ink);margin-bottom:18px}
+.testi .src{font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-soft)}
+.testi .src b{color:var(--gold);font-weight:600}
+
+/* ---------- CONTACT ---------- */
+.contact{background:var(--ocean-deep);color:#fff}
+.contact-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:clamp(40px,6vw,80px);align-items:center}
+.contact h2{font-size:clamp(2.1rem,4.6vw,3.4rem);margin-bottom:.4em}
+.contact h2 em{font-style:italic;color:var(--gold-soft)}
+.contact p{color:rgba(255,255,255,.82);margin-bottom:1.6em;max-width:440px}
+.contact-list{list-style:none;display:grid;gap:18px}
+.contact-list li{display:flex;gap:14px;align-items:flex-start}
+.contact-list .ic{width:38px;height:38px;border-radius:50%;border:1px solid rgba(255,255,255,.25);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:1rem}
+.contact-list small{display:block;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gold-soft);margin-bottom:2px}
+.contact-list a,.contact-list span{color:rgba(255,255,255,.92)}
+.contact-actions{display:flex;gap:14px;margin-top:34px;flex-wrap:wrap}
+.contact-card{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:18px;padding:34px}
+.contact-card h3{font-size:1.4rem;margin-bottom:18px;color:#fff}
+.hours{list-style:none;display:grid;gap:12px}
+.hours li{display:flex;justify-content:space-between;font-size:.92rem;padding-bottom:12px;border-bottom:1px solid rgba(255,255,255,.1)}
+.hours li:last-child{border:0;padding:0}
+.hours span:first-child{color:rgba(255,255,255,.7)}
+.hours span:last-child{color:#fff;font-weight:500}
+
+/* ---------- FOOTER ---------- */
+footer{background:var(--ink);color:rgba(255,255,255,.6);padding:60px 0 34px}
+.foot-top{display:flex;justify-content:space-between;align-items:flex-start;gap:40px;flex-wrap:wrap;padding-bottom:40px;border-bottom:1px solid rgba(255,255,255,.1)}
+.foot-brand img{height:54px;margin-bottom:14px}
+.foot-brand p{max-width:280px;font-size:.9rem}
+.foot-social{display:flex;gap:14px;margin-top:18px}
+.foot-social a{width:40px;height:40px;border-radius:50%;border:1px solid rgba(255,255,255,.18);display:flex;align-items:center;justify-content:center;transition:.25s;color:#fff}
+.foot-social a:hover{background:var(--gold);border-color:var(--gold)}
+.foot-cols{display:flex;gap:60px;flex-wrap:wrap}
+.foot-cols h4{font-family:var(--sans);font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-soft);margin-bottom:16px}
+.foot-cols ul{list-style:none;display:grid;gap:10px}
+.foot-cols a{font-size:.9rem;transition:.2s}
+.foot-cols a:hover{color:#fff}
+.foot-bottom{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;padding-top:26px;font-size:.8rem}
+.foot-bottom .credit{opacity:.5}
+
+/* float whatsapp */
+.wa-float{
+  position:fixed;right:22px;bottom:22px;z-index:90;width:58px;height:58px;border-radius:50%;
+  background:#25D366;display:flex;align-items:center;justify-content:center;
+  box-shadow:0 10px 30px rgba(37,211,102,.45);transition:transform .25s;
+}
+.wa-float:hover{transform:scale(1.08)}
+.wa-float svg{width:30px;height:30px;fill:#fff}
+
+/* ---------- RESPONSIVE ---------- */
+@media(max-width:900px){
+  .nav-links{
+    position:fixed;top:0;right:0;bottom:0;width:74%;max-width:340px;
+    background:var(--ocean-deep);flex-direction:column;justify-content:center;
+    gap:28px;padding:40px;transform:translateX(100%);transition:transform .4s cubic-bezier(.2,.6,.2,1);
+  }
+  .nav-links.open{transform:none}
+  .nav-links a{color:#fff!important;font-size:1.15rem}
+  nav.scrolled .nav-links a{color:#fff}
+  .menu-toggle{display:flex;z-index:101}
+  .menu-toggle.open span:nth-child(1){transform:translateY(7px) rotate(45deg);background:#fff}
+  .menu-toggle.open span:nth-child(2){opacity:0}
+  .menu-toggle.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);background:#fff}
+  nav.scrolled .menu-toggle.open span{background:#fff}
+  .nav-cta{gap:10px}
+  .nav-cta .btn-ghost{display:none}
+  .nav-cta .btn-gold{font-size:.72rem;padding:9px 14px}
+  .brand img{height:36px}
+  .lang button{padding:7px 10px}
+  .intro,.contact-grid{grid-template-columns:1fr}
+  .resto{grid-template-columns:1fr}
+  .testi-grid{grid-template-columns:1fr}
+  .exp-grid{grid-template-columns:1fr 1fr}
+  .span7,.span5,.span4,.span8{grid-column:span 1}
+}
+@media(max-width:600px){
+  .wrap{padding:0 20px}
+  nav{padding:14px 20px}
+  .rooms-grid{grid-template-columns:1fr}
+  .exp-grid{grid-template-columns:1fr}
+  .hero-meta{gap:22px}
+  .intro-figs .tall{grid-row:auto}
+  .stat-row{gap:26px}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="#top" class="brand">
+    <img src="assets/Logo-nuevo-B86U915-.png" alt="Hotel Terraza del Pacífico" />
+  </a>
+  <div class="nav-links" id="navLinks">
+    <a href="#habitaciones" data-en="Rooms" data-es="Habitaciones">Rooms</a>
+    <a href="#piscina" data-en="The Pool" data-es="La Piscina">The Pool</a>
+    <a href="#experiencias" data-en="Experiences" data-es="Experiencias">Experiences</a>
+    <a href="#restaurante" data-en="Restaurant" data-es="Restaurante">Restaurant</a>
+    <a href="#contacto" data-en="Contact" data-es="Contacto">Contact</a>
+  </div>
+  <div class="nav-cta">
+    <div class="lang" id="lang">
+      <button data-lang="en">EN</button>
+      <button data-lang="es">ES</button>
+    </div>
+    <a href="https://wa.me/50684319953?text=Hola%2C%20quisiera%20reservar%20en%20Terraza%20del%20Pac%C3%ADfico" target="_blank" rel="noopener" class="btn btn-gold" data-en="Book Now" data-es="Reservar Ahora">Book Now</a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero" id="top">
+  <div class="hero-bg">
+    <picture>
+      <source media="(max-width:700px)" srcset="assets/hero-aerial-beach-mobile.webp" />
+      <img src="assets/hero-aerial-beach.webp" alt="Aerial view of Playa Hermosa and Hotel Terraza del Pacífico" />
+    </picture>
+  </div>
+  <div class="hero-inner wrap">
+    <p class="eyebrow" data-en="Playa Hermosa · Puntarenas · Costa Rica" data-es="Playa Hermosa · Puntarenas · Costa Rica">Playa Hermosa · Puntarenas · Costa Rica</p>
+    <h1 data-en="Where the ocean<br />is your <em>garden</em>" data-es="Donde el océano<br />es tu <em>jardín</em>">Where the ocean<br />is your <em>garden</em></h1>
+    <p class="hero-sub" data-en="More than 20 years on the beachfront of one of the Pacific coast's most extraordinary beaches. Unforgettable sunsets, your feet steps from the sand, and authentic Costa Rican hospitality." data-es="Más de 20 años frente al mar en una de las playas más extraordinarias del Pacífico costarricense. Atardeceres inolvidables, salida directa a la arena y hospitalidad auténtica.">More than 20 years on the beachfront of one of the Pacific coast's most extraordinary beaches. Unforgettable sunsets, your feet steps from the sand, and authentic Costa Rican hospitality.</p>
+    <div class="hero-actions">
+      <a href="https://wa.me/50684319953?text=Hola%2C%20quisiera%20reservar%20en%20Terraza%20del%20Pac%C3%ADfico" target="_blank" rel="noopener" class="btn btn-gold" data-en="Book Now" data-es="Reservar Ahora">Book Now</a>
+      <a href="#habitaciones" class="btn btn-ghost" data-en="Explore the Hotel" data-es="Explorar el Hotel">Explore the Hotel</a>
+    </div>
+    <div class="hero-meta">
+      <div><strong>20+</strong><span data-en="years on the beach" data-es="años frente al mar">years on the beach</span></div>
+      <div><strong>0 m</strong><span data-en="from the sand" data-es="de la playa">from the sand</span></div>
+      <div><strong>90 min</strong><span data-en="from San José" data-es="desde San José">from San José</span></div>
+    </div>
+  </div>
+  <div class="scroll-hint" data-en="Discover" data-es="Descubrir">Discover</div>
+</header>
+
+<!-- INTRO -->
+<section class="pad wrap">
+  <div class="intro">
+    <div class="intro-text reveal">
+      <p class="eyebrow" data-en="Welcome to paradise" data-es="Bienvenidos al paraíso">Welcome to paradise</p>
+      <h2 data-en="A sanctuary between the waves and the jungle" data-es="Un santuario entre las olas y la montaña">A sanctuary between the waves and the jungle</h2>
+      <p data-en="On Costa Rica's Pacific coast, between the constant sound of the waves and the whisper of the jungle, there's a place where time stands still. With more than two decades of history and direct beach access, Terraza del Pacífico celebrates the real beauty of Playa Hermosa." data-es="En la costa del Pacífico costarricense, entre el sonido constante de las olas y el susurro de la selva, existe un lugar donde el tiempo se detiene. Con más de dos décadas de historia y salida directa a la playa, Terraza del Pacífico celebra la belleza real de Playa Hermosa.">On Costa Rica's Pacific coast, between the constant sound of the waves and the whisper of the jungle, there's a place where time stands still. With more than two decades of history and direct beach access, Terraza del Pacífico celebrates the real beauty of Playa Hermosa.</p>
+      <p data-en="Here, luxury isn't measured in gold — but in surf mornings, sunsets that paint the sky, and nights that end with your feet in the sand." data-es="Aquí el lujo no se mide en oro, sino en mañanas de surf, atardeceres que pintan el cielo y noches que terminan con los pies en la arena.">Here, luxury isn't measured in gold — but in surf mornings, sunsets that paint the sky, and nights that end with your feet in the sand.</p>
+      <div class="stat-row">
+        <div class="s"><strong>4</strong><span data-en="Room types" data-es="Tipos de habitación">Room types</span></div>
+        <div class="s"><strong>2</strong><span data-en="Pools" data-es="Piscinas">Pools</span></div>
+        <div class="s"><strong>1</strong><span data-en="Beachfront restaurant" data-es="Restaurante frente al mar">Beachfront restaurant</span></div>
+      </div>
+    </div>
+    <div class="intro-figs reveal">
+      <img class="tall" src="assets/restaurant-view-WsRnSUPN.jpg" alt="Ocean view from the restaurant" />
+      <img src="assets/room-toucan-art-n3cC8Tze.jpg" alt="Room detail with toucan art" />
+      <img src="assets/yoga-class-1Z8S9ilZ.jpg" alt="Yoga class by the sea" />
+    </div>
+  </div>
+</section>
+
+<!-- POOL SHOWPIECE -->
+<section class="pool" id="piscina">
+  <div class="pool-bg">
+    <img src="assets/pool-aerial-night-BvFgNxHn.jpg" alt="Pool lit by 1,200 LED lights at night" />
+  </div>
+  <div class="wrap pool-inner reveal">
+    <p class="eyebrow" data-en="A pool unlike any in Costa Rica" data-es="Una piscina única en Costa Rica">A pool unlike any in Costa Rica</p>
+    <div class="big-stat">1,200<span data-en="LED lights underwater" data-es="luces LED bajo el agua">LED lights underwater</span></div>
+    <h2 data-en="A <em>starry sky</em> beneath your feet" data-es="Un <em>cielo estrellado</em> bajo tus pies">A <em>starry sky</em> beneath your feet</h2>
+    <p data-en="When the sun sets over the Pacific, our main pool transforms into something extraordinary. Designed by a renowned Italian artist, more than 1,200 LED lights glow underwater, creating the illusion of a starry sky." data-es="Cuando el sol se pone sobre el Pacífico, nuestra piscina principal se transforma en algo extraordinario. Diseñada por un reconocido artista italiano, más de 1,200 luces LED brillan bajo el agua creando la ilusión de un firmamento estrellado.">When the sun sets over the Pacific, our main pool transforms into something extraordinary. Designed by a renowned Italian artist, more than 1,200 LED lights glow underwater, creating the illusion of a starry sky.</p>
+    <p data-en="More than a pool: an immersive work of art where luxury, innovation, and nature meet." data-es="Más que una piscina: una obra de arte inmersiva donde el lujo, la innovación y la naturaleza se encuentran.">More than a pool: an immersive work of art where luxury, innovation, and nature meet.</p>
+    <a href="https://wa.me/50684319953?text=Hola%2C%20me%20gustar%C3%ADa%20saber%20m%C3%A1s%20sobre%20la%20piscina%20y%20reservar" target="_blank" rel="noopener" class="btn btn-gold" style="margin-top:14px" data-en="Experience the magic" data-es="Vive la magia">Experience the magic</a>
+  </div>
+</section>
+
+<!-- ROOMS -->
+<section class="pad wrap" id="habitaciones">
+  <div class="section-head reveal">
+    <p class="eyebrow" data-en="Our rooms" data-es="Nuestras habitaciones">Our rooms</p>
+    <h2 data-en="Comfort and elegance by the ocean" data-es="Comodidad y elegancia frente al océano">Comfort and elegance by the ocean</h2>
+    <p data-en="Four ways to wake up to the sound of the sea. Each room, a starting point for your adventure in Playa Hermosa." data-es="Cuatro formas de despertar con el sonido del mar. Cada habitación, un punto de partida para tu aventura en Playa Hermosa.">Four ways to wake up to the sound of the sea. Each room, a starting point for your adventure in Playa Hermosa.</p>
+  </div>
+  <div class="rooms-grid">
+    <article class="room reveal">
+      <img src="assets/room-king-bed-B58lVEdC.jpg" alt="Superior Room with king bed" />
+      <div class="room-info">
+        <p class="cap" data-en="Up to 4 guests" data-es="Hasta 4 personas">Up to 4 guests</p>
+        <h3 data-en="Superior Room" data-es="Habitación Superior">Superior Room</h3>
+        <div class="row">
+          <span class="price" data-en='from $90 <small>/ night</small>' data-es='desde $90 <small>/ noche</small>'>from $90 <small>/ night</small></span>
+          <a href="https://wa.me/50684319953?text=Hola%2C%20quisiera%20reservar%20la%20Habitaci%C3%B3n%20Superior" target="_blank" rel="noopener" class="room-link" data-en="Inquire" data-es="Consultar">Inquire</a>
+        </div>
+      </div>
+    </article>
+    <article class="room reveal">
+      <img src="assets/room-two-beds-D9Pgywgw.jpg" alt="Standard Room with two beds" />
+      <div class="room-info">
+        <p class="cap" data-en="Up to 4 guests" data-es="Hasta 4 personas">Up to 4 guests</p>
+        <h3 data-en="Standard Room" data-es="Habitación Estándar">Standard Room</h3>
+        <div class="row">
+          <span class="price" data-en="Best value" data-es="Mejor valor">Best value</span>
+          <a href="https://wa.me/50684319953?text=Hola%2C%20quisiera%20reservar%20la%20Habitaci%C3%B3n%20Est%C3%A1ndar" target="_blank" rel="noopener" class="room-link" data-en="Inquire" data-es="Consultar">Inquire</a>
+        </div>
+      </div>
+    </article>
+    <article class="room reveal">
+      <img src="assets/room-toucan-art-n3cC8Tze.jpg" alt="Junior Suite with toucan art" />
+      <div class="room-info">
+        <p class="cap" data-en="2 guests" data-es="2 personas">2 guests</p>
+        <h3 data-en="Junior Suite" data-es="Junior Suite">Junior Suite</h3>
+        <div class="row">
+          <span class="price" data-en="For couples" data-es="Para parejas">For couples</span>
+          <a href="https://wa.me/50684319953?text=Hola%2C%20quisiera%20reservar%20la%20Junior%20Suite" target="_blank" rel="noopener" class="room-link" data-en="Inquire" data-es="Consultar">Inquire</a>
+        </div>
+      </div>
+    </article>
+    <article class="room reveal">
+      <img src="assets/villa-living-room-CHkIhyVw.jpg" alt="Villa with living room" />
+      <div class="room-info">
+        <p class="cap" data-en="Up to 6 guests" data-es="Hasta 6 personas">Up to 6 guests</p>
+        <h3 data-en="Villa" data-es="Villa">Villa</h3>
+        <div class="row">
+          <span class="price" data-en="Ideal for families" data-es="Ideal para familias">Ideal for families</span>
+          <a href="https://wa.me/50684319953?text=Hola%2C%20quisiera%20reservar%20la%20Villa" target="_blank" rel="noopener" class="room-link" data-en="Inquire" data-es="Consultar">Inquire</a>
+        </div>
+      </div>
+    </article>
+  </div>
+  <p class="rooms-note" data-en="Best price guaranteed when you book direct · Real-time availability over WhatsApp" data-es="Mejor precio garantizado reservando directo · Disponibilidad en tiempo real por WhatsApp">Best price guaranteed when you book direct · Real-time availability over WhatsApp</p>
+</section>
+
+<!-- EXPERIENCES -->
+<section class="exp pad" id="experiencias">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <p class="eyebrow" data-en="Unforgettable experiences" data-es="Experiencias inolvidables">Unforgettable experiences</p>
+      <h2 data-en="Connect with nature" data-es="Conecta con la naturaleza">Connect with nature</h2>
+      <p data-en="Beyond the room: moments only Playa Hermosa can offer, right outside your door." data-es="Más allá de la habitación: momentos que solo Playa Hermosa puede ofrecer, justo afuera de tu puerta.">Beyond the room: moments only Playa Hermosa can offer, right outside your door.</p>
+    </div>
+    <div class="exp-grid">
+      <article class="exp-card span7 tall-exp reveal">
+        <img src="assets/whales-aerial-Bx8BrmsB.jpg" alt="Whale watching" />
+        <div class="c">
+          <h3 data-en="Whale watching" data-es="Avistamiento de ballenas">Whale watching</h3>
+          <p data-en="July to October · Pacific giants off the coast" data-es="Temporada de julio a octubre · gigantes del Pacífico frente a la costa">July to October · Pacific giants off the coast</p>
+        </div>
+      </article>
+      <article class="exp-card span5 tall-exp reveal">
+        <img src="assets/baby-turtle-DGA7PRRL.jpg" alt="Turtle nesting" />
+        <div class="c">
+          <h3 data-en="Turtle nesting" data-es="Desove de tortugas">Turtle nesting</h3>
+          <p data-en="A unique conservation experience under the stars" data-es="Una experiencia única de conservación bajo las estrellas">A unique conservation experience under the stars</p>
+        </div>
+      </article>
+      <article class="exp-card span4 reveal">
+        <img src="assets/yoga-class-1Z8S9ilZ.jpg" alt="Free yoga by the sea" />
+        <div class="c">
+          <h3 data-en="Free yoga" data-es="Yoga gratuito">Free yoga</h3>
+          <p data-en="Sun 8 AM · Sat 4 PM · Wed 8 AM" data-es="Dom 8 AM · Sáb 4 PM · Mié 8 AM">Sun 8 AM · Sat 4 PM · Wed 8 AM</p>
+        </div>
+      </article>
+      <article class="exp-card span4 reveal">
+        <img src="assets/wedding-ceremony-night-BS1EmGIk.jpg" alt="Weddings and events by the sea" />
+        <div class="c">
+          <h3 data-en="Weddings & events" data-es="Bodas y eventos">Weddings &amp; events</h3>
+          <p data-en="Oceanfront ceremonies you'll remember for life" data-es="Ceremonias frente al mar que se recuerdan toda la vida">Oceanfront ceremonies you'll remember for life</p>
+        </div>
+      </article>
+      <article class="exp-card span4 reveal">
+        <img src="assets/live-music-U-RLRqGX.jpg" alt="Live music on weekends" />
+        <div class="c">
+          <h3 data-en="Live music" data-es="Música en vivo">Live music</h3>
+          <p data-en="Weekends · sunset with a soundtrack" data-es="Fines de semana · el atardecer con banda sonora">Weekends · sunset with a soundtrack</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- RESTAURANT -->
+<section class="resto" id="restaurante">
+  <div class="resto-img reveal">
+    <img src="assets/restaurant-view-WsRnSUPN.jpg" alt="Vivace Beachfront restaurant by the sea" />
+  </div>
+  <div class="resto-text">
+    <div class="inner reveal">
+      <p class="eyebrow">Vivace Beachfront</p>
+      <h2 data-en="The <em>culinary</em> heart of the hotel" data-es="El corazón <em>gastronómico</em> del hotel">The <em>culinary</em> heart of the hotel</h2>
+      <p data-en="A beachfront space where tropical architecture, the salt breeze, and culinary art meet in perfect harmony." data-es="Un espacio frente al mar donde la arquitectura tropical, la brisa salada y el arte culinario se encuentran en perfecta armonía.">A beachfront space where tropical architecture, the salt breeze, and culinary art meet in perfect harmony.</p>
+      <p data-en="Mediterranean and Italian cuisine celebrating authentic flavors with fresh ingredients, to the sound of the waves." data-es="Cocina mediterránea e italiana que celebra los sabores auténticos con ingredientes frescos, frente al sonido de las olas.">Mediterranean and Italian cuisine celebrating authentic flavors with fresh ingredients, to the sound of the waves.</p>
+      <a href="https://wa.me/50684319953?text=Hola%2C%20quisiera%20reservar%20una%20mesa%20en%20Vivace%20Beachfront" target="_blank" rel="noopener" class="btn btn-gold" style="margin-top:8px" data-en="Reserve a table" data-es="Reservar mesa">Reserve a table</a>
+      <div class="chef">
+        <div class="chef-badge">L</div>
+        <div>
+          <strong>Chef Luigi</strong>
+          <small data-en="Sicily, Italy" data-es="Sicilia, Italia">Sicily, Italy</small>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="pad wrap">
+  <div class="testi-head reveal">
+    <p class="eyebrow" data-en="What travelers say" data-es="Lo que dicen los viajeros">What travelers say</p>
+    <h2 data-en="Real guest reviews" data-es="Reseñas reales de huéspedes">Real guest reviews</h2>
+    <div class="rating-line"><span class="stars">★★★★★</span> <span data-en="350+ reviews on TripAdvisor" data-es="Más de 350 reseñas en TripAdvisor">350+ reviews on TripAdvisor</span></div>
+  </div>
+  <div class="testi-grid">
+    <article class="testi reveal">
+      <p class="q" data-en="“The view of the beach from the hotel is breathtaking. Waking up with the ocean right there is priceless.”" data-es="“La vista de la playa desde el hotel es impresionante. Despertar con el océano justo ahí no tiene precio.”">“The view of the beach from the hotel is breathtaking. Waking up with the ocean right there is priceless.”</p>
+      <p class="src"><span data-en="Traveler review" data-es="Reseña de viajero">Traveler review</span> · <b>TripAdvisor</b></p>
+    </article>
+    <article class="testi reveal">
+      <p class="q" data-en="“Super clean rooms, beautifully kept grounds, and incredibly friendly staff. For the price, it's a great deal.”" data-es="“Habitaciones súper limpias, terreno muy bien cuidado y un personal increíblemente amable. Por el precio, es un gran trato.”">“Super clean rooms, beautifully kept grounds, and incredibly friendly staff. For the price, it's a great deal.”</p>
+      <p class="src"><span data-en="Traveler review" data-es="Reseña de viajero">Traveler review</span> · <b>TripAdvisor</b></p>
+    </article>
+    <article class="testi reveal">
+      <p class="q" data-en="“Great breakfast every morning and a really good dining experience, all right on the beach. We'll be back.”" data-es="“Excelente desayuno cada mañana y una experiencia gastronómica muy buena, todo frente al mar. Volveremos.”">“Great breakfast every morning and a really good dining experience, all right on the beach. We'll be back.”</p>
+      <p class="src"><span data-en="Traveler review" data-es="Reseña de viajero">Traveler review</span> · <b>TripAdvisor</b></p>
+    </article>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact pad" id="contacto">
+  <div class="wrap contact-grid">
+    <div class="reveal">
+      <p class="eyebrow" data-en="Find us" data-es="Encuéntranos">Find us</p>
+      <h2 data-en="Your beachfront escape <em>awaits</em>" data-es="Tu escape frente al mar <em>te espera</em>">Your beachfront escape <em>awaits</em></h2>
+      <p data-en="Playa Hermosa, Puntarenas — just 90 minutes from San José. Book direct for the best price guaranteed." data-es="Playa Hermosa, Puntarenas — a solo 90 minutos de San José. Reserva directo y obtén el mejor precio garantizado.">Playa Hermosa, Puntarenas — just 90 minutes from San José. Book direct for the best price guaranteed.</p>
+      <ul class="contact-list">
+        <li>
+          <span class="ic">✆</span>
+          <div><small data-en="WhatsApp & Phone" data-es="WhatsApp y Teléfono">WhatsApp &amp; Phone</small><a href="https://wa.me/50684319953" target="_blank" rel="noopener">+506 8431 9953</a></div>
+        </li>
+        <li>
+          <span class="ic">✉</span>
+          <div><small>Email</small><a href="mailto:info@terrazadelpacifico.com">info@terrazadelpacifico.com</a></div>
+        </li>
+        <li>
+          <span class="ic">⌖</span>
+          <div><small data-en="Location" data-es="Ubicación">Location</small><span>Playa Hermosa, Puntarenas, Costa Rica</span></div>
+        </li>
+      </ul>
+      <div class="contact-actions">
+        <a href="https://wa.me/50684319953?text=Hola%2C%20quisiera%20reservar%20en%20Terraza%20del%20Pac%C3%ADfico" target="_blank" rel="noopener" class="btn btn-gold" data-en="Book on WhatsApp" data-es="Reservar por WhatsApp">Book on WhatsApp</a>
+        <a href="https://maps.google.com/?q=Hotel+Terraza+del+Pacifico+Playa+Hermosa+Costa+Rica" target="_blank" rel="noopener" class="btn btn-ghost" data-en="View on Google Maps" data-es="Ver en Google Maps">View on Google Maps</a>
+      </div>
+    </div>
+    <div class="contact-card reveal">
+      <h3 data-en="Hours" data-es="Horarios">Hours</h3>
+      <ul class="hours">
+        <li><span data-en="Check-in" data-es="Check-in">Check-in</span><span>3:00 PM</span></li>
+        <li><span data-en="Check-out" data-es="Check-out">Check-out</span><span>1:00 PM</span></li>
+        <li><span data-en="Pools" data-es="Piscinas">Pools</span><span>8:30 AM – 8:30 PM</span></li>
+        <li><span data-en="Free yoga" data-es="Yoga gratuito">Free yoga</span><span data-en="Sun 8 · Sat 4 · Wed 8" data-es="Dom 8 · Sáb 4 · Mié 8">Sun 8 · Sat 4 · Wed 8</span></li>
+        <li><span data-en="Live music" data-es="Música en vivo">Live music</span><span data-en="Weekends" data-es="Fines de semana">Weekends</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <img src="assets/Logo-nuevo-B86U915-.png" alt="Hotel Terraza del Pacífico" />
+        <p data-en="Oceanfront luxury, unforgettable sunsets, and authentic Costa Rican hospitality. 20+ years on Playa Hermosa." data-es="Lujo frente al océano, atardeceres inolvidables y hospitalidad costarricense auténtica. Más de 20 años en Playa Hermosa.">Oceanfront luxury, unforgettable sunsets, and authentic Costa Rican hospitality. 20+ years on Playa Hermosa.</p>
+        <div class="foot-social">
+          <a href="https://instagram.com/terrazadelpacificocr" target="_blank" rel="noopener" aria-label="Instagram">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.2c3.2 0 3.6 0 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.43.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s0 3.6-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.43.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.6 0-4.85-.07c-1.17-.05-1.8-.25-2.23-.41a3.7 3.7 0 0 1-1.38-.9 3.7 3.7 0 0 1-.9-1.38c-.16-.43-.36-1.06-.41-2.23C2.21 15.6 2.2 15.2 2.2 12s0-3.6.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.43-.16 1.06-.36 2.23-.41C8.4 2.21 8.8 2.2 12 2.2Zm0 1.8c-3.15 0-3.5.01-4.73.07-.9.04-1.39.2-1.71.32-.43.17-.74.37-1.06.69-.32.32-.52.63-.69 1.06-.12.32-.28.81-.32 1.71-.06 1.23-.07 1.58-.07 4.73s.01 3.5.07 4.73c.04.9.2 1.39.32 1.71.17.43.37.74.69 1.06.32.32.63.52 1.06.69.32.12.81.28 1.71.32 1.23.06 1.58.07 4.73.07s3.5-.01 4.73-.07c.9-.04 1.39-.2 1.71-.32.43-.17.74-.37 1.06-.69.32-.32.52-.63.69-1.06.12-.32.28-.81.32-1.71.06-1.23.07-1.58.07-4.73s-.01-3.5-.07-4.73c-.04-.9-.2-1.39-.32-1.71a2.85 2.85 0 0 0-.69-1.06 2.85 2.85 0 0 0-1.06-.69c-.32-.12-.81-.28-1.71-.32-1.23-.06-1.58-.07-4.73-.07Zm0 3.06a4.94 4.94 0 1 1 0 9.88 4.94 4.94 0 0 1 0-9.88Zm0 1.8a3.14 3.14 0 1 0 0 6.28 3.14 3.14 0 0 0 0-6.28Zm5.14-2.07a1.15 1.15 0 1 1-2.3 0 1.15 1.15 0 0 1 2.3 0Z"/></svg>
+          </a>
+          <a href="https://facebook.com/TerrazadelPacifico" target="_blank" rel="noopener" aria-label="Facebook">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12a10 10 0 1 0-11.56 9.88v-6.99H7.9V12h2.54V9.8c0-2.5 1.49-3.89 3.78-3.89 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56V12h2.78l-.44 2.89h-2.34v6.99A10 10 0 0 0 22 12Z"/></svg>
+          </a>
+          <a href="https://tiktok.com/@terrazadelpacifico" target="_blank" rel="noopener" aria-label="TikTok">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M16.6 5.82A4.28 4.28 0 0 1 15.54 3h-3.1v12.4a2.59 2.59 0 1 1-2.59-2.59c.27 0 .53.04.78.12v-3.2a5.8 5.8 0 0 0-.78-.05 5.72 5.72 0 1 0 5.72 5.72V9.01a7.35 7.35 0 0 0 4.3 1.38V7.28a4.28 4.28 0 0 1-3.27-1.46Z"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="foot-cols">
+        <div>
+          <h4 data-en="Explore" data-es="Explorar">Explore</h4>
+          <ul>
+            <li><a href="#habitaciones" data-en="Rooms" data-es="Habitaciones">Rooms</a></li>
+            <li><a href="#piscina" data-en="The LED Pool" data-es="La Piscina LED">The LED Pool</a></li>
+            <li><a href="#experiencias" data-en="Experiences" data-es="Experiencias">Experiences</a></li>
+            <li><a href="#restaurante" data-en="Restaurant" data-es="Restaurante">Restaurant</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 data-en="Information" data-es="Información">Information</h4>
+          <ul>
+            <li><a href="https://wa.me/50684319953" target="_blank" rel="noopener" data-en="Book" data-es="Reservar">Book</a></li>
+            <li><a href="#contacto" data-en="Getting here" data-es="Cómo llegar">Getting here</a></li>
+            <li><a href="mailto:info@terrazadelpacifico.com" data-en="Contact" data-es="Contacto">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© <span id="year"></span> Hotel Terraza del Pacífico · Playa Hermosa, Costa Rica</span>
+      <span class="credit" data-en="Book direct · Best price guaranteed" data-es="Reserva directo · Mejor precio garantizado">Book direct · Best price guaranteed</span>
+    </div>
+  </div>
+</footer>
+
+<!-- WHATSAPP FLOAT -->
+<a class="wa-float" href="https://wa.me/50684319953?text=Hola%2C%20quisiera%20reservar%20en%20Terraza%20del%20Pac%C3%ADfico" target="_blank" rel="noopener" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M.06 24l1.69-6.16a11.87 11.87 0 0 1-1.6-5.95C.15 5.34 5.5 0 12.07 0a11.82 11.82 0 0 1 8.41 3.49 11.82 11.82 0 0 1 3.48 8.42c0 6.56-5.34 11.9-11.9 11.9a11.9 11.9 0 0 1-5.7-1.45L.06 24Zm6.6-3.8c1.65.98 3.22 1.57 5.4 1.57 5.45 0 9.9-4.43 9.9-9.88a9.83 9.83 0 0 0-2.9-7 9.78 9.78 0 0 0-6.99-2.9c-5.46 0-9.9 4.44-9.9 9.9 0 2.25.66 3.93 1.76 5.7l-1 3.65 3.73-.99Zm11.4-5.46c-.07-.12-.27-.2-.57-.35-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51l-.57-.01c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.07 2.88 1.22 3.08.15.2 2.1 3.2 5.08 4.49.71.3 1.26.49 1.69.63.71.22 1.36.19 1.87.12.57-.09 1.76-.72 2-1.42.25-.7.25-1.29.18-1.42Z"/></svg>
+</a>
+
+<script>
+// nav scroll state
+const nav=document.getElementById('nav');
+addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>40),{passive:true});
+
+// mobile menu
+const mt=document.getElementById('menuToggle'),nl=document.getElementById('navLinks');
+mt.addEventListener('click',()=>{mt.classList.toggle('open');nl.classList.toggle('open')});
+nl.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{mt.classList.remove('open');nl.classList.remove('open')}));
+
+// scroll reveal
+const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.12});
+document.querySelectorAll('.reveal').forEach((el,i)=>{el.style.transitionDelay=(i%3*70)+'ms';io.observe(el)});
+
+// year
+document.getElementById('year').textContent=new Date().getFullYear();
+
+// ---------- i18n (EN / ES) ----------
+const i18nEls=document.querySelectorAll('[data-en],[data-es]');
+function setLang(lang){
+  document.documentElement.lang=lang;
+  i18nEls.forEach(el=>{
+    const v=el.getAttribute('data-'+lang);
+    if(v!=null) el.innerHTML=v;
+  });
+  document.querySelectorAll('#lang button').forEach(b=>b.classList.toggle('active',b.dataset.lang===lang));
+  try{localStorage.setItem('terraza-lang',lang)}catch(e){}
+}
+document.querySelectorAll('#lang button').forEach(b=>b.addEventListener('click',()=>setLang(b.dataset.lang)));
+let saved='en';
+try{saved=localStorage.getItem('terraza-lang')||'en'}catch(e){}
+setLang(saved);
+</script>
+</body>
+</html>
